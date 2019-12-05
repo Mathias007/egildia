@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import 'antd/dist/antd.css';
+import { DatePicker } from 'antd';
+
 function App() {
   return (
     <div className="App">
@@ -9,6 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+          <DatePicker />
         </p>
         <a
           className="App-link"
