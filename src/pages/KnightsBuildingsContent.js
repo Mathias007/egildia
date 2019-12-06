@@ -15,8 +15,6 @@ class KnightsBuildingsContent extends Component {
 
     componentDidMount() {
         this.props.showBuildings();
-        // console.log(this.props.buildings)
-
     }
 
     render() {

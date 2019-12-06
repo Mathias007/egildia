@@ -1,5 +1,11 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
+
+const corsOptions = {
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOptions));
 
 const mongo = require('mongodb');
 const client = new mongo.MongoClient('mongodb://localhost:27017', { useUnifiedTopology: true });
@@ -33,13 +39,9 @@ client.connect(err => {
 });
 
 
-app.get('/api/knights/buildings', (req, res) => {
+
+app.get('/api/knights/buildings', cors(corsOptions), (req, res, next) => {
 
     res.json(buildings);
 
 })
-
-
-
-
-
