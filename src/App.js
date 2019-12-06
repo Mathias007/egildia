@@ -5,14 +5,13 @@ import 'antd/dist/antd.css';
 
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch
 } from "react-router-dom";
 
-import HomePage from "./pages/home";
-import KnightsBuildingsPage from "./pages/buildings";
-import KnightsUnitsPage from "./pages/units";
+import HomePage from "./pages/HomePage";
+import KnightsBuildingsPage from "./pages/KnightsBuildingsPage";
+import KnightsUnitsPage from "./pages/KnightsUnitsPage";
 
 class App extends Component {
   state = {
@@ -29,7 +28,7 @@ class App extends Component {
     return (
 
       <Router>
-        <div className="containter">
+        <div className="App">
           <Switch>
             <Route exact path="/home" component={HomePage} />
             {/* <Route exact path="/" component={LoginPage} /> */}
