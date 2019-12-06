@@ -5,9 +5,9 @@ import GlobalPageHeader from './components/GlobalPageHeader'
 import GlobalSidebar from './components/GlobalSidebar';
 import GlobalPageFooter from './components/GlobalPageFooter';
 
-import HomePageContent from './HomePageContent';
+import KnightsHomePageContent from './KnightsHomePageContent';
 
-class HomePage extends Component {
+class KnightsHomePage extends Component {
     state = {}
     render() {
         return (
@@ -16,7 +16,7 @@ class HomePage extends Component {
                     <GlobalPageHeader />
                     <Layout>
                         <GlobalSidebar />
-                        <HomePageContent />
+                        <KnightsHomePageContent />
                     </Layout>
                 </Layout>
                 <GlobalPageFooter />
@@ -25,4 +25,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default KnightsHomePage;

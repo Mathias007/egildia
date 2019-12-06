@@ -9,9 +9,9 @@ import {
   Switch
 } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
 import KnightsBuildingsPage from "./pages/KnightsBuildingsPage";
 import KnightsUnitsPage from "./pages/KnightsUnitsPage";
+import KnightsHomePage from './pages/KnightsHomePage';
 
 class App extends Component {
   state = {
@@ -30,7 +30,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/knights" component={KnightsHomePage} />
             {/* <Route exact path="/" component={LoginPage} /> */}
             {/* <Route exact path="/register" component={RegistrationPage} /> */}
             <Route path="/knights/buildings" component={KnightsBuildingsPage} />

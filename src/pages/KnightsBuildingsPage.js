@@ -5,7 +5,7 @@ import GlobalPageHeader from './components/GlobalPageHeader'
 import GlobalSidebar from './components/GlobalSidebar';
 import GlobalPageFooter from './components/GlobalPageFooter';
 
-import HomePageContent from './HomePageContent';
+import KnightsBuildingsContent from './KnightsBuildingsContent';
 
 class KnightsBuildingsPage extends Component {
     state = {}
@@ -16,7 +16,7 @@ class KnightsBuildingsPage extends Component {
                     <GlobalPageHeader />
                     <Layout>
                         <GlobalSidebar />
-                        <HomePageContent />
+                        <KnightsBuildingsContent />
                     </Layout>
                 </Layout>
                 <GlobalPageFooter />
