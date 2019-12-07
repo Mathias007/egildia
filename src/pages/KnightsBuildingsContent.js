@@ -17,6 +17,62 @@ class KnightsBuildingsContent extends Component {
         this.props.showBuildings();
     }
 
+    renderBuildingsList() {
+        let { users } = this.props.userList;
+
+        if (users) {
+            return users.map((user, index) => {
+                const { id, email, first_name, last_name, username } = user;
+                const avatarPlaceholder = {
+                    content: first_name.charAt(0) + last_name.charAt(0),
+                    color: "violet"
+                };
+                return (
+                    <tr key={id} className="user-list-row">
+                        <td>
+                            <UikCheckbox color="blue" />
+                        </td>
+                        <td>
+                            <UikAvatar avatarPlaceholder={avatarPlaceholder} />
+                        </td>
+                        <td>
+                            <p>
+                                {first_name} {last_name}
+                            </p>
+                            <p>{email}</p>
+                        </td>
+                        <td>CEO</td>
+                        <td>Admin</td>
+                        <td>
+                            <UikTag color="green" fill>
+                                Active
+                            </UikTag>
+                        </td>
+                        <td>
+                            <div className="userlist-dropdown">
+                                <UikButton
+                                    className="userlist-opts-trigger"
+                                    onClick={this.toggleAccountOptions}
+                                >
+                                    ...
+                                </UikButton>
+                                {this.state.openAccountOptions ? (
+                                    <div className="userlist-opts-container">
+                                        <UsersDropdownMenu
+                                            changeComponent={this.handleChangeWindow}
+                                            userid={id}
+                                            username={username}
+                                        />
+                                    </div>
+                                ) : null}
+                            </div>
+                        </td>
+                    </tr>
+                );
+            });
+        }
+    }
+
     render() {
         return (
             <Layout style={{ padding: '0 24px 24px' }}>
