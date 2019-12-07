@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { knights } from "../actions";
 
-import { Layout, Table, Divider, Tag } from 'antd';
+import { Layout, Table } from 'antd';
 
 import BreadcrumbComponent from './components/BreadcrumbComponent';
 
@@ -13,97 +13,50 @@ const { Content } = Layout;
 const columns = [
   {
     title: 'Nazwa',
-    dataIndex: 'nazwa',
-    key: 'nazwa',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Grafika',
-    dataIndex: 'grafika',
-    key: 'grafika'
+    dataIndex: 'name',
+    align: 'center',
+    render: text => <a href="#">{text}</a>,
   },
   {
     title: 'Koszt',
-    dataIndex: 'koszt',
-    key: 'koszt',
+    dataIndex: 'cost',
+    align: 'center'
   },
   {
     title: 'Pola',
-    dataIndex: 'pola',
-    key: 'pola',
+    dataIndex: 'fields',
+    align: 'center'
   },
   {
     title: 'Wytrzymałość',
-    dataIndex: 'wytrzymalosc',
-    key: 'wytrzymalosc',
-    render: wytrzymalosc => (
+    dataIndex: 'durability',
+    align: 'center'
+  },
+  {
+    title: 'Działanie',
+    dataIndex: 'description',
+    render: (description) => (
       <span>
-        {wytrzymalosc.map(wytrzymalosc => {
-          let color = wytrzymalosc.length > 5 ? 'geekblue' : 'green';
-          if (wytrzymalosc === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={wytrzymalosc}>
-              {wytrzymalosc.toUpperCase()}
-            </Tag>
-          );
+        {description.map(fragment => {
+          if (fragment) {
+            return <p key={fragment}>{fragment}</p>
+          } else return null
         })}
       </span>
     ),
   },
   {
-    title: 'Działanie',
-    dataIndex: 'dzialanie',
-    key: 'dzialanie',
-
-    // render: (text, record) => (
-    //   <span>
-    //     <a>Invite {record.name}</a>
-    //     <Divider type="vertical" />
-    //     <a>Delete</a>
-    //   </span>
-    // ),
-  },
-  {
     title: 'Pracownik',
-    key: 'pracownik',
-    dataIndex: 'pracownik',
-  }
+    dataIndex: 'worker',
+    align: 'center',
+  }, {
+    title: 'Grafika',
+    dataIndex: 'image',
+    align: 'center',
+  },
 ];
 
-let data = [
-  {
-    key: '1',
-    nazwa: 'John Brown',
-    grafika: 'grafika',
-    koszt: 32,
-    pola: 'New York No. 1 Lake Park',
-    wytrzymalosc: ['nice', 'developer'],
-    dzialanie: 'avc',
-    pracownik: 'gef',
-  },
-  {
-    key: '2',
-    nazwa: 'John Brown',
-    grafika: 'grafika',
-    koszt: 32,
-    pola: 'New York No. 1 Lake Park',
-    wytrzymalosc: ['nice', 'developer'],
-    dzialanie: 'avc',
-    pracownik: 'gef',
-  },
-  {
-    key: '3',
-    nazwa: 'John Brown',
-    grafika: 'grafika',
-    koszt: 32,
-    pola: 'New York No. 1 Lake Park',
-    wytrzymalosc: ['nice', 'developer'],
-    dzialanie: 'avc',
-    pracownik: 'gef',
-  },
-];
+let data = [];
 
 class KnightsBuildingsContent extends Component {
   state = {
@@ -124,13 +77,13 @@ class KnightsBuildingsContent extends Component {
         return (
           {
             key: _id,
-            nazwa: nazwa,
-            grafika: 'grafika',
-            koszt: `${deski} <deska> ${kamienie} <kamien>`,
-            pola: pola,
-            wytrzymalosc: ['nice', 'developer'],
-            dzialanie: `${opis} | ${potrzeby} | ${produkcja}`,
-            pracownik: pracownik,
+            name: nazwa,
+            cost: `${deski} <deska> ${kamienie} <kamien>`,
+            fields: pola,
+            durability: wytrzymalosc,
+            description: [opis, potrzeby, produkcja],
+            worker: pracownik,
+            image: 'grafika',
           }
         );
       });
@@ -152,10 +105,10 @@ class KnightsBuildingsContent extends Component {
             minHeight: 280,
           }}
         >
-          Knights and Merchants
-          Budynki
+          <h1>Knights and Merchants</h1>
+          <h2>Budynki</h2>
 
-    <Table dataSource={data} columns={columns} />
+          <Table dataSource={data} columns={columns} />
         </Content>
       </Layout>
     );
