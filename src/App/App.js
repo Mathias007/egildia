@@ -9,9 +9,9 @@ import {
   Switch
 } from "react-router-dom";
 
-import KnightsBuildingsPage from "./pages/KnightsBuildingsPage";
-import KnightsUnitsPage from "./pages/KnightsUnitsPage";
-import KnightsHomePage from './pages/KnightsHomePage';
+import KnightsBuildingsPage from "../pages/KnightsBuildingsPage";
+import KnightsUnitsPage from "../pages/KnightsUnitsPage";
+import KnightsHomePage from '../pages/KnightsHomePage';
 
 class App extends Component {
   state = {

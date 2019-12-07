@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from "react-redux";
 
-import { knights } from "../actions";
+import { knights } from "../_store/_actions";
 
 import { Layout, Table } from 'antd';
 

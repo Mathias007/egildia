@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import { Layout, Menu, Icon } from 'antd';
 
 const { SubMenu } = Menu;
@@ -20,14 +21,14 @@ class GlobalSidebar extends Component {
                     title={
                         <span>
                             <Icon type="user" />
-                            subnav 1
+                            Knights and Merchants
 </span>
                     }
                 >
-                    <Item key="1">option1</Item>
-                    <Item key="2">option2</Item>
-                    <Item key="3">option3</Item>
-                    <Item key="4">option4</Item>
+                    <Item key="1"><NavLink to="./">Wprowadzenie</NavLink></Item>
+                    <Item key="2"><NavLink to="./buildings">Budynki</NavLink></Item>
+                    <Item key="3"><NavLink to="./units">Jednostki</NavLink></Item>
+                    <Item key="4"><NavLink to="#">Recenzja</NavLink></Item>
                 </SubMenu>
                 <SubMenu
                     key="sub2"
