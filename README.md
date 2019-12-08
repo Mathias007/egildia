@@ -33,3 +33,18 @@
         - dodanie adresu frontendu na whitelist - rozwiązanie problemu z CORS;
 
     **INNE**: stylizacja dziennika deweloperskiego (format .md).
+
+## Sobota 7.12.2019 - generowanie pierwszej tabeli i porządki w projekcie
+    **FRONTEND**:
+        - stworzenie tabeli budynków K&M na bazie komponentów Ant Design (struktura), 
+        - zmapowanie kolekcji MongoDB (treść) do w/w tabeli,
+        - rozwiązanie problemów technicznych,
+        - dodanie obrazków do projektów (folder img),
+        - uporządkowanie aplikacji w ramach nowych katalogów:
+            > _store dla _actions i _reducers,
+            > _config dla plików konfiguracyjnych (typu adress.js),
+            > App dla głównego komponentu aplikacji (+ style i testy),
+        - zmiany ścieżek, usunięcie zbędnych plików (logo.svg) i inne drobiazgi,
+        - mała aktualizacja nawigacji;
+
+    **INNE*: walka z maszynami, literówkami i błędami.
