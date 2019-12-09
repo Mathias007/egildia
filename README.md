@@ -48,3 +48,22 @@
         - mała aktualizacja nawigacji;
 
     **INNE*: walka z maszynami, literówkami i błędami.
+
+## Niedziela 8.12.2019 - prace nad generowaniem grafik
+    **FRONTEND**:
+        - instalacja biblioteki **react-images**,
+        - dodanie pierwszych obrazków do tabeli budynków K&M:
+            > grafiki budynków z wykorzystaniem funkcji map() komponentu <Img /> z w/w biblioteki,
+            > ikony kosztów z użyciem komponentu <Img />,
+        - prace nad generowaniem pozostałych obrazków z wykorzystaniem m. in. funkcji map() oraz wyrażeń regularnych,
+    
+    **INNE**: bieżące rozwiązywanie problemów technicznych, głównie dot. połączenia z MongoDB.
+
+## Poniedziałek 9.12.2019 (w toku...) - generowania grafik ciąg dalszy
+    **FRONTEND**:
+        - dodanie kolejnych obrazków do tabeli budynków K&M:
+            > surowce z wykorzystaniem kombinacji map() oraz wyrażeń regularnych i komponentu <Img />,
+            > pracownicy z użyciem wyrażeń regularnych i w/w komponentu;
+        - zmiany w organizacji katalogu img (m. in. usunięcie podfolderów w jednostkach i zmiany nazw plików);
+        - poprawki w bazie danych,
+        - DO ZROBIENIA w w/w komponencie pozostały: ikony budynków pod nazwami oraz poprawki w generowaniu opisów (1. fragment kolumny Działanie w przypadku wygenerowania w nim obrazków).
