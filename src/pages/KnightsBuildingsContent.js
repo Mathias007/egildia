@@ -82,17 +82,21 @@ class KnightsBuildingsContent extends Component {
       title: 'Działanie',
       dataIndex: 'description',
       render: (description) => {
+        const descriptionSubHeaders = ['Opis: ', 'Potrzebuje: ', 'Produkuje: ']
         return (
           <span>
-            {description.map(fragment => {
+            {description.map((fragment, index) => {
               if (fragment) {
-                var regex = /\<(.*?)\>/g;
+                const regexMaterialsSchema = /[^<\}]+(?=>)/g;
 
-                var string = '<GeeksForGeeks is a CS portal>';
-                // var newstring = fragment.replace(re, '**');
-                var newstring = fragment.replace(regex, fragment.match(regex));
-                console.log(fragment.match(regex));
-                return <p key={fragment}>{newstring}</p>
+                let materialElements = fragment.match(regexMaterialsSchema);
+                // console.log(materialElements);
+
+                return (
+                  <p key={fragment}><strong>{descriptionSubHeaders[index]}</strong>
+                    {materialElements ? materialElements.map((element, index) => <Img src={require(`../img/knights/surowce/${element}.png`)} />) : fragment}
+                  </p>
+                )
               } else return null
             })}
           </span>
@@ -103,6 +107,12 @@ class KnightsBuildingsContent extends Component {
       title: 'Pracownik',
       dataIndex: 'worker',
       align: 'center',
+      render: (worker) => {
+        const regexWorkersSchema = /[^<\}]+(?=>)/g;
+        let workersElements = worker.match(regexWorkersSchema)
+        console.log(workersElements);
+        return (workersElements ? <Img src={require(`../img/knights/jednostki/${workersElements}.PNG`)} /> : null)
+      }
     }, {
       title: 'Grafika',
       dataIndex: 'image',
