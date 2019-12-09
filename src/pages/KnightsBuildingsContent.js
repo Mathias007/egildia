@@ -165,7 +165,7 @@ class KnightsBuildingsContent extends Component {
           <h1>Knights and Merchants</h1>
           <h2>Budynki</h2>
 
-          <Table className={componentClassnames.images.table} dataSource={tableData} columns={tableColumns} />
+          <Table className={componentClassnames.table} dataSource={tableData} columns={tableColumns} />
         </Content>
       </Layout>
     );

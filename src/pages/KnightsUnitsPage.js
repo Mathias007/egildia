@@ -5,7 +5,7 @@ import GlobalPageHeader from './components/GlobalPageHeader'
 import GlobalSidebar from './components/GlobalSidebar';
 import GlobalPageFooter from './components/GlobalPageFooter';
 
-import KnightsUnitsContent from './KnightsHomePageContent';
+import KnightsUnitsContent from './KnightsUnitsContent';
 
 class KnightsUnitsPage extends Component {
     state = {}

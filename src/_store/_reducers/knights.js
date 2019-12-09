@@ -8,13 +8,21 @@ export default function knights(state = initialState, action) {
 
         case 'KAM_BUILDINGS_LOADED':
             console.log(action.data)
-            console.log('sukces!')
+            console.log('sukces ładowania budynków!')
             return {
                 ...state,
                 ...action.data,
                 buildings: action.data
             };
 
+        case 'KAM_UNITS_LOADED':
+            console.log(action.data)
+            console.log('sukces ładowania jednostek!')
+            return {
+                ...state,
+                ...action.data,
+                units: action.data
+            }
 
         default:
             return state;

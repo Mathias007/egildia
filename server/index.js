@@ -14,6 +14,7 @@ const port = 5000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 let buildings = null;
+let units = null;
 
 client.connect(err => {
     if (err) {
@@ -21,13 +22,13 @@ client.connect(err => {
     } else {
         console.log('połączenie udane!');
 
-        const db = client.db('knights');
+        const knightsDatabase = client.db('knights');
 
-        const collection = db.collection('budynki');
+        const buildingsCollection = knightsDatabase.collection('budynki');
 
-        collection.find({}).toArray((err, buildingList) => {
+        buildingsCollection.find({}).toArray((err, buildingList) => {
             if (err) {
-                console.log('błędne zapytanie');
+                console.log('kolekcja budynków <-> błędne zapytanie');
             } else {
                 buildings = buildingList;
                 console.log('Lista budynków Knights and Merchants:', buildings);
@@ -35,13 +36,26 @@ client.connect(err => {
             }
         });
 
+        const unitsCollection = knightsDatabase.collection('jednostki');
+
+        unitsCollection.find({}).toArray((err, unitsList) => {
+            if (err) {
+                console.log('kolekcja jednostek <-> błędne zapytanie');
+            } else {
+                units = unitsList;
+                console.log('Lista jednostek Knights and Merchants:', units);
+            }
+        })
+
     }
 });
 
 
 
 app.get('/api/knights/buildings', cors(corsOptions), (req, res, next) => {
-
     res.json(buildings);
+})
 
+app.get('/api/knights/units', cors(corsOptions), (req, res, next) => {
+    res.json(units);
 })
