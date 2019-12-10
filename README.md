@@ -59,11 +59,29 @@
     
     **INNE**: bieżące rozwiązywanie problemów technicznych, głównie dot. połączenia z MongoDB.
 
-## Poniedziałek 9.12.2019 (w toku...) - generowania grafik ciąg dalszy
+## Poniedziałek 9.12.2019 - generowanie grafik i nowa funkcjonalność
     **FRONTEND**:
         - dodanie kolejnych obrazków do tabeli budynków K&M:
             > surowce z wykorzystaniem kombinacji map() oraz wyrażeń regularnych i komponentu <Img />,
-            > pracownicy z użyciem wyrażeń regularnych i w/w komponentu;
-        - zmiany w organizacji katalogu img (m. in. usunięcie podfolderów w jednostkach i zmiany nazw plików);
+            > pracownicy z użyciem wyrażeń regularnych i w/w komponentu,
+            > ikony budynków pod ich nazwami,
+        - zmiany w organizacji katalogu img (m. in. usunięcie podfolderów w jednostkach i zmiany nazw plików),
         - poprawki w bazie danych,
-        - DO ZROBIENIA w w/w komponencie pozostały: ikony budynków pod nazwami oraz poprawki w generowaniu opisów (1. fragment kolumny Działanie w przypadku wygenerowania w nim obrazków).
+        - destrukturyzacja, refaktoryzacja, uczynienie komponentu względnie szablonowym dla kolejnych podstron,
+        - modyfikacja katalogu public (zmiany w index.html, nowe logo i favicon, usunięcie zbędnych plików),
+        - stworzenie komponentu Jednostek K&M na bazie budynków:
+            > nowy fetch, akcja i reducer oraz adres backendu,
+            > połączenie komponentu frontendowego z endpointem w backendzie,
+            > stworzenie dynamicznej tabeli z tekstami importowanymi z bazy oraz grafikami wyrenderowanymi z katalogu img,
+            > destrukturyzacja, refaktoryzacja, poprawki w kodzie.
+        
+    **BACKEND**:
+        - nowy endpoint dla jednostek K&M (z użyciem kolekcji MongoDB),
+        - drobne poprawki w kolekcji MongoDB oraz nazwach plików img.
+
+## Wtorek 10.12.2019 - początek prac nad logowaniem i autoryzacją
+    **BACKEND**: 
+        - zapoznanie z dokumentacją oraz materiałami na temat JWT i autoryzacji w ogólności,
+        - instalacja biblioteki **jsonwebtoken**,
+        - rozszerzenie API o przykładową i wstępną autoryzację z wykorzystaniem JWT (metody POST).
+
