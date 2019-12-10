@@ -1,5 +1,7 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+
 const app = express();
 
 const corsOptions = {
@@ -50,12 +52,69 @@ client.connect(err => {
     }
 });
 
+app.get('/api', cors(corsOptions), (req, res, next) => {
+    res.json({
+        message: 'e-Gildia Graczy 2.0 - API. Witamy w kolonii!'
+    });
+});
 
+app.post('/api/posts', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            res.json({
+                message: 'Post created...',
+                authData
+            });
+        }
+    });
+
+});
+
+app.post('/api/login', (req, res) => {
+    // Mock user
+    const user = {
+        id: 1,
+        username: 'Mathias',
+        email: 'mathias.najlepszy@gmail.com',
+        password: 'Testowe123'
+    }
+
+    jwt.sign({ user: user }, 'secretkey', (err, token) => {
+        res.json({
+            token: token
+        });
+    });
+});
+
+// FORMAT OF TOKEN
+// Authorization: Bearer <acces_token>
+
+// Verify Token
+function verifyToken(req, res, next) {
+    // Get auth header value
+    const bearerHeader = req.headers['authorization'];
+    // Check if bearer is undefined
+    if (typeof bearerHeader !== 'undefined') {
+        // Split at the space
+        const bearer = bearerHeader.split(' ')
+        // Get token from array
+        const bearerToken = bearer[1];
+        // Set the token
+        req.token = bearerToken;
+        // Next middleware
+        next();
+    } else {
+        // Forbidden
+        res.sendStatus(403);
+    }
+}
 
 app.get('/api/knights/buildings', cors(corsOptions), (req, res, next) => {
     res.json(buildings);
-})
+});
 
 app.get('/api/knights/units', cors(corsOptions), (req, res, next) => {
     res.json(units);
-})
+});
