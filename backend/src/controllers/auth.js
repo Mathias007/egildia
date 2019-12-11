@@ -65,20 +65,21 @@ exports.createUser = (req, res, next) => {
 // Controller login user 
 exports.loginUser = (req, res, next) => {
     UserSchema.findOne({
-        email: req.body.email
+        email: req.body.email,
+        password: req.body.password
     }, (err, user) => {
         if (err || !user) {
             res.status(401).send({
-                message: "Unauthorized"
+                message: "Unauthorized / Invalid email or password"
             })
             next(err)
         } else {
             // if (bcrypt.compareSync(req.body.password, user.password)) { 
-            //     res.json(generateTokens(req, user)); 
+            res.json(generateTokens(req, user));
             // } else { 
-            res.status(401).send({
-                message: "Invalid email/password"
-            })
+            // res.status(401).send({
+            //     message: "Invalid email/password"
+            // })
             // } 
         }
     }).select('password')

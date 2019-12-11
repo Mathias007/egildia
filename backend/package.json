@@ -1,5 +1,5 @@
 {
-  "name": "chaos-backend",
+  "name": "chaos-frontend",
   "version": "1.0.0",
   "description": "Serwer backendowy dla projektu eGildia 2.0",
   "main": "src/app.js",

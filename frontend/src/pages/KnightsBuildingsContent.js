@@ -6,6 +6,7 @@ import { Layout, Table } from 'antd';
 import BreadcrumbComponent from './components/BreadcrumbComponent';
 import Img from 'react-image'
 
+// eslint-disable-next-line
 const textBetweenTagsRegEx = /[^<\}]+(?=>)/g;
 
 const componentStyles = {

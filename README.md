@@ -83,5 +83,29 @@
     **BACKEND**: 
         - zapoznanie z dokumentacją oraz materiałami na temat JWT i autoryzacji w ogólności,
         - instalacja biblioteki **jsonwebtoken**,
-        - rozszerzenie API o przykładową i wstępną autoryzację z wykorzystaniem JWT (metody POST).
+        - rozszerzenie API o przykładową i wstępną autoryzację z wykorzystaniem JWT (metody POST),
+        - rozpoczęcie budowy backendu do obsługi logowania, rejestracji i tworzenia userów z autoryzacją JWT.
 
+## Środa 11.12.2019 - reorganizacja projektu, rozbudowa backendu
+    **BACKEND**:
+        - stworzenie folderu backend i podstawowej struktury katalogów (src -> controllers, models, seed),
+        - osobny package.json, .gitignore i .babelrc (do korzystania ze składni ES6),
+        - instalacja/reinstalacja bibliotek: 
+            > **body-parser**,
+            > **core-js**,
+            > **cors**,
+            > **express**,
+            > **jsonwebtoken**,
+            > **mongoose**,
+            > **nodemon**,
+        - instalacja pluginów @babel, w szczególności dla wsparcia składni ES6 w Node.js,
+        - dodanie schematu mongoose i modułów kontrolujących, umożliwiających połączenie z MongoDB oraz logowanie z autoryzacją JWT,
+        - dodanie pliku config.js z ważnymi zmiennymi,
+        - dodanie pliku routes.js z routingiem API,
+        - stworzenie API z generacją i odświeżeniem tokena (POST), pobraniem listy użytkowników (GET) oraz rejestracją (POST),
+        - modyfikacja głównego pliku stosownie do nowych importów, bibliotek i składni, edycja dotychczasowego API (kontrolery knights.js).
+
+    **FRONTEND**:
+        - przeniesienie aplikacji React do nowego katalogu frontend,
+        - modyfikacja package.json i reinstal node_modules (usunięcie bibliotek przeniesionych do backendu),
+        - rozpoczęcie prac nad obsługą logowania i rejestracji.

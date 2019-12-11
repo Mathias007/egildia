@@ -4,7 +4,7 @@ module.exports = {
     // APP CONFIG
     PORT_LISTEN: process.env.PORT_LISTEN || 5000,
     // JWT CONFIG
-    TOKEN_SECRET_JWT: process.env.TOKEN_SECRET_JWT || 'jWt9982_s!tokenSecreTqQrtw',
+    TOKEN_SECRET_JWT: process.env.TOKEN_SECRET_JWT || 'V)W&z,U[MxQb1X^h@o;(_ITskQg6](',
     // CORS CONFIG
     CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:3000'
 }
