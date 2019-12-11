@@ -3,8 +3,7 @@ import UserSchema from '../models/users'
 import jwt from 'jsonwebtoken'
 import {
     TOKEN_SECRET_JWT
-} from '../config'
-
+} from '../../config'
 
 // Validate email address 
 function validateEmailAccessibility(email) {
@@ -14,7 +13,6 @@ function validateEmailAccessibility(email) {
         return !result;
     });
 }
-
 
 // Generate token 
 const generateTokens = (req, user) => {
@@ -40,7 +38,6 @@ const generateTokens = (req, user) => {
     }
 }
 
-
 // Controller create user 
 exports.createUser = (req, res, next) => {
     validateEmailAccessibility(req.body.email).then((valid) => {
@@ -65,7 +62,6 @@ exports.createUser = (req, res, next) => {
     });
 };
 
-
 // Controller login user 
 exports.loginUser = (req, res, next) => {
     UserSchema.findOne({
@@ -87,7 +83,6 @@ exports.loginUser = (req, res, next) => {
         }
     }).select('password')
 };
-
 
 // Verify accessToken 
 exports.accessTokenVerify = (req, res, next) => {
@@ -112,7 +107,6 @@ exports.accessTokenVerify = (req, res, next) => {
         next();
     });
 };
-
 
 // Verify refreshToken 
 exports.refreshTokenVerify = (req, res, next) => {

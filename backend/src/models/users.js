@@ -1,8 +1,8 @@
-const mongose = require('mongoose')
+const mongoose = require('mongoose')
 // const bcrypt = require('bcrypt') 
 
 // const saltRounds = 10 
-const Schema = mongose.Schema
+const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
     name: {
@@ -37,4 +37,4 @@ const UserSchema = new Schema({
 //   next() 
 // })
 
-module.exports = mongose.model('Users', UserSchema)
+module.exports = mongoose.model('Users', UserSchema)
