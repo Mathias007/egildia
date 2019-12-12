@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { auth } from "../_store/_actions";
 
 import GlobalPageHeader from './components/GlobalPageHeader'
 import GlobalSidebar from './components/GlobalSidebar';
@@ -13,7 +17,8 @@ class LoginPage extends Component {
     name: "",
     password: "",
     showPassword: false,
-    rememberMe: false
+    rememberMe: false,
+    errorMessage: ""
   };
 
   handleSubmit = e => {
@@ -29,10 +34,21 @@ class LoginPage extends Component {
         console.log(this.state);
       }
     });
+
+    this.props.login(
+      this.state.name,
+      this.state.password,
+      this.state.remember
+
+    )
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+
+    if (this.props.isAuthenticated || this.props.remember) {
+      return <Redirect to="/home" />;
+    }
     return (
       <div className="App-container">
         <Layout className="layout">
@@ -91,6 +107,24 @@ class LoginPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    remember: state.auth.remember,
+    errorMessage: state.auth.errorMessage,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (name, password, remember) => {
+      return dispatch(auth.login(name, password, remember))
+    }
+  }
+}
+
+LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
 export default Form.create()(LoginPage);
 

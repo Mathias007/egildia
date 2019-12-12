@@ -65,7 +65,7 @@ exports.createUser = (req, res, next) => {
 // Controller login user 
 exports.loginUser = (req, res, next) => {
     UserSchema.findOne({
-        email: req.body.email,
+        name: req.body.email,
         password: req.body.password
     }, (err, user) => {
         if (err || !user) {
