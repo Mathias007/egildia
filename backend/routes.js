@@ -10,7 +10,9 @@ router.post('/api/refresh', authController.refreshTokenVerify);
 
 // secure router 
 router.get('/api/users', authController.accessTokenVerify, usersController.getUserList);
-router.post('/api/register', authController.accessTokenVerify, authController.createUser);
+// router.post('/api/register', authController.accessTokenVerify, authController.createUser);
+router.post('/api/register', authController.createUser);
+
 
 // content API's
 router.get('/api/knights/buildings', knightsController.getBuildingsList);

@@ -1,6 +1,15 @@
 import eventStatuses from "../../_config/eventStatuses";
 
-const { USER_LOADED, LOGIN_SUCCESSFUL, AUTHENTICATION_ERROR, LOGIN_FAILED, LOGOUT_SUCCESSFUL } = eventStatuses.auth;
+const {
+    REGISTRATION_SUCCESFULL,
+    REGISTRATION_ERROR,
+    REGISTRATION_FAILED,
+    USER_LOADED,
+    LOGIN_SUCCESSFUL,
+    AUTHENTICATION_ERROR,
+    LOGIN_FAILED,
+    LOGOUT_SUCCESSFUL
+} = eventStatuses.auth;
 
 const initialState = {
     accessToken: localStorage.getItem("accessToken"),
@@ -16,6 +25,29 @@ export default function auth(state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: true
+            };
+
+        case REGISTRATION_SUCCESFULL:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                autoLogin: action.stayLogged,
+                name: localStorage.getItem("name")
+            };
+
+        case REGISTRATION_ERROR:
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: "Something went wrong."
+            };
+
+        case REGISTRATION_FAILED:
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: "Registration data is incorrect."
             };
 
         case LOGIN_SUCCESSFUL:
