@@ -1,3 +1,7 @@
+import eventStatuses from "../../_config/eventStatuses";
+
+const { KAM_BUILDINGS_LOADED, KAM_UNITS_LOADED } = eventStatuses.knights;
+
 const initialState = {
     buildings: [],
     units: []
@@ -6,7 +10,7 @@ const initialState = {
 export default function knights(state = initialState, action) {
     switch (action.type) {
 
-        case 'KAM_BUILDINGS_LOADED':
+        case KAM_BUILDINGS_LOADED:
             console.log(action.data)
             console.log('sukces ładowania budynków!')
             return {
@@ -15,7 +19,7 @@ export default function knights(state = initialState, action) {
                 buildings: action.data
             };
 
-        case 'KAM_UNITS_LOADED':
+        case KAM_UNITS_LOADED:
             console.log(action.data)
             console.log('sukces ładowania jednostek!')
             return {

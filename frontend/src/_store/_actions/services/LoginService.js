@@ -1,8 +1,14 @@
-// importy
+import address from "../../../_config/adress";
+import statuses from "../../../_config/statuses";
 
-// statusy
+const {
+    STATUS_OK,
+    STATUS_UNAUTHORIZED,
+    STATUS_FORBIDDEN,
+    INTERNAL_ERROR,
+} = statuses;
 
-// adres api
+const { API_URL, LOGIN } = address;
 
 const fetchLogin = (
     name,
@@ -20,9 +26,9 @@ const fetchLogin = (
         body: JSON.stringify({ name, password })
     };
 
-    fetch('http://localhost:5000/api/login', options)
+    fetch(`${API_URL}${LOGIN}`, options)
         .then(res => {
-            if (res.status < 500) {
+            if (res.status < INTERNAL_ERROR) {
                 return res.json()
                     .then(data => {
                         return {
@@ -36,10 +42,10 @@ const fetchLogin = (
         })
         .then(res => {
             console.log(res);
-            if (res.status === 200) {
+            if (res.status === STATUS_OK) {
                 dispatchLoginSuccessful(res, name, remember);
             } else if (
-                res.status === 403 || res.status === 401
+                res.status === STATUS_FORBIDDEN || res.status === STATUS_UNAUTHORIZED
             ) {
                 dispatchUserAuthError(res);
             } else {
