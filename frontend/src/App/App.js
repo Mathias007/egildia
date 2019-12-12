@@ -9,7 +9,9 @@ import {
   Switch
 } from "react-router-dom";
 
-import WrappedLoginPage from "../pages/LoginPage";
+import LoginPage from "../pages/LoginPage";
+import RegistrationPage from "../pages/RegistrationPage";
+
 import KnightsBuildingsPage from "../pages/KnightsBuildingsPage";
 import KnightsUnitsPage from "../pages/KnightsUnitsPage";
 import KnightsHomePage from '../pages/KnightsHomePage';
@@ -33,8 +35,8 @@ class App extends Component {
         <div className="containter">
           <Switch>
             <Route exact path="/knights/" component={KnightsHomePage} />
-            <Route exact path="/login" component={WrappedLoginPage} />
-            {/* <Route exact path="/register" component={RegistrationPage} /> */}
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegistrationPage} />
             <Route path="/knights/buildings" component={KnightsBuildingsPage} />
             <Route path="/knights/units" component={KnightsUnitsPage} />
           </Switch>
