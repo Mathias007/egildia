@@ -35,20 +35,25 @@ class LoginPage extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
-                this.setState({
-                    name: values.username,
-                    password: values.password,
-                    rememberMe: values.remember
-                });
-                console.log(this.state);
+                // this.setState({
+                //     name: values.username,
+                //     password: values.password,
+                //     rememberMe: values.remember
+                // });
+                // console.log(this.state);
+                this.props.login(
+                    values.username,
+                    values.password,
+                    values.remember
+                );
             }
         });
 
-        this.props.login(
-            this.state.name,
-            this.state.password,
-            this.state.remember
-        );
+        // this.props.login(
+        //     this.state.name,
+        //     this.state.password,
+        //     this.state.remember
+        // );
     };
 
     render() {
@@ -168,7 +173,3 @@ const mapDispatchToProps = dispatch => {
 LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
 export default Form.create()(LoginPage);
-
-// const WrappedLoginPage = Form.create({ name: 'normal_login' })(LoginPage);
-
-// ReactDOM.render(<WrappedLoginPage />, mountNode);

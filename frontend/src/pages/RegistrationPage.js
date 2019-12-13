@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { auth } from "../_store/_actions";
 
 import GlobalPageHeader from "./components/GlobalPageHeader";
 import GlobalSidebar from "./components/GlobalSidebar";
@@ -62,6 +66,10 @@ const residences = [
 
 class RegistrationPage extends Component {
     state = {
+        name: "",
+        email: "",
+        password: "",
+        rememberMe: "",
         confirmDirty: false,
         autoCompleteResult: []
     };
@@ -71,8 +79,29 @@ class RegistrationPage extends Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
+                // this.setState({
+                //     name: values.nickname,
+                //     email: values.email,
+                //     password: values.password,
+                //     rememberMe: values.agreement
+                // });
+                // console.log(this.state);
+
+                this.props.register(
+                    values.nickname,
+                    values.email,
+                    values.password,
+                    values.agreement
+                );
             }
         });
+
+        // this.props.register(
+        //     this.state.name,
+        //     this.state.email,
+        //     this.state.password,
+        //     this.state.rememberMe
+        // );
     };
 
     handleConfirmBlur = e => {
@@ -147,6 +176,10 @@ class RegistrationPage extends Component {
         const websiteOptions = autoCompleteResult.map(website => (
             <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
         ));
+
+        if (this.props.isAuthenticated || this.props.remember) {
+            return <Redirect to="/home" />;
+        }
 
         return (
             <div className="App-container">
@@ -332,8 +365,25 @@ class RegistrationPage extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        remember: state.auth.remember,
+        errorMessage: state.auth.errorMessage
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        register: (name, email, password, remember) => {
+            return dispatch(auth.register(name, email, password, remember));
+        }
+    };
+};
+
+RegistrationPage = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RegistrationPage);
+
 export default Form.create()(RegistrationPage);
-
-// const WrappedLoginPage = Form.create({ name: 'normal_login' })(LoginPage);
-
-// ReactDOM.render(<WrappedLoginPage />, mountNode);
