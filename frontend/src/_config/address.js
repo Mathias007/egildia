@@ -4,7 +4,7 @@ const address = {
     REGISTER: "register",
     KNIGHTS: "knights",
     BUILDINGS: "buildings",
-    UNITS: "units",
+    UNITS: "units"
 };
 
 export default address;

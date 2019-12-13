@@ -1,4 +1,4 @@
-import address from "../../../_config/adress";
+import address from "../../../_config/address";
 
 const { API_URL, KNIGHTS, UNITS } = address;
 

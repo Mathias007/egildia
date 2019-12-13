@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import React, { Component } from "react";
+import { Layout, Menu } from "antd";
 
 const { Header } = Layout;
 const { Item } = Menu;
 
 class GlobalPageHeader extends Component {
-    state = {}
+    state = {};
     render() {
         return (
-            <Header className="header" >
+            <Header className="header">
                 <div className="logo" />
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    style={{ lineHeight: '64px' }}
+                    defaultSelectedKeys={["2"]}
+                    style={{ lineHeight: "64px" }}
                 >
                     <Item key="1">nav 1</Item>
                     <Item key="2">nav 2</Item>
@@ -26,4 +26,3 @@ class GlobalPageHeader extends Component {
 }
 
 export default GlobalPageHeader;
-

@@ -1,11 +1,11 @@
-import address from "../../../_config/adress";
+import address from "../../../_config/address";
 import statuses from "../../../_config/statuses";
 
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
-    INTERNAL_ERROR,
+    INTERNAL_ERROR
 } = statuses;
 
 const { API_URL, LOGIN } = address;
@@ -29,12 +29,12 @@ const fetchLogin = (
     fetch(`${API_URL}${LOGIN}`, options)
         .then(res => {
             if (res.status < INTERNAL_ERROR) {
-                return res.json()
-                    .then(data => {
-                        return {
-                            status: res.status, data
-                        };
-                    });
+                return res.json().then(data => {
+                    return {
+                        status: res.status,
+                        data
+                    };
+                });
             } else {
                 console.log("Server error!");
                 throw res;
@@ -45,7 +45,8 @@ const fetchLogin = (
             if (res.status === STATUS_OK) {
                 dispatchLoginSuccessful(res, name, remember);
             } else if (
-                res.status === STATUS_FORBIDDEN || res.status === STATUS_UNAUTHORIZED
+                res.status === STATUS_FORBIDDEN ||
+                res.status === STATUS_UNAUTHORIZED
             ) {
                 dispatchUserAuthError(res);
             } else {

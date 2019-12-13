@@ -1,5 +1,5 @@
 import statuses from "../../../_config/statuses";
-import address from "../../../_config/address";
+import address from "../../../_config/address"
 
 const {
     STATUS_OK,

@@ -9,10 +9,9 @@ const initialState = {
 
 export default function knights(state = initialState, action) {
     switch (action.type) {
-
         case KAM_BUILDINGS_LOADED:
-            console.log(action.data)
-            console.log('sukces ładowania budynków!')
+            console.log(action.data);
+            console.log("sukces ładowania budynków!");
             return {
                 ...state,
                 ...action.data,
@@ -20,13 +19,13 @@ export default function knights(state = initialState, action) {
             };
 
         case KAM_UNITS_LOADED:
-            console.log(action.data)
-            console.log('sukces ładowania jednostek!')
+            console.log(action.data);
+            console.log("sukces ładowania jednostek!");
             return {
                 ...state,
                 ...action.data,
                 units: action.data
-            }
+            };
 
         default:
             return state;

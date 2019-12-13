@@ -51,7 +51,7 @@ export default function auth(state = initialState, action) {
             };
 
         case LOGIN_SUCCESSFUL:
-            console.log(action.remember)
+            console.log(action.remember);
 
             return {
                 ...state,

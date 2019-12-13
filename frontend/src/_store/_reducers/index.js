@@ -4,7 +4,8 @@ import auth from "./auth";
 import knights from "./knights";
 
 const chaosApp = combineReducers({
-    auth, knights
+    auth,
+    knights
 });
 
 export default chaosApp;
