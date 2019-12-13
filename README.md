@@ -1,6 +1,7 @@
 # Dziennik dewelopera
 
 ## Czwartek 5.12.2019 - rozpoczęcie prac nad projektem
+
     **FRONTEND**:
         - instalacja **Create-React-App**;
         - stworzenie repozytorium **GitHub**, integracja z projektem (*SSH key*);
@@ -17,6 +18,7 @@
     **INNE**: założenie dziennika deweloperskiego.
 
 ## Piątek 6.12.2019 - początki zabawy z REST API, Reduxem, integracja FE z BE
+
     **FRONTEND**:
         - instalacja **react-router-dom** i stworzenie pierwszego routingu (3 podstrony);
         - podział generalnej struktury aplikacji na komponenty globalne (nagłówek, panel boczny, stopka i obszar zawartości);
@@ -35,8 +37,9 @@
     **INNE**: stylizacja dziennika deweloperskiego (format .md).
 
 ## Sobota 7.12.2019 - generowanie pierwszej tabeli i porządki w projekcie
+
     **FRONTEND**:
-        - stworzenie tabeli budynków K&M na bazie komponentów Ant Design (struktura), 
+        - stworzenie tabeli budynków K&M na bazie komponentów Ant Design (struktura),
         - zmapowanie kolekcji MongoDB (treść) do w/w tabeli,
         - rozwiązanie problemów technicznych,
         - dodanie obrazków do projektów (folder img),
@@ -50,16 +53,18 @@
     **INNE*: walka z maszynami, literówkami i błędami.
 
 ## Niedziela 8.12.2019 - prace nad generowaniem grafik
+
     **FRONTEND**:
         - instalacja biblioteki **react-images**,
         - dodanie pierwszych obrazków do tabeli budynków K&M:
             > grafiki budynków z wykorzystaniem funkcji map() komponentu <Img /> z w/w biblioteki,
             > ikony kosztów z użyciem komponentu <Img />,
         - prace nad generowaniem pozostałych obrazków z wykorzystaniem m. in. funkcji map() oraz wyrażeń regularnych,
-    
+
     **INNE**: bieżące rozwiązywanie problemów technicznych, głównie dot. połączenia z MongoDB.
 
 ## Poniedziałek 9.12.2019 - generowanie grafik i nowa funkcjonalność
+
     **FRONTEND**:
         - dodanie kolejnych obrazków do tabeli budynków K&M:
             > surowce z wykorzystaniem kombinacji map() oraz wyrażeń regularnych i komponentu <Img />,
@@ -74,23 +79,25 @@
             > połączenie komponentu frontendowego z endpointem w backendzie,
             > stworzenie dynamicznej tabeli z tekstami importowanymi z bazy oraz grafikami wyrenderowanymi z katalogu img,
             > destrukturyzacja, refaktoryzacja, poprawki w kodzie.
-        
+
     **BACKEND**:
         - nowy endpoint dla jednostek K&M (z użyciem kolekcji MongoDB),
         - drobne poprawki w kolekcji MongoDB oraz nazwach plików img.
 
 ## Wtorek 10.12.2019 - początek prac nad logowaniem i autoryzacją
-    **BACKEND**: 
+
+    **BACKEND**:
         - zapoznanie z dokumentacją oraz materiałami na temat JWT i autoryzacji w ogólności,
         - instalacja biblioteki **jsonwebtoken**,
         - rozszerzenie API o przykładową i wstępną autoryzację z wykorzystaniem JWT (metody POST),
         - rozpoczęcie budowy backendu do obsługi logowania, rejestracji i tworzenia userów z autoryzacją JWT.
 
 ## Środa 11.12.2019 - reorganizacja projektu, rozbudowa backendu
+
     **BACKEND**:
         - stworzenie folderu backend i podstawowej struktury katalogów (src -> controllers, models, seed),
         - osobny package.json, .gitignore i .babelrc (do korzystania ze składni ES6),
-        - instalacja/reinstalacja bibliotek: 
+        - instalacja/reinstalacja bibliotek:
             > **body-parser**,
             > **core-js**,
             > **cors**,
@@ -109,3 +116,23 @@
         - przeniesienie aplikacji React do nowego katalogu frontend,
         - modyfikacja package.json i reinstal node_modules (usunięcie bibliotek przeniesionych do backendu),
         - rozpoczęcie prac nad obsługą logowania i rejestracji.
+
+## Czwartek 12.12.2019 - obsługa autoryzacji we frontendzie
+
+    **FRONTEND**:
+        - stworzenie struktury i podstawowej logiki stron logowania oraz rejestracji (komponenty AntDesign),
+        - obsługa logowania po stronie frontendu:
+            > dodanie odpowiednich akcji, recuderów, funkcji fetch (POST) oraz middleware,
+            > połączenie komponentu logowania z Reduxem oraz endpointem, przekierowanie po zalogowaniu
+            > przejmowanie tokenów do localStorage,
+        - dodanie plików konfiguracyjnych ze statusami serwera i statusami eventów Reduxa, aktualizacja pliku z adresami endpointów;
+        - przygotowanie plików Reduxa pod obsługę rejestracji.
+
+    **BACKEND**:
+        - modyfikacja dostosowawcza endpointów w celu połączenia.
+
+## Piątek 13.12.2019 (w toku...)
+
+    **INNE**:
+    - poprawa estetyki kodu, ujednolicenie tabulatorów (4 spacje), uzupełnienie średników, itp. <-> wykorzystanie pluginu **Prettier+**,
+    - zmiana nazwy i opisu repozytorium Github w związku z rozszerzeniem tematyki projektu (egildia 2.0).
