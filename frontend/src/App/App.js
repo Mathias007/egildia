@@ -12,10 +12,16 @@ import KnightsBuildingsPage from "../pages/KnightsBuildingsPage";
 import KnightsUnitsPage from "../pages/KnightsUnitsPage";
 import KnightsHomePage from "../pages/KnightsHomePage";
 
+import { initializationUserAuthentication } from "../_store/authFunctions";
+
 class App extends Component {
     state = {
         collapsed: false
     };
+
+    componentDidMount() {
+        initializationUserAuthentication()
+    }
 
     toggle = () => {
         this.setState({

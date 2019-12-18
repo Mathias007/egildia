@@ -1,5 +1,7 @@
 import eventStatuses from "../../_config/eventStatuses";
 
+import * as Auth from '../authFunctions';
+
 const {
     REGISTRATION_SUCCESFULL,
     REGISTRATION_ERROR,
@@ -12,15 +14,46 @@ const {
 } = eventStatuses.auth;
 
 const initialState = {
+    // old auth
     accessToken: localStorage.getItem("accessToken"),
     refreshToken: localStorage.getItem("refreshToken"),
     isAuthenticated: null,
     name: localStorage.getItem("name"),
-    errorMessage: ""
+    errorMessage: "",
+
+    // new auth (with refresh)
+    isAuthorized: false,
+    tokenRefreshCounterId: null,
+    auth: {},
+    account: {
+        users: []
+    }
 };
 
 export default function auth(state = initialState, action) {
     switch (action.type) {
+        // new auth
+        case "SET_AUTH_USER":
+            // (state, tokens) 
+            const decodeAccessToken = Auth.decodeJWT(action.data && action.data.accessToken);
+            return {
+                ...state,
+                ...action.data,
+                auth: {
+                    accessToken: action.data && action.data.accessToken || "",
+                    refreshToken: action.data && action.data.refreshToken || "",
+                    sub: decodeAccessToken && decodeAccessToken.sub || "",
+                    rol: decodeAccessToken && decodeAccessToken.rol || "",
+                    iat: decodeAccessToken && decodeAccessToken.iat || "",
+                    exp: decodeAccessToken && decodeAccessToken.exp || ""
+                }
+            }
+
+
+
+
+
+        // old auth
         case USER_LOADED:
             return {
                 ...state,
