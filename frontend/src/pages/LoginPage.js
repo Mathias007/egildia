@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import {
+    Redirect,
+    // Link
+} from "react-router-dom";
 import { connect } from "react-redux";
 
 import { auth } from "../_store/_actions";
@@ -15,11 +18,15 @@ import {
     Button,
     Checkbox,
     Layout,
-    Menu,
+    // Menu,
     Breadcrumb
 } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const {
+    //  Header,
+    Content,
+    //   Footer
+} = Layout;
 
 class LoginPage extends Component {
     state = {
@@ -41,10 +48,10 @@ class LoginPage extends Component {
                 //     rememberMe: values.remember
                 // });
                 // console.log(this.state);
-                this.props.login(
+                this.props.authenticationUser(
                     values.username,
                     values.password,
-                    values.remember
+                    // values.remember
                 );
             }
         });
@@ -59,8 +66,10 @@ class LoginPage extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
 
-        if (this.props.isAuthenticated || this.props.remember) {
-            return <Redirect to="/home" />;
+        if (this.props.isAuthorized
+            //  || this.props.remember
+        ) {
+            return <Redirect to="/knights/" />;
         }
         return (
             <div className="App-container">
@@ -156,17 +165,21 @@ class LoginPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.isAuthenticated,
-        remember: state.auth.remember,
-        errorMessage: state.auth.errorMessage
+        isAuthorized: state.auth.isAuthorized,
+        // isAuthenticated: state.auth.isAuthenticated,
+        // remember: state.auth.remember,
+        // errorMessage: state.auth.errorMessage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: (name, password, remember) => {
-            return dispatch(auth.login(name, password, remember));
-        }
+        authenticationUser: (name, password) => {
+            return dispatch(auth.authenticationUser(name, password));
+        },
+        // login: (name, password, remember) => {
+        //     return dispatch(auth.login(name, password, remember));
+        // }
     };
 };
 

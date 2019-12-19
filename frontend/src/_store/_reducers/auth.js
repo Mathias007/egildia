@@ -10,7 +10,11 @@ const {
     LOGIN_SUCCESSFUL,
     AUTHENTICATION_ERROR,
     LOGIN_FAILED,
-    LOGOUT_SUCCESSFUL
+    LOGOUT_SUCCESSFUL,
+    SET_AUTHENTICATED,
+    SET_AUTH_USER,
+    SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
+    SET_USERS_LIST
 } = eventStatuses.auth;
 
 const initialState = {
@@ -26,15 +30,16 @@ const initialState = {
     tokenRefreshCounterId: null,
     auth: {},
     account: {
-        users: []
-    }
+
+    },
+    users: []
 };
 
 export default function auth(state = initialState, action) {
     switch (action.type) {
         // new auth
-        case "SET_AUTH_USER":
-            // (state, tokens) 
+        case SET_AUTH_USER:
+            // (tokens) 
             const decodeAccessToken = Auth.decodeJWT(action.data && action.data.accessToken);
             return {
                 ...state,
@@ -49,9 +54,30 @@ export default function auth(state = initialState, action) {
                 }
             }
 
+        case SET_AUTHENTICATED:
+            console.log(state);
+            // (isAuth) 
+            return {
+                ...state,
+                ...action.data,
+                isAuthorized: action.data
+            }
 
+        case SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER:
+            // (state, payload) {
+            return {
+                ...state,
+                ...action.data,
+                tokenRefreshCounterId: action.data
+            }
 
-
+        case SET_USERS_LIST:
+            // (state, payload)
+            return {
+                ...state,
+                ...action.data,
+                users: action.data.users
+            }
 
         // old auth
         case USER_LOADED:

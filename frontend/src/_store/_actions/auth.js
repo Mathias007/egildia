@@ -13,7 +13,11 @@ const {
     LOGIN_SUCCESSFUL,
     AUTHENTICATION_ERROR,
     LOGIN_FAILED,
-    LOGOUT_SUCCESSFUL
+    LOGOUT_SUCCESSFUL,
+    SET_AUTHENTICATED,
+    SET_AUTH_USER,
+    SET_USERS_LIST,
+    SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
 } = eventStatuses.auth;
 
 // pass validation will be added later (regEx, etc)
@@ -43,7 +47,7 @@ export const refreshToken = async (state) => {
                 dispatch(getNewRefreshToken());
             }, timeoutCount);
             dispatch({
-                type: 'SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER',
+                type: SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
                 data: renewalTimeout
             });
         } else {
@@ -53,27 +57,29 @@ export const refreshToken = async (state) => {
 };
 
 
-export const authenticationUser = async (name, password) => {
+export const authenticationUser = (name, password) => {
     return (dispatch, getState) => {
-        return Auth.loginInTheApplication(name, password).then(async success => {
-            await dispatch(authorize(success.data));
+        return Auth.loginInTheApplication(name, password).then(success => {
+            dispatch(authorize(success.data));
         });
     }
 };
 
-export const authorize = async (tokens) => {
-    return async (dispatch, getState) => {
+export const authorize = (tokens) => {
+    console.log("autoryzacja")
+    return (dispatch, getState) => {
         const accessTokenValid = Auth.checkTokenValidity(tokens && tokens.accessToken)
+        console.log(accessTokenValid);
         dispatch({
-            type: 'SET_AUTHENTICATED',
+            type: SET_AUTHENTICATED,
             data: accessTokenValid
         });
         if (accessTokenValid) {
             dispatch({
-                type: 'SET_AUTH_USER',
+                type: SET_AUTH_USER,
                 data: tokens
             });
-            await Auth.setLocalStorageTokens(tokens);
+            Auth.setLocalStorageTokens(tokens);
         }
         return dispatch(refreshToken());
     };
@@ -83,7 +89,7 @@ export const clearTimeoutToken = (state) => {
     return (dispatch, getState) => {
         clearTimeout(state.remainingTokenTime);
         dispatch({
-            type: 'SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER',
+            type: SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
             data: null
         });
     };
@@ -94,9 +100,9 @@ export const logoutUser = async () => {
         await dispatch(clearTimeoutToken());
         Auth.removeLocalStorageTokens();
         dispatch({
-            type: 'SET_AUTH_USER', data: null
+            type: SET_AUTH_USER, data: null
         });
-        dispatch({ type: 'SET_AUTHENTICATED', data: false });
+        dispatch({ type: SET_AUTHENTICATED, data: false });
         // router.push({ name: "login" });
     };
 };

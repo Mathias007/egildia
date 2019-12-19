@@ -74,7 +74,7 @@ export function checkTokenValidity(token) {
 
 //ENDPOINTS
 export async function loginInTheApplication(login, password) {
-    return await api.post(`/api/login`, { email: login, password: password });
+    return await api.post(`/api/login`, { name: login, password: password });
 }
 export async function postRefreshToken(refreshToken) {
     return await api.post(`/api/refresh`, { refreshToken: `Bearer ${refreshToken}` });
