@@ -131,8 +131,12 @@
     **BACKEND**:
         - modyfikacja dostosowawcza endpointów w celu połączenia.
 
-## Piątek 13.12.2019 (w toku...)
+## Piątek 13.12.2019
 
     **INNE**:
     - poprawa estetyki kodu, ujednolicenie tabulatorów (4 spacje), uzupełnienie średników, itp. <-> wykorzystanie pluginu **Prettier+**,
     - zmiana nazwy i opisu repozytorium Github w związku z rozszerzeniem tematyki projektu (egildia 2.0).
+
+## Sobota 14.12.2019 - Niedziela 15.12.2019 - prace nad innym projektem (prywatnym)
+
+## Poniedziałek 16.12.2019 - Sobota 21.12.2019 - prace nad autoryzacją logowania we Frontendzie, przestoje związane z trudnością zagadnienia, zmianą sprzętu oraz sprawami prywatnymi (przeprowadzka)
