@@ -140,3 +140,4 @@
 ## Sobota 14.12.2019 - Niedziela 15.12.2019 - prace nad innym projektem (prywatnym)
 
 ## Poniedziałek 16.12.2019 - Sobota 21.12.2019 - prace nad autoryzacją logowania we Frontendzie, przestoje związane z trudnością zagadnienia, zmianą sprzętu oraz sprawami prywatnymi (przeprowadzka)
+
