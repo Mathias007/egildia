@@ -11,6 +11,7 @@ import {
     fromUnixTime
 } from "date-fns";
 
+
 export const getAccessToken = () => localStorage.getItem("accessToken");
 export const getRefreshToken = () => localStorage.getItem("refreshToken");
 
@@ -35,27 +36,6 @@ export function getTimeDiff(exp) {
     return differenceInMilliseconds(fromUnixTime(Number(exp)), new Date());
 }
 
-export async function initializationUserAuthentication() {
-    console.log("pedro === pedzio")
-    if (checkTokenValidity(getAccessToken())) {
-        const data = {
-            accessToken: getAccessToken(),
-            refreshToken: getRefreshToken()
-        };
-        return await authorize(data);
-    } else {
-        if (checkTokenValidity(getRefreshToken())) {
-            return await refreshToken()
-                .then(() => {
-                    return Promise.resolve();
-                })
-                .catch(e => {
-                    return Promise.reject(e);
-                });
-        }
-    }
-}
-
 export function checkTokenValidity(token) {
     try {
         if (!token) {
@@ -72,15 +52,42 @@ export function checkTokenValidity(token) {
     }
 }
 
+export function initializationUserAuthentication() {
+    console.log("pedro === pedzio");
+    if (checkTokenValidity(getAccessToken())) {
+        console.log("access token obecny");
+        const data = {
+            accessToken: getAccessToken(),
+            refreshToken: getRefreshToken()
+        };
+        return authorize(data);
+    } else {        
+        if (checkTokenValidity(getRefreshToken())) {
+            console.log("refresh token obecny, access tokena brak");
+            return refreshToken()
+                .then(() => {
+                    return Promise.resolve();
+                })
+                .catch(e => {
+                    return Promise.reject(e);
+                });
+        } else console.log("brak refresh tokena");
+    }
+}
+
 //ENDPOINTS
 export async function loginInTheApplication(login, password) {
     return await api.post(`/api/login`, { name: login, password: password });
 }
 export async function postRefreshToken(refreshToken) {
-    return await api.post(`/api/refresh`, { refreshToken: `Bearer ${refreshToken}` });
+    return await api.post(`/api/refresh`, {
+        refreshToken: `Bearer ${refreshToken}`
+    });
 }
 export async function registerUsers(data) {
-    return await api.post(`/api/register`, data, { headers: authenticationHeader() });
+    return await api.post(`/api/register`, data, {
+        headers: authenticationHeader()
+    });
 }
 export async function getUsersList() {
     return await api.get(`/api/users`, { headers: authenticationHeader() });

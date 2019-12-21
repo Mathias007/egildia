@@ -72,7 +72,7 @@ exports.createUser = (req, res, next) => {
 exports.loginUser = (req, res, next) => {
     UserSchema.findOne(
         {
-            name: req.body.email,
+            name: req.body.name,
             password: req.body.password
         },
         (err, user) => {

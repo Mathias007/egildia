@@ -17,31 +17,38 @@ const {
     SET_AUTHENTICATED,
     SET_AUTH_USER,
     SET_USERS_LIST,
-    SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
+    SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER
 } = eventStatuses.auth;
 
 // pass validation will be added later (regEx, etc)
 
-export const getNewRefreshToken = () => {
-    return (dispatch, getState) => {
-        new Promise(resolve => {
-            return Auth.postRefreshToken(Auth.getRefreshToken()).then(async response => {
-                await dispatch(authorize(response.data));
-                return resolve();
-            });
+export const getNewRefreshToken = () => (dispatch, getState) => {
+    console.log("feczujemy refresh");
+    // return (dispatch, getState) => {
+        new Promise(async resolve => {
+            const response = await Auth.postRefreshToken(
+                Auth.getRefreshToken()
+            );
+            dispatch(authorize(response.data));
+            return resolve();
         });
-    }
-}
+    };
+// };
 
-export const refreshToken = async (state) => {
-    return async (dispatch, getState) => {
-        await dispatch(clearTimeoutToken());
-        const renewalTimeBuffer = 2000;
-        const timeDiff = Auth.getTimeDiff(
-            state && state.authUser && state.authUser.exp
-        );
-        let timeoutCount =
-            renewalTimeBuffer < timeDiff ? timeDiff - renewalTimeBuffer : timeDiff;
+export const refreshToken = () => (dispatch, getState) => {
+    console.log("Odświeżanie tokena");
+    // return (dispatch, getState) => {
+    dispatch(clearTimeoutToken());
+    const renewalTimeBuffer = 2000;
+    console.log(renewalTimeBuffer);
+    const timeDiff = Auth.getTimeDiff(
+        getState().auth &&
+            getState().auth.authUser &&
+            getState().auth.authUser.exp
+    );
+    let timeoutCount =
+        renewalTimeBuffer < timeDiff ? timeDiff - renewalTimeBuffer : timeDiff;
+    return (dispatch, getState) => {
         if (timeoutCount) {
             const renewalTimeout = setTimeout(() => {
                 dispatch(getNewRefreshToken());
@@ -51,25 +58,28 @@ export const refreshToken = async (state) => {
                 data: renewalTimeout
             });
         } else {
-            await dispatch(getNewRefreshToken());
+            dispatch(getNewRefreshToken());
         }
     };
 };
+// };
 
-
-export const authenticationUser = (name, password) => {
-    return (dispatch, getState) => {
-        return Auth.loginInTheApplication(name, password).then(success => {
-            dispatch(authorize(success.data));
-        });
-    }
+export const authenticationUser = (name, password) => async (
+    dispatch,
+    getState
+) => {
+    // return (dispatch, getState) => {
+    console.log(getState().auth);
+    const success = await Auth.loginInTheApplication(name, password);
+    dispatch(authorize(success.data));
 };
+// };
 
-export const authorize = (tokens) => {
-    console.log("autoryzacja")
-    return (dispatch, getState) => {
-        const accessTokenValid = Auth.checkTokenValidity(tokens && tokens.accessToken)
-        console.log(accessTokenValid);
+export const authorize = tokens => (dispatch, getState) => {
+    // return (dispatch, getState) => {
+        const accessTokenValid = Auth.checkTokenValidity(
+            tokens && tokens.accessToken
+        );
         dispatch({
             type: SET_AUTHENTICATED,
             data: accessTokenValid
@@ -81,36 +91,39 @@ export const authorize = (tokens) => {
             });
             Auth.setLocalStorageTokens(tokens);
         }
-        return dispatch(refreshToken());
+        return (dispatch, getState) => {
+            dispatch(refreshToken());
+        };
     };
-}
+// };
 
-export const clearTimeoutToken = (state) => {
-    return (dispatch, getState) => {
-        clearTimeout(state.remainingTokenTime);
+export const clearTimeoutToken = () => (dispatch, getState) => {
+    // return (dispatch, getState) => {
+        clearTimeout(getState().auth.tokenRefreshCounterId);
         dispatch({
             type: SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
             data: null
         });
     };
-}
+// };
 
-export const logoutUser = async () => {
-    return async (dispatch, getState) => {
-        await dispatch(clearTimeoutToken());
+export const logoutUser = () => (dispatch, getState) => {
+    // return async (dispatch, getState) => {
+        dispatch(clearTimeoutToken());
         Auth.removeLocalStorageTokens();
         dispatch({
-            type: SET_AUTH_USER, data: null
+            type: SET_AUTH_USER,
+            data: null
         });
         dispatch({ type: SET_AUTHENTICATED, data: false });
         // router.push({ name: "login" });
     };
-};
+// };
 
 // old action below
 export const register = (name, email, password, remember) => {
     return (dispatch, getState) => {
-        const dispatchRegistrationSuccessful = function (res) {
+        const dispatchRegistrationSuccessful = function(res) {
             dispatch({
                 type: REGISTRATION_SUCCESFULL,
                 data: res.data,
@@ -126,7 +139,7 @@ export const register = (name, email, password, remember) => {
             return res.data, name, remember;
         };
 
-        const dispatchRegistrationError = function (res) {
+        const dispatchRegistrationError = function(res) {
             dispatch({
                 type: REGISTRATION_ERROR,
                 data: res.data
@@ -134,7 +147,7 @@ export const register = (name, email, password, remember) => {
             throw res.data;
         };
 
-        const dispatchRegistrationFailed = function (res) {
+        const dispatchRegistrationFailed = function(res) {
             dispatch({
                 type: REGISTRATION_FAILED,
                 data: res.data
@@ -155,7 +168,7 @@ export const register = (name, email, password, remember) => {
 
 export const login = (name, password, remember) => {
     return (dispatch, getState) => {
-        const dispatchLoginSuccessful = function (res, name, remember) {
+        const dispatchLoginSuccessful = function(res, name, remember) {
             dispatch({
                 type: LOGIN_SUCCESSFUL,
                 data: res.data,
@@ -170,7 +183,7 @@ export const login = (name, password, remember) => {
             return res.data, name, remember;
         };
 
-        const dispatchUserAuthError = function (res) {
+        const dispatchUserAuthError = function(res) {
             dispatch({
                 type: AUTHENTICATION_ERROR,
                 data: res.data
@@ -179,7 +192,7 @@ export const login = (name, password, remember) => {
             throw res.data;
         };
 
-        const dispatchLoginFailed = function (res) {
+        const dispatchLoginFailed = function(res) {
             dispatch({
                 type: LOGIN_FAILED,
                 data: res.data
