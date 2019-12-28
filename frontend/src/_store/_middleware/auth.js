@@ -1,6 +1,6 @@
-import eventStatuses from "../../_config/eventStatuses";
+// import eventStatuses from "../../_config/eventStatuses";
 
-const { USER_LOADED, LOGIN_SUCCESSFUL, LOGOUT_SUCCESSFUL } = eventStatuses.auth;
+// const { USER_LOADED, LOGIN_SUCCESSFUL, LOGOUT_SUCCESSFUL } = eventStatuses.auth;
 
 const persistTokens = store => next => action => {  
     // switch (action.type) {

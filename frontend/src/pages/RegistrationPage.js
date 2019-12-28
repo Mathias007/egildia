@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { auth } from "../_store/_actions";
 
 import GlobalPageHeader from "./components/GlobalPageHeader";
 import GlobalSidebar from "./components/GlobalSidebar";
@@ -40,6 +38,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => {
+    return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

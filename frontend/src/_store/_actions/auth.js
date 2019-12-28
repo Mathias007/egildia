@@ -11,7 +11,7 @@ const {
     LOGIN_SUCCESSFUL,
     AUTHENTICATION_ERROR,
     LOGIN_FAILED,
-    LOGOUT_SUCCESSFUL,
+    LOGOUT_SUCCESSFUL
 } = eventStatuses.auth;
 
 // pass validation will be added later (regEx, etc)
@@ -31,7 +31,7 @@ export const register = (name, email, password, remember) => {
                 remember
             });
 
-            return res.data, name, remember;
+            return (res.data, name, remember);
         };
 
         const dispatchRegistrationError = function(res) {
@@ -75,7 +75,7 @@ export const login = (name, password, remember) => {
                 name: name
             });
 
-            return res.data, name, remember;
+            return (res.data, name, remember);
         };
 
         const dispatchUserAuthError = function(res) {
