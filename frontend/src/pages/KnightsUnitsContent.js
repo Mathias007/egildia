@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { knights } from "../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "./components/BreadcrumbComponent";
+import BreadcrumbComponent from "./components/BreadcrumbGlobalComponent";
 import Img from "react-image";
 
 // eslint-disable-next-line

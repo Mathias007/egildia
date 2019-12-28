@@ -7,71 +7,31 @@ import { auth } from "../_store/_actions";
 import GlobalPageHeader from "./components/GlobalPageHeader";
 import GlobalSidebar from "./components/GlobalSidebar";
 import GlobalPageFooter from "./components/GlobalPageFooter";
+import BreadcrumbGlobalComponent from "./components/BreadcrumbGlobalComponent";
 
 import {
-    Breadcrumb,
     Layout,
     Form,
     Input,
     Tooltip,
     Icon,
-    Cascader,
-    Select,
-    Row,
-    Col,
     Checkbox,
     Button,
-    AutoComplete
+    PageHeader
 } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
-const residences = [
-    {
-        value: "zhejiang",
-        label: "Zhejiang",
-        children: [
-            {
-                value: "hangzhou",
-                label: "Hangzhou",
-                children: [
-                    {
-                        value: "xihu",
-                        label: "West Lake"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        value: "jiangsu",
-        label: "Jiangsu",
-        children: [
-            {
-                value: "nanjing",
-                label: "Nanjing",
-                children: [
-                    {
-                        value: "zhonghuamen",
-                        label: "Zhong Hua Men"
-                    }
-                ]
-            }
-        ]
-    }
-];
+const { Item } = Form;
 
 class RegistrationPage extends Component {
     state = {
-        name: "",
-        email: "",
-        password: "",
-        rememberMe: "",
+        // name: "",
+        // email: "",
+        // password: "",
+        // rememberMe: "",
         confirmDirty: false,
-        autoCompleteResult: []
+        // autoCompleteResult: []
     };
 
     handleSubmit = e => {
@@ -91,17 +51,10 @@ class RegistrationPage extends Component {
                     values.nickname,
                     values.email,
                     values.password,
-                    values.agreement
+                    values.remember
                 );
             }
         });
-
-        // this.props.register(
-        //     this.state.name,
-        //     this.state.email,
-        //     this.state.password,
-        //     this.state.rememberMe
-        // );
     };
 
     handleConfirmBlur = e => {
@@ -126,21 +79,8 @@ class RegistrationPage extends Component {
         callback();
     };
 
-    handleWebsiteChange = value => {
-        let autoCompleteResult;
-        if (!value) {
-            autoCompleteResult = [];
-        } else {
-            autoCompleteResult = [".com", ".org", ".net"].map(
-                domain => `${value}${domain}`
-            );
-        }
-        this.setState({ autoCompleteResult });
-    };
-
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { autoCompleteResult } = this.state;
 
         const formItemLayout = {
             labelCol: {
@@ -164,21 +104,9 @@ class RegistrationPage extends Component {
                 }
             }
         };
-        const prefixSelector = getFieldDecorator("prefix", {
-            initialValue: "86"
-        })(
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>
-        );
-
-        const websiteOptions = autoCompleteResult.map(website => (
-            <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-        ));
 
         if (this.props.isAuthenticated || this.props.remember) {
-            return <Redirect to="/home" />;
+            return <Redirect to="/knights" />;
         }
 
         return (
@@ -188,38 +116,76 @@ class RegistrationPage extends Component {
                     <Layout>
                         <GlobalSidebar />
                         <Content style={{ padding: "0 50px" }}>
-                            <Breadcrumb style={{ margin: "16px 0" }}>
-                                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                                <Breadcrumb.Item>List</Breadcrumb.Item>
-                                <Breadcrumb.Item>App</Breadcrumb.Item>
-                            </Breadcrumb>
+                            <BreadcrumbGlobalComponent />
                             <Form
                                 {...formItemLayout}
                                 onSubmit={this.handleSubmit}
+                                className="registration-form"
                             >
-                                <Form.Item label="E-mail">
+                                <PageHeader
+                                    className="registration-header"
+                                    title="Formularz rejestracji"
+                                />
+                                <Item
+                                    label={
+                                        <span>
+                                            Nazwa użytkownika&nbsp;
+                                            <Tooltip title="Unikalna nazwa, pod którą będziesz widoczny w serwisie.">
+                                                <Icon type="question-circle-o" />
+                                            </Tooltip>
+                                        </span>
+                                    }
+                                >
+                                    {getFieldDecorator("nickname", {
+                                        rules: [
+                                            {
+                                                required: true,
+                                                message: "Wpisz swoją nazwę!",
+                                                whitespace: true
+                                            }
+                                        ]
+                                    })(<Input />)}
+                                </Item>
+                                <Item
+                                    label={
+                                        <span>
+                                            Adres e-mail&nbsp;
+                                            <Tooltip title="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu.">
+                                                <Icon type="question-circle-o" />
+                                            </Tooltip>
+                                        </span>
+                                    }
+                                >
                                     {getFieldDecorator("email", {
                                         rules: [
                                             {
                                                 type: "email",
                                                 message:
-                                                    "The input is not valid E-mail!"
+                                                    "Podaj poprawny adres e-mail!"
                                             },
                                             {
                                                 required: true,
-                                                message:
-                                                    "Please input your E-mail!"
+                                                message: "Wpisz adres e-mail!"
                                             }
                                         ]
                                     })(<Input />)}
-                                </Form.Item>
-                                <Form.Item label="Password" hasFeedback>
+                                </Item>
+                                <Item
+                                    label={
+                                        <span>
+                                            Hasło&nbsp;
+                                            <Tooltip title="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
+                                                <Icon type="question-circle-o" />
+                                            </Tooltip>
+                                        </span>
+                                    }
+                                    hasFeedback
+                                >
                                     {getFieldDecorator("password", {
                                         rules: [
                                             {
                                                 required: true,
-                                                message:
-                                                    "Please input your password!"
+                                                message: "Wpisz swoje hasło!"
                                             },
                                             {
                                                 validator: this
@@ -227,14 +193,24 @@ class RegistrationPage extends Component {
                                             }
                                         ]
                                     })(<Input.Password />)}
-                                </Form.Item>
-                                <Form.Item label="Confirm Password" hasFeedback>
+                                </Item>
+                                <Item
+                                    label={
+                                        <span>
+                                            Potwierdź hasło&nbsp;
+                                            <Tooltip title="Dla pewności wpisz swoje hasło raz jeszcze.">
+                                                <Icon type="question-circle-o" />
+                                            </Tooltip>
+                                        </span>
+                                    }
+                                    hasFeedback
+                                >
                                     {getFieldDecorator("confirm", {
                                         rules: [
                                             {
                                                 required: true,
                                                 message:
-                                                    "Please confirm your password!"
+                                                    "Wpisz jeszcze raz swoje hasło!"
                                             },
                                             {
                                                 validator: this
@@ -246,115 +222,21 @@ class RegistrationPage extends Component {
                                             onBlur={this.handleConfirmBlur}
                                         />
                                     )}
-                                </Form.Item>
-                                <Form.Item
-                                    label={
-                                        <span>
-                                            Nickname&nbsp;
-                                            <Tooltip title="What do you want others to call you?">
-                                                <Icon type="question-circle-o" />
-                                            </Tooltip>
-                                        </span>
-                                    }
-                                >
-                                    {getFieldDecorator("nickname", {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message:
-                                                    "Please input your nickname!",
-                                                whitespace: true
-                                            }
-                                        ]
-                                    })(<Input />)}
-                                </Form.Item>
-                                <Form.Item label="Habitual Residence">
-                                    {getFieldDecorator("residence", {
-                                        initialValue: [
-                                            "zhejiang",
-                                            "hangzhou",
-                                            "xihu"
-                                        ],
-                                        rules: [
-                                            {
-                                                type: "array",
-                                                required: true,
-                                                message:
-                                                    "Please select your habitual residence!"
-                                            }
-                                        ]
-                                    })(<Cascader options={residences} />)}
-                                </Form.Item>
-                                <Form.Item label="Phone Number">
-                                    {getFieldDecorator("phone", {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message:
-                                                    "Please input your phone number!"
-                                            }
-                                        ]
-                                    })(
-                                        <Input
-                                            addonBefore={prefixSelector}
-                                            style={{ width: "100%" }}
-                                        />
-                                    )}
-                                </Form.Item>
-                                <Form.Item label="Website">
-                                    {getFieldDecorator("website", {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                message: "Please input website!"
-                                            }
-                                        ]
-                                    })(
-                                        <AutoComplete
-                                            dataSource={websiteOptions}
-                                            onChange={this.handleWebsiteChange}
-                                            placeholder="website"
-                                        >
-                                            <Input />
-                                        </AutoComplete>
-                                    )}
-                                </Form.Item>
-                                <Form.Item
-                                    label="Captcha"
-                                    extra="We must make sure that your are a human."
-                                >
-                                    <Row gutter={8}>
-                                        <Col span={12}>
-                                            {getFieldDecorator("captcha", {
-                                                rules: [
-                                                    {
-                                                        required: true,
-                                                        message:
-                                                            "Please input the captcha you got!"
-                                                    }
-                                                ]
-                                            })(<Input />)}
-                                        </Col>
-                                        <Col span={12}>
-                                            <Button>Get captcha</Button>
-                                        </Col>
-                                    </Row>
-                                </Form.Item>
-                                <Form.Item {...tailFormItemLayout}>
-                                    {getFieldDecorator("agreement", {
+                                </Item>
+
+                                <Item {...tailFormItemLayout}>
+                                    {getFieldDecorator("remember", {
                                         valuePropName: "checked"
-                                    })(
-                                        <Checkbox>
-                                            I have read the{" "}
-                                            <a href="">agreement</a>
-                                        </Checkbox>
-                                    )}
-                                </Form.Item>
-                                <Form.Item {...tailFormItemLayout}>
+                                    })(<Checkbox>Zapamiętaj mnie</Checkbox>)}
+
                                     <Button type="primary" htmlType="submit">
-                                        Register
+                                        Zarejestruj się
                                     </Button>
-                                </Form.Item>
+                                </Item>
+                                <Item {...tailFormItemLayout}>
+                                    Posiadasz konto w serwisie?{" "}
+                                    <Link to="login">Zaloguj się</Link>
+                                </Item>
                             </Form>
                         </Content>
                     </Layout>

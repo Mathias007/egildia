@@ -33,7 +33,7 @@ export default function auth(state = initialState, action) {
                 ...state,
                 ...action.data,
                 autoLogin: action.stayLogged,
-                name: localStorage.setItem("name")
+                name: action.name
             };
 
         case REGISTRATION_ERROR:

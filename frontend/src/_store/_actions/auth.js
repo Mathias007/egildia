@@ -16,7 +16,6 @@ const {
 
 // pass validation will be added later (regEx, etc)
 
-// old action below
 export const register = (name, email, password, remember) => {
     return (dispatch, getState) => {
         const dispatchRegistrationSuccessful = function(res) {

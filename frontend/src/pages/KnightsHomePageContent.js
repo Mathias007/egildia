@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import BreadcrumbComponent from "./components/BreadcrumbComponent";
+import BreadcrumbComponent from "./components/BreadcrumbGlobalComponent";
 
 const { Content } = Layout;
 

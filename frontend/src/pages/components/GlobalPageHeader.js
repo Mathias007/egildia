@@ -13,7 +13,7 @@ class GlobalPageHeader extends Component {
         return (
             <Header className="header">
                 <div className="logo" >
-                    <img src={eGildiaLogo} />
+                    <img src={eGildiaLogo} width="150px" height="30px"/>
                 </div>
                     <Menu
                         theme="dark"

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import {
-    Redirect,
-    // Link
-} from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { auth } from "../_store/_actions";
@@ -10,30 +7,20 @@ import { auth } from "../_store/_actions";
 import GlobalPageHeader from "./components/GlobalPageHeader";
 import GlobalSidebar from "./components/GlobalSidebar";
 import GlobalPageFooter from "./components/GlobalPageFooter";
+import BreadcrumbGlobalComponent from "./components/BreadcrumbGlobalComponent";
 
-import {
-    Form,
-    Icon,
-    Input,
-    Button,
-    Checkbox,
-    Layout,
-    // Menu,
-    Breadcrumb
-} from "antd";
+import { Form, Icon, Input, Button, Checkbox, Layout, PageHeader, Tooltip } from "antd";
 
-const {
-    //  Header,
-    Content,
-    //   Footer
-} = Layout;
+const { Content } = Layout;
+
+const { Item } = Form;
 
 class LoginPage extends Component {
     state = {
-        name: "",
-        password: "",
+        // name: "",
+        // password: "",
         showPassword: false,
-        rememberMe: false,
+        // rememberMe: false,
         errorMessage: ""
     };
 
@@ -60,7 +47,7 @@ class LoginPage extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
 
-        if (this.props.isAuthenticated) {
+        if (this.props.isAuthenticated || this.props.remember) {
             return <Redirect to="/knights/" />;
         }
         return (
@@ -70,22 +57,22 @@ class LoginPage extends Component {
                     <Layout>
                         <GlobalSidebar />
                         <Content style={{ padding: "0 50px" }}>
-                            <Breadcrumb style={{ margin: "16px 0" }}>
-                                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                                <Breadcrumb.Item>List</Breadcrumb.Item>
-                                <Breadcrumb.Item>App</Breadcrumb.Item>
-                            </Breadcrumb>
+                            <BreadcrumbGlobalComponent />
                             <Form
                                 onSubmit={this.handleSubmit}
                                 className="login-form"
                             >
-                                <Form.Item>
+                                <PageHeader
+                                    className="login-header"
+                                    title="Formularz logowania"
+                                />
+                                <Item>
                                     {getFieldDecorator("username", {
                                         rules: [
                                             {
                                                 required: true,
                                                 message:
-                                                    "Please input your username!"
+                                                    "Wpisz nazwę użytkownika lub adres e-mail!"
                                             }
                                         ]
                                     })(
@@ -98,21 +85,31 @@ class LoginPage extends Component {
                                                     }}
                                                 />
                                             }
-                                            placeholder="Username"
+                                            suffix={
+                                                <Tooltip title="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail.">
+                                                    <Icon
+                                                        type="info-circle"
+                                                        style={{
+                                                            color:
+                                                                "rgba(0,0,0,.45)"
+                                                        }}
+                                                    />
+                                                </Tooltip>
+                                            }
+                                            placeholder="Login lub e-mail"
                                         />
                                     )}
-                                </Form.Item>
-                                <Form.Item>
+                                </Item>
+                                <Item>
                                     {getFieldDecorator("password", {
                                         rules: [
                                             {
                                                 required: true,
-                                                message:
-                                                    "Please input your Password!"
+                                                message: "Wpisz hasło!"
                                             }
                                         ]
                                     })(
-                                        <Input
+                                        <Input.Password
                                             prefix={
                                                 <Icon
                                                     type="lock"
@@ -122,29 +119,27 @@ class LoginPage extends Component {
                                                 />
                                             }
                                             type="password"
-                                            placeholder="Password"
+                                            placeholder="Hasło"
                                         />
                                     )}
-                                </Form.Item>
-                                <Form.Item>
+                                </Item>
+                                <Item>
                                     {getFieldDecorator("remember", {
                                         valuePropName: "checked",
                                         initialValue: true
-                                    })(<Checkbox>Remember me</Checkbox>)}
-                                    <a className="login-form-forgot" href="">
-                                        Forgot password
-                                    </a>
-                                </Form.Item>
-                                <Form.Item>
+                                    })(<Checkbox>Zapamiętaj mnie</Checkbox>)}
                                     <Button
                                         type="primary"
                                         htmlType="submit"
                                         className="login-form-button"
                                     >
-                                        Log in
+                                        Zaloguj się
                                     </Button>
-                                    Or <a href="">register now!</a>
-                                </Form.Item>
+                                </Item>
+                                <Item>
+                                    Nie masz konta?{" "}
+                                    <Link to="/register">Zarejestruj się</Link>
+                                </Item>
                             </Form>
                         </Content>
                     </Layout>
