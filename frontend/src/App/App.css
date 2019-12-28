@@ -28,3 +28,8 @@ div.container {
     font-size: calc(10px + 2vmin);
     color: black;
 }
+
+.ant-layout-header {
+    display: flex;
+    justify-content: space-between;
+}

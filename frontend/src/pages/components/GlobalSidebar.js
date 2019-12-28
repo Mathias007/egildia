@@ -27,13 +27,13 @@ class GlobalSidebar extends Component {
                         }
                     >
                         <Item key="1">
-                            <NavLink to="./">Wprowadzenie</NavLink>
+                            <NavLink to="/knights">Wprowadzenie</NavLink>
                         </Item>
                         <Item key="2">
-                            <NavLink to="./buildings">Budynki</NavLink>
+                            <NavLink to="/knights/buildings">Budynki</NavLink>
                         </Item>
                         <Item key="3">
-                            <NavLink to="./units">Jednostki</NavLink>
+                            <NavLink to="/knights/units">Jednostki</NavLink>
                         </Item>
                         <Item key="4">
                             <NavLink to="#">Recenzja</NavLink>
