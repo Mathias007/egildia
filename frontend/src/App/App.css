@@ -10,7 +10,6 @@
     justify-content: center;
     background-color: #282c34;
     font-size: calc(10px + 2vmin);
-    /* color: white; */
 }
 
 div.container {
@@ -28,7 +27,24 @@ div.container {
     color: black;
 }
 
-.ant-layout-header {
+header.ant-layout-header {
     display: flex;
     justify-content: space-between;
+    padding: 0 25px;
+}
+
+p.avatar-component-username {
+    margin: 0;
+    padding: 0;
+    line-height: 64px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85em;
+}
+
+p.avatar-component-username > span {
+    padding: 0 7px;
+}
+
+p.avatar-component-username > span > strong {
+    color: #fff;
 }
