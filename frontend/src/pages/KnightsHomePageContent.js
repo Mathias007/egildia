@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import BreadcrumbComponent from "./components/BreadcrumbGlobalComponent";
+import BreadcrumbGlobalComponent from "./components/BreadcrumbGlobalComponent";
 
 const { Content } = Layout;
 
@@ -10,7 +10,7 @@ class KnightsHomePageContent extends Component {
     render() {
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbGlobalComponent />
                 <Content
                     style={{
                         background: "#fff",
