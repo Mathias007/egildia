@@ -1,7 +1,5 @@
 import eventStatuses from "../../_config/eventStatuses";
 
-import * as Auth from '../authFunctions';
-
 const {
     REGISTRATION_SUCCESFULL,
     REGISTRATION_ERROR,
@@ -11,75 +9,18 @@ const {
     AUTHENTICATION_ERROR,
     LOGIN_FAILED,
     LOGOUT_SUCCESSFUL,
-    SET_AUTHENTICATED,
-    SET_AUTH_USER,
-    SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER,
-    SET_USERS_LIST
 } = eventStatuses.auth;
 
-const initialState = {
-    // old auth
+export const initialState = {
     accessToken: localStorage.getItem("accessToken"),
     refreshToken: localStorage.getItem("refreshToken"),
     isAuthenticated: null,
-    name: localStorage.getItem("name"),
+    name: "",
     errorMessage: "",
-
-    // new auth (with refresh)
-    isAuthorized: false,
-    tokenRefreshCounterId: null,
-    auth: {},
-    account: {
-
-    },
-    users: []
 };
 
 export default function auth(state = initialState, action) {
     switch (action.type) {
-        // new auth
-        case SET_AUTH_USER:
-            // (tokens) 
-            const decodeAccessToken = Auth.decodeJWT(action.data && action.data.accessToken);
-            return {
-                ...state,
-                ...action.data,
-                auth: {
-                    accessToken: action.data && action.data.accessToken || "",
-                    refreshToken: action.data && action.data.refreshToken || "",
-                    sub: decodeAccessToken && decodeAccessToken.sub || "",
-                    rol: decodeAccessToken && decodeAccessToken.rol || "",
-                    iat: decodeAccessToken && decodeAccessToken.iat || "",
-                    exp: decodeAccessToken && decodeAccessToken.exp || ""
-                }
-            }
-
-        case SET_AUTHENTICATED:
-            console.log(state);
-            // (isAuth) 
-            return {
-                ...state,
-                ...action.data,
-                isAuthorized: action.data
-            }
-
-        case SET_ID_REPRESENTING_TOKEN_REFRESH_COUNTER:
-            // (state, payload) {
-            return {
-                ...state,
-                ...action.data,
-                tokenRefreshCounterId: action.data
-            }
-
-        case SET_USERS_LIST:
-            // (state, payload)
-            return {
-                ...state,
-                ...action.data,
-                users: action.data.users
-            }
-
-        // old auth
         case USER_LOADED:
             return {
                 ...state,
@@ -92,7 +33,7 @@ export default function auth(state = initialState, action) {
                 ...state,
                 ...action.data,
                 autoLogin: action.stayLogged,
-                name: localStorage.getItem("name")
+                name: localStorage.setItem("name")
             };
 
         case REGISTRATION_ERROR:
@@ -115,7 +56,7 @@ export default function auth(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                name: localStorage.getItem("name"),
+                name: action.name,
                 remember: action.remember
             };
 

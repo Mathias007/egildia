@@ -48,27 +48,19 @@ class LoginPage extends Component {
                 //     rememberMe: values.remember
                 // });
                 // console.log(this.state);
-                this.props.authenticationUser(
+                this.props.login(
                     values.username,
                     values.password,
-                    // values.remember
+                    values.remember
                 );
             }
         });
-
-        // this.props.login(
-        //     this.state.name,
-        //     this.state.password,
-        //     this.state.remember
-        // );
     };
 
     render() {
         const { getFieldDecorator } = this.props.form;
 
-        if (this.props.isAuthorized
-            //  || this.props.remember
-        ) {
+        if (this.props.isAuthenticated) {
             return <Redirect to="/knights/" />;
         }
         return (
@@ -165,21 +157,17 @@ class LoginPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthorized: state.auth.isAuthorized,
-        // isAuthenticated: state.auth.isAuthenticated,
-        // remember: state.auth.remember,
-        // errorMessage: state.auth.errorMessage
+        isAuthenticated: state.auth.isAuthenticated,
+        remember: state.auth.remember,
+        errorMessage: state.auth.errorMessage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        authenticationUser: (name, password) => {
-            return dispatch(auth.authenticationUser(name, password));
-        },
-        // login: (name, password, remember) => {
-        //     return dispatch(auth.login(name, password, remember));
-        // }
+        login: (name, password, remember) => {
+            return dispatch(auth.login(name, password, remember));
+        }
     };
 };
 
