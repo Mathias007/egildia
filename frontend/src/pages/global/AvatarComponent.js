@@ -7,7 +7,7 @@ import { auth } from "../../_store/_actions";
 
 import { Avatar, Button } from "antd";
 
-class AvatarGlobalComponent extends Component {
+class AvatarComponent extends Component {
     render() {
         return (
             <>
@@ -74,4 +74,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AvatarGlobalComponent);
+)(AvatarComponent);

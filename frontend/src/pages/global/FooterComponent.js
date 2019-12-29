@@ -3,15 +3,15 @@ import { Layout } from "antd";
 
 const { Footer } = Layout;
 
-class GlobalPageFooter extends Component {
+class FooterComponent extends Component {
     state = {};
     render() {
         return (
             <Footer style={{ textAlign: "center" }}>
-                Ant Design ©2018 Created by Ant UED
+                egildia.pl © 2019-2020 Mateusz Mathias Stawowski
             </Footer>
         );
     }
 }
 
-export default GlobalPageFooter;
+export default FooterComponent;

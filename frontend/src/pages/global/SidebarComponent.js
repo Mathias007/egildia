@@ -6,7 +6,7 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 const { Item } = Menu;
 
-class GlobalSidebar extends Component {
+class SidebarComponent extends Component {
     state = {};
     render() {
         return (
@@ -86,4 +86,4 @@ class GlobalSidebar extends Component {
     }
 }
 
-export default GlobalSidebar;
+export default SidebarComponent;

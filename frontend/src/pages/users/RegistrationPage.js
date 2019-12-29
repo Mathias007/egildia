@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-import GlobalPageHeader from "./components/GlobalPageHeader";
-import GlobalSidebar from "./components/GlobalSidebar";
-import GlobalPageFooter from "./components/GlobalPageFooter";
+import HeaderComponent from "../global/HeaderComponent";
+import SidebarComponent from "../global/SidebarComponent";
+import FooterComponent from "../global/FooterComponent";
 
-import RegistrationPageForm from "./RegistrationPageForm";
+import RegistrationForm from "./components/RegistrationForm";
 
 import { Layout } from "antd";
 
@@ -19,13 +19,13 @@ class RegistrationPage extends Component {
         return (
             <div className="App-container">
                 <Layout>
-                    <GlobalPageHeader />
+                    <HeaderComponent />
                     <Layout>
-                        <GlobalSidebar />
-                        <RegistrationPageForm />
+                        <SidebarComponent />
+                        <RegistrationForm />
                     </Layout>
                 </Layout>
-                <GlobalPageFooter />
+                <FooterComponent />
             </div>
         );
     }

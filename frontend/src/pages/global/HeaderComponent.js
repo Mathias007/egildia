@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 
-import AvatarGlobalComponent from "./AvatarGlobalComponent";
+import AvatarComponent from "./AvatarComponent";
 import eGildiaLogo from "../../img/logo/egg-logo-poziome.png";
 
 const { Header } = Layout;
 const { Item } = Menu;
 
-class GlobalPageHeader extends Component {
+class HeaderComponent extends Component {
     state = {};
     render() {
         return (
@@ -28,10 +28,10 @@ class GlobalPageHeader extends Component {
                     <Item key="2">nav 2</Item>
                     <Item key="3">nav 3</Item>
                 </Menu>
-                <AvatarGlobalComponent />
+                <AvatarComponent />
             </Header>
         );
     }
 }
 
-export default GlobalPageHeader;
+export default HeaderComponent;

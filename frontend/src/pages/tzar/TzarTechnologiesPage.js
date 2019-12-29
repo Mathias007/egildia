@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import GlobalPageHeader from "../components/GlobalPageHeader";
-import GlobalSidebar from "../components/GlobalSidebar";
-import GlobalPageFooter from "../components/GlobalPageFooter";
+import HeaderComponent from "../global/HeaderComponent";
+import SidebarComponent from "../global/SidebarComponent";
+import FooterComponent from "../global/FooterComponent";
 
 import TzarTechnologiesContent from "./components/TzarTechnologiesContent";
 
@@ -13,13 +13,13 @@ class TzarTechnologiesPage extends Component {
         return (
             <div className="App-container">
                 <Layout>
-                    <GlobalPageHeader />
+                    <HeaderComponent />
                     <Layout>
-                        <GlobalSidebar />
+                        <SidebarComponent />
                         <TzarTechnologiesContent />
                     </Layout>
                 </Layout>
-                <GlobalPageFooter />
+                <FooterComponent />
             </div>
         );
     }

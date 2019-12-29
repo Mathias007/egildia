@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import GlobalPageHeader from "../components/GlobalPageHeader";
-import GlobalSidebar from "../components/GlobalSidebar";
-import GlobalPageFooter from "../components/GlobalPageFooter";
+import HeaderComponent from "../global/HeaderComponent";
+import SidebarComponent from "../global/SidebarComponent";
+import FooterComponent from "../global/FooterComponent";
 
-import KnightsBuildingsContent from "./KnightsBuildingsContent";
+import KnightsBuildingsContent from "./components/KnightsBuildingsContent";
 
 class KnightsBuildingsPage extends Component {
     state = {};
@@ -13,13 +13,13 @@ class KnightsBuildingsPage extends Component {
         return (
             <div className="App-container">
                 <Layout>
-                    <GlobalPageHeader />
+                    <HeaderComponent />
                     <Layout>
-                        <GlobalSidebar />
+                        <SidebarComponent />
                         <KnightsBuildingsContent />
                     </Layout>
                 </Layout>
-                <GlobalPageFooter />
+                <FooterComponent />
             </div>
         );
     }

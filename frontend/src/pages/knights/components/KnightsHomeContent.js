@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import BreadcrumbGlobalComponent from "../components/BreadcrumbGlobalComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const { Content } = Layout;
 
-class KnightsHomePageContent extends Component {
+class KnightsHomeContent extends Component {
     state = {};
     render() {
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbGlobalComponent />
+                <BreadcrumbComponent />
                 <Content
                     style={{
                         background: "#fff",
@@ -30,4 +30,4 @@ class KnightsHomePageContent extends Component {
     }
 }
 
-export default KnightsHomePageContent;
+export default KnightsHomeContent;

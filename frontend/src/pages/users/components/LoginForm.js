@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { auth } from "../_store/_actions";
+import { auth } from "../../../_store/_actions";
 
 import {
     Button,
@@ -15,13 +15,13 @@ import {
     Tooltip
 } from "antd";
 
-import BreadcrumbGlobalComponent from "./components/BreadcrumbGlobalComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
 
-class LoginPageForm extends Component {
+class LoginForm extends Component {
     state = {
         errorMessage: ""
     };
@@ -45,7 +45,7 @@ class LoginPageForm extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbGlobalComponent />
+                <BreadcrumbComponent />
                 <Content
                     style={{
                         background: "#fff",
@@ -156,6 +156,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-LoginPageForm = connect(mapStateToProps, mapDispatchToProps)(LoginPageForm);
+LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
-export default Form.create()(LoginPageForm);
+export default Form.create()(LoginForm);

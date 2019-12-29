@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-import GlobalPageHeader from "./components/GlobalPageHeader";
-import GlobalSidebar from "./components/GlobalSidebar";
-import GlobalPageFooter from "./components/GlobalPageFooter";
-import LoginPageForm from "./LoginPageForm";
+import HeaderComponent from "../global/HeaderComponent";
+import SidebarComponent from "../global/SidebarComponent";
+import FooterComponent from "../global/FooterComponent";
+
+import LoginForm from "./components/LoginForm";
 
 import { Layout } from "antd";
 
@@ -19,13 +20,13 @@ class LoginPage extends Component {
         return (
             <div className="App-container">
                 <Layout>
-                    <GlobalPageHeader />
+                    <HeaderComponent />
                     <Layout>
-                        <GlobalSidebar />
-                        <LoginPageForm />
+                        <SidebarComponent />
+                        <LoginForm />
                     </Layout>
                 </Layout>
-                <GlobalPageFooter />
+                <FooterComponent />
             </div>
         );
     }

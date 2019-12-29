@@ -6,8 +6,8 @@ import "antd/dist/antd.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // general imports
-import LoginPage from "../pages/LoginPage";
-import RegistrationPage from "../pages/RegistrationPage";
+import LoginPage from "../pages/users/LoginPage";
+import RegistrationPage from "../pages/users/RegistrationPage";
 
 // Knights and Metchants imports
 import KnightsBuildingsPage from "../pages/knights/KnightsBuildingsPage";

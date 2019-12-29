@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { knights } from "../../_store/_actions";
+import { knights } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "../components/BreadcrumbGlobalComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import Img from "react-image";
 
 // eslint-disable-next-line
@@ -138,7 +138,7 @@ class KnightsBuildingsContent extends Component {
                         </h3>
                         <Img
                             className={componentClassnames.images.icon}
-                            src={require(`../../${general}/${section.knights}/${dir.icons}/${name[1]}.${format.png}`)}
+                            src={require(`../../../${general}/${section.knights}/${dir.icons}/${name[1]}.${format.png}`)}
                         />
                     </>
                 )
@@ -153,13 +153,13 @@ class KnightsBuildingsContent extends Component {
                             {cost[0]}{" "}
                             <Img
                                 className={componentClassnames.images.material}
-                                src={require(`../../${general}/${section.knights}/${dir.materials}/deska.${format.png}`)}
+                                src={require(`../../../${general}/${section.knights}/${dir.materials}/deska.${format.png}`)}
                             />
                             <br />
                             {cost[1]}
                             <Img
                                 className={componentClassnames.images.material}
-                                src={require(`../../${general}/${section.knights}/${dir.materials}/kamien.${format.png}`)}
+                                src={require(`../../../${general}/${section.knights}/${dir.materials}/kamien.${format.png}`)}
                             />
                         </p>
                     );
@@ -195,13 +195,14 @@ class KnightsBuildingsContent extends Component {
                                             {materialElements
                                                 ? materialElements.map(
                                                       (element, index) => (
-                                                          <Img key={element}
+                                                          <Img
+                                                              key={element}
                                                               className={
                                                                   componentClassnames
                                                                       .images
                                                                       .material
                                                               }
-                                                              src={require(`../../${general}/${section.knights}/${dir.materials}/${element}.${format.png}`)}
+                                                              src={require(`../../../${general}/${section.knights}/${dir.materials}/${element}.${format.png}`)}
                                                           />
                                                       )
                                                   )
@@ -224,7 +225,7 @@ class KnightsBuildingsContent extends Component {
                     return workersElements ? (
                         <Img
                             className={componentClassnames.images.unit}
-                            src={require(`../../${general}/${section.knights}/${dir.units}/${workersElements}.${format.PNG}`)}
+                            src={require(`../../../${general}/${section.knights}/${dir.units}/${workersElements}.${format.PNG}`)}
                         />
                     ) : null;
                 }
@@ -238,7 +239,7 @@ class KnightsBuildingsContent extends Component {
                         className={componentClassnames.images.building}
                         width="120px"
                         height="100px"
-                        src={require(`../../${general}/${section.knights}/${dir.buildings}/${image}.${format.bmp}`)}
+                        src={require(`../../../${general}/${section.knights}/${dir.buildings}/${image}.${format.bmp}`)}
                     />
                 )
             }

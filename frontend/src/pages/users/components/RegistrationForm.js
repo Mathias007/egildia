@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { auth } from "../_store/_actions";
+import { auth } from "../../../_store/_actions";
 
-import BreadcrumbGlobalComponent from "./components/BreadcrumbGlobalComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import {
     Button,
@@ -21,7 +21,7 @@ const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
 
-class RegistrationPageForm extends Component {
+class RegistrationForm extends Component {
     state = {
         confirmDirty: false
     };
@@ -91,7 +91,7 @@ class RegistrationPageForm extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbGlobalComponent />
+                <BreadcrumbComponent />
 
                 <Content
                     style={{
@@ -241,9 +241,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-RegistrationPageForm = connect(
+RegistrationForm = connect(
     mapStateToProps,
     mapDispatchToProps
-)(RegistrationPageForm);
+)(RegistrationForm);
 
-export default Form.create()(RegistrationPageForm);
+export default Form.create()(RegistrationForm);
