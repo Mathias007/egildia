@@ -1,7 +1,7 @@
 {
-  "name": "chaos-frontend",
+  "name": "new-egildia-frontend",
   "version": "1.0.0",
-  "description": "Frontend dla projektu eGildia 2.0",
+  "description": "Klient frontendowy dla projektu eGildia 2.0, napisany z wykorzystaniem frameworka React.js",
   "private": true,
   "author": "Mathias",
   "license": "ISC",

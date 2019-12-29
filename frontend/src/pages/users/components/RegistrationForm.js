@@ -49,7 +49,7 @@ class RegistrationForm extends Component {
     compareToFirstPassword = (rule, value, callback) => {
         const { form } = this.props;
         if (value && value !== form.getFieldValue("password")) {
-            callback("Two passwords that you enter is inconsistent!");
+            callback("Wpisane hasła nie pasują do siebie!");
         } else {
             callback();
         }
@@ -169,6 +169,11 @@ class RegistrationForm extends Component {
                                     {
                                         required: true,
                                         message: "Wpisz swoje hasło!"
+                                    },
+                                    { min: 8, message: "Hasło za krótkie!" },
+                                    {
+                                        pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
+                                        message: "Hasło nie spełnia wymagań!"
                                     },
                                     {
                                         validator: this.validateToNextPassword

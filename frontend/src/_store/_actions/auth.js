@@ -14,8 +14,6 @@ const {
     LOGOUT_SUCCESSFUL
 } = eventStatuses.auth;
 
-// pass validation will be added later (regEx, etc)
-
 export const register = (name, email, password, remember) => {
     return (dispatch, getState) => {
         const dispatchRegistrationSuccessful = function(res) {
