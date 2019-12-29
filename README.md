@@ -134,10 +134,52 @@
 ## Piątek 13.12.2019
 
     **INNE**:
-    - poprawa estetyki kodu, ujednolicenie tabulatorów (4 spacje), uzupełnienie średników, itp. <-> wykorzystanie pluginu **Prettier+**,
-    - zmiana nazwy i opisu repozytorium Github w związku z rozszerzeniem tematyki projektu (egildia 2.0).
+        - poprawa estetyki kodu, ujednolicenie tabulatorów (4 spacje), uzupełnienie średników, itp. <-> wykorzystanie pluginu **Prettier+**,
+        - zmiana nazwy i opisu repozytorium Github w związku z rozszerzeniem tematyki projektu (egildia 2.0).
 
 ## Sobota 14.12.2019 - Niedziela 15.12.2019 - prace nad innym projektem (prywatnym)
 
-## Poniedziałek 16.12.2019 - Sobota 21.12.2019 - prace nad autoryzacją logowania we Frontendzie, przestoje związane z trudnością zagadnienia, zmianą sprzętu oraz sprawami prywatnymi (przeprowadzka)
+## Poniedziałek 16.12.2019 - Wtorek 23.12.2019 - prace nad autoryzacją logowania we Frontendzie, 
+    - przestoje związane z trudnością zagadnienia, zmianą sprzętu oraz sprawami prywatnymi (przeprowadzka)
+    - utrata bazy danych w toku przeprowadzki (konieczność odtworzenia przede wszystkim danych z Knights and Merchants)
 
+## Środa 24.12.2019 - Piątek 27.12.2019 - przerwa świąteczna, drobne prace projektowe
+
+## Sobota 28.12.2019 - wielki powrót do aktywnej pracy nad projektem
+    **FRONTEND**:
+        - przywrócenie starego (niekompletnego) systemu autoryzacji do czasu opracowania działającego rozwiązania JWT;
+        - rozszerzenie zawartości nagłówka: dodanie doń logo oraz komponentu z buttonem login/logout i avatarem; modyfikacja styli (flexbox);
+        - prace nad stronami logowania i rejestracji: oczyszczenie komponentów ze zbędnych kodów i funkcjonalności, dostosowanie formularzy do założeń projektu, drobne poprawki styli;
+        - rozbudowa komponentu avatara, wprowadzenie doń logiki umożliwiającej wyświetlanie nazwę aktualnie zalogowanego użytkownika (w formie wiadomości powitalnej);
+        - przeniesienie formularzy rejestracji i logowania do odrębnych komponentów i dostosowanie struktury tychże komponentów do założeń projektu;
+        - poprawa kodu projektu pod kątem eliminacji drobnych błędów wyświetlanych w konsoli.
+
+    **INNE**: testowanie frameworka Vue wraz z Bootstrapem i systemem autoryzacji JWT w ramach odrębnego projektu (doświadczenia mogą okazać się przydatne z perspektywy rozwoju eGildii 2.0).
+
+## Niedziela 29.12.2019 - początek kolejnej dużej sekcji merytorycznej
+    **FRONTEND**:
+        - odnowa połączenia podstron Knights and Merchants z API;
+        - folder knights dla podstron/komponentów Knights and Merchants;
+        - dodanie obrazków z Tzar: Ciężar Korony do folderu img, standaryzacja nazw plików i katalogów, pominięcie zbędnych;
+        - utworzenie podstawowej struktury sekcji Tzara - folder tzar, a w nim komponenty podstron i ich contentu (Nacje, Jednostki, Magia, Technologie, Wprowadzenie) - zawartość do uzupełnienia;
+        - dodatnie odpowiedniego routingu i aktualizacja nawigacji;
+        - zmiany w strukturze projektu:
+            > podział podstron na sekcje techniczne i merytoryczne (obecnie: global, knights, tzar, users),
+            > dodanie katalogów components dla każdej sekcji,
+            > zmiany nazw plików i komponentów - standaryzacja, racjonalizacja,
+            > niezbędne modyfikacje importów,
+            > usunięcie pliku testowego;
+        - rozwinięcie walidacji hasła w formularzu rejestracji z wykorzystanie RegEx i metod AntDesign.
+
+    **BACKEND**:
+        - przywrócenie połączenia z bazą danych w modułach Knights and Merchants,
+        - początek prac nad przywróceniem utraconych kolekcji w MongoDB.
+    
+    **INNE**: 
+        - poprawienie nazw i opisów w package.json zarówno w BE, jak i FE;
+        - najbliższe dni naznaczone będą:
+            > uzupełnieniem bazy danych (zaginione kolekcje K&M i nowe kolekcje Tzara),
+            > stworzeniem komponentów sekcji Tzara oraz stosownego API i wszystkiego, co z tym związane,
+            > opracowaniem jeszcze bardziej generalnych rozwiązań dotyczących layoutu podstron,
+            > rozdzieleniem contentu podstron na większą liczbę mniejszych komponentów i rozbudową tegoż contentu,
+            > dalszym rozwojem operacji związanych z userami.
