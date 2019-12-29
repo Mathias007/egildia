@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 
-import GlobalPageHeader from "./components/GlobalPageHeader";
-import GlobalSidebar from "./components/GlobalSidebar";
-import GlobalPageFooter from "./components/GlobalPageFooter";
+import GlobalPageHeader from "../components/GlobalPageHeader";
+import GlobalSidebar from "../components/GlobalSidebar";
+import GlobalPageFooter from "../components/GlobalPageFooter";
 
-import KnightsHomePageContent from "./KnightsHomePageContent";
+import KnightsUnitsContent from "./KnightsUnitsContent";
 
-class KnightsHomePage extends Component {
+class KnightsUnitsPage extends Component {
     state = {};
     render() {
         return (
@@ -16,7 +16,7 @@ class KnightsHomePage extends Component {
                     <GlobalPageHeader />
                     <Layout>
                         <GlobalSidebar />
-                        <KnightsHomePageContent />
+                        <KnightsUnitsContent />
                     </Layout>
                 </Layout>
                 <GlobalPageFooter />
@@ -25,4 +25,4 @@ class KnightsHomePage extends Component {
     }
 }
 
-export default KnightsHomePage;
+export default KnightsUnitsPage;

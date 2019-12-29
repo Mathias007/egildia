@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const BuildingsSchema = new Schema({}, { strict: false });
 const UnitsSchema = new Schema({}, { strict: false });
 
-const Buildings = mongoose.model("Buildings", BuildingsSchema, "budynki");
-const Units = mongoose.model("Units", UnitsSchema, "jednostki");
+const Buildings = mongoose.model("knights/buildings", BuildingsSchema, "knights/buildings");
+const Units = mongoose.model("knights/units", UnitsSchema, "knights/units");
 
 // Controller get buildings list
 exports.getBuildingsList = (req, res, next) => {
