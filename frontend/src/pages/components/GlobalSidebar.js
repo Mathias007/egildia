@@ -44,14 +44,27 @@ class GlobalSidebar extends Component {
                         title={
                             <span>
                                 <Icon type="laptop" />
-                                subnav 2
+                                Tzar: Ciężar Korony
                             </span>
                         }
                     >
-                        <Item key="5">option5</Item>
-                        <Item key="6">option6</Item>
-                        <Item key="7">option7</Item>
-                        <Item key="8">option8</Item>
+                        <Item key="5">
+                            <NavLink to="/tzar">Wprowadzenie</NavLink>
+                        </Item>
+                        <Item key="6">
+                            <NavLink to="/tzar/nations">Budynki</NavLink>
+                        </Item>
+                        <Item key="7">
+                            <NavLink to="/tzar/units">Jednostki</NavLink>
+                        </Item>
+                        <Item key="8">
+                            <NavLink to="/tzar/spells">Magia</NavLink>
+                        </Item>
+                        <Item key="9">
+                            <NavLink to="/tzar/technologies">
+                                Technologie
+                            </NavLink>
+                        </Item>
                     </SubMenu>
                     <SubMenu
                         key="sub3"
