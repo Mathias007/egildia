@@ -6,7 +6,9 @@ import routes from "../routes";
 import config from "../config";
 import { initializeData } from "./seed/user-seeder";
 
-const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN } = config;
+const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN, ROUTES } = config;
+const { API } = ROUTES;
+
 // Initialize app
 const app = express();
 
@@ -17,7 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.get("/api", (req, res) => {
+app.get(`/${API}`, (req, res) => {
     res.json({
         message: "e-Gildia Graczy 2.0 - API. Witamy w kolonii!"
     });
