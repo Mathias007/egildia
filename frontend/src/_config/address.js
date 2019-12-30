@@ -4,7 +4,11 @@ const address = {
     REGISTER: "register",
     KNIGHTS: "knights",
     BUILDINGS: "buildings",
-    UNITS: "units"
+    UNITS: "units",
+    TZAR: "tzar",
+    NATIONS: "nations",
+    SPELLS: "spells",
+    TECHNOLOGIES: "technologies"
 };
 
 export default address;

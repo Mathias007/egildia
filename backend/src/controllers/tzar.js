@@ -16,13 +16,13 @@ const Technologies = mongoose.model(
 );
 
 // Controller get buildings list
-exports.getBuildingsList = (req, res, next) => {
-    Nations.find({}, {}, (err, buildings) => {
-        if (err || !buildings) {
+exports.getNationsList = (req, res, next) => {
+    Nations.find({}, {}, (err, nations) => {
+        if (err || !nations) {
             res.status(401).send({ message: "Unauthorized" });
             next(err);
         } else {
-            res.json(buildings);
+            res.json(nations);
         }
     });
 };

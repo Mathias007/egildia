@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 
 import auth from "./auth";
 import knights from "./knights";
+import tzar from "./tzar";
 
-const chaosApp = combineReducers({
+const egildiaApp = combineReducers({
     auth,
-    knights
+    knights,
+    tzar
 });
 
-export default chaosApp;
+export default egildiaApp;

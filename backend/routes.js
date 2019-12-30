@@ -27,7 +27,7 @@ router.get(`/${API}/${KNIGHTS}/buildings`, knightsController.getBuildingsList);
 router.get(`/${API}/${KNIGHTS}/units`, knightsController.getUnitsList);
 
 // Tzar: The Burden of the Crown
-router.get(`/${API}/${TZAR}/nations`, tzarControlles.getBuildingsList);
+router.get(`/${API}/${TZAR}/nations`, tzarControlles.getNationsList);
 router.get(`/${API}/${TZAR}/units`, tzarControlles.getUnitsList);
 router.get(`/${API}/${TZAR}/spells`, tzarControlles.getSpellsList);
 router.get(`/${API}/${TZAR}/technologies`, tzarControlles.getTechnologiesList);
