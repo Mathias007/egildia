@@ -10,7 +10,7 @@ const {
     TZAR_UNITS_LOADED,
     TZAR_SPELLS_LOADED,
     TZAR_TECHNOLOGIES_LOADED
-} = eventStatuses.knights;
+} = eventStatuses.tzar;
 
 export const showNations = () => {
     return (dispatch, getState) => {
