@@ -183,3 +183,19 @@
             > opracowaniem jeszcze bardziej generalnych rozwiązań dotyczących layoutu podstron,
             > rozdzieleniem contentu podstron na większą liczbę mniejszych komponentów i rozbudową tegoż contentu,
             > dalszym rozwojem operacji związanych z userami.
+
+## Poniedziałek 30.12.2019 - powstanie sekcji Tzara
+    **FRONTEND**:
+        - stworzenie akcji, funkcji i reducerów do pobrania danych Tzara z API; 
+        - uzupełnienie pliku z adresami oraz pliku z nazwami eventów, poprawki nazw w storze;
+        - uzupełnienie komponentów sekcji Tzara treścią:
+            > wywołanie akcji,
+            > pobranie danych z Reduxa,
+            > wyrenderowanie tabel (kolumn i treści),
+            > render obrazków na podstawie danych z API.
+
+    **BACKEND**:
+        - stworzenie w bazie danych kolekcji Tzara: nacji (budynków), jednostek, zaklęć i technologii;
+        - dodanie controllerów do pobrania w/w danych z bazy do Expressa;
+        - uzupełnienie routingu oraz configa (fragmenty adresów API).
+        

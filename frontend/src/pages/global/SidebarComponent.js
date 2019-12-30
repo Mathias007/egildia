@@ -14,11 +14,11 @@ class SidebarComponent extends Component {
                 <Menu
                     mode="inline"
                     defaultSelectedKeys={["1"]}
-                    defaultOpenKeys={["sub1"]}
+                    defaultOpenKeys={["knights"]}
                     style={{ height: "100%", borderRight: 0 }}
                 >
                     <SubMenu
-                        key="sub1"
+                        key="knights"
                         title={
                             <span>
                                 <Icon type="user" />
@@ -40,7 +40,7 @@ class SidebarComponent extends Component {
                         </Item>
                     </SubMenu>
                     <SubMenu
-                        key="sub2"
+                        key="tzar"
                         title={
                             <span>
                                 <Icon type="laptop" />
