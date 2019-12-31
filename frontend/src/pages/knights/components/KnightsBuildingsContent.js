@@ -196,7 +196,7 @@ class KnightsBuildingsContent extends Component {
                                                 ? materialElements.map(
                                                       (element, index) => (
                                                           <Img
-                                                              key={element}
+                                                              key={index}
                                                               className={
                                                                   componentClassnames
                                                                       .images
@@ -220,12 +220,10 @@ class KnightsBuildingsContent extends Component {
                 dataIndex: col_worker.dataIndex,
                 align: col_worker.align,
                 render: worker => {
-                    let workersElements = worker.match(textBetweenTagsRegEx);
-                    console.log(workersElements);
-                    return workersElements ? (
+                    return worker ? (
                         <Img
                             className={componentClassnames.images.unit}
-                            src={require(`../../../${general}/${section.knights}/${dir.units}/${workersElements}.${format.PNG}`)}
+                            src={require(`../../../${general}/${section.knights}/${dir.units}/${worker}.${format.PNG}`)}
                         />
                     ) : null;
                 }

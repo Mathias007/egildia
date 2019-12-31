@@ -55,7 +55,7 @@ class KnightsUnitsContent extends Component {
             col_image: { title: "Grafika", dataIndex: "image", align: "left" },
             col_role: { title: "Rola", dataIndex: "role", align: "center" },
             col_specification: {
-                title: "Miejsce pracy",
+                title: "Miejsce pracy lub wyposażenie",
                 dataIndex: "specification",
                 align: "center"
             }
@@ -156,7 +156,7 @@ class KnightsUnitsContent extends Component {
                                       src={require(`../../../${general}/${section.knights}/${dir.icons}/${element}.${format.png}`)}
                                   />
                               ))
-                            : null;
+                            : <p>{specification[1]}</p>;
                     } else {
                         let equipmentElements = specification[2].match(
                             textBetweenTagsRegEx
