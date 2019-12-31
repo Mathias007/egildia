@@ -1,6 +1,5 @@
 import statuses from "../../../_config/statuses";
 import address from "../../../_config/address";
-import { addNewArticle } from "../articles";
 
 const {
   STATUS_OK,
@@ -11,7 +10,7 @@ const {
 
 const { API_URL, ARTICLES, ADD } = address;
 
-const AddNewUser = (
+const AddNewArticleService = (
   destiny,
   title,
   content,
@@ -55,4 +54,4 @@ const AddNewUser = (
     });
 };
 
-export default addNewArticle;
+export default AddNewArticleService;
