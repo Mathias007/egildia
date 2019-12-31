@@ -120,7 +120,7 @@ class TzarTechnologiesContent extends Component {
                 render: image => (
                     <>
                         <Img
-                            className={componentClassnames.images.spell}
+                            className={componentClassnames.images.technology}
                             src={require(`../../../${general}/${section.tzar}/${dir.technologies}/${image}.${format.png}`)}
                         />
                     </>
