@@ -1,5 +1,7 @@
 const address = {
     API_URL: "http://localhost:5000/api/",
+    ARTICLE: "article",
+    ADD: "add",
     LOGIN: "login",
     REGISTER: "register",
     KNIGHTS: "knights",
