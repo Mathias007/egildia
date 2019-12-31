@@ -2,6 +2,7 @@ import express from "express";
 import config from "./config";
 
 import authController from "./src/controllers/auth";
+import articlesController from "./src/controllers/articles";
 import usersController from "./src/controllers/users";
 import knightsController from "./src/controllers/knights";
 import tzarControlles from "./src/controllers/tzar";
@@ -20,6 +21,9 @@ router.get(
     authController.accessTokenVerify,
     usersController.getUserList
 );
+
+// admin API
+router.post(`/${API}/articles/add`, articlesController.createArticle);
 
 // content API's
 // Knights and Merchants

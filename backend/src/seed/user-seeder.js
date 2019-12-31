@@ -7,7 +7,7 @@ async function isUserExist() {
 }
 
 // Initialize first user
-export const initializeData = async () => {
+export const initializeUsersData = async () => {
     if (!(await isUserExist())) {
         const user = [
             new UserSchema({
@@ -19,7 +19,7 @@ export const initializeData = async () => {
         ];
         let done = 0;
         for (let i = 0; i < user.length; i++) {
-            user[i].save((err, restult) => {
+            user[i].save((err, result) => {
                 done++;
             });
         }

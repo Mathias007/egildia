@@ -4,7 +4,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import routes from "../routes";
 import config from "../config";
-import { initializeData } from "./seed/user-seeder";
+import { initializeUsersData } from "./seed/user-seeder";
+import { initializeArticlesData } from "./seed/article-seeder";
+
 
 const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN, ROUTES } = config;
 const { API } = ROUTES;
@@ -35,8 +37,10 @@ mongoose
     .catch(err => console.log("Error: Could not connect to MongoDB.", err));
 
 mongoose.connection.on("connected", () => {
-    initializeData();
+    initializeUsersData();
     console.log("Initialize user");
+    initializeArticlesData();
+    console.log("Initialize article");
 });
 mongoose.connection.on("error", err => {
     console.log("Error: Could not connect to MongoDB.", err);
