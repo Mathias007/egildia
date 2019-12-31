@@ -1,5 +1,5 @@
 // import fetchArticlesList from "./services/fetchArticlesList";
-import addNewArticle from "./services/addNewArticle";
+import AddNewArticleService from "./services/AddNewArticleService";
 // import editArticle from "./services/editArticle";
 // import deleteArticle from "./services/deleteArticle";
 
@@ -51,7 +51,7 @@ export const addNewArticle = (
       throw response.data;
     };
 
-    return AddNewUser(
+    return AddNewArticleService(
       destiny,
       title,
       content,
@@ -66,6 +66,6 @@ export const addNewArticle = (
 
 // export const deleteExistingArticle = destiny => {
 //   return (dispatch, getState) => {
-//     return deleteArticle(destiny);
+//     return deleteUser(destiny);
 //   };
 // };
