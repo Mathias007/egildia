@@ -1,18 +1,38 @@
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
+    ARTICLE_SUCCESSFULLY_LOADED,
+    ARTICLE_NOT_FOUND,
     ARTS_LIST_LOADED,
     ARTICLE_ADDED,
     AUTHENTICATION_ERROR,
     ARTICLE_ADDING_FAILED
-  } = eventStatuses.articles;
+} = eventStatuses.articles;
 
-  const initialState = {
+const initialState = {
     articles: [],
-  };
+    properArticle: {},
+    errorMessage: ""
+};
 
-  export default function articles(state = initialState, action) {
+export default function articles(state = initialState, action) {
     switch (action.type) {
+        case ARTICLE_SUCCESSFULLY_LOADED:
+            console.log(action.data.article);
+            return {
+                ...state,
+                ...action.data,
+                properArticle: action.data.article
+            };
+
+        case ARTICLE_NOT_FOUND:
+            console.log(action.data.message);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
+            };
+
         case ARTS_LIST_LOADED:
             console.log(action.data.articles);
             return {
