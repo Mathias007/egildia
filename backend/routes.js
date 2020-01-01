@@ -8,7 +8,7 @@ import knightsController from "./src/controllers/knights";
 import tzarControlles from "./src/controllers/tzar";
 
 const { ROUTES } = config;
-const { API, KNIGHTS, TZAR } = ROUTES;
+const { API, ARTICLES, KNIGHTS, TZAR } = ROUTES;
 
 const router = express.Router();
 
@@ -23,7 +23,8 @@ router.get(
 );
 
 // admin API
-router.post(`/${API}/articles/add`, articlesController.createArticle);
+router.get(`/${API}/${ARTICLES}/list`, articlesController.getArticlesList);
+router.post(`/${API}/${ARTICLES}/add`, articlesController.createArticle);
 
 // content API's
 // Knights and Merchants

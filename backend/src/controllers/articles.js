@@ -1,19 +1,30 @@
 import ArticlesSchema from "../models/articles";
 
-function validateDestinyKey(destiny) {
+function validateAllocationKey(allocationKey) {
     return ArticlesSchema.findOne({
-        destiny: destiny
+        allocationKey: allocationKey
     }).then(result => {
         return !result;
     });
 }
 
+exports.getArticlesList = (req, res, next) => {
+    ArticlesSchema.find({}, {}, (err, articles) => {
+        if (err || !articles) {
+            res.status(401).send({ message: "Unauthorized" });
+            next(err);
+        } else {
+            res.json({ status: "success", articles: articles });
+        }
+    });
+};
+
 exports.createArticle = (req, res, next) => {
-    validateDestinyKey(req.body.destiny).then(valid => {
+    validateAllocationKey(req.body.allocationKey).then(valid => {
         if (valid) {
             ArticlesSchema.create(
                 {
-                    destiny: req.body.destiny,
+                    allocationKey: req.body.allocationKey,
                     title: req.body.title,
                     content: req.body.content,
                     author: req.body.author,
@@ -34,4 +45,3 @@ exports.createArticle = (req, res, next) => {
         }
     });
 };
-

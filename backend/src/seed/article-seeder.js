@@ -10,7 +10,7 @@ export const initializeArticlesData = async () => {
     if (!(await isArticleExists())) {
         const article = [
             new ArticlesSchema({
-                destiny: "test-article",
+                allocationKey: "test-article",
                 title: "Artykuł testowy",
                 content: "Inicjalizacja kolekcji artykułów. Dzień dobry!",
                 author: "admin",

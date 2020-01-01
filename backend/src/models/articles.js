@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ArticlesSchema = new Schema(
     {
-        destiny: {
+        allocationKey: {
             type: String,
             trim: true,
             required: true,
@@ -18,7 +18,6 @@ const ArticlesSchema = new Schema(
             type: String,
             trim: true,
             required: true,
-            select: false
         },
         author: {
             type: String,

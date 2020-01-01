@@ -11,6 +11,7 @@ module.exports = {
     // API CONFIG
     ROUTES: {
         API: "api",
+        ARTICLES: "articles",
         KNIGHTS: "knights",
         TZAR: "tzar"
     }
