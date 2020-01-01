@@ -9,6 +9,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from "../pages/users/LoginPage";
 import RegistrationPage from "../pages/users/RegistrationPage";
 
+// admin imports
+import AddNewArticle from "../pages/admin/AddNewArticle";
+import ArticlesList from "../pages/admin/ArticlesList";
+
 // Knights and Metchants imports
 import KnightsBuildingsPage from "../pages/knights/KnightsBuildingsPage";
 import KnightsUnitsPage from "../pages/knights/KnightsUnitsPage";
@@ -45,6 +49,16 @@ class App extends Component {
                             exact
                             path="/register"
                             component={RegistrationPage}
+                        />
+
+                        {/* admin routes */}
+                        <Route
+                            path="/admin/articles/list"
+                            component={ArticlesList}
+                        />
+                        <Route
+                            path="/admin/articles/add"
+                            component={AddNewArticle}
                         />
 
                         {/* Knights and Merchants routes */}
