@@ -12,7 +12,7 @@ const { API, ARTICLES, KNIGHTS, TZAR } = ROUTES;
 
 const router = express.Router();
 
-// auth API 
+// auth API
 router.post(`/${API}/login`, authController.loginUser);
 router.post(`/${API}/register`, authController.createUser);
 router.post(`/${API}/refresh`, authController.refreshTokenVerify);
@@ -24,7 +24,15 @@ router.get(
 
 // admin API
 router.get(`/${API}/${ARTICLES}/list`, articlesController.getArticlesList);
+router.post(
+    `/${API}/${ARTICLES}/single`,
+    articlesController.getArticleByAllocationKey
+);
 router.post(`/${API}/${ARTICLES}/add`, articlesController.createArticle);
+router.delete(
+    `/${API}/${ARTICLES}/delete`,
+    articlesController.deleteArticleByAllocationKey
+);
 
 // content API's
 // Knights and Merchants
