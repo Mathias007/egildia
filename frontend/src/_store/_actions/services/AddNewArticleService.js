@@ -11,7 +11,7 @@ const {
 const { API_URL, ARTICLES, ADD } = address;
 
 const AddNewArticleService = (
-  destiny,
+  allocationKey,
   title,
   content,
   author,
@@ -25,7 +25,7 @@ const AddNewArticleService = (
     headers: {
       "content-type": "application/json"
     },
-    body: JSON.stringify({ destiny, title, content, author, date })
+    body: JSON.stringify({ allocationKey, title, content, author, date })
   };
 
   fetch(`${API_URL}${ARTICLES}/${ADD}`, options)

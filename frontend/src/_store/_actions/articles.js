@@ -1,4 +1,4 @@
-// import fetchArticlesList from "./services/fetchArticlesList";
+import fetchArticlesList from "./services/ShowArticlesService";
 import AddNewArticleService from "./services/AddNewArticleService";
 // import editArticle from "./services/editArticle";
 // import deleteArticle from "./services/deleteArticle";
@@ -6,27 +6,27 @@ import AddNewArticleService from "./services/AddNewArticleService";
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
-//   ARTS_LIST_LOADED,
+  ARTS_LIST_LOADED,
   ARTICLE_ADDED,
   AUTHENTICATION_ERROR,
   ARTICLE_ADDING_FAILED,
 } = eventStatuses.articles;
 
-// export const showArticlesList = () => {
-//   return (dispatch, getState) => {
-//     const dispatchArticlesListLoaded = function(articles) {
-//       dispatch({
-//         type: ARTS_LIST_LOADED,
-//         data: articles
-//       });
-//     };
+export const showArticlesList = () => {
+  return (dispatch, getState) => {
+    const dispatchArticlesListLoaded = function(articles) {
+      dispatch({
+        type: ARTS_LIST_LOADED,
+        data: articles
+      });
+    };
 
-//     return fetchArticlesList(dispatchArticlesListLoaded);
-//   };
-// };
+    return fetchArticlesList(dispatchArticlesListLoaded);
+  };
+};
 
 export const addNewArticle = (
-  destiny,
+  allocationKey,
   title,
   content,
   author,
@@ -52,7 +52,7 @@ export const addNewArticle = (
     };
 
     return AddNewArticleService(
-      destiny,
+      allocationKey,
       title,
       content,
       author,

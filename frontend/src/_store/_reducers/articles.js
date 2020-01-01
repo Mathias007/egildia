@@ -1,18 +1,26 @@
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
-    // USERLIST_LOADED,
+    ARTS_LIST_LOADED,
     ARTICLE_ADDED,
     AUTHENTICATION_ERROR,
     ARTICLE_ADDING_FAILED
   } = eventStatuses.articles;
 
   const initialState = {
-    // articlesList: {},
+    articles: [],
   };
 
   export default function articles(state = initialState, action) {
     switch (action.type) {
+        case ARTS_LIST_LOADED:
+            console.log(action.data.articles);
+            return {
+                ...state,
+                ...action.data,
+                articles: action.data.articles
+            };
+
         case ARTICLE_ADDED:
             console.log(action.data.message);
             return {
