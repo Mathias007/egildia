@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 import NewsSchema from "../models/news";
 
 function validateTitle(title) {

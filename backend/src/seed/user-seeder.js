@@ -1,5 +1,4 @@
-// import UserSchema from "../models/users";
-const UserSchema = require("../models/users");
+import UserSchema from "../models/users";
 
 async function isUserExist() {
     const exec = await UserSchema.find().exec();

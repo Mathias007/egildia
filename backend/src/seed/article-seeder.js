@@ -1,4 +1,4 @@
-const ArticlesSchema = require("../models/articles");
+import ArticlesSchema from "../models/articles";
 
 async function isArticleExists() {
     const exec = await ArticlesSchema.find().exec();

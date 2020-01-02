@@ -1,7 +1,7 @@
 import UserSchema from "../models/users";
 // import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET_JWT } from "../../config";
+import { TOKEN_SECRET_JWT } from "../config/config";
 
 // Validate email address
 function validateEmailAccessibility(email) {

@@ -1,5 +1,5 @@
 import express from "express";
-import config from "./config";
+import config from "./src/config/config";
 
 import authController from "./src/controllers/auth";
 import articlesController from "./src/controllers/articles";

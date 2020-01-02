@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 // import routes & config files
 import routes from "../routes";
-import config from "../config";
+import config from "./config/config";
 
 // import seeders
 import { initializeUsersData } from "./seed/user-seeder";

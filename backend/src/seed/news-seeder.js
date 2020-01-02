@@ -1,4 +1,4 @@
-const NewsSchema = require("../models/news");
+import NewsSchema from "../models/news";
 
 async function isNewsExists() {
     const exec = await NewsSchema.find().exec();

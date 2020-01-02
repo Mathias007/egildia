@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 import ArticlesSchema from "../models/articles";
 
 function validateAllocationKey(allocationKey) {
