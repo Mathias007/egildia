@@ -2,9 +2,9 @@ import {
     fetchArticlesList,
     getSingleArticle
 } from "./services/ShowArticlesService";
-import AddNewArticleService from "./services/AddNewArticleService";
-// import editArticle from "./services/editArticle";
-// import deleteArticle from "./services/deleteArticle";
+import addArticle from "./services/AddNewArticleService";
+import editArticle from "./services/EditSelectedArticleService";
+import deleteArticle from "./services/DeleteSelectedArticleService";
 
 import eventStatuses from "../../_config/eventStatuses";
 
@@ -14,7 +14,9 @@ const {
     ARTS_LIST_LOADED,
     ARTICLE_ADDED,
     AUTHENTICATION_ERROR,
-    ARTICLE_ADDING_FAILED
+    ARTICLE_ADDING_FAILED,
+    ARTICLE_SUCCESFULLY_EDITED,
+    ARTICLE_EDITING_FAILED
 } = eventStatuses.articles;
 
 export const showProperArticle = allocationKey => {
@@ -78,7 +80,7 @@ export const addNewArticle = (allocationKey, title, content, author, date) => {
             throw response.data;
         };
 
-        return AddNewArticleService(
+        return addArticle(
             allocationKey,
             title,
             content,
@@ -91,8 +93,72 @@ export const addNewArticle = (allocationKey, title, content, author, date) => {
     };
 };
 
-// export const deleteExistingArticle = destiny => {
-//   return (dispatch, getState) => {
-//     return deleteUser(destiny);
-//   };
-// };
+export const editSelectedArticle = (
+    id,
+    allocationKey,
+    title,
+    content,
+    author,
+    lastModified
+) => {
+    return (dispatch, getState) => {
+        const dispatchArticleEdited = function(response) {
+            dispatch({
+                type: ARTICLE_SUCCESFULLY_EDITED,
+                data: response.data
+            });
+            return response.data;
+        };
+
+        const dispatchArticleAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchArticleEditingFailed = function(response) {
+            dispatch({ type: ARTICLE_EDITING_FAILED, data: response.data });
+            throw response.data;
+        };
+
+        return editArticle(
+            id,
+            allocationKey,
+            title,
+            content,
+            author,
+            lastModified,
+            dispatchArticleEdited,
+            dispatchArticleAuthError,
+            dispatchArticleEditingFailed
+        );
+    };
+};
+
+export const deleteSelectedArticle = id => {
+    return (dispatch, getState) => {
+        const dispatchArticleDeleted = function(response) {
+            dispatch({
+                type: ARTICLE_SUCCESFULLY_DELETED,
+                data: response.data
+            });
+            return response.data;
+        };
+
+        const dispatchArticleAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchArticleDeletingFailed = function(response) {
+            dispatch({ type: ARTICLE_DELETING_FAILED, data: response.data });
+            throw response.data;
+        };
+
+        return deleteArticle(
+            id,
+            dispatchArticleDeleted,
+            dispatchArticleAuthError,
+            dispatchArticleDeletingFailed
+        );
+    };
+};

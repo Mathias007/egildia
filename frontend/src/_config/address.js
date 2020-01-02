@@ -5,6 +5,7 @@ const address = {
     // articles
     ARTICLES: "articles",
     ADD: "add",
+    EDIT: "edit",
     DELETE: "delete",
     SINGLE: "single",
     LIST: "list",

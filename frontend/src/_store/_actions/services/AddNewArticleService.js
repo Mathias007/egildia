@@ -10,7 +10,7 @@ const {
 
 const { API_URL, ARTICLES, ADD } = address;
 
-const AddNewArticleService = (
+const addArticle = (
   allocationKey,
   title,
   content,
@@ -54,4 +54,4 @@ const AddNewArticleService = (
     });
 };
 
-export default AddNewArticleService;
+export default addArticle;

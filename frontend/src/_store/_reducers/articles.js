@@ -6,7 +6,11 @@ const {
     ARTS_LIST_LOADED,
     ARTICLE_ADDED,
     AUTHENTICATION_ERROR,
-    ARTICLE_ADDING_FAILED
+    ARTICLE_ADDING_FAILED,
+    ARTICLE_SUCCESFULLY_EDITED,
+    ARTICLE_EDITING_FAILED,
+    ARTICLE_SUCCESFULLY_DELETED,
+    ARTICLE_DELETING_FAILED
 } = eventStatuses.articles;
 
 const initialState = {
@@ -46,10 +50,11 @@ export default function articles(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: `${action.data.message}`
+                errorMessage: action.data.message
             };
 
         case AUTHENTICATION_ERROR:
+            console.log(action.data.message);
             return {
                 ...state,
                 ...action.data,
@@ -61,9 +66,39 @@ export default function articles(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                inputMessages: action.data,
-                errorMessage:
-                    "The user has not been added. Please correct data implemented to a form."
+                errorMessage: action.data.message
+            };
+
+        case ARTICLE_SUCCESFULLY_EDITED:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
+            };
+
+        case ARTICLE_EDITING_FAILED:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
+            };
+
+        case ARTICLE_SUCCESFULLY_DELETED:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
+            };
+
+        case ARTICLE_DELETING_FAILED:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
             };
 
         default:
