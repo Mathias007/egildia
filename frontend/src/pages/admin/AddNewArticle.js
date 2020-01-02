@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
+import moment from "moment";
 import { connect } from "react-redux";
 
 import { articles } from "../../_store/_actions";
+import { auth } from "../../_store/_actions";
 
 import {
     Button,
+    DatePicker,
     Form,
     Icon,
     Input,
@@ -27,6 +30,7 @@ class AddNewArtice extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
@@ -63,19 +67,19 @@ class AddNewArtice extends Component {
                             className="add-article-header"
                             title="Dodawanie nowego artykułu"
                         />
-                        <Item>
+                        <Item label="Klucz identyfikacyjny artykułu">
                             {getFieldDecorator("allocationKey", {
                                 rules: [
                                     {
                                         required: true,
-                                        message: "Podaj klucz artykułu"
+                                        message: "Podaj klucz artykułu!"
                                     }
                                 ]
                             })(
                                 <Input
                                     prefix={
                                         <Icon
-                                            type="user"
+                                            type="key"
                                             style={{
                                                 color: "rgba(0,0,0,.25)"
                                             }}
@@ -91,12 +95,12 @@ class AddNewArtice extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Klucz artykułu"
+                                    placeholder="Wpisz unikalny klucz artykułu"
                                 />
                             )}
                         </Item>
 
-                        <Item>
+                        <Item label="Tytuł artykułu">
                             {getFieldDecorator("title", {
                                 rules: [
                                     {
@@ -108,7 +112,7 @@ class AddNewArtice extends Component {
                                 <Input
                                     prefix={
                                         <Icon
-                                            type="user"
+                                            type="flag"
                                             style={{
                                                 color: "rgba(0,0,0,.25)"
                                             }}
@@ -124,12 +128,12 @@ class AddNewArtice extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Tytuł"
+                                    placeholder="Nadaj artykułowi tytuł"
                                 />
                             )}
                         </Item>
 
-                        <Item>
+                        <Item label="Zawartość artykułu">
                             {getFieldDecorator("content", {
                                 rules: [
                                     {
@@ -138,10 +142,11 @@ class AddNewArtice extends Component {
                                     }
                                 ]
                             })(
-                                <Input
+                                <TextArea
+                                    rows={4}
                                     prefix={
                                         <Icon
-                                            type="user"
+                                            type="read"
                                             style={{
                                                 color: "rgba(0,0,0,.25)"
                                             }}
@@ -157,13 +162,14 @@ class AddNewArtice extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Zawartość"
+                                    placeholder="Daj ponieść się ekspresji..."
                                 />
                             )}
                         </Item>
 
-                        <Item>
+                        <Item label="Autor artykułu">
                             {getFieldDecorator("author", {
+                                initialValue: this.props.name,
                                 rules: [
                                     {
                                         required: true,
@@ -174,7 +180,7 @@ class AddNewArtice extends Component {
                                 <Input
                                     prefix={
                                         <Icon
-                                            type="user"
+                                            type="crown"
                                             style={{
                                                 color: "rgba(0,0,0,.25)"
                                             }}
@@ -190,46 +196,41 @@ class AddNewArtice extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Autor"
+                                    placeholder="Podaj autora artykułu"
                                 />
                             )}
                         </Item>
 
-                        <Item>
+                        <Item label="Data dodania (utworzenia)">
                             {getFieldDecorator("date", {
                                 rules: [
                                     {
+                                        type: "object",
                                         required: false
                                     }
                                 ]
                             })(
-                                <Input
-                                    prefix={
+                                <DatePicker
+                                    defaultPickerValue={moment()}
+                                    suffixIcon={
                                         <Icon
-                                            type="user"
+                                            type="calendar"
                                             style={{
                                                 color: "rgba(0,0,0,.25)"
                                             }}
                                         />
                                     }
-                                    suffix={
-                                        <Tooltip title="Data dodania lub data utworzenia artykułu. Pole nieobowiązkowe.">
-                                            <Icon
-                                                type="info-circle"
-                                                style={{
-                                                    color: "rgba(0,0,0,.45)"
-                                                }}
-                                            />
-                                        </Tooltip>
-                                    }
-                                    placeholder="Data dodania (utworzenia)"
+                                    showTime
+                                    showToday
+                                    format="YYYY-MM-DD HH:mm:ss"
+                                    placeholder="Data utworzenia"
                                 />
                             )}
                         </Item>
 
                         <Item>
                             <Button
-                                icon="login"
+                                icon="file-add"
                                 type="primary"
                                 htmlType="submit"
                                 className="add-article-button"
@@ -237,9 +238,7 @@ class AddNewArtice extends Component {
                                 Dodaj artykuł{" "}
                             </Button>
                         </Item>
-                        <Item>
-                            {this.props.errorMessage}
-                        </Item>
+                        <Item>{this.props.errorMessage}</Item>
                     </Form>
                 </Content>
             </Layout>
@@ -249,7 +248,8 @@ class AddNewArtice extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.articles.errorMessage
+        errorMessage: state.articles.errorMessage,
+        name: state.auth.name
     };
 };
 
