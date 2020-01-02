@@ -1,13 +1,15 @@
 import address from "../../../_config/address";
+import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, KNIGHTS, BUILDINGS, UNITS } = address;
+const { method, headers } = fetchOptions;
+
+// obsługa statusów do dodania!
 
 export const fetchBuildingsList = dispatchBuildingsListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${KNIGHTS}/${BUILDINGS}`, options)
@@ -21,10 +23,8 @@ export const fetchBuildingsList = dispatchBuildingsListLoaded => {
 
 export const fetchUnitsList = dispatchUnitsListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${KNIGHTS}/${UNITS}`, options)

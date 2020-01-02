@@ -1,13 +1,15 @@
 import address from "../../../_config/address";
+import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, TZAR, NATIONS, SPELLS, TECHNOLOGIES, UNITS } = address;
+const { method, headers } = fetchOptions;
+
+// obsługa statusów do dodania
 
 export const fetchNationsList = dispatchNationsListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${TZAR}/${NATIONS}`, options)
@@ -21,10 +23,8 @@ export const fetchNationsList = dispatchNationsListLoaded => {
 
 export const fetchSpellsList = dispatchSpellsListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${TZAR}/${SPELLS}`, options)
@@ -38,10 +38,8 @@ export const fetchSpellsList = dispatchSpellsListLoaded => {
 
 export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${TZAR}/${TECHNOLOGIES}`, options)
@@ -55,10 +53,8 @@ export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
 
 export const fetchUnitsList = dispatchUnitsListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${TZAR}/${UNITS}`, options)

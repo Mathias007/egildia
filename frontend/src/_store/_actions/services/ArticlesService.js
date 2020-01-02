@@ -1,5 +1,6 @@
 import address from "../../../_config/address";
 import eventStatuses from "../../../_config/eventStatuses";
+import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, ARTICLES, SINGLE, LIST, ADD, EDIT, DELETE } = address;
 const {
@@ -9,12 +10,12 @@ const {
     INTERNAL_ERROR
 } = eventStatuses;
 
+const { method, headers } = fetchOptions;
+
 export const getAllArticles = dispatchArticlesListLoaded => {
     const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/json"
-        }
+        method: method.GET,
+        headers
     };
 
     fetch(`${API_URL}${ARTICLES}/${LIST}`, options)
@@ -33,10 +34,8 @@ export const getSingleArticle = (
     dispatchArticleNotFound
 ) => {
     const options = {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
+        method: method.POST,
+        headers,
         body: JSON.stringify({ allocationKey })
     };
 
@@ -75,40 +74,38 @@ export const addArticle = (
     dispatchArticleAdded,
     dispatchArticleAuthError,
     dispatchArticleAddingFailed
-  ) => {
+) => {
     const options = {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({ allocationKey, title, content, author, date })
+        method: method.POST,
+        headers,
+        body: JSON.stringify({ allocationKey, title, content, author, date })
     };
-  
+
     fetch(`${API_URL}${ARTICLES}/${ADD}`, options)
-      .then(response => {
-        if (response.status < INTERNAL_ERROR) {
-          return response.json().then(data => {
-            return { status: response.status, data };
-          });
-        } else {
-          console.log("Server Error!");
-          throw response;
-        }
-      })
-      .then(response => {
-        console.log(response);
-        if (response.status === STATUS_OK) {
-          dispatchArticleAdded(response);
-        } else if (
-          response.status === STATUS_FORBIDDEN ||
-          response.status === STATUS_UNAUTHORIZED
-        ) {
-          return dispatchArticleAuthError(response);
-        } else {
-          return dispatchArticleAddingFailed(response);
-        }
-      });
-  };
+        .then(response => {
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
+                    return { status: response.status, data };
+                });
+            } else {
+                console.log("Server Error!");
+                throw response;
+            }
+        })
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK) {
+                dispatchArticleAdded(response);
+            } else if (
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
+            ) {
+                return dispatchArticleAuthError(response);
+            } else {
+                return dispatchArticleAddingFailed(response);
+            }
+        });
+};
 
 export const editArticle = (
     id,
@@ -122,10 +119,8 @@ export const editArticle = (
     dispatchArticleEditingFailed
 ) => {
     const options = {
-        method: "PATCH",
-        headers: {
-            "content-type": "application/json"
-        },
+        method: method.PATCH,
+        headers,
         body: JSON.stringify({
             id,
             allocationKey,
@@ -169,10 +164,8 @@ export const deleteArticle = (
     dispatchArticleDeletingFailed
 ) => {
     const options = {
-        method: "DELETE",
-        headers: {
-            "content-type": "application/json"
-        },
+        method: method.DELETE,
+        headers,
         body: JSON.stringify({
             id
         })

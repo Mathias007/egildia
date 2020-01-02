@@ -1,14 +1,16 @@
 import address from "../../../_config/address";
-import statuses from "../../../_config/statuses";
+import eventStatuses from "../../../_config/eventStatuses";
+import fetchOptions from "../../../_config/fetchOptions";
 
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
     INTERNAL_ERROR
-} = statuses;
+} = eventStatuses;
 
 const { API_URL, LOGIN } = address;
+const { method, headers } = fetchOptions;
 
 const fetchLogin = (
     name,
@@ -19,10 +21,8 @@ const fetchLogin = (
     dispatchLoginFailed
 ) => {
     const options = {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
+        method: method.POST,
+        headers,
         body: JSON.stringify({ name, password })
     };
 
