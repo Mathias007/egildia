@@ -1,9 +1,6 @@
 import eventStatuses from "../../_config/eventStatuses";
 
-import fetchNationsList from "./services/TzarNationsService";
-import fetchUnitsList from "./services/TzarUnitsService";
-import fetchSpellsList from "./services/TzarSpellsService";
-import fetchTechnologiesList from "./services/TzarTechnologiesService";
+import {fetchNationsList, fetchSpellsList, fetchTechnologiesList, fetchUnitsList  } from "./services/TzarService";
 
 const {
     TZAR_NATIONS_LOADED,

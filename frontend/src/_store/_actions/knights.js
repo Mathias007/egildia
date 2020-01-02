@@ -1,7 +1,6 @@
 import eventStatuses from "../../_config/eventStatuses";
 
-import fetchBuildingsList from "./services/KnightsBuildingsService";
-import fetchUnitsList from "./services/KnightsUnitsService";
+import { fetchBuildingsList, fetchUnitsList } from "./services/KnightsService";
 
 const { KAM_BUILDINGS_LOADED, KAM_UNITS_LOADED } = eventStatuses.knights;
 

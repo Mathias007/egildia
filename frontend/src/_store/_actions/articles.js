@@ -1,10 +1,10 @@
 import {
-    fetchArticlesList,
-    getSingleArticle
-} from "./services/ShowArticlesService";
-import addArticle from "./services/AddNewArticleService";
-import editArticle from "./services/EditSelectedArticleService";
-import deleteArticle from "./services/DeleteSelectedArticleService";
+    getAllArticles,
+    getSingleArticle,
+    addArticle,
+    editArticle,
+    deleteArticle
+} from "./services/ArticlesService";
 
 import eventStatuses from "../../_config/eventStatuses";
 
@@ -58,7 +58,7 @@ export const showArticlesList = () => {
             });
         };
 
-        return fetchArticlesList(dispatchArticlesListLoaded);
+        return getAllArticles(dispatchArticlesListLoaded);
     };
 };
 
