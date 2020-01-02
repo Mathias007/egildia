@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 import ArticlesSchema from "../models/articles";
 
 function validateAllocationKey(allocationKey) {
@@ -11,12 +12,17 @@ function validateAllocationKey(allocationKey) {
 exports.getArticlesList = (req, res, next) => {
     ArticlesSchema.find({}, {}, (err, articles) => {
         if (err || !articles) {
-            res.status(401).send({ message: "Wystąpił problem z autoryzacją!" });
+            res.status(401).send({
+                message: "Wystąpił problem z autoryzacją!"
+            });
             next(err);
-        } else if(!articles) {
-            res.status(404).send({message: "Nie znaleziono artykułów."})
+        } else if (!articles) {
+            res.status(404).send({ message: "Nie znaleziono artykułów." });
         } else {
-            res.json({ message: "Lista artykułów została znaleziona.", articles });
+            res.json({
+                message: "Lista artykułów została znaleziona.",
+                articles
+            });
         }
     });
 };
@@ -26,33 +32,71 @@ exports.getArticleByAllocationKey = (req, res, next) => {
         { allocationKey: req.body.allocationKey },
         (err, article) => {
             if (err) {
-                res.status(401).send({ message: "Wystąpił problem z autoryzacją!" });
+                res.status(401).send({
+                    message: "Wystąpił problem z autoryzacją!"
+                });
                 next(err);
             } else if (!article) {
-                res.status(404).send({ message: "Nie znaleziono artykułu o podanym kluczu!" });
+                res.status(404).send({
+                    message: "Nie znaleziono artykułu o podanym kluczu!"
+                });
             } else {
                 console.log(article);
-                res.json({ message: "Wyszukiwanie artykułu zakończyło się powodzeniem.", article });
+                res.json({
+                    message:
+                        "Wyszukiwanie artykułu zakończyło się powodzeniem.",
+                    article
+                });
             }
         }
     );
 };
 
-exports.deleteArticleByAllocationKey = (req, res, next) => {
-    ArticlesSchema.deleteOne(
-        { allocationKey: req.body.allocationKey },
+exports.modifyArticleById = (req, res, next) => {
+    let articleId = mongoose.Types.ObjectId(req.body.id);
+
+    ArticlesSchema.updateOne(
+        { _id: articleId },
+        {
+            $set: req.body
+        },
         (err, article) => {
             if (err) {
-                res.status(401).send({ message: "Wystąpił problem z autoryzacją!" });
+                res.status(401).send({
+                    message: "Wystąpił problem z autoryzacją!"
+                });
                 next(err);
-            } else if (!article.deletedCount) {
-                res.status(404).send({ message: "Nie ma artykułu o podanym kluczu!" });
+            } else if (!article) {
+                res.status(404).send({
+                    message:
+                        "Nie znaleziono artykułu o wybranym identyfikatorze!"
+                });
             } else {
                 console.log(article);
-                res.json({ message: "Wybrany artykuł został usunięty!" });
+                res.json({ message: "Artykuł został zmodyfikowany!", article });
             }
         }
     );
+};
+
+exports.deleteArticleById = (req, res, next) => {
+    let articleId = mongoose.Types.ObjectId(req.body.id);
+
+    ArticlesSchema.deleteOne({ _id: articleId }, (err, article) => {
+        if (err) {
+            res.status(401).send({
+                message: "Wystąpił problem z autoryzacją!"
+            });
+            next(err);
+        } else if (!article.deletedCount) {
+            res.status(404).send({
+                message: "Nie ma artykułu o wybranym identyfikatorze!"
+            });
+        } else {
+            console.log(article);
+            res.json({ message: "Wybrany artykuł został usunięty!" });
+        }
+    });
 };
 
 exports.createArticle = (req, res, next) => {
@@ -76,7 +120,8 @@ exports.createArticle = (req, res, next) => {
             );
         } else {
             res.status(409).send({
-                message: "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
+                message:
+                    "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
             });
         }
     });

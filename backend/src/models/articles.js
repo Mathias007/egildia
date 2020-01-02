@@ -17,7 +17,7 @@ const ArticlesSchema = new Schema(
         content: {
             type: String,
             trim: true,
-            required: true,
+            required: true
         },
         author: {
             type: String,
@@ -26,6 +26,7 @@ const ArticlesSchema = new Schema(
         },
         date: {
             type: Date,
+            default: new Date()
         }
     },
     {

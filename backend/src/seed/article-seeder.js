@@ -5,7 +5,7 @@ async function isArticleExists() {
     return (exec.length = 0);
 }
 
-// Initialize first user
+// Initialize first article
 export const initializeArticlesData = async () => {
     if (!(await isArticleExists())) {
         const article = [
