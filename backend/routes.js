@@ -3,12 +3,14 @@ import config from "./config";
 
 import authController from "./src/controllers/auth";
 import articlesController from "./src/controllers/articles";
+import newsController from "./src/controllers/news";
+
 import usersController from "./src/controllers/users";
 import knightsController from "./src/controllers/knights";
 import tzarControlles from "./src/controllers/tzar";
 
 const { ROUTES } = config;
-const { API, ARTICLES, KNIGHTS, TZAR } = ROUTES;
+const { API, ARTICLES, NEWS, KNIGHTS, TZAR } = ROUTES;
 
 const router = express.Router();
 
@@ -22,16 +24,24 @@ router.get(
     usersController.getUserList
 );
 
-// admin API
+// news API
+router.get(`/${API}/${NEWS}/list`, newsController.getNewsList);
+router.post(`/${API}/${NEWS}/single`, newsController.getNewsById);
+router.post(`/${API}/${NEWS}/add`, newsController.createNews);
+router.patch(`/${API}/${NEWS}/edit`, newsController.modifyNewsById);
+router.delete(`/${API}/${NEWS}/delete`, newsController.deleteNewsById);
+
+// articles API
 router.get(`/${API}/${ARTICLES}/list`, articlesController.getArticlesList);
 router.post(
     `/${API}/${ARTICLES}/single`,
     articlesController.getArticleByAllocationKey
 );
 router.post(`/${API}/${ARTICLES}/add`, articlesController.createArticle);
+router.patch(`/${API}/${ARTICLES}/edit`, articlesController.modifyArticleById);
 router.delete(
     `/${API}/${ARTICLES}/delete`,
-    articlesController.deleteArticleByAllocationKey
+    articlesController.deleteArticleById
 );
 
 // content API's

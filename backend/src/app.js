@@ -2,11 +2,15 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+
+// import routes & config files
 import routes from "../routes";
 import config from "../config";
+
+// import seeders
 import { initializeUsersData } from "./seed/user-seeder";
 import { initializeArticlesData } from "./seed/article-seeder";
-
+import { initializeNewsData } from "./seed/news-seeder";
 
 const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN, ROUTES } = config;
 const { API } = ROUTES;
@@ -41,6 +45,8 @@ mongoose.connection.on("connected", () => {
     console.log("Initialize user");
     initializeArticlesData();
     console.log("Initialize article");
+    initializeNewsData();
+    console.log("Initialize news");
 });
 mongoose.connection.on("error", err => {
     console.log("Error: Could not connect to MongoDB.", err);

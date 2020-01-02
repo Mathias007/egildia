@@ -12,6 +12,7 @@ module.exports = {
     ROUTES: {
         API: "api",
         ARTICLES: "articles",
+        NEWS: "news",
         KNIGHTS: "knights",
         TZAR: "tzar"
     }
