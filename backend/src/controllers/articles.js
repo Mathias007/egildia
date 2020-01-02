@@ -52,6 +52,34 @@ exports.getArticleByAllocationKey = (req, res, next) => {
     );
 };
 
+exports.createArticle = (req, res, next) => {
+    validateAllocationKey(req.body.allocationKey).then(valid => {
+        if (valid) {
+            ArticlesSchema.create(
+                {
+                    allocationKey: req.body.allocationKey,
+                    title: req.body.title,
+                    content: req.body.content,
+                    author: req.body.author,
+                    date: req.body.date
+                },
+                (error, result) => {
+                    if (error) next(error);
+                    else
+                        res.json({
+                            message: "Artykuł został skutecznie utworzony!"
+                        });
+                }
+            );
+        } else {
+            res.status(409).send({
+                message:
+                    "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
+            });
+        }
+    });
+};
+
 exports.modifyArticleById = (req, res, next) => {
     let articleId = mongoose.Types.ObjectId(req.body.id);
 
@@ -66,7 +94,7 @@ exports.modifyArticleById = (req, res, next) => {
                     message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
-            } else if (!article) {
+            } else if (!article.nModified) {
                 res.status(404).send({
                     message:
                         "Nie znaleziono artykułu o wybranym identyfikatorze!"
@@ -95,34 +123,6 @@ exports.deleteArticleById = (req, res, next) => {
         } else {
             console.log(article);
             res.json({ message: "Wybrany artykuł został usunięty!" });
-        }
-    });
-};
-
-exports.createArticle = (req, res, next) => {
-    validateAllocationKey(req.body.allocationKey).then(valid => {
-        if (valid) {
-            ArticlesSchema.create(
-                {
-                    allocationKey: req.body.allocationKey,
-                    title: req.body.title,
-                    content: req.body.content,
-                    author: req.body.author,
-                    date: req.body.date
-                },
-                (error, result) => {
-                    if (error) next(error);
-                    else
-                        res.json({
-                            message: "Artykuł został skutecznie utworzony!"
-                        });
-                }
-            );
-        } else {
-            res.status(409).send({
-                message:
-                    "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
-            });
         }
     });
 };

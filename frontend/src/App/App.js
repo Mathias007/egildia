@@ -6,12 +6,15 @@ import "antd/dist/antd.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // general imports
+import NewsPage from "../pages/NewsPage";
 import LoginPage from "../pages/users/LoginPage";
 import RegistrationPage from "../pages/users/RegistrationPage";
 
 // admin imports
-import AddNewArticle from "../pages/admin/AddNewArticle";
 import ArticlesList from "../pages/admin/ArticlesList";
+import AddNewArticle from "../pages/admin/AddNewArticle";
+import EditSelectedArticle from "../pages/admin/EditSelectedArticle";
+import DeleteSelectedArticle from "../pages/admin/DeleteSelectedArticle";
 
 // Knights and Metchants imports
 import KnightsBuildingsPage from "../pages/knights/KnightsBuildingsPage";
@@ -44,6 +47,7 @@ class App extends Component {
                 <div className="containter">
                     <Switch>
                         {/* general routes */}
+                        <Route exact path="/" component={NewsPage} />
                         <Route exact path="/login" component={LoginPage} />
                         <Route
                             exact
@@ -59,6 +63,14 @@ class App extends Component {
                         <Route
                             path="/admin/articles/add"
                             component={AddNewArticle}
+                        />
+                        <Route
+                            path="/admin/articles/edit"
+                            component={EditSelectedArticle}
+                        />
+                        <Route
+                            path="/admin/articles/delete"
+                            component={DeleteSelectedArticle}
                         />
 
                         {/* Knights and Merchants routes */}

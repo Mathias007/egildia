@@ -16,7 +16,9 @@ const {
     AUTHENTICATION_ERROR,
     ARTICLE_ADDING_FAILED,
     ARTICLE_SUCCESFULLY_EDITED,
-    ARTICLE_EDITING_FAILED
+    ARTICLE_EDITING_FAILED,
+    ARTICLE_SUCCESFULLY_DELETED,
+    ARTICLE_DELETING_FAILED
 } = eventStatuses.articles;
 
 export const showProperArticle = allocationKey => {
