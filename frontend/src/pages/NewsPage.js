@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { news } from "../_store/_actions";
+
 import { Card } from "antd";
 
 class NewsPage extends Component {
+    componentDidMount() {
+        this.props.showNewsList();
+    }
+
     render() {
         return (
             <div>
@@ -37,4 +45,16 @@ class NewsPage extends Component {
     }
 }
 
-export default NewsPage
+const mapStateToProps = state => {
+    return {
+        news: state.news.news
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        showNewsList: () => dispatch(news.showNewsList())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
