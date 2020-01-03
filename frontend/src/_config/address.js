@@ -2,8 +2,9 @@ const address = {
     // api host
     API_URL: "http://localhost:5000/api/",
 
-    // articles
+    // articles & news
     ARTICLES: "articles",
+    NEWS: "news",
     ADD: "add",
     EDIT: "edit",
     DELETE: "delete",

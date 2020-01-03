@@ -58,7 +58,7 @@ exports.modifyNewsById = (req, res, next) => {
                     message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
-            } else if (!article) {
+            } else if (!article.nModified) {
                 res.status(404).send({
                     message: "Nie znaleziono wpisu o wybranym identyfikatorze!"
                 });

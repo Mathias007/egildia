@@ -13,7 +13,8 @@ exports.getArticlesList = (req, res, next) => {
     ArticlesSchema.find({}, {}, (err, articles) => {
         if (err || !articles) {
             res.status(401).send({
-                message: "Wystąpił problem z autoryzacją!"
+                message:
+                    "Wystąpił problem z autoryzacją przy pobieraniu artykułów!"
             });
             next(err);
         } else if (!articles) {
@@ -33,7 +34,8 @@ exports.getArticleByAllocationKey = (req, res, next) => {
         (err, article) => {
             if (err) {
                 res.status(401).send({
-                    message: "Wystąpił problem z autoryzacją!"
+                    message:
+                        "Wystąpił problem z autoryzacją przy pobieraniu artykułu!"
                 });
                 next(err);
             } else if (!article) {
@@ -91,7 +93,8 @@ exports.modifyArticleById = (req, res, next) => {
         (err, article) => {
             if (err) {
                 res.status(401).send({
-                    message: "Wystąpił problem z autoryzacją!"
+                    message:
+                        "Wystąpił problem z autoryzacją podczas modyfikacji artykułu!"
                 });
                 next(err);
             } else if (!article.nModified) {
@@ -113,7 +116,8 @@ exports.deleteArticleById = (req, res, next) => {
     ArticlesSchema.deleteOne({ _id: articleId }, (err, article) => {
         if (err) {
             res.status(401).send({
-                message: "Wystąpił problem z autoryzacją!"
+                message:
+                    "Wystąpił problem z autoryzacją podczas usuwania artykułu!"
             });
             next(err);
         } else if (!article.deletedCount) {
