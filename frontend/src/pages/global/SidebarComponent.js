@@ -17,11 +17,14 @@ class SidebarComponent extends Component {
                     defaultOpenKeys={["knights"]}
                     style={{ height: "100%", borderRight: 0 }}
                 >
+                    <Item key="0">
+                        <NavLink to="/">Strona główna</NavLink>
+                    </Item>
                     <SubMenu
                         key="knights"
                         title={
                             <span>
-                                <Icon type="user" />
+                                <Icon type="skin" />
                                 Knights and Merchants
                             </span>
                         }
@@ -43,7 +46,7 @@ class SidebarComponent extends Component {
                         key="tzar"
                         title={
                             <span>
-                                <Icon type="laptop" />
+                                <Icon type="crown" />
                                 Tzar: Ciężar Korony
                             </span>
                         }
@@ -67,18 +70,25 @@ class SidebarComponent extends Component {
                         </Item>
                     </SubMenu>
                     <SubMenu
-                        key="sub3"
+                        key="admin"
                         title={
                             <span>
-                                <Icon type="notification" />
-                                subnav 3
+                                <Icon type="setting" />
+                                Administracja
                             </span>
                         }
                     >
-                        <Item key="9">option9</Item>
-                        <Item key="10">option10</Item>
-                        <Item key="11">option11</Item>
-                        <Item key="12">option12</Item>
+                        <Item key="10">
+                            <NavLink to="/admin/articles/list">
+                                Artykuły
+                            </NavLink>
+                        </Item>
+                        <Item key="11">
+                            <NavLink to="/admin/news/list">Wpisy</NavLink>
+                        </Item>
+                        <Item key="12">
+                            <NavLink to="#">Użytkownicy</NavLink>
+                        </Item>
                     </SubMenu>
                 </Menu>
             </Sider>
