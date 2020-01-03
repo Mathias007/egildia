@@ -2,7 +2,7 @@ import address from "../../../_config/address";
 import eventStatuses from "../../../_config/eventStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { API_URL, ARTICLES, SINGLE, LIST, ADD, EDIT, DELETE } = address;
+const { API_URL, ARTICLES, SINGLE, LIST, ADD, EDIT, REMOVE } = address;
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
@@ -11,10 +11,11 @@ const {
 } = eventStatuses;
 
 const { method, headers } = fetchOptions;
+const { GET, POST, PATCH, DELETE } = method;
 
 export const getAllArticles = dispatchArticlesListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -34,7 +35,7 @@ export const getSingleArticle = (
     dispatchArticleNotFound
 ) => {
     const options = {
-        method: method.POST,
+        method: POST,
         headers,
         body: JSON.stringify({ allocationKey })
     };
@@ -76,7 +77,7 @@ export const addArticle = (
     dispatchArticleAddingFailed
 ) => {
     const options = {
-        method: method.POST,
+        method: POST,
         headers,
         body: JSON.stringify({ allocationKey, title, content, author, date })
     };
@@ -119,7 +120,7 @@ export const editArticle = (
     dispatchArticleEditingFailed
 ) => {
     const options = {
-        method: method.PATCH,
+        method: PATCH,
         headers,
         body: JSON.stringify({
             id,
@@ -164,14 +165,14 @@ export const deleteArticle = (
     dispatchArticleDeletingFailed
 ) => {
     const options = {
-        method: method.DELETE,
+        method: DELETE,
         headers,
         body: JSON.stringify({
             id
         })
     };
 
-    fetch(`${API_URL}${ARTICLES}/${DELETE}`, options)
+    fetch(`${API_URL}${ARTICLES}/${REMOVE}`, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {

@@ -2,7 +2,7 @@ import address from "../../../_config/address";
 import eventStatuses from "../../../_config/eventStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { API_URL, NEWS, SINGLE, LIST, ADD, EDIT, DELETE } = address;
+const { API_URL, NEWS, SINGLE, LIST, ADD, EDIT, REMOVE } = address;
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
@@ -11,10 +11,11 @@ const {
 } = eventStatuses;
 
 const { method, headers } = fetchOptions;
+const { GET, POST, PATCH, DELETE } = method;
 
 export const getAllNews = dispatchNewsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -77,7 +78,7 @@ export const addNews = (
     dispatchNewsAddingFailed
 ) => {
     const options = {
-        method: method.POST,
+        method: POST,
         headers,
         body: JSON.stringify({ id, title, content, author, date, category })
     };
@@ -120,7 +121,7 @@ export const editNews = (
     dispatchNewsEditingFailed
 ) => {
     const options = {
-        method: method.PATCH,
+        method: PATCH,
         headers,
         body: JSON.stringify({
             id,
@@ -165,14 +166,14 @@ export const deleteNews = (
     dispatchNewsDeletingFailed
 ) => {
     const options = {
-        method: method.DELETE,
+        method: DELETE,
         headers,
         body: JSON.stringify({
             id
         })
     };
 
-    fetch(`${API_URL}${NEWS}/${DELETE}`, options)
+    fetch(`${API_URL}${NEWS}/${REMOVE}`, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {

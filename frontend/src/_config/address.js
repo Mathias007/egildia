@@ -7,7 +7,7 @@ const address = {
     NEWS: "news",
     ADD: "add",
     EDIT: "edit",
-    DELETE: "delete",
+    REMOVE: "remove",
     SINGLE: "single",
     LIST: "list",
 

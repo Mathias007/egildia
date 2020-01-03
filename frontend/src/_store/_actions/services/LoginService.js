@@ -11,6 +11,7 @@ const {
 
 const { API_URL, LOGIN } = address;
 const { method, headers } = fetchOptions;
+const { POST } = method;
 
 const fetchLogin = (
     name,
@@ -21,7 +22,7 @@ const fetchLogin = (
     dispatchLoginFailed
 ) => {
     const options = {
-        method: method.POST,
+        method: POST,
         headers,
         body: JSON.stringify({ name, password })
     };

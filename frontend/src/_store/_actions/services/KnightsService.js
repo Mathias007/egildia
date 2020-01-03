@@ -3,12 +3,13 @@ import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, KNIGHTS, BUILDINGS, UNITS } = address;
 const { method, headers } = fetchOptions;
+const { GET } = method;
 
 // obsługa statusów do dodania!
 
 export const fetchBuildingsList = dispatchBuildingsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -23,7 +24,7 @@ export const fetchBuildingsList = dispatchBuildingsListLoaded => {
 
 export const fetchUnitsList = dispatchUnitsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 

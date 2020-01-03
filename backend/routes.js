@@ -29,7 +29,7 @@ router.get(`/${API}/${NEWS}/list`, newsController.getNewsList);
 router.post(`/${API}/${NEWS}/single`, newsController.getNewsById);
 router.post(`/${API}/${NEWS}/add`, newsController.createNews);
 router.patch(`/${API}/${NEWS}/edit`, newsController.modifyNewsById);
-router.delete(`/${API}/${NEWS}/delete`, newsController.deleteNewsById);
+router.delete(`/${API}/${NEWS}/remove`, newsController.deleteNewsById);
 
 // articles API
 router.get(`/${API}/${ARTICLES}/list`, articlesController.getArticlesList);
@@ -40,7 +40,7 @@ router.post(
 router.post(`/${API}/${ARTICLES}/add`, articlesController.createArticle);
 router.patch(`/${API}/${ARTICLES}/edit`, articlesController.modifyArticleById);
 router.delete(
-    `/${API}/${ARTICLES}/delete`,
+    `/${API}/${ARTICLES}/remove`,
     articlesController.deleteArticleById
 );
 

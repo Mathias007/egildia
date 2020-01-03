@@ -3,12 +3,13 @@ import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, TZAR, NATIONS, SPELLS, TECHNOLOGIES, UNITS } = address;
 const { method, headers } = fetchOptions;
+const { GET } = method;
 
 // obsługa statusów do dodania
 
 export const fetchNationsList = dispatchNationsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -23,7 +24,7 @@ export const fetchNationsList = dispatchNationsListLoaded => {
 
 export const fetchSpellsList = dispatchSpellsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -38,7 +39,7 @@ export const fetchSpellsList = dispatchSpellsListLoaded => {
 
 export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 
@@ -53,7 +54,7 @@ export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
 
 export const fetchUnitsList = dispatchUnitsListLoaded => {
     const options = {
-        method: method.GET,
+        method: GET,
         headers
     };
 

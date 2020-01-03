@@ -12,6 +12,7 @@ const {
 
 const { API_URL, REGISTER } = address;
 const { method, headers } = fetchOptions;
+const { POST } = method;
 
 export const fetchRegister = (
     name,
@@ -22,7 +23,7 @@ export const fetchRegister = (
     dispatchRegistrationFailed
 ) => {
     const options = {
-        method: method.POST,
+        method: POST,
         headers,
         body: JSON.stringify({ name, email, password })
     };
