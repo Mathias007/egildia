@@ -10,7 +10,7 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 const { Item } = Form;
 const { Content } = Layout;
 
-class DeleteSelectedArticle extends Component {
+class ArticleRemover extends Component {
     state = {
         id: this.props.id,
         title: this.props.title,
@@ -69,9 +69,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-DeleteSelectedArticle = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(DeleteSelectedArticle);
+ArticleRemover = connect(mapStateToProps, mapDispatchToProps)(ArticleRemover);
 
-export default Form.create()(DeleteSelectedArticle);
+export default Form.create()(ArticleRemover);

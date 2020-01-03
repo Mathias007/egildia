@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 
 import { news } from "../_store/_actions";
 
-import EditNewsComponent from "./admin/news/EditSelectedNews";
-import DeleteNewsComponent from "./admin/news/DeleteSelectedNews";
-
-import { Avatar, Card, Icon } from "antd";
+import { Avatar, Card, Divider, Icon } from "antd";
 const { Meta } = Card;
 
 class NewsPage extends Component {
@@ -36,24 +33,21 @@ class NewsPage extends Component {
                             type="inner"
                             title={title}
                             extra={
-                                <>
-                                    Opcje:
+                                <div>
+                                    <strong>Opcje</strong>
+                                    <Divider type="vertical" />
                                     <Link to={`admin/news/edit/${_id}`}>
                                         {/* this.props.match.params._id */}
                                         <Icon type="edit" />
                                     </Link>
-                                    |
-                                    <Link
-                                        to={`admin/news/delete/${_id}`}
-                                    >
+                                    <Divider type="vertical" />
+                                    <Link to={`admin/news/remove/${_id}`}>
                                         {/* this.props.match.params._id */}
                                         <Icon type="delete" />
                                     </Link>
-                                </>
+                                </div>
                             }
-                            actions={
-                                content.length > 100 ? [<p>[dalej]</p>] : null
-                            }
+                            actions={[<p>Komentarze: <strong>brak</strong></p>,<p>[przejdź do wpisu]</p>]}
                         >
                             <Meta
                                 avatar={
@@ -72,7 +66,10 @@ class NewsPage extends Component {
                                     date
                                 ).format("LLLL")} | Autor: ${author}`}
                             />
-                            <p>{content}</p>
+                            <p>
+                                {content}{" "}
+                                {content.length > 100 ? <span>...</span> : null}
+                            </p>
                         </Card>
                     </>
                 );

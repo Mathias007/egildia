@@ -11,7 +11,7 @@ const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
-class EditSelectedArticle extends Component {
+class ArticleEditor extends Component {
     state = {
         id: this.props.id,
         allocationKey: this.props.allocationKey,
@@ -245,9 +245,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-EditSelectedArticle = connect(
+ArticleEditor = connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditSelectedArticle);
+)(ArticleEditor);
 
-export default Form.create()(EditSelectedArticle);
+export default Form.create()(ArticleEditor);

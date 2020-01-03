@@ -23,7 +23,7 @@ const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
-class AddNewArtice extends Component {
+class ArticleCreator extends Component {
     state = {
         errorMessage: ""
     };
@@ -269,6 +269,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-AddNewArtice = connect(mapStateToProps, mapDispatchToProps)(AddNewArtice);
+ArticleCreator = connect(mapStateToProps, mapDispatchToProps)(ArticleCreator);
 
-export default Form.create()(AddNewArtice);
+export default Form.create()(ArticleCreator);
