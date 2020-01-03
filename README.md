@@ -203,7 +203,6 @@
         - dodanie controllerów do pobrania w/w danych z bazy do Expressa;
         - uzupełnienie routingu oraz configa (fragmenty adresów API).
 
-
 ## Wtorek 31.12.2019 - początki wykuwania panelu administracyjnego
 
     **FRONTEND**:
@@ -239,3 +238,34 @@
         - utworzenie w/w dla usuwania pojedynczego artykułu (na podstawie allocationKey.)
 
     **INNE*: wstępne rozważenie planów i celów rozwoju projektu na I kwartał 2020 roku (szczegóły wkrótce).
+
+## Czwartek 2.01.2020 - budowa systemu artykułów i newsów
+    **FRONTEND**:
+        - rozbudowa komponentu dodawania artykułu (struktura i logika);
+        - utworzenie komponentów do usuwania i edycji artykułów oraz szkicu strony głównej (newsy);
+        - implementacja biblioteki **moment.js**;
+        - uzupełnienie reduxa - CRUD dla artykułów;
+        - aktualizacja plików konfiguracyjnych we frontendzie;
+        - uzupełnienie routingu;
+        - refactoring i zmiana rozmieszczenia funkcji serwisowych dla akcji, stworzenie pliku fetchOptions w configu.
+
+    **BACKEND**:
+        - dokończenie tworzenia controllerów dla artykułów (CRUD) i dodanie domyślnej daty do modelu;
+        - dodanie kolekcji w bazie dla newsów i stworzenie modelu;
+        - utworzenie kompletu controllerów (CRUD) i seedera dla newsów;
+        - uzupełnienie routingu dla artykułów i newsów;
+        - uzupełnienie plików konfiguracyjnych w backendzie;
+        - podmiana require na importy oraz stworzenie katalogu config
+
+## Piątek 3.01.2020 - kolejne postępy w budowie systemu newsów i artykułów
+    **FRONTEND**:
+        - utworzenie plików i funkcji reduxa dla news (CRUD), uzupełnienie plików konfiguracyjnych;
+        - połączenie NewsPage ze storem i utworzenie dynamicznego komponentu z aktualnościami;
+        - stworzenie komponentów edycji, usuwania, listy newsów dla panelu admina;
+        - utworzenie katalogów admin i news wewnątrz admin;
+        - aktualizacja routingu (przekazywanie parametrów id dla edycji i usuwania newsów);
+        - standaryzacja nazw komponentów;
+        - przeniesienie komponentów nagłówka, stopki i panelu bocznego z poszczególnych podstron do globalnego routera w App.js (uproszczenie struktury);
+        - aktualizacja panelu bocznego oraz prace nad panelem specjalnym dla sekcji administracyjnej.
+
+    **BACKEND**: kosmetyczne poprawki po stronie backendu.
