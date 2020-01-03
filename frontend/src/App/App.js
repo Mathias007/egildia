@@ -10,11 +10,17 @@ import NewsPage from "../pages/NewsPage";
 import LoginPage from "../pages/users/LoginPage";
 import RegistrationPage from "../pages/users/RegistrationPage";
 
-// admin imports
-import ArticlesList from "../pages/admin/ArticlesList";
-import AddNewArticle from "../pages/admin/AddNewArticle";
-import EditSelectedArticle from "../pages/admin/EditSelectedArticle";
-import DeleteSelectedArticle from "../pages/admin/DeleteSelectedArticle";
+// admin articles imports
+import ArticlesList from "../pages/admin/articles/ArticlesList";
+import AddNewArticle from "../pages/admin/articles/AddNewArticle";
+import EditSelectedArticle from "../pages/admin/articles/EditSelectedArticle";
+import DeleteSelectedArticle from "../pages/admin/articles/DeleteSelectedArticle";
+
+// admin news imports
+import NewsList from "../pages/admin/news/NewsList";
+import AddNews from "../pages/admin/news/AddNews";
+import EditSelectedNews from "../pages/admin/news/EditSelectedNews";
+import DeleteSelectedNews from "../pages/admin/news/DeleteSelectedNews";
 
 // Knights and Metchants imports
 import KnightsBuildingsPage from "../pages/knights/KnightsBuildingsPage";
@@ -55,7 +61,7 @@ class App extends Component {
                             component={RegistrationPage}
                         />
 
-                        {/* admin routes */}
+                        {/* admin articles routes */}
                         <Route
                             path="/admin/articles/list"
                             component={ArticlesList}
@@ -65,12 +71,24 @@ class App extends Component {
                             component={AddNewArticle}
                         />
                         <Route
-                            path="/admin/articles/edit"
+                            path="/admin/articles/edit/:_id"
                             component={EditSelectedArticle}
                         />
                         <Route
-                            path="/admin/articles/delete"
+                            path="/admin/articles/delete/:_id"
                             component={DeleteSelectedArticle}
+                        />
+
+                        {/* admin news routes */}
+                        <Route path="/admin/news/list" component={NewsList} />
+                        <Route path="/admin/news/add" component={AddNews} />
+                        <Route
+                            path="/admin/news/edit/:_id"
+                            component={EditSelectedNews}
+                        />
+                        <Route
+                            path="/admin/news/delete/:_id"
+                            component={DeleteSelectedNews}
                         />
 
                         {/* Knights and Merchants routes */}

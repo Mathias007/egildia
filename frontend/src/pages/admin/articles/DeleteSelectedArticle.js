@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { articles } from "../../_store/_actions";
+import { articles } from "../../../_store/_actions";
 
 import { Button, Form, Layout } from "antd";
 
-import BreadcrumbComponent from "../global/BreadcrumbComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const { Item } = Form;
 const { Content } = Layout;

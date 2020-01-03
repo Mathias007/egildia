@@ -1,45 +1,41 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import moment from "moment";
 import { connect } from "react-redux";
+import { articles } from "../../../_store/_actions";
 
-import { articles } from "../../_store/_actions";
-import { auth } from "../../_store/_actions";
+import { Button, Form, Icon, Input, Layout, PageHeader, Tooltip } from "antd";
 
-import {
-    Button,
-    DatePicker,
-    Form,
-    Icon,
-    Input,
-    Layout,
-    PageHeader,
-    Tooltip
-} from "antd";
-
-import BreadcrumbComponent from "../global/BreadcrumbComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
-class AddNewArtice extends Component {
+class EditSelectedArticle extends Component {
     state = {
+        id: this.props.id,
+        allocationKey: this.props.allocationKey,
+        title: this.props.title,
+        content: this.props.content,
+        author: this.props.author,
         errorMessage: ""
     };
 
     handleSubmit = e => {
         e.preventDefault();
 
+        let modificationDate = new Date();
+
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
-                this.props.addNewArticle(
+                this.props.editSelectedArticle(
+                    this.props.id,
                     values.allocationKey,
                     values.title,
                     values.content,
                     values.author,
-                    values.date
+                    modificationDate
                 );
             }
         });
@@ -201,41 +197,14 @@ class AddNewArtice extends Component {
                             )}
                         </Item>
 
-                        <Item label="Data dodania (utworzenia)">
-                            {getFieldDecorator("date", {
-                                rules: [
-                                    {
-                                        type: "object",
-                                        required: false
-                                    }
-                                ]
-                            })(
-                                <DatePicker
-                                    defaultPickerValue={moment()}
-                                    suffixIcon={
-                                        <Icon
-                                            type="calendar"
-                                            style={{
-                                                color: "rgba(0,0,0,.25)"
-                                            }}
-                                        />
-                                    }
-                                    showTime
-                                    showToday
-                                    format="YYYY-MM-DD HH:mm:ss"
-                                    placeholder="Data utworzenia"
-                                />
-                            )}
-                        </Item>
-
                         <Item>
                             <Button
-                                icon="file-add"
+                                icon="file-edit"
                                 type="primary"
                                 htmlType="submit"
-                                className="add-article-button"
+                                className="edit-article-button"
                             >
-                                Dodaj artykuł{" "}
+                                Edytuj artykuł{" "}
                             </Button>
                         </Item>
                         <Item>{this.props.errorMessage}</Item>
@@ -248,27 +217,37 @@ class AddNewArtice extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.articles.errorMessage,
-        name: state.auth.name
+        errorMessage: state.articles.errorMessage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        addNewArticle: (allocationKey, title, content, author, date) => {
+        editSelectedArticle: (
+            id,
+            allocationKey,
+            title,
+            content,
+            author,
+            modificationDate
+        ) => {
             return dispatch(
-                articles.addNewArticle(
+                articles.editSelectedArticle(
+                    id,
                     allocationKey,
                     title,
                     content,
                     author,
-                    date
+                    modificationDate
                 )
             );
         }
     };
 };
 
-AddNewArtice = connect(mapStateToProps, mapDispatchToProps)(AddNewArtice);
+EditSelectedArticle = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EditSelectedArticle);
 
-export default Form.create()(AddNewArtice);
+export default Form.create()(EditSelectedArticle);

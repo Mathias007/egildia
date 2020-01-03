@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 
 import { news } from "../_store/_actions";
+
+import EditNewsComponent from "./admin/news/EditSelectedNews";
+import DeleteNewsComponent from "./admin/news/DeleteSelectedNews";
 
 import { Avatar, Card, Icon } from "antd";
 const { Meta } = Card;
@@ -27,50 +30,51 @@ class NewsPage extends Component {
                     date
                 } = singleNews;
                 return (
-                    <Card
-                        key={_id}
-                        type="inner"
-                        title={title}
-                        extra={
-                            <>
-                                Opcje:
-                                <Link
-                                    to={`admin/news/edit/${_id}`}
-                                    // component={EditNewsComponent}
-                                >
-                                    {/* this.props.match.params._id */}
-                                    <Icon type="edit" />
-                                </Link>
-                                |
-                                <Link
-                                    to={`admin/news/delete/${_id}`}
-                                    // component={DeleteNewsComponent}
-                                >
-                                    {/* this.props.match.params._id */}
-                                    <Icon type="delete" />
-                                </Link>
-                            </>
-                        }
-                        actions={content.length > 100 ? [<p>[dalej]</p>] : null}
-                    >
-                        <Meta
-                            avatar={
-                                <Avatar
-                                    style={{
-                                        backgroundColor: "violet",
-                                        verticalAlign: "middle"
-                                    }}
-                                    size="large"
-                                >
-                                    {category.charAt(0) + category.charAt(1)}
-                                </Avatar>
+                    <>
+                        <Card
+                            key={_id}
+                            type="inner"
+                            title={title}
+                            extra={
+                                <>
+                                    Opcje:
+                                    <Link to={`admin/news/edit/${_id}`}>
+                                        {/* this.props.match.params._id */}
+                                        <Icon type="edit" />
+                                    </Link>
+                                    |
+                                    <Link
+                                        to={`admin/news/delete/${_id}`}
+                                    >
+                                        {/* this.props.match.params._id */}
+                                        <Icon type="delete" />
+                                    </Link>
+                                </>
                             }
-                            description={`Data dodania: ${moment(date).format(
-                                "LLLL"
-                            )} | Autor: ${author}`}
-                        />
-                        <p>{content}</p>
-                    </Card>
+                            actions={
+                                content.length > 100 ? [<p>[dalej]</p>] : null
+                            }
+                        >
+                            <Meta
+                                avatar={
+                                    <Avatar
+                                        style={{
+                                            backgroundColor: "violet",
+                                            verticalAlign: "middle"
+                                        }}
+                                        size="large"
+                                    >
+                                        {category.charAt(0) +
+                                            category.charAt(1)}
+                                    </Avatar>
+                                }
+                                description={`Data dodania: ${moment(
+                                    date
+                                ).format("LLLL")} | Autor: ${author}`}
+                            />
+                            <p>{content}</p>
+                        </Card>
+                    </>
                 );
             });
         }

@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import { Layout, Table } from "antd";
 
-import { articles } from "../../_store/_actions";
+import { articles } from "../../../_store/_actions";
 
 // import HeaderComponent from "../global/HeaderComponent";
 // import SidebarComponent from "../global/SidebarComponent";
 // import FooterComponent from "../global/FooterComponent";
 
-import BreadcrumbComponent from "../global/BreadcrumbComponent";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const componentStyles = {
     content: {
