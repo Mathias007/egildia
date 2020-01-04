@@ -9,7 +9,7 @@ class LoginPage extends Component {
 
     render() {
         if (this.props.isAuthenticated || this.props.remember) {
-            return <Redirect to="/knights/" />;
+            return <Redirect to="/" />;
         }
         return <LoginForm />;
     }

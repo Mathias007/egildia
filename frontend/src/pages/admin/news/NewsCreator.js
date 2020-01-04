@@ -34,7 +34,7 @@ class NewsCreator extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
-                this.props.addNews(
+                this.props.addSingleNews(
                     values.title,
                     values.content,
                     values.author,
@@ -255,9 +255,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addNews: (title, content, author, date, category) => {
+        addSingleNews: (title, content, author, date, category) => {
             return dispatch(
-                news.addNews(title, content, author, date, category)
+                news.addSingleNews(title, content, author, date, category)
             );
         }
     };

@@ -29,7 +29,7 @@ class NewsEditor extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
-                this.props.editNews(
+                this.props.editSelectedNews(
                     this.props.match.params._id,
                     values.title,
                     values.content,
@@ -224,9 +224,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        editNews: (id, title, content, author, category, modificationDate) => {
+        editSelectedNews: (id, title, content, author, category, modificationDate) => {
             return dispatch(
-                news.editNews(
+                news.editSelectedNews(
                     id,
                     title,
                     content,

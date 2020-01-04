@@ -76,19 +76,25 @@ exports.loginUser = (req, res, next) => {
             password: req.body.password
         },
         (err, user) => {
+            console.log(user);
             if (err || !user) {
                 res.status(401).send({
-                    message: "Unauthorized / Invalid email or password"
+                    message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
-            } else {
+            } else if (!user) {
+                res.status(404).send({
+                    message: "Nie znaleziono użytkownika!"
+                });
                 // if (bcrypt.compareSync(req.body.password, user.password)) {
-                res.json(generateTokens(req, user));
                 // } else {
                 // res.status(401).send({
                 //     message: "Invalid email/password"
                 // })
                 // }
+            } else {
+                console.log(user);
+                res.json(generateTokens(req, user));
             }
         }
     ).select("password");

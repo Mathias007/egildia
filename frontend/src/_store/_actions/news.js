@@ -62,7 +62,7 @@ export const showNewsList = () => {
     };
 };
 
-export const addSingleNews = (id, title, content, author, date, category) => {
+export const addSingleNews = (title, content, author, date, category) => {
     return (dispatch, getState) => {
         const dispatchNewsAdded = function(response) {
             dispatch({
@@ -83,7 +83,6 @@ export const addSingleNews = (id, title, content, author, date, category) => {
         };
 
         return addNews(
-            id,
             title,
             content,
             author,

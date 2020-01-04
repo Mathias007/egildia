@@ -1,7 +1,9 @@
-import address from "../../../_config/address";
+import apiAdressses from "../../../_config/apiAdresses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { API_URL, TZAR, NATIONS, SPELLS, TECHNOLOGIES, UNITS } = address;
+const { TZAR } = apiAdressses;
+const { NATIONS, SPELLS, TECHNOLOGIES, UNITS } = TZAR;
+
 const { method, headers } = fetchOptions;
 const { GET } = method;
 
@@ -13,7 +15,7 @@ export const fetchNationsList = dispatchNationsListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${TZAR}/${NATIONS}`, options)
+    fetch(NATIONS, options)
         .then(res => {
             return res.json();
         })
@@ -28,7 +30,7 @@ export const fetchSpellsList = dispatchSpellsListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${TZAR}/${SPELLS}`, options)
+    fetch(SPELLS, options)
         .then(res => {
             return res.json();
         })
@@ -43,7 +45,7 @@ export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${TZAR}/${TECHNOLOGIES}`, options)
+    fetch(TECHNOLOGIES, options)
         .then(res => {
             return res.json();
         })
@@ -58,7 +60,7 @@ export const fetchUnitsList = dispatchUnitsListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${TZAR}/${UNITS}`, options)
+    fetch(UNITS, options)
         .then(res => {
             return res.json();
         })

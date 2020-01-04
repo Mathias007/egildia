@@ -37,17 +37,20 @@ class NewsPage extends Component {
                                     <strong>Opcje</strong>
                                     <Divider type="vertical" />
                                     <Link to={`admin/news/edit/${_id}`}>
-                                        {/* this.props.match.params._id */}
                                         <Icon type="edit" />
                                     </Link>
                                     <Divider type="vertical" />
                                     <Link to={`admin/news/remove/${_id}`}>
-                                        {/* this.props.match.params._id */}
                                         <Icon type="delete" />
                                     </Link>
                                 </div>
                             }
-                            actions={[<p>Komentarze: <strong>brak</strong></p>,<p>[przejdź do wpisu]</p>]}
+                            actions={[
+                                <p>
+                                    Komentarze: <strong>brak</strong>
+                                </p>,
+                                <p>[przejdź do wpisu]</p>
+                            ]}
                         >
                             <Meta
                                 avatar={
@@ -81,7 +84,7 @@ class NewsPage extends Component {
         return (
             <div>
                 <Card title="Aktualności">
-                    {/* <p
+                    <p
                         style={{
                             fontSize: 14,
                             color: "rgba(0, 0, 0, 0.85)",
@@ -90,7 +93,7 @@ class NewsPage extends Component {
                         }}
                     >
                         Group title
-                    </p> */}
+                    </p>
                     {this.renderNews()}
                 </Card>
             </div>
