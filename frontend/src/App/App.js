@@ -41,7 +41,7 @@ import TzarTechnologiesPage from "../pages/tzar/TzarTechnologiesPage";
 import TzarUnitsPage from "../pages/tzar/TzarUnitsPage";
 
 import routesPaths from "../_config/routesPaths";
-const {GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR} = routesPaths;
+const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR } = routesPaths;
 
 class App extends Component {
     state = {
@@ -85,6 +85,7 @@ class App extends Component {
 
                                     {/* admin articles routes */}
                                     <Route
+                                        exact
                                         path={ARTICLES.MAIN}
                                         component={ArticlesList}
                                     />
@@ -103,6 +104,7 @@ class App extends Component {
 
                                     {/* admin news routes */}
                                     <Route
+                                        exact
                                         path={NEWS.MAIN}
                                         component={NewsList}
                                     />

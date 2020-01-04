@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-import { Layout, Table } from "antd";
+import { Layout, Table, Divider, Icon } from "antd";
 
 import { news } from "../../../_store/_actions";
 
@@ -46,7 +48,8 @@ class NewsList extends Component {
                 dataIndex: "author",
                 align: "center"
             },
-            col_date: { title: "Data utworzenia", dataIndex: "date" }
+            col_date: { title: "Data utworzenia", dataIndex: "date" },
+            col_options: { title: "Opcje", dataIndex: "options" }
         },
         tableColumns: [],
         tableData: []
@@ -62,7 +65,14 @@ class NewsList extends Component {
 
         if (news) {
             return news.map((singleNews, index) => {
-                const { _id, title, content, author, date, category } = singleNews;
+                const {
+                    _id,
+                    title,
+                    content,
+                    author,
+                    date,
+                    category
+                } = singleNews;
 
                 return {
                     key: _id,
@@ -70,7 +80,8 @@ class NewsList extends Component {
                     content,
                     author,
                     date,
-                    category
+                    category,
+                    options: _id
                 };
             });
         }
@@ -88,7 +99,8 @@ class NewsList extends Component {
             col_title,
             col_content,
             col_author,
-            col_date
+            col_date,
+            col_options
         } = this.state.columnsStructure;
 
         tableColumns = [
@@ -115,7 +127,25 @@ class NewsList extends Component {
             {
                 title: col_date.title,
                 dataIndex: col_date.dataIndex,
-                align: col_date.align
+                align: col_date.align,
+                render: date => moment(date).format("LLLL")
+            },
+            {
+                title: col_options.title,
+                dataIndex: col_options.dataIndex,
+                align: col_options.align,
+                render: _id => (
+                    <>
+                        <Divider type="vertical" />
+                        <Link to={`news/edit/${_id}`}>
+                            <Icon type="edit" />
+                        </Link>
+                        <Divider type="vertical" />
+                        <Link to={`news/remove/${_id}`}>
+                            <Icon type="delete" />
+                        </Link>
+                    </>
+                )
             }
         ];
 

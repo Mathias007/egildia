@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 
 import routesPaths from "../../_config/routesPaths";
-const {GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR} = routesPaths;
+const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR } = routesPaths;
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -82,9 +82,7 @@ class SidebarComponent extends Component {
                         }
                     >
                         <Item key="10">
-                            <NavLink to={ARTICLES.MAIN}>
-                                Artykuły
-                            </NavLink>
+                            <NavLink to={ARTICLES.MAIN}>Artykuły</NavLink>
                         </Item>
                         <Item key="11">
                             <NavLink to={NEWS.MAIN}>Wpisy</NavLink>

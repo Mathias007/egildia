@@ -30,14 +30,14 @@ const routesPaths = {
     ARTICLES: {
         MAIN: `/${ADMIN}/${ARTICLES}`,
         ADD: `/${ADMIN}/${ARTICLES}/${ADD}`,
-        EDIT: `/${ADMIN}/${ARTICLES}/${EDIT}/${ID_PARAM}`,
-        REMOVE: `/${ADMIN}/${ARTICLES}/${REMOVE}/${ID_PARAM}`
+        EDIT: `/${ADMIN}/${ARTICLES}/${EDIT}/:${ID_PARAM}`,
+        REMOVE: `/${ADMIN}/${ARTICLES}/${REMOVE}/:${ID_PARAM}`
     },
     NEWS: {
         MAIN: `/${ADMIN}/${NEWS}`,
         ADD: `/${ADMIN}/${NEWS}/${ADD}`,
-        EDIT: `/${ADMIN}/${NEWS}/${EDIT}/${ID_PARAM}`,
-        REMOVE: `/${ADMIN}/${NEWS}/${REMOVE}/${ID_PARAM}`
+        EDIT: `/${ADMIN}/${NEWS}/${EDIT}/:${ID_PARAM}`,
+        REMOVE: `/${ADMIN}/${NEWS}/${REMOVE}/:${ID_PARAM}`
     },
     KNIGHTS: {
         MAIN: `/${KNIGHTS}/`,

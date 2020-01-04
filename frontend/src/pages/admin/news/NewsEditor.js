@@ -25,8 +25,9 @@ class NewsEditor extends Component {
         e.preventDefault();
 
         let modificationDate = new Date();
+        const { validateFields, resetFields } = this.props.form;
 
-        this.props.form.validateFields((err, values) => {
+        validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
                 this.props.editSelectedNews(
@@ -39,6 +40,7 @@ class NewsEditor extends Component {
                 );
             }
         });
+        resetFields();
     };
 
     render() {
@@ -224,7 +226,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        editSelectedNews: (id, title, content, author, category, modificationDate) => {
+        editSelectedNews: (
+            id,
+            title,
+            content,
+            author,
+            category,
+            modificationDate
+        ) => {
             return dispatch(
                 news.editSelectedNews(
                     id,

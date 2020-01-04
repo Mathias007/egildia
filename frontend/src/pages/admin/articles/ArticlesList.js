@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-import { Layout, Table } from "antd";
+import { Layout, Table, Divider, Icon } from "antd";
 
 import { articles } from "../../../_store/_actions";
 
@@ -46,7 +48,8 @@ class ArticlesList extends Component {
                 dataIndex: "author",
                 align: "center"
             },
-            col_date: { title: "Data utworzenia", dataIndex: "date" }
+            col_date: { title: "Data utworzenia", dataIndex: "date" },
+            col_options: { title: "Opcje", dataIndex: "options" }
         },
         tableColumns: [],
         tableData: []
@@ -70,14 +73,15 @@ class ArticlesList extends Component {
                     author,
                     date
                 } = article;
-                
+
                 return {
                     key: _id,
                     allocationKey,
                     title,
                     content,
                     author,
-                    date
+                    date,
+                    options: _id
                 };
             });
         }
@@ -95,7 +99,8 @@ class ArticlesList extends Component {
             col_title,
             col_content,
             col_author,
-            col_date
+            col_date,
+            col_options
         } = this.state.columnsStructure;
 
         tableColumns = [
@@ -122,7 +127,25 @@ class ArticlesList extends Component {
             {
                 title: col_date.title,
                 dataIndex: col_date.dataIndex,
-                align: col_date.align
+                align: col_date.align,
+                render: date => moment(date).format("LLLL")
+            },
+            {
+                title: col_options.title,
+                dataIndex: col_options.dataIndex,
+                align: col_options.align,
+                render: _id => (
+                    <>
+                        <Divider type="vertical" />
+                        <Link to={`articles/edit/${_id}`}>
+                            <Icon type="edit" />
+                        </Link>
+                        <Divider type="vertical" />
+                        <Link to={`articles/remove/${_id}`}>
+                            <Icon type="delete" />
+                        </Link>
+                    </>
+                )
             }
         ];
 

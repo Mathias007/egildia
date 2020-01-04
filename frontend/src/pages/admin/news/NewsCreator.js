@@ -31,7 +31,9 @@ class NewsCreator extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        this.props.form.validateFields((err, values) => {
+        const { validateFields, resetFields } = this.props.form;
+
+        validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
                 this.props.addSingleNews(
@@ -43,6 +45,7 @@ class NewsCreator extends Component {
                 );
             }
         });
+        resetFields();
     };
 
     render() {
@@ -138,7 +141,8 @@ class NewsCreator extends Component {
                                 rules: [
                                     {
                                         required: true,
-                                        message: "Umieść zawartość nowego wpisu!"
+                                        message:
+                                            "Umieść zawartość nowego wpisu!"
                                     }
                                 ]
                             })(

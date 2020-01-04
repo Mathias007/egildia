@@ -26,7 +26,9 @@ class ArticleEditor extends Component {
 
         let modificationDate = new Date();
 
-        this.props.form.validateFields((err, values) => {
+        const { validateFields, resetFields } = this.props.form;
+
+        validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
                 this.props.editSelectedArticle(
@@ -39,6 +41,8 @@ class ArticleEditor extends Component {
                 );
             }
         });
+
+        resetFields();
     };
 
     render() {
