@@ -1,6 +1,9 @@
-import address from "../../../_config/address";
+import apiAdressses from "../../../_config/apiAdresses";
 import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
+
+const { USERS } = apiAdressses;
+const { REGISTER } = USERS;
 
 const {
     STATUS_OK,
@@ -10,7 +13,6 @@ const {
     INTERNAL_ERROR
 } = serverStatuses;
 
-const { API_URL, REGISTER } = address;
 const { method, headers } = fetchOptions;
 const { POST } = method;
 
@@ -28,7 +30,7 @@ export const fetchRegister = (
         body: JSON.stringify({ name, email, password })
     };
 
-    fetch(`${API_URL}${REGISTER}`, options)
+    fetch(REGISTER, options)
         .then(res => {
             if (res.status < INTERNAL_ERROR) {
                 return res.json().then(data => {

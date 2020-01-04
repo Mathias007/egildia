@@ -1,8 +1,10 @@
-import address from "../../../_config/address";
+import apiAdressses from "../../../_config/apiAdresses";
 import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { API_URL, ARTICLES, SINGLE, LIST, ADD, EDIT, REMOVE } = address;
+const { ARTICLES } = apiAdressses;
+const { LIST, ADD, EDIT, REMOVE, SINGLE } = ARTICLES;
+
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
@@ -19,7 +21,7 @@ export const getAllArticles = dispatchArticlesListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${ARTICLES}/${LIST}`, options)
+    fetch(LIST, options)
         .then(res => {
             return res.json();
         })
@@ -40,7 +42,7 @@ export const getSingleArticle = (
         body: JSON.stringify({ allocationKey })
     };
 
-    fetch(`${API_URL}${ARTICLES}/${SINGLE}`, options)
+    fetch(SINGLE, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -82,7 +84,7 @@ export const addArticle = (
         body: JSON.stringify({ allocationKey, title, content, author, date })
     };
 
-    fetch(`${API_URL}${ARTICLES}/${ADD}`, options)
+    fetch(ADD, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -132,7 +134,7 @@ export const editArticle = (
         })
     };
 
-    fetch(`${API_URL}${ARTICLES}/${EDIT}`, options)
+    fetch(EDIT, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -172,7 +174,7 @@ export const deleteArticle = (
         })
     };
 
-    fetch(`${API_URL}${ARTICLES}/${REMOVE}`, options)
+    fetch(REMOVE, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {

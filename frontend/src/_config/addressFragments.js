@@ -1,4 +1,4 @@
-const address = {
+const addressFragments = {
     // api host
     API_URL: "http://localhost:5000/api/",
 
@@ -25,4 +25,4 @@ const address = {
     TECHNOLOGIES: "technologies"
 };
 
-export default address;
+export default addressFragments;

@@ -1,8 +1,10 @@
-import address from "../../../_config/address";
+import apiAdressses from "../../../_config/apiAdresses";
 import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { API_URL, NEWS, SINGLE, LIST, ADD, EDIT, REMOVE } = address;
+const { NEWS } = apiAdressses;
+const { LIST, ADD, EDIT, REMOVE, SINGLE } = NEWS;
+
 const {
     STATUS_OK,
     STATUS_UNAUTHORIZED,
@@ -19,7 +21,7 @@ export const getAllNews = dispatchNewsListLoaded => {
         headers
     };
 
-    fetch(`${API_URL}${NEWS}/${LIST}`, options)
+    fetch(LIST, options)
         .then(res => {
             return res.json();
         })
@@ -40,7 +42,7 @@ export const getSingleNews = (
         body: JSON.stringify({ id })
     };
 
-    fetch(`${API_URL}${NEWS}/${SINGLE}`, options)
+    fetch(SINGLE, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -82,7 +84,7 @@ export const addNews = (
         body: JSON.stringify({ title, content, author, date, category })
     };
 
-    fetch(`${API_URL}${NEWS}/${ADD}`, options)
+    fetch(ADD, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -132,7 +134,7 @@ export const editNews = (
         })
     };
 
-    fetch(`${API_URL}${NEWS}/${EDIT}`, options)
+    fetch(EDIT, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
@@ -172,7 +174,7 @@ export const deleteNews = (
         })
     };
 
-    fetch(`${API_URL}${NEWS}/${REMOVE}`, options)
+    fetch(REMOVE, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {
