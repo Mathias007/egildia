@@ -40,6 +40,9 @@ import TzarSpellsPage from "../pages/tzar/TzarSpellsPage";
 import TzarTechnologiesPage from "../pages/tzar/TzarTechnologiesPage";
 import TzarUnitsPage from "../pages/tzar/TzarUnitsPage";
 
+import routesPaths from "../_config/routesPaths";
+const {GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR} = routesPaths;
+
 class App extends Component {
     state = {
         collapsed: false
@@ -66,91 +69,91 @@ class App extends Component {
                                     {/* general routes */}
                                     <Route
                                         exact
-                                        path="/"
+                                        path={GENERAL.INDEX}
                                         component={NewsPage}
                                     />
                                     <Route
                                         exact
-                                        path="/login"
+                                        path={GENERAL.LOGIN}
                                         component={LoginPage}
                                     />
                                     <Route
                                         exact
-                                        path="/register"
+                                        path={GENERAL.REGISTER}
                                         component={RegistrationPage}
                                     />
 
                                     {/* admin articles routes */}
                                     <Route
-                                        path="/admin/articles/list"
+                                        path={ARTICLES.MAIN}
                                         component={ArticlesList}
                                     />
                                     <Route
-                                        path="/admin/articles/add"
+                                        path={ARTICLES.ADD}
                                         component={ArticleCreator}
                                     />
                                     <Route
-                                        path="/admin/articles/edit/:_id"
+                                        path={ARTICLES.EDIT}
                                         component={ArticleEditor}
                                     />
                                     <Route
-                                        path="/admin/articles/remove/:_id"
+                                        path={ARTICLES.REMOVE}
                                         component={ArticleRemover}
                                     />
 
                                     {/* admin news routes */}
                                     <Route
-                                        path="/admin/news/list"
+                                        path={NEWS.MAIN}
                                         component={NewsList}
                                     />
                                     <Route
-                                        path="/admin/news/add"
+                                        path={NEWS.ADD}
                                         component={NewsCreator}
                                     />
                                     <Route
-                                        path="/admin/news/edit/:_id"
+                                        path={NEWS.EDIT}
                                         component={NewsEditor}
                                     />
                                     <Route
-                                        path="/admin/news/remove/:_id"
+                                        path={NEWS.REMOVE}
                                         component={NewsRemover}
                                     />
 
                                     {/* Knights and Merchants routes */}
                                     <Route
                                         exact
-                                        path="/knights/"
+                                        path={KNIGHTS.MAIN}
                                         component={KnightsHomePage}
                                     />
                                     <Route
-                                        path="/knights/buildings"
+                                        path={KNIGHTS.BUILDINGS}
                                         component={KnightsBuildingsPage}
                                     />
                                     <Route
-                                        path="/knights/units"
+                                        path={KNIGHTS.UNITS}
                                         component={KnightsUnitsPage}
                                     />
 
                                     {/* Tzar routes */}
                                     <Route
                                         exact
-                                        path="/tzar/"
+                                        path={TZAR.MAIN}
                                         component={TzarHomePage}
                                     />
                                     <Route
-                                        path="/tzar/nations"
+                                        path={TZAR.NATIONS}
                                         component={TzarNationsPage}
                                     />
                                     <Route
-                                        path="/tzar/spells"
+                                        path={TZAR.SPELLS}
                                         component={TzarSpellsPage}
                                     />
                                     <Route
-                                        path="/tzar/technologies"
+                                        path={TZAR.TECHNOLOGIES}
                                         component={TzarTechnologiesPage}
                                     />
                                     <Route
-                                        path="/tzar/units"
+                                        path={TZAR.UNITS}
                                         component={TzarUnitsPage}
                                     />
                                 </Switch>

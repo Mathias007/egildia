@@ -2,6 +2,9 @@ const addressFragments = {
     // api host
     API_URL: "http://localhost:5000/api/",
 
+    // admin panel
+    ADMIN: "admin",
+
     // articles & news
     ARTICLES: "articles",
     NEWS: "news",
@@ -10,6 +13,7 @@ const addressFragments = {
     REMOVE: "remove",
     SINGLE: "single",
     LIST: "list",
+    ID_PARAM: "_id",
 
     // users
     LOGIN: "login",
