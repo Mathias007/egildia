@@ -1,4 +1,4 @@
-const statuses = {
+const serverStatuses = {
     STATUS_OK: 200,
     STATUS_CREATED: 201,
     STATUS_UNAUTHORIZED: 401,
@@ -6,4 +6,4 @@ const statuses = {
     INTERNAL_ERROR: 500
 };
 
-export default statuses;
+export default serverStatuses;

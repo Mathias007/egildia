@@ -1,5 +1,5 @@
 import address from "../../../_config/address";
-import eventStatuses from "../../../_config/eventStatuses";
+import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
 const { API_URL, NEWS, SINGLE, LIST, ADD, EDIT, REMOVE } = address;
@@ -8,7 +8,7 @@ const {
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
     INTERNAL_ERROR
-} = eventStatuses;
+} = serverStatuses;
 
 const { method, headers } = fetchOptions;
 const { GET, POST, PATCH, DELETE } = method;
@@ -67,7 +67,6 @@ export const getSingleNews = (
 };
 
 export const addNews = (
-    id,
     title,
     content,
     author,
@@ -80,7 +79,7 @@ export const addNews = (
     const options = {
         method: POST,
         headers,
-        body: JSON.stringify({ id, title, content, author, date, category })
+        body: JSON.stringify({ title, content, author, date, category })
     };
 
     fetch(`${API_URL}${NEWS}/${ADD}`, options)

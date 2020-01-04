@@ -1,5 +1,5 @@
 import address from "../../../_config/address";
-import eventStatuses from "../../../_config/eventStatuses";
+import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
 const {
@@ -7,7 +7,7 @@ const {
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
     INTERNAL_ERROR
-} = eventStatuses;
+} = serverStatuses;
 
 const { API_URL, LOGIN } = address;
 const { method, headers } = fetchOptions;
