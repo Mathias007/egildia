@@ -22,11 +22,11 @@ const initialState = {
 export default function news(state = initialState, action) {
     switch (action.type) {
         case NEWS_SUCCESSFULLY_LOADED:
-            console.log(action.data.news);
+            console.log(action.data.singleNews);
             return {
                 ...state,
                 ...action.data,
-                properNews: action.data.news
+                properNews: action.data.singleNews
             };
 
         case NEWS_NOT_FOUND:

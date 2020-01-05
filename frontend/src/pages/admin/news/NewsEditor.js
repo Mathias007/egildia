@@ -12,20 +12,18 @@ const { TextArea } = Input;
 const { Content } = Layout;
 
 class NewsEditor extends Component {
-    state = {
-        id: this.props.match.params._id,
-        category: this.props.category,
-        title: this.props.title,
-        content: this.props.content,
-        author: this.props.author,
-        errorMessage: ""
-    };
+    state = {};
+
+    componentDidMount() {
+        console.log(this.props.match.params._id);
+        this.props.showProperNews(this.props.match.params._id);
+    }
 
     handleSubmit = e => {
         e.preventDefault();
 
         let modificationDate = new Date();
-        const { validateFields, resetFields } = this.props.form;
+        const { validateFields } = this.props.form;
 
         validateFields((err, values) => {
             if (!err) {
@@ -40,11 +38,12 @@ class NewsEditor extends Component {
                 );
             }
         });
-        resetFields();
+        console.log(this.props.form);
     };
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { properNews } = this.props;
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
@@ -67,6 +66,7 @@ class NewsEditor extends Component {
                         />
                         <Item label="Kategoria wpisu">
                             {getFieldDecorator("category", {
+                                initialValue: properNews.category,
                                 rules: [
                                     {
                                         required: true,
@@ -100,6 +100,7 @@ class NewsEditor extends Component {
 
                         <Item label="Tytuł wpisu">
                             {getFieldDecorator("title", {
+                                initialValue: properNews.title,
                                 rules: [
                                     {
                                         required: true,
@@ -133,6 +134,7 @@ class NewsEditor extends Component {
 
                         <Item label="Zawartość wpisu">
                             {getFieldDecorator("content", {
+                                initialValue: properNews.content,
                                 rules: [
                                     {
                                         required: true,
@@ -169,6 +171,7 @@ class NewsEditor extends Component {
                         <Item label="Autor wpisu">
                             {getFieldDecorator("author", {
                                 initialValue: this.props.name,
+                                initialValue: properNews.author,
                                 rules: [
                                     {
                                         required: true,
@@ -220,12 +223,16 @@ class NewsEditor extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.news.errorMessage
+        errorMessage: state.news.errorMessage,
+        properNews: state.news.properNews
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        showProperNews: id => {
+            return dispatch(news.showProperNews(id));
+        },
         editSelectedNews: (
             id,
             title,

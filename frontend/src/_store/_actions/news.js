@@ -23,10 +23,10 @@ const {
 
 export const showProperNews = id => {
     return (dispatch, getState) => {
-        const dispatchSingleNewsLoaded = function(news) {
+        const dispatchSingleNewsLoaded = function(response) {
             dispatch({
                 type: NEWS_SUCCESSFULLY_LOADED,
-                data: news
+                data: response.data
             });
         };
 

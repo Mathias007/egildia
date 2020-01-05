@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { news } from "../../../_store/_actions";
 
@@ -11,11 +10,12 @@ const { Item } = Form;
 const { Content } = Layout;
 
 class RemoveSelectedNews extends Component {
-    state = {
-        id: this.props.match.params._id,
-        title: this.props.title,
-        errorMessage: ""
-    };
+    state = {};
+
+    componentDidMount() {
+        console.log(this.props.match.params._id);
+        this.props.showProperNews(this.props.match.params._id);
+    }
 
     handleDeletingSubmit = e => {
         e.preventDefault();
@@ -23,6 +23,7 @@ class RemoveSelectedNews extends Component {
     };
 
     render() {
+        const { properNews } = this.props;
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent />
@@ -34,9 +35,9 @@ class RemoveSelectedNews extends Component {
                         minHeight: 280
                     }}
                 >
-                    Czy na pewno chcesz usunąć wpis o numerze{" "}
-                    {this.props.match.params._id}? Tej operacji nie będzie można
-                    cofnąć.
+                    Czy na pewno chcesz usunąć wpis o tytule{" "}
+                    <strong>{properNews.title}</strong>? Tej operacji nie będzie
+                    można cofnąć.
                     <Item>
                         <Button
                             icon="file-edit"
@@ -45,9 +46,11 @@ class RemoveSelectedNews extends Component {
                             className="edit-article-button"
                             onClick={this.handleDeletingSubmit}
                         >
-                            Usuń artykuł
+                            Usuń wpis
                         </Button>
-                        <Button>Wstecz</Button>
+                        <Button>
+                            Zrezygnuj
+                        </Button>
                     </Item>
                     <Item>{this.props.errorMessage}</Item>
                 </Content>
@@ -58,12 +61,16 @@ class RemoveSelectedNews extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.news.errorMessage
+        errorMessage: state.news.errorMessage,
+        properNews: state.news.properNews
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        showProperNews: id => {
+            return dispatch(news.showProperNews(id));
+        },
         deleteSelectedNews: id => {
             return dispatch(news.deleteSelectedNews(id));
         }

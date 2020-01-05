@@ -27,54 +27,57 @@ class NewsPage extends Component {
                     date
                 } = singleNews;
                 return (
-                    <>
-                        <Card
-                            key={_id}
-                            type="inner"
-                            title={title}
-                            extra={
-                                <div>
-                                    <strong>Opcje</strong>
-                                    <Divider type="vertical" />
-                                    <Link to={`admin/news/edit/${_id}`}>
-                                        <Icon type="edit" />
-                                    </Link>
-                                    <Divider type="vertical" />
-                                    <Link to={`admin/news/remove/${_id}`}>
-                                        <Icon type="delete" />
-                                    </Link>
-                                </div>
-                            }
-                            actions={[
-                                <p>
-                                    Komentarze: <strong>brak</strong>
-                                </p>,
-                                <p>[przejdź do wpisu]</p>
-                            ]}
-                        >
-                            <Meta
-                                avatar={
-                                    <Avatar
-                                        style={{
-                                            backgroundColor: "violet",
-                                            verticalAlign: "middle"
-                                        }}
-                                        size="large"
-                                    >
-                                        {category.charAt(0) +
-                                            category.charAt(1)}
-                                    </Avatar>
-                                }
-                                description={`Data dodania: ${moment(
-                                    date
-                                ).format("LLLL")} | Autor: ${author}`}
-                            />
+                    <Card
+                        key={_id}
+                        type="inner"
+                        title={title}
+                        extra={
+                            <div key={_id}>
+                                <strong>Opcje</strong>
+                                <Divider type="vertical" />
+                                <Link
+                                    key={`edit-${_id}`}
+                                    to={`admin/news/edit/${_id}`}
+                                >
+                                    <Icon type="edit" />
+                                </Link>
+                                <Divider type="vertical" />
+                                <Link
+                                    key={`remove-${_id}`}
+                                    to={`admin/news/remove/${_id}`}
+                                >
+                                    <Icon type="delete" />
+                                </Link>
+                            </div>
+                        }
+                        actions={[
                             <p>
-                                {content}{" "}
-                                {content.length > 100 ? <span>...</span> : null}
-                            </p>
-                        </Card>
-                    </>
+                                Komentarze: <strong>brak</strong>
+                            </p>,
+                            <p>[przejdź do wpisu]</p>
+                        ]}
+                    >
+                        <Meta
+                            avatar={
+                                <Avatar
+                                    style={{
+                                        backgroundColor: "violet",
+                                        verticalAlign: "middle"
+                                    }}
+                                    size="large"
+                                >
+                                    {category.charAt(0) + category.charAt(1)}
+                                </Avatar>
+                            }
+                            description={`Data dodania: ${moment(date).format(
+                                "LLLL"
+                            )} | Autor: ${author}`}
+                        />
+                        <p>
+                            {content}{" "}
+                            {content.length > 100 ? <span>...</span> : null}
+                        </p>
+                    </Card>
                 );
             });
         }

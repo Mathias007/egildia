@@ -38,7 +38,7 @@ exports.getNewsById = (req, res, next) => {
             console.log(news);
             res.json({
                 message: "Wyszukiwanie wpisu zakończyło się powodzeniem.",
-                news
+                singleNews: news
             });
         }
     });

@@ -32,9 +32,9 @@ export const getAllNews = dispatchNewsListLoaded => {
 
 export const getSingleNews = (
     id,
-    dispatchSingleArticleLoaded,
-    dispatchArticleAuthError,
-    dispatchArticleNotFound
+    dispatchSingleNewsLoaded,
+    dispatchNewsAuthError,
+    dispatchNewsNotFound
 ) => {
     const options = {
         method: method.POST,
@@ -56,14 +56,14 @@ export const getSingleNews = (
         .then(response => {
             console.log(response);
             if (response.status === STATUS_OK) {
-                dispatchSingleArticleLoaded(response);
+                dispatchSingleNewsLoaded(response);
             } else if (
                 response.status === STATUS_FORBIDDEN ||
                 response.status === STATUS_UNAUTHORIZED
             ) {
-                return dispatchArticleAuthError(response);
+                return dispatchNewsAuthError(response);
             } else {
-                return dispatchArticleNotFound(response);
+                return dispatchNewsNotFound(response);
             }
         });
 };
