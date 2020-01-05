@@ -24,6 +24,7 @@ import ArticleRemover from "../pages/admin/articles/ArticleRemover";
 
 // admin news imports
 import NewsList from "../pages/admin/news/NewsList";
+import NewsSingleCard from "../pages/admin/news/NewsSingleCard";
 import NewsCreator from "../pages/admin/news/NewsCreator";
 import NewsEditor from "../pages/admin/news/NewsEditor";
 import NewsRemover from "../pages/admin/news/NewsRemover";
@@ -107,6 +108,10 @@ class App extends Component {
                                         exact
                                         path={NEWS.MAIN}
                                         component={NewsList}
+                                    />
+                                    <Route
+                                        path={NEWS.SINGLE}
+                                        component={NewsSingleCard}
                                     />
                                     <Route
                                         path={NEWS.ADD}

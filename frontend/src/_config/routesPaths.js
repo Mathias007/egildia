@@ -34,6 +34,7 @@ const routesPaths = {
         REMOVE: `/${ADMIN}/${ARTICLES}/${REMOVE}/:${ID_PARAM}`
     },
     NEWS: {
+        SINGLE: `/${NEWS}/:${ID_PARAM}`,
         MAIN: `/${ADMIN}/${NEWS}`,
         ADD: `/${ADMIN}/${NEWS}/${ADD}`,
         EDIT: `/${ADMIN}/${NEWS}/${EDIT}/:${ID_PARAM}`,
@@ -42,7 +43,7 @@ const routesPaths = {
     KNIGHTS: {
         MAIN: `/${KNIGHTS}/`,
         BUILDINGS: `/${KNIGHTS}/${BUILDINGS}`,
-        UNITS: `/${KNIGHTS}/${UNITS}`,
+        UNITS: `/${KNIGHTS}/${UNITS}`
     },
     TZAR: {
         MAIN: `/${TZAR}/`,
