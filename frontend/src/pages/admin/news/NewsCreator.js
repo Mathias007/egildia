@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import moment from "moment";
+import locale from "antd/es/date-picker/locale/pl_PL";
+
 import { connect } from "react-redux";
 
 import { news } from "../../../_store/_actions";
-import { auth } from "../../../_store/_actions";
 
 import {
     Button,
@@ -43,9 +44,9 @@ class NewsCreator extends Component {
                     values.date,
                     values.category
                 );
+                resetFields();
             }
         });
-        resetFields();
     };
 
     render() {
@@ -66,16 +67,29 @@ class NewsCreator extends Component {
                         onSubmit={this.handleSubmit}
                         className="add-article-form"
                     >
-                        <PageHeader
-                            className="add-article-header"
-                            title="Dodawanie nowego wpisu"
-                        />
-                        <Item label="Kategoria artykułu">
+                        <div>
+                            <PageHeader
+                                onBack={() => null}
+                                title="Powrót"
+                                subTitle="Panel administracyjny"
+                                extra={
+                                    <Button
+                                        icon="file-add"
+                                        type="primary"
+                                        htmlType="submit"
+                                        className="create-news-button"
+                                    >
+                                        Dodaj wpis{" "}
+                                    </Button>
+                                }
+                            />
+                        </div>
+                        <Item label="Kategoria wpisu">
                             {getFieldDecorator("category", {
                                 rules: [
                                     {
                                         required: true,
-                                        message: "Określ kategorię artykułu!"
+                                        message: "Określ kategorię wpisu!"
                                     }
                                 ]
                             })(
@@ -98,7 +112,7 @@ class NewsCreator extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Określ kategorię artykułu"
+                                    placeholder="Określ kategorię wpisu"
                                 />
                             )}
                         </Item>
@@ -171,6 +185,34 @@ class NewsCreator extends Component {
                             )}
                         </Item>
 
+                        <Item label="Data dodania lub utworzenia (pole nieobowiązkowe)">
+                            {getFieldDecorator("date", {
+                                rules: [
+                                    {
+                                        type: "object",
+                                        required: false
+                                    }
+                                ]
+                            })(
+                                <DatePicker
+                                    locale={locale}
+                                    style={{ width: "100%" }}
+                                    suffixIcon={
+                                        <Icon
+                                            type="calendar"
+                                            style={{
+                                                color: "rgba(0,0,0,.25)"
+                                            }}
+                                        />
+                                    }
+                                    showTime
+                                    showToday
+                                    format="LLLL"
+                                    placeholder="Data utworzenia (domyślnie wygenerowana zostanie aktualna)"
+                                />
+                            )}
+                        </Item>
+
                         <Item label="Autor wpisu">
                             {getFieldDecorator("author", {
                                 initialValue: this.props.name,
@@ -201,33 +243,6 @@ class NewsCreator extends Component {
                                         </Tooltip>
                                     }
                                     placeholder="Podaj autora artykułu"
-                                />
-                            )}
-                        </Item>
-
-                        <Item label="Data dodania (utworzenia)">
-                            {getFieldDecorator("date", {
-                                rules: [
-                                    {
-                                        type: "object",
-                                        required: false
-                                    }
-                                ]
-                            })(
-                                <DatePicker
-                                    defaultPickerValue={moment()}
-                                    suffixIcon={
-                                        <Icon
-                                            type="calendar"
-                                            style={{
-                                                color: "rgba(0,0,0,.25)"
-                                            }}
-                                        />
-                                    }
-                                    showTime
-                                    showToday
-                                    format="YYYY-MM-DD HH:mm:ss"
-                                    placeholder="Data utworzenia"
                                 />
                             )}
                         </Item>

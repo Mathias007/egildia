@@ -1,9 +1,18 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { news } from "../../../_store/_actions";
 
-import { Button, Form, Icon, Input, Layout, PageHeader, Tooltip } from "antd";
+import {
+    Button,
+    Divider,
+    Form,
+    Icon,
+    Input,
+    Layout,
+    PageHeader,
+    Tooltip
+} from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
@@ -60,10 +69,24 @@ class NewsEditor extends Component {
                         onSubmit={this.handleSubmit}
                         className="add-article-form"
                     >
-                        <PageHeader
-                            className="add-article-header"
-                            title="Edycja wybranego wpisu"
-                        />
+                        <div>
+                            <PageHeader
+                                onBack={() => null}
+                                title="Powrót"
+                                subTitle="Panel administracyjny"
+                                extra={
+                                    <Button
+                                        icon="edit"
+                                        type="primary"
+                                        htmlType="submit"
+                                        className="edit-article-button"
+                                    >
+                                        Edytuj wpis{" "}
+                                    </Button>
+                                }
+                            />
+                        </div>
+
                         <Item label="Kategoria wpisu">
                             {getFieldDecorator("category", {
                                 initialValue: properNews.category,
@@ -203,14 +226,22 @@ class NewsEditor extends Component {
                             )}
                         </Item>
 
-                        <Item>
+                        <Item className="btn-wrap">
                             <Button
-                                icon="file-edit"
+                                icon="edit"
                                 type="primary"
                                 htmlType="submit"
                                 className="edit-article-button"
                             >
-                                Edytuj wpis{" "}
+                                Edytuj wpis
+                            </Button>
+                            <Divider
+                                type="vertical"
+                                dashed
+                                style={{ border: 0 }}
+                            />
+                            <Button>
+                                <Link to="/admin/news">Zrezygnuj</Link>
                             </Button>
                         </Item>
                         <Item>{this.props.errorMessage}</Item>

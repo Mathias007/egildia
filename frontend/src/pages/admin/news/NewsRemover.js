@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { news } from "../../../_store/_actions";
 
-import { Button, Form, Layout } from "antd";
+import { Button, Divider, Form, Layout, PageHeader } from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
@@ -35,21 +37,31 @@ class RemoveSelectedNews extends Component {
                         minHeight: 280
                     }}
                 >
-                    Czy na pewno chcesz usunąć wpis o tytule{" "}
-                    <strong>{properNews.title}</strong>? Tej operacji nie będzie
-                    można cofnąć.
-                    <Item>
+                    <div>
+                        <PageHeader
+                            onBack={() => null}
+                            title="Powrót"
+                            subTitle="Panel administracyjny"
+                        />
+                    </div>
+                    <p>
+                        Czy na pewno chcesz usunąć wpis o tytule{" "}
+                        <strong>{properNews.title}</strong>? Tej operacji nie
+                        będzie można cofnąć.
+                    </p>
+                    <Item className="btn-wrap">
                         <Button
-                            icon="file-edit"
+                            icon="delete"
                             type="primary"
                             htmlType="submit"
-                            className="edit-article-button"
+                            className="remove-article-button"
                             onClick={this.handleDeletingSubmit}
                         >
                             Usuń wpis
                         </Button>
+                        <Divider type="vertical" dashed style={{ border: 0 }} />
                         <Button>
-                            Zrezygnuj
+                            <Link to="/admin/news">Zrezygnuj</Link>
                         </Button>
                     </Item>
                     <Item>{this.props.errorMessage}</Item>

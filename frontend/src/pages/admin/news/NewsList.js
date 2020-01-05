@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
@@ -169,12 +169,6 @@ class NewsList extends Component {
                 >
                     <div>
                         <PageHeader
-                            style={
-                                {
-                                    // border: "1px solid rgb(235, 237, 240)"
-                                }
-                            }
-                            // onBack={() => null}
                             title="Lista wpisów"
                             subTitle="Panel administracyjny"
                             extra={
@@ -182,9 +176,8 @@ class NewsList extends Component {
                                     icon="file-add"
                                     type="primary"
                                     className="add-news-button"
-                                    href="news/add"
                                 >
-                                    Dodaj wpis
+                                    <Link to="news/add"> Dodaj wpis</Link>
                                 </Button>
                             }
                         />

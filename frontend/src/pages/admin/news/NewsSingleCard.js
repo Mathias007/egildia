@@ -37,7 +37,15 @@ class NewsSingleCard extends Component {
                 <Card
                     type="inner"
                     style={{ marginBottom: 16 }}
-                    title={title}
+                    title={
+                        <>
+                            <Link to={"/"}>
+                                <Icon type="arrow-left" /> Powrót
+                            </Link>
+                            <Divider type="vertical" />
+                            <span>{title}</span>
+                        </>
+                    }
                     extra={
                         <div>
                             <strong>Opcje</strong>
@@ -55,10 +63,7 @@ class NewsSingleCard extends Component {
                         <span>
                             <Icon type="idcard" /> Komentarze:{" "}
                             <strong>brak</strong>
-                        </span>,
-                        <Link to={"/"}>
-                            <Icon type="arrow-right" /> Powrót na stronę główną
-                        </Link>
+                        </span>
                     ]}
                 >
                     <Meta
@@ -70,7 +75,7 @@ class NewsSingleCard extends Component {
                                 }}
                                 size="large"
                             >
-                                    {category}
+                                {category}
                             </Avatar>
                         }
                         description={`Data dodania: ${moment(date).format(
