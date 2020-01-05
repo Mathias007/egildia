@@ -1,5 +1,6 @@
 import {
     getAllArticles,
+    getAllocatedArticle,
     getSingleArticle,
     addArticle,
     editArticle,
@@ -21,12 +22,40 @@ const {
     ARTICLE_DELETING_FAILED
 } = eventStatuses.articles;
 
-export const showProperArticle = allocationKey => {
+export const showAllocatedArticle = allocationKey => {
     return (dispatch, getState) => {
-        const dispatchSingleArticleLoaded = function(article) {
+        const dispatchSingleArticleLoaded = function(response) {
             dispatch({
                 type: ARTICLE_SUCCESSFULLY_LOADED,
-                data: article
+                data: response.data
+            });
+        };
+
+        const dispatchArticleAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchArticleNotFound = function(response) {
+            dispatch({ type: ARTICLE_NOT_FOUND, data: response.data });
+            throw response.data;
+        };
+
+        return getAllocatedArticle(
+            allocationKey,
+            dispatchSingleArticleLoaded,
+            dispatchArticleAuthError,
+            dispatchArticleNotFound
+        );
+    };
+};
+
+export const showProperArticle = id => {
+    return (dispatch, getState) => {
+        const dispatchSingleArticleLoaded = function(response) {
+            dispatch({
+                type: ARTICLE_SUCCESSFULLY_LOADED,
+                data: response.data
             });
         };
 
@@ -41,7 +70,7 @@ export const showProperArticle = allocationKey => {
         };
 
         return getSingleArticle(
-            allocationKey,
+            id,
             dispatchSingleArticleLoaded,
             dispatchArticleAuthError,
             dispatchArticleNotFound

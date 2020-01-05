@@ -33,13 +33,13 @@ class ArticleEditor extends Component {
         e.preventDefault();
 
         let modificationDate = new Date();
-        const { validateFields, resetFields } = this.props.form;
+        const { validateFields } = this.props.form;
 
         validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
                 this.props.editSelectedArticle(
-                    this.props.id,
+                    this.props.match.params._id,
                     values.allocationKey,
                     values.title,
                     values.content,
@@ -89,6 +89,7 @@ class ArticleEditor extends Component {
 
                         <Item label="Klucz identyfikacyjny artykułu">
                             {getFieldDecorator("allocationKey", {
+                                initialValue: properArticle.allocationKey,
                                 rules: [
                                     {
                                         required: true,
@@ -122,6 +123,7 @@ class ArticleEditor extends Component {
 
                         <Item label="Tytuł artykułu">
                             {getFieldDecorator("title", {
+                                initialValue: properArticle.title,
                                 rules: [
                                     {
                                         required: true,
@@ -155,6 +157,7 @@ class ArticleEditor extends Component {
 
                         <Item label="Zawartość artykułu">
                             {getFieldDecorator("content", {
+                                initialValue: properArticle.content,
                                 rules: [
                                     {
                                         required: true,
@@ -189,7 +192,7 @@ class ArticleEditor extends Component {
 
                         <Item label="Autor artykułu">
                             {getFieldDecorator("author", {
-                                initialValue: this.props.name,
+                                initialValue: properArticle.author,
                                 rules: [
                                     {
                                         required: true,

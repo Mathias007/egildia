@@ -28,6 +28,26 @@ exports.getArticlesList = (req, res, next) => {
     });
 };
 
+exports.getArticleById = (req, res, next) => {
+    let articleId = mongoose.Types.ObjectId(req.body.id);
+    ArticlesSchema.findOne({ _id: articleId }, (err, article) => {
+        if (err) {
+            res.status(401).send({
+                message: "Wystąpił problem z autoryzacją!"
+            });
+            next(err);
+        } else if (!article) {
+            res.status(404).send({ message: "Nie znaleziono artykułu!" });
+        } else {
+            console.log(article);
+            res.json({
+                message: "Wyszukiwanie artykułu zakończyło się powodzeniem.",
+                article
+            });
+        }
+    });
+};
+
 exports.getArticleByAllocationKey = (req, res, next) => {
     ArticlesSchema.findOne(
         { allocationKey: req.body.allocationKey },

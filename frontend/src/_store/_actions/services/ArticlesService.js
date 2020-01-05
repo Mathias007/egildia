@@ -30,7 +30,7 @@ export const getAllArticles = dispatchArticlesListLoaded => {
         });
 };
 
-export const getSingleArticle = (
+export const getAllocatedArticle = (
     allocationKey,
     dispatchSingleArticleLoaded,
     dispatchArticleAuthError,
@@ -40,6 +40,44 @@ export const getSingleArticle = (
         method: POST,
         headers,
         body: JSON.stringify({ allocationKey })
+    };
+
+    fetch(SINGLE, options)
+        .then(response => {
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
+                    return { status: response.status, data };
+                });
+            } else {
+                console.log("Server Error!");
+                throw response;
+            }
+        })
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK) {
+                dispatchSingleArticleLoaded(response);
+            } else if (
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
+            ) {
+                return dispatchArticleAuthError(response);
+            } else {
+                return dispatchArticleNotFound(response);
+            }
+        });
+};
+
+export const getSingleArticle = (
+    id,
+    dispatchSingleArticleLoaded,
+    dispatchArticleAuthError,
+    dispatchArticleNotFound
+) => {
+    const options = {
+        method: POST,
+        headers,
+        body: JSON.stringify({ id })
     };
 
     fetch(SINGLE, options)

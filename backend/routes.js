@@ -33,8 +33,9 @@ router.delete(`/${API}/${NEWS}/remove`, newsController.deleteNewsById);
 
 // articles API
 router.get(`/${API}/${ARTICLES}/list`, articlesController.getArticlesList);
+router.post(`/${API}/${ARTICLES}/single`, articlesController.getArticleById);
 router.post(
-    `/${API}/${ARTICLES}/single`,
+    `/${API}/${ARTICLES}/single-key`,
     articlesController.getArticleByAllocationKey
 );
 router.post(`/${API}/${ARTICLES}/add`, articlesController.createArticle);

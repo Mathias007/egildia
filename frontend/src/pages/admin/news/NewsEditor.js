@@ -192,7 +192,6 @@ class NewsEditor extends Component {
 
                         <Item label="Autor wpisu">
                             {getFieldDecorator("author", {
-                                initialValue: this.props.name,
                                 initialValue: properNews.author,
                                 rules: [
                                     {
