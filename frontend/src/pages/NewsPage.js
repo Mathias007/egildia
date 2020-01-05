@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import moment from "moment";
+import "moment/locale/pl";
 
 import { news } from "../_store/_actions";
 
-import { Avatar, Card, Divider, Icon } from "antd";
+import BreadcrumbComponent from "./global/BreadcrumbComponent";
+
+import { Avatar, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;
+const { Content } = Layout;
 
 class NewsPage extends Component {
     componentDidMount() {
@@ -30,6 +35,7 @@ class NewsPage extends Component {
                     <Card
                         key={_id}
                         type="inner"
+                        style={{ marginBottom: 16 }}
                         title={title}
                         extra={
                             <div key={_id}>
@@ -51,22 +57,25 @@ class NewsPage extends Component {
                             </div>
                         }
                         actions={[
-                            <p>
-                                Komentarze: <strong>brak</strong>
-                            </p>,
-                            <p>[przejdź do wpisu]</p>
+                            <span>
+                                <Icon type="idcard" /> Komentarze:{" "}
+                                <strong>brak</strong>
+                            </span>,
+                            <Link to={`news/${_id}`}>
+                                <Icon type="arrow-right" /> Przejdź do wpisu
+                            </Link>
                         ]}
                     >
                         <Meta
                             avatar={
                                 <Avatar
                                     style={{
-                                        backgroundColor: "violet",
+                                        backgroundColor: "#1890ff",
                                         verticalAlign: "middle"
                                     }}
                                     size="large"
                                 >
-                                    {category.charAt(0) + category.charAt(1)}
+                                    {category.charAt(0).toUpperCase()}
                                 </Avatar>
                             }
                             description={`Data dodania: ${moment(date).format(
@@ -85,21 +94,19 @@ class NewsPage extends Component {
 
     render() {
         return (
-            <div>
-                <Card title="Aktualności">
-                    <p
-                        style={{
-                            fontSize: 14,
-                            color: "rgba(0, 0, 0, 0.85)",
-                            marginBottom: 16,
-                            fontWeight: 500
-                        }}
-                    >
-                        Group title
-                    </p>
-                    {this.renderNews()}
-                </Card>
-            </div>
+            <Layout style={{ padding: "0 24px 24px" }}>
+                <BreadcrumbComponent />
+                <Content
+                    style={{
+                        background: "#fff",
+                        padding: 24,
+                        margin: 0,
+                        minHeight: 280
+                    }}
+                >
+                    <Card title="Aktualności">{this.renderNews()}</Card>
+                </Content>
+            </Layout>
         );
     }
 }
