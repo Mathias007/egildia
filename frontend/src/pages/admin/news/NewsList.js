@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import moment from "moment";
 
-import { Layout, Table, Divider, Icon } from "antd";
+import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
 
 import { news } from "../../../_store/_actions";
-
-// import HeaderComponent from "../global/HeaderComponent";
-// import SidebarComponent from "../global/SidebarComponent";
-// import FooterComponent from "../global/FooterComponent";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
@@ -32,6 +28,11 @@ const componentClassnames = {
 class NewsList extends Component {
     state = {
         columnsStructure: {
+            col_number: {
+                title: "LP",
+                dataIndex: "number",
+                align: "center"
+            },
             col_category: {
                 title: "Kategoria",
                 dataIndex: "category",
@@ -75,6 +76,7 @@ class NewsList extends Component {
                 } = singleNews;
 
                 return {
+                    number: index,
                     key: _id,
                     title,
                     content,
@@ -95,6 +97,7 @@ class NewsList extends Component {
         tableData = this.renderNews();
 
         const {
+            col_number,
             col_category,
             col_title,
             col_content,
@@ -104,6 +107,11 @@ class NewsList extends Component {
         } = this.state.columnsStructure;
 
         tableColumns = [
+            {
+                title: col_number.title,
+                dataIndex: col_number.dataIndex,
+                align: col_number.align
+            },
             {
                 title: col_category.title,
                 dataIndex: col_category.dataIndex,
@@ -159,8 +167,28 @@ class NewsList extends Component {
                     className={componentClassnames.content}
                     style={componentStyles.content}
                 >
-                    <h1>Panel admina</h1>
-                    <h2>Lista wpisów</h2>
+                    <div>
+                        <PageHeader
+                            style={
+                                {
+                                    // border: "1px solid rgb(235, 237, 240)"
+                                }
+                            }
+                            // onBack={() => null}
+                            title="Lista wpisów"
+                            subTitle="Panel administracyjny"
+                            extra={
+                                <Button
+                                    icon="file-add"
+                                    type="primary"
+                                    className="add-news-button"
+                                    href="news/add"
+                                >
+                                    Dodaj wpis
+                                </Button>
+                            }
+                        />
+                    </div>
 
                     <Table
                         className={componentClassnames.table}
