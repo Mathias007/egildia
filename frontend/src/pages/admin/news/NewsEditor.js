@@ -47,7 +47,6 @@ class NewsEditor extends Component {
                 );
             }
         });
-        console.log(this.props.form);
     };
 
     render() {
@@ -67,7 +66,7 @@ class NewsEditor extends Component {
                 >
                     <Form
                         onSubmit={this.handleSubmit}
-                        className="add-article-form"
+                        className="edit-news-form"
                     >
                         <div>
                             <PageHeader
@@ -79,7 +78,7 @@ class NewsEditor extends Component {
                                         icon="edit"
                                         type="primary"
                                         htmlType="submit"
-                                        className="edit-article-button"
+                                        className="edit-news-button"
                                     >
                                         Edytuj wpis{" "}
                                     </Button>
@@ -93,7 +92,7 @@ class NewsEditor extends Component {
                                 rules: [
                                     {
                                         required: true,
-                                        message: "Określ kategorię artykułu!"
+                                        message: "Określ kategorię wpisu!"
                                     }
                                 ]
                             })(
@@ -116,7 +115,7 @@ class NewsEditor extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Określ kategorię artykułu"
+                                    placeholder="Określ kategorię wpisu"
                                 />
                             )}
                         </Item>

@@ -1,9 +1,19 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { articles } from "../../../_store/_actions";
 
-import { Button, Form, Icon, Input, Layout, PageHeader, Tooltip } from "antd";
+import {
+    Button,
+    Divider,
+    Form,
+    Icon,
+    Input,
+    Layout,
+    PageHeader,
+    Tooltip
+} from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
@@ -12,20 +22,17 @@ const { TextArea } = Input;
 const { Content } = Layout;
 
 class ArticleEditor extends Component {
-    state = {
-        id: this.props.id,
-        allocationKey: this.props.allocationKey,
-        title: this.props.title,
-        content: this.props.content,
-        author: this.props.author,
-        errorMessage: ""
-    };
+    state = {};
+
+    componentDidMount() {
+        console.log(this.props.match.params._id);
+        this.props.showProperArticle(this.props.match.params._id);
+    }
 
     handleSubmit = e => {
         e.preventDefault();
 
         let modificationDate = new Date();
-
         const { validateFields, resetFields } = this.props.form;
 
         validateFields((err, values) => {
@@ -41,12 +48,11 @@ class ArticleEditor extends Component {
                 );
             }
         });
-
-        resetFields();
     };
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { properArticle } = this.props;
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
@@ -61,12 +67,26 @@ class ArticleEditor extends Component {
                 >
                     <Form
                         onSubmit={this.handleSubmit}
-                        className="add-article-form"
+                        className="edit-article-form"
                     >
-                        <PageHeader
-                            className="add-article-header"
-                            title="Dodawanie nowego artykułu"
-                        />
+                        <div>
+                            <PageHeader
+                                onBack={() => null}
+                                title="Powrót"
+                                subTitle="Panel administracyjny"
+                                extra={
+                                    <Button
+                                        icon="edit"
+                                        type="primary"
+                                        htmlType="submit"
+                                        className="edit-article-button"
+                                    >
+                                        Edytuj artykuł{" "}
+                                    </Button>
+                                }
+                            />
+                        </div>
+
                         <Item label="Klucz identyfikacyjny artykułu">
                             {getFieldDecorator("allocationKey", {
                                 rules: [
@@ -201,7 +221,7 @@ class ArticleEditor extends Component {
                             )}
                         </Item>
 
-                        <Item>
+                        <Item className="btn-wrap">
                             <Button
                                 icon="file-edit"
                                 type="primary"
@@ -209,6 +229,14 @@ class ArticleEditor extends Component {
                                 className="edit-article-button"
                             >
                                 Edytuj artykuł{" "}
+                            </Button>
+                            <Divider
+                                type="vertical"
+                                dashed
+                                style={{ border: 0 }}
+                            />
+                            <Button>
+                                <Link to="/admin/news">Zrezygnuj</Link>
                             </Button>
                         </Item>
                         <Item>{this.props.errorMessage}</Item>
@@ -221,12 +249,16 @@ class ArticleEditor extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.articles.errorMessage
+        errorMessage: state.articles.errorMessage,
+        properArticle: state.articles.properArticle
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        showProperArticle: id => {
+            return dispatch(articles.showProperArticle(id));
+        },
         editSelectedArticle: (
             id,
             allocationKey,
@@ -249,9 +281,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-ArticleEditor = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ArticleEditor);
+ArticleEditor = connect(mapStateToProps, mapDispatchToProps)(ArticleEditor);
 
 export default Form.create()(ArticleEditor);

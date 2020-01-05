@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-import moment from "moment";
+import locale from "antd/es/date-picker/locale/pl_PL";
+
 import { connect } from "react-redux";
 
 import { articles } from "../../../_store/_actions";
-import { auth } from "../../../_store/_actions";
 
 import {
     Button,
@@ -43,9 +42,9 @@ class ArticleCreator extends Component {
                     values.author,
                     values.date
                 );
+                resetFields();
             }
         });
-        resetFields();
     };
 
     render() {
@@ -66,10 +65,23 @@ class ArticleCreator extends Component {
                         onSubmit={this.handleSubmit}
                         className="add-article-form"
                     >
-                        <PageHeader
-                            className="add-article-header"
-                            title="Dodawanie nowego artykułu"
-                        />
+                        <div>
+                            <PageHeader
+                                onBack={() => null}
+                                title="Powrót"
+                                subTitle="Panel administracyjny"
+                                extra={
+                                    <Button
+                                        icon="file-add"
+                                        type="primary"
+                                        htmlType="submit"
+                                        className="create-article-button"
+                                    >
+                                        Dodaj artykuł{" "}
+                                    </Button>
+                                }
+                            />
+                        </div>
                         <Item label="Klucz identyfikacyjny artykułu">
                             {getFieldDecorator("allocationKey", {
                                 rules: [
@@ -170,6 +182,34 @@ class ArticleCreator extends Component {
                             )}
                         </Item>
 
+                        <Item label="Data dodania lub utworzenia (pole nieobowiązkowe)">
+                            {getFieldDecorator("date", {
+                                rules: [
+                                    {
+                                        type: "object",
+                                        required: false
+                                    }
+                                ]
+                            })(
+                                <DatePicker
+                                    locale={locale}
+                                    style={{ width: "100%" }}
+                                    suffixIcon={
+                                        <Icon
+                                            type="calendar"
+                                            style={{
+                                                color: "rgba(0,0,0,.25)"
+                                            }}
+                                        />
+                                    }
+                                    showTime
+                                    showToday
+                                    format="LLLL"
+                                    placeholder="Data utworzenia (domyślnie wygenerowana zostanie aktualna)"
+                                />
+                            )}
+                        </Item>
+
                         <Item label="Autor artykułu">
                             {getFieldDecorator("author", {
                                 initialValue: this.props.name,
@@ -204,34 +244,7 @@ class ArticleCreator extends Component {
                             )}
                         </Item>
 
-                        <Item label="Data dodania (utworzenia)">
-                            {getFieldDecorator("date", {
-                                rules: [
-                                    {
-                                        type: "object",
-                                        required: false
-                                    }
-                                ]
-                            })(
-                                <DatePicker
-                                    defaultPickerValue={moment()}
-                                    suffixIcon={
-                                        <Icon
-                                            type="calendar"
-                                            style={{
-                                                color: "rgba(0,0,0,.25)"
-                                            }}
-                                        />
-                                    }
-                                    showTime
-                                    showToday
-                                    format="YYYY-MM-DD HH:mm:ss"
-                                    placeholder="Data utworzenia"
-                                />
-                            )}
-                        </Item>
-
-                        <Item>
+                        <Item className="btn-wrap">
                             <Button
                                 icon="file-add"
                                 type="primary"

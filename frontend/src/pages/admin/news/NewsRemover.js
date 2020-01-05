@@ -11,7 +11,7 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 const { Item } = Form;
 const { Content } = Layout;
 
-class RemoveSelectedNews extends Component {
+class NewsRemover extends Component {
     state = {};
 
     componentDidMount() {
@@ -90,9 +90,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-RemoveSelectedNews = connect(
+NewsRemover = connect(
     mapStateToProps,
     mapDispatchToProps
-)(RemoveSelectedNews);
+)(NewsRemover);
 
-export default Form.create()(RemoveSelectedNews);
+export default Form.create()(NewsRemover);

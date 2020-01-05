@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-import moment from "moment";
 import locale from "antd/es/date-picker/locale/pl_PL";
 
 import { connect } from "react-redux";
@@ -233,7 +231,7 @@ class NewsCreator extends Component {
                                         />
                                     }
                                     suffix={
-                                        <Tooltip title="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik.">
+                                        <Tooltip title="Wpisz nazwę użytkownika, który jest autorem wpisu. Domyślnie jest nim zalogowany użytkownik.">
                                             <Icon
                                                 type="info-circle"
                                                 style={{
@@ -242,12 +240,12 @@ class NewsCreator extends Component {
                                             />
                                         </Tooltip>
                                     }
-                                    placeholder="Podaj autora artykułu"
+                                    placeholder="Podaj autora wpisu"
                                 />
                             )}
                         </Item>
 
-                        <Item>
+                        <Item className="btn-wrap">
                             <Button
                                 icon="file-add"
                                 type="primary"

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { articles } from "../../../_store/_actions";
 
-import { Button, Form, Layout } from "antd";
+import { Button, Divider, Form, Layout, PageHeader } from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
@@ -11,18 +12,21 @@ const { Item } = Form;
 const { Content } = Layout;
 
 class ArticleRemover extends Component {
-    state = {
-        id: this.props.id,
-        title: this.props.title,
-        errorMessage: ""
-    };
+    state = {};
+
+    componentDidMount() {
+        console.log(this.props.match.params._id);
+        this.props.showProperArticle(this.props.match.params._id);
+    }
 
     handleDeletingSubmit = e => {
         e.preventDefault();
-        this.props.deleteSelectedArticle(this.props.id);
+        this.props.deleteSelectedNews(this.props.match.params._id);
     };
 
     render() {
+        const { properArticle } = this.props;
+
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent />
@@ -34,19 +38,32 @@ class ArticleRemover extends Component {
                         minHeight: 280
                     }}
                 >
-                    Czy na pewno chcesz usunąć artykuł o tytule{" "}
-                    {this.props.title}? Tej operacji nie będzie można cofnąć.
-                    <Item>
+                    <div>
+                        <PageHeader
+                            onBack={() => null}
+                            title="Powrót"
+                            subTitle="Panel administracyjny"
+                        />
+                    </div>
+                    <p>
+                        Czy na pewno chcesz usunąć wpis o tytule{" "}
+                        <strong>{properArticle.title}</strong>? Tej operacji nie
+                        będzie można cofnąć.
+                    </p>
+                    <Item className="btn-wrap">
                         <Button
-                            icon="file-edit"
+                            icon="delete"
                             type="primary"
                             htmlType="submit"
-                            className="edit-article-button"
+                            className="remove-article-button"
                             onClick={this.handleDeletingSubmit}
                         >
                             Usuń artykuł
                         </Button>
-                        <Button>Wstecz</Button>
+                        <Divider type="vertical" dashed style={{ border: 0 }} />
+                        <Button>
+                            <Link to="/admin/news">Zrezygnuj</Link>
+                        </Button>{" "}
                     </Item>
                     <Item>{this.props.errorMessage}</Item>
                 </Content>
@@ -57,12 +74,16 @@ class ArticleRemover extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.articles.errorMessage
+        errorMessage: state.articles.errorMessage,
+        properArticle: state.news.properArticle
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        showProperArticle: id => {
+            return dispatch(articles.showProperArticle(id));
+        },
         deleteSelectedArticle: id => {
             return dispatch(articles.deleteSelectedArticle(id));
         }
