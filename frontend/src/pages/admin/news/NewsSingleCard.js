@@ -11,7 +11,6 @@ import { Avatar, Card, Divider, Icon, Layout } from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 const { Meta } = Card;
-// const { Content } = Layout;
 
 class NewsSingleCard extends Component {
     state = {};
@@ -78,9 +77,17 @@ class NewsSingleCard extends Component {
                                 {category}
                             </Avatar>
                         }
-                        description={`Data dodania: ${moment(date).format(
-                            "LLLL"
-                        )} | Autor: ${author}`}
+                        description={
+                            <>
+                                <span>
+                                    Dodano: {moment(date).format("LLLL")}
+                                </span>
+                                <Divider type="vertical" />
+                                <span>
+                                    Autor: <strong>{author}</strong>
+                                </span>
+                            </>
+                        }
                     />
                     <p>{content} </p>
                 </Card>

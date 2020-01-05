@@ -26,6 +26,7 @@ class RemoveSelectedNews extends Component {
 
     render() {
         const { properNews } = this.props;
+
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent />

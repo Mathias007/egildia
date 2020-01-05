@@ -9,7 +9,7 @@ import { news } from "../_store/_actions";
 
 import BreadcrumbComponent from "./global/BreadcrumbComponent";
 
-import { Avatar, Card, Divider, Icon, Layout } from "antd";
+import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;
 const { Content } = Layout;
 
@@ -38,23 +38,25 @@ class NewsPage extends Component {
                         style={{ marginBottom: 16 }}
                         title={title}
                         extra={
-                            <div key={_id}>
-                                <strong>Opcje</strong>
-                                <Divider type="vertical" />
-                                <Link
-                                    key={`edit-${_id}`}
-                                    to={`admin/news/edit/${_id}`}
-                                >
-                                    <Icon type="edit" />
-                                </Link>
-                                <Divider type="vertical" />
-                                <Link
-                                    key={`remove-${_id}`}
-                                    to={`admin/news/remove/${_id}`}
-                                >
-                                    <Icon type="delete" />
-                                </Link>
-                            </div>
+                            this.props.isAuthenticated ? (
+                                <div key={_id}>
+                                    <strong>Opcje</strong>
+                                    <Divider type="vertical" />
+                                    <Link
+                                        key={`edit-${_id}`}
+                                        to={`admin/news/edit/${_id}`}
+                                    >
+                                        <Icon type="edit" />
+                                    </Link>
+                                    <Divider type="vertical" />
+                                    <Link
+                                        key={`remove-${_id}`}
+                                        to={`admin/news/remove/${_id}`}
+                                    >
+                                        <Icon type="delete" />
+                                    </Link>
+                                </div>
+                            ) : null
                         }
                         actions={[
                             <span>
@@ -78,9 +80,16 @@ class NewsPage extends Component {
                                     {category.charAt(0).toUpperCase()}
                                 </Avatar>
                             }
-                            description={`Data dodania: ${moment(date).format(
-                                "LLLL"
-                            )} | Autor: ${author}`}
+                            description={
+                                <>
+                                    <span>
+                                        Dodano: {" "}
+                                        {moment(date).format("LLLL")}
+                                    </span>
+                                    <Divider type="vertical" />
+                                    <span>Autor: <strong>{author}</strong></span>
+                                </>
+                            }
                         />
                         <p>
                             {content}{" "}
@@ -104,7 +113,22 @@ class NewsPage extends Component {
                         minHeight: 280
                     }}
                 >
-                    <Card title="Aktualności">{this.renderNews()}</Card>
+                    <Card
+                        title="Aktualności"
+                        extra={
+                            this.props.isAuthenticated ? (
+                                <Button
+                                    icon="file-add"
+                                    type="primary"
+                                    className="add-news-button"
+                                >
+                                    <Link to="admin/news/add"> Dodaj wpis</Link>
+                                </Button>
+                            ) : null
+                        }
+                    >
+                        {this.renderNews()}
+                    </Card>
                 </Content>
             </Layout>
         );
@@ -113,7 +137,8 @@ class NewsPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        news: state.news.news
+        news: state.news.news,
+        isAuthenticated: state.auth.isAuthenticated
     };
 };
 
