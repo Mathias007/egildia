@@ -12,6 +12,7 @@ const addressFragments = {
     EDIT: "edit",
     REMOVE: "remove",
     SINGLE: "single",
+    KEY: "key",
     LIST: "list",
     ID_PARAM: "_id",
 

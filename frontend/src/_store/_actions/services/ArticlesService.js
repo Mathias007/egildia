@@ -3,7 +3,7 @@ import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
 const { ARTICLES } = apiAdressses;
-const { LIST, ADD, EDIT, REMOVE, SINGLE } = ARTICLES;
+const { LIST, ADD, EDIT, REMOVE, SINGLE, SINGLE_KEY } = ARTICLES;
 
 const {
     STATUS_OK,
@@ -42,7 +42,7 @@ export const getAllocatedArticle = (
         body: JSON.stringify({ allocationKey })
     };
 
-    fetch(SINGLE, options)
+    fetch(SINGLE_KEY, options)
         .then(response => {
             if (response.status < INTERNAL_ERROR) {
                 return response.json().then(data => {

@@ -37,7 +37,7 @@ class ArticleEditor extends Component {
 
         validateFields((err, values) => {
             if (!err) {
-                console.log('id wysyłane:' + this.props.match.params._id);
+                console.log("id wysyłane:" + this.props.match.params._id);
                 console.log("Received values of form: ", values);
                 this.props.editSelectedArticle(
                     this.props.match.params._id,
@@ -72,7 +72,7 @@ class ArticleEditor extends Component {
                     >
                         <div>
                             <PageHeader
-                                onBack={() => null}
+                                onBack={() => window.history.back()}
                                 title="Powrót"
                                 subTitle="Panel administracyjny"
                                 extra={

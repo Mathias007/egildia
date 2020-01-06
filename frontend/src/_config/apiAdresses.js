@@ -8,6 +8,7 @@ const {
     EDIT,
     REMOVE,
     SINGLE,
+    KEY,
     LIST,
     LOGIN,
     REGISTER,
@@ -27,7 +28,8 @@ const apiAdressses = {
         ADD: `${API_URL}${ARTICLES}/${ADD}`,
         EDIT: `${API_URL}${ARTICLES}/${EDIT}`,
         REMOVE: `${API_URL}${ARTICLES}/${REMOVE}`,
-        SINGLE: `${API_URL}${ARTICLES}/${SINGLE}`
+        SINGLE: `${API_URL}${ARTICLES}/${SINGLE}`,
+        SINGLE_KEY: `${API_URL}${ARTICLES}/${SINGLE}-${KEY}`
     },
     NEWS: {
         MAIN: `${API_URL}${NEWS}`,
