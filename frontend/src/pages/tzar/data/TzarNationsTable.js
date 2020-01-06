@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import Img from "react-image";
 
 const componentStyles = {
@@ -13,7 +12,6 @@ const componentStyles = {
         margin: 0,
         minHeight: 280
     },
-    layout: { padding: "0 24px 24px" }
 };
 
 const componentClassnames = {
@@ -21,11 +19,10 @@ const componentClassnames = {
         building: "tzar-image-building"
     },
     content: "tzar-buildings-content",
-    layout: "tzar-buildings-layout",
     table: "tzar-buildings-table"
 };
 
-class TzarNationsContent extends Component {
+class TzarNationsTable extends Component {
     state = {
         imgPath: {
             general: "img",
@@ -174,25 +171,16 @@ class TzarNationsContent extends Component {
         ];
 
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
+            <Content
+                className={componentClassnames.images.content}
+                style={componentStyles.content}
             >
-                <BreadcrumbComponent />
-                <Content
-                    className={componentClassnames.images.content}
-                    style={componentStyles.content}
-                >
-                    <h1>Tzar: Ciężar Korony</h1>
-                    <h2>Nacje</h2>
-
-                    <Table
-                        className={componentClassnames.table}
-                        dataSource={tableData}
-                        columns={tableColumns}
-                    />
-                </Content>
-            </Layout>
+                <Table
+                    className={componentClassnames.table}
+                    dataSource={tableData}
+                    columns={tableColumns}
+                />
+            </Content>
         );
     }
 }
@@ -209,4 +197,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TzarNationsContent);
+export default connect(mapStateToProps, mapDispatchToProps)(TzarNationsTable);

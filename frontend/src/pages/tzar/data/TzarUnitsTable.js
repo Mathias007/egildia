@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import Img from "react-image";
 
 const componentStyles = {
@@ -12,8 +11,7 @@ const componentStyles = {
         padding: 24,
         margin: 0,
         minHeight: 280
-    },
-    layout: { padding: "0 24px 24px" }
+    }
 };
 
 const componentClassnames = {
@@ -22,11 +20,10 @@ const componentClassnames = {
         unit: "tzar-image-unit"
     },
     content: "tzar-units-content",
-    layout: "tzar-units-layout",
     table: "tzar-units-table"
 };
 
-class TzarUnitsContent extends Component {
+class TzarUnitsTable extends Component {
     state = {
         imgPath: {
             general: "img",
@@ -110,7 +107,7 @@ class TzarUnitsContent extends Component {
             col_hp,
             col_attack,
             col_defence,
-            col_description,
+            col_description
             // col_image
         } = this.state.columnsStructure;
 
@@ -172,25 +169,16 @@ class TzarUnitsContent extends Component {
         ];
 
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
+            <Content
+                className={componentClassnames.images.content}
+                style={componentStyles.content}
             >
-                <BreadcrumbComponent />
-                <Content
-                    className={componentClassnames.images.content}
-                    style={componentStyles.content}
-                >
-                    <h1>Tzar: Ciężar Korony</h1>
-                    <h2>Jednostki</h2>
-
-                    <Table
-                        className={componentClassnames.table}
-                        dataSource={tableData}
-                        columns={tableColumns}
-                    />
-                </Content>
-            </Layout>
+                <Table
+                    className={componentClassnames.table}
+                    dataSource={tableData}
+                    columns={tableColumns}
+                />
+            </Content>
         );
     }
 }
@@ -207,4 +195,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TzarUnitsContent);
+export default connect(mapStateToProps, mapDispatchToProps)(TzarUnitsTable);

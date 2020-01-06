@@ -20,7 +20,9 @@ class KnightsHomePage extends Component {
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent />
                 <PageHeaderComponent allocationKey={this.state.allocationKey} />
-                <PageContentComponent allocationKey={this.state.allocationKey} />
+                <PageContentComponent
+                    allocationKey={this.state.allocationKey}
+                />
             </Layout>
         );
     }

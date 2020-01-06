@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import Img from "react-image";
 
 const componentStyles = {
@@ -12,8 +11,7 @@ const componentStyles = {
         padding: 24,
         margin: 0,
         minHeight: 280
-    },
-    layout: { padding: "0 24px 24px" }
+    }
 };
 
 const componentClassnames = {
@@ -21,11 +19,10 @@ const componentClassnames = {
         spell: "tzar-image-spell"
     },
     content: "tzar-spells-content",
-    layout: "tzar-spells-layout",
     table: "tzar-spells-table"
 };
 
-class TzarSpellsContent extends Component {
+class TzarSpellsTable extends Component {
     state = {
         imgPath: {
             general: "img",
@@ -33,17 +30,25 @@ class TzarSpellsContent extends Component {
                 tzar: "tzar"
             },
             dir: {
-                spells: "magia",
+                spells: "magia"
             },
             format: {
-                png: "png",
+                png: "png"
             }
         },
         columnsStructure: {
             col_name: { title: "Czar", dataIndex: "name", align: "center" },
             col_description: { title: "Działanie", dataIndex: "description" },
-            col_cost: { title: "Koszt rzutu", dataIndex: "cost", align: "left" },
-            col_speller: { title: "Rzucający", dataIndex: "speller", align: "center" },
+            col_cost: {
+                title: "Koszt rzutu",
+                dataIndex: "cost",
+                align: "left"
+            },
+            col_speller: {
+                title: "Rzucający",
+                dataIndex: "speller",
+                align: "center"
+            }
         },
         tableColumns: [],
         tableData: []
@@ -124,30 +129,21 @@ class TzarSpellsContent extends Component {
             {
                 title: col_speller.title,
                 dataIndex: col_speller.dataIndex,
-                align: col_speller.align,
-            },
+                align: col_speller.align
+            }
         ];
 
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
+            <Content
+                className={componentClassnames.images.content}
+                style={componentStyles.content}
             >
-                <BreadcrumbComponent />
-                <Content
-                    className={componentClassnames.images.content}
-                    style={componentStyles.content}
-                >
-                    <h1>Tzar: Ciężar Korony</h1>
-                    <h2>Magia</h2>
-
-                    <Table
-                        className={componentClassnames.table}
-                        dataSource={tableData}
-                        columns={tableColumns}
-                    />
-                </Content>
-            </Layout>
+                <Table
+                    className={componentClassnames.table}
+                    dataSource={tableData}
+                    columns={tableColumns}
+                />
+            </Content>
         );
     }
 }
@@ -164,4 +160,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TzarSpellsContent);
+export default connect(mapStateToProps, mapDispatchToProps)(TzarSpellsTable);
