@@ -269,3 +269,32 @@
         - aktualizacja panelu bocznego oraz prace nad panelem specjalnym dla sekcji administracyjnej.
 
     **BACKEND**: kosmetyczne poprawki po stronie backendu.
+
+## Sobota 4.01.2020 - refaktoryzacja i konfiguracja we frontendzie
+    **FRONTEND**:
+        - poprawki w plikach konfiguracyjnych (statuses -> serverStatuses), pomniejsze zmiany w różnych plikach;
+        - dodanie plików addressFragments i apiAddresses i refaktoryzacja adresów w funkcjach fetch;
+        - dodanie pliku routesPaths i refaktoryzacja ścieżek podstron w Routerze oraz Sidebarze;
+        - zmiany w systemach artykułów i newsów - poprawki w parametrach, implementacja moment.js i dodanie opcji edycji/usuwania w listach, dodanie resetu pól w formularzach, refaktoryzacja.
+
+## Niedziela 5.01.2020 - prace wykończeniowe nad systemem newsów i artykułów
+    **FRONTEND**: 
+        - Edycja i rozbudowa komponentów Newsów (style, format, struktura, funkcje, itp.);
+        - dodanie komponentu pojedynczego newsa (NewsSingleCard) - struktura, logika, routing;
+        - debug systemu newsów, poprawki w komponentach;
+        - Edycja, rozbudowa i unifikacja komponentów Artykułów (style, format, funkcje, itp.).
+
+    **BACKEND**:
+        - poprawki kontrolerów (zwł. w nazwach), debug systemu newsów.
+
+    **INNE**: stworzenie pisemnej listy rzeczy do zrobienia w systemie newsów i artykułów (większość już wykonana).
+
+## Poniedziałek 6.01.2020 - 
+    **FRONTEND**:
+        - dodanie reduxa dla wyszukiwania artykułu po id (GET),
+        - implementacja w/w Editorze i Removerze artykułów,
+        - finalne poprawki i debug systemu newsów i artykułów.
+
+    **BACKEND**:
+        - utworzenie API dla wyszukiwania artykułu po id,
+        - finalne poprawki i debug systemu newsów i artykułów.
