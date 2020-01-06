@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { knights } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import Img from "react-image";
 
 // eslint-disable-next-line
@@ -15,8 +14,7 @@ const componentStyles = {
         padding: 24,
         margin: 0,
         minHeight: 280
-    },
-    layout: { padding: "0 24px 24px" }
+    }
 };
 
 const componentClassnames = {
@@ -27,11 +25,10 @@ const componentClassnames = {
         unit: "knights-image-unit"
     },
     content: "knights-units-content",
-    layout: "knights-units-layout",
     table: "knights-units-table"
 };
 
-class KnightsUnitsContent extends Component {
+class KnightsUnitsTable extends Component {
     state = {
         imgPath: {
             general: "img",
@@ -147,16 +144,17 @@ class KnightsUnitsContent extends Component {
                         );
                         console.log(workplaceElements);
 
-                        return workplaceElements
-                            ? workplaceElements.map((element, index) => (
-                                  <Img key={element}
-                                      className={
-                                          componentClassnames.images.icon
-                                      }
-                                      src={require(`../../../${general}/${section.knights}/${dir.icons}/${element}.${format.png}`)}
-                                  />
-                              ))
-                            : <p>{specification[1]}</p>;
+                        return workplaceElements ? (
+                            workplaceElements.map((element, index) => (
+                                <Img
+                                    key={element}
+                                    className={componentClassnames.images.icon}
+                                    src={require(`../../../${general}/${section.knights}/${dir.icons}/${element}.${format.png}`)}
+                                />
+                            ))
+                        ) : (
+                            <p>{specification[1]}</p>
+                        );
                     } else {
                         let equipmentElements = specification[2].match(
                             textBetweenTagsRegEx
@@ -179,25 +177,16 @@ class KnightsUnitsContent extends Component {
         ];
 
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
+            <Content
+                className={componentClassnames.images.content}
+                style={componentStyles.content}
             >
-                <BreadcrumbComponent />
-                <Content
-                    className={componentClassnames.images.content}
-                    style={componentStyles.content}
-                >
-                    <h1>Knights and Merchants</h1>
-                    <h2>Jednostki</h2>
-
-                    <Table
-                        className={componentClassnames.table}
-                        dataSource={tableData}
-                        columns={tableColumns}
-                    />
-                </Content>
-            </Layout>
+                <Table
+                    className={componentClassnames.table}
+                    dataSource={tableData}
+                    columns={tableColumns}
+                />
+            </Content>
         );
     }
 }
@@ -214,7 +203,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(KnightsUnitsContent);
+export default connect(mapStateToProps, mapDispatchToProps)(KnightsUnitsTable);

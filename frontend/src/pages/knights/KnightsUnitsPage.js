@@ -1,11 +1,31 @@
 import React, { Component } from "react";
 
-import KnightsUnitsContent from "./components/KnightsUnitsContent";
+import allocationKeys from "../../_config/allocationKeys";
+
+import BreadcrumbComponent from "../global/BreadcrumbComponent";
+import PageHeaderComponent from "../components/PageHeaderComponent";
+import PageContentComponent from "../components/PageContentComponent";
+
+import KnightsUnitsTable from "./data/KnightsUnitsTable";
+import { Layout } from "antd";
+
+const { KNIGHTS_UNITS } = allocationKeys;
 
 class KnightsUnitsPage extends Component {
-    state = {};
+    state = {
+        allocationKey: KNIGHTS_UNITS
+    };
     render() {
-        return <KnightsUnitsContent />;
+        return (
+            <Layout style={{ padding: "0 24px 24px" }}>
+                <BreadcrumbComponent />
+                <PageHeaderComponent allocationKey={this.state.allocationKey} />
+                <PageContentComponent
+                    allocationKey={this.state.allocationKey}
+                />
+                <KnightsUnitsTable />
+            </Layout>
+        );
     }
 }
 
