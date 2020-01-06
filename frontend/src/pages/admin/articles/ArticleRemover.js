@@ -21,7 +21,7 @@ class ArticleRemover extends Component {
 
     handleDeletingSubmit = e => {
         e.preventDefault();
-        this.props.deleteSelectedNews(this.props.match.params._id);
+        this.props.deleteSelectedArticle(this.props.match.params._id);
     };
 
     render() {
@@ -62,7 +62,7 @@ class ArticleRemover extends Component {
                         </Button>
                         <Divider type="vertical" dashed style={{ border: 0 }} />
                         <Button>
-                            <Link to="/admin/news">Zrezygnuj</Link>
+                            <Link to="/admin/articles">Zrezygnuj</Link>
                         </Button>{" "}
                     </Item>
                     <Item>{this.props.errorMessage}</Item>
@@ -75,7 +75,7 @@ class ArticleRemover extends Component {
 const mapStateToProps = state => {
     return {
         errorMessage: state.articles.errorMessage,
-        properArticle: state.news.properArticle
+        properArticle: state.articles.properArticle
     };
 };
 

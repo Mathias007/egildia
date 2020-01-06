@@ -52,19 +52,19 @@ exports.modifyNewsById = (req, res, next) => {
         {
             $set: req.body
         },
-        (err, article) => {
+        (err, singleNews) => {
             if (err) {
                 res.status(401).send({
                     message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
-            } else if (!article.nModified) {
+            } else if (!singleNews) {
                 res.status(404).send({
                     message: "Nie znaleziono wpisu o wybranym identyfikatorze!"
                 });
             } else {
-                console.log(article);
-                res.json({ message: "Wpis został zmodyfikowany!", article });
+                console.log(singleNews);
+                res.json({ message: "Wpis został zmodyfikowany!", singleNews });
             }
         }
     );

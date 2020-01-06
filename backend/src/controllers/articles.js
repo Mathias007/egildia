@@ -117,7 +117,7 @@ exports.modifyArticleById = (req, res, next) => {
                         "Wystąpił problem z autoryzacją podczas modyfikacji artykułu!"
                 });
                 next(err);
-            } else if (!article.nModified) {
+            } else if (!article) {
                 res.status(404).send({
                     message:
                         "Nie znaleziono artykułu o wybranym identyfikatorze!"
