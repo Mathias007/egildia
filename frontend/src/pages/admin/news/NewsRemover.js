@@ -3,21 +3,17 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { news } from "../../../_store/_actions";
-
-import { Button, Divider, Form, Layout, PageHeader } from "antd";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
+import { Button, Divider, Form, Layout, PageHeader } from "antd";
 const { Item } = Form;
 const { Content } = Layout;
 
 const { ADMIN_NEWS, REMOVER } = navigationTitles;
 
 class NewsRemover extends Component {
-    state = {};
-
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperNews(this.props.match.params._id);

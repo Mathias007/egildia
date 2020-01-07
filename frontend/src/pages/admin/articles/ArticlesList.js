@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";

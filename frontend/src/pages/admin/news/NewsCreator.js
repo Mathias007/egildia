@@ -3,7 +3,6 @@ import locale from "antd/es/date-picker/locale/pl_PL";
 import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -26,10 +25,6 @@ const { Content } = Layout;
 const { ADMIN_NEWS, CREATOR } = navigationTitles;
 
 class NewsCreator extends Component {
-    state = {
-        errorMessage: ""
-    };
-
     handleSubmit = e => {
         e.preventDefault();
 

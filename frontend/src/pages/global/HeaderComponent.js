@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
 
 import AvatarComponent from "./AvatarComponent";
 import eGildiaLogo from "../../img/logo/egg-logo-poziome.png";
 
+import { Layout, Menu } from "antd";
 const { Header } = Layout;
 const { Item } = Menu;
 
 class HeaderComponent extends Component {
-    state = {};
     render() {
         return (
             <Header className="header">

@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
-import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
+import { Button, Divider, Icon, Layout, PageHeader, Table } from "antd";
 
 const componentStyles = {
     content: {

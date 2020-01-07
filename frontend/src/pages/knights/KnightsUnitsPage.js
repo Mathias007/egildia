@@ -6,8 +6,8 @@ import navigationTitles from "../../_config/navigationTitles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-
 import KnightsUnitsTable from "./data/KnightsUnitsTable";
+
 import { Layout } from "antd";
 
 const { KNIGHTS_AND_MERCHANTS } = navigationTitles;

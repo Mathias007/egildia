@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
+import navigationTitles from "../../_config/navigationTitles";
+
+import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import LoginForm from "./components/LoginForm";
+
+import { Layout } from "antd";
+
+const { USERS, LOGIN } = navigationTitles;
 
 class LoginPage extends Component {
     state = {};
@@ -11,7 +18,12 @@ class LoginPage extends Component {
         if (this.props.isAuthenticated || this.props.remember) {
             return <Redirect to="/" />;
         }
-        return <LoginForm />;
+        return (
+            <Layout style={{ padding: "0 24px 24px" }}>
+                <BreadcrumbComponent section={USERS} page={LOGIN} />
+                <LoginForm />
+            </Layout>
+        );
     }
 }
 

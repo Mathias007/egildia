@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -16,8 +15,6 @@ const { Content } = Layout;
 const { ADMIN_ARTICLES, REMOVER } = navigationTitles;
 
 class ArticleRemover extends Component {
-    state = {};
-
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperArticle(this.props.match.params._id);

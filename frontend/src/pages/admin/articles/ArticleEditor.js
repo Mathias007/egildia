@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -26,8 +25,6 @@ const { Content } = Layout;
 const { ADMIN_ARTICLES, EDITOR } = navigationTitles;
 
 class ArticleEditor extends Component {
-    state = {};
-
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperArticle(this.props.match.params._id);
@@ -41,7 +38,7 @@ class ArticleEditor extends Component {
 
         validateFields((err, values) => {
             if (!err) {
-                console.log("id wysyłane:" + this.props.match.params._id);
+                console.log("Sent ID:" + this.props.match.params._id);
                 console.log("Received values of form: ", values);
                 this.props.editSelectedArticle(
                     this.props.match.params._id,
@@ -61,7 +58,11 @@ class ArticleEditor extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent isAdminContent section={ADMIN_ARTICLES} page={EDITOR} />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_ARTICLES}
+                    page={EDITOR}
+                />
                 <Content
                     style={{
                         background: "#fff",

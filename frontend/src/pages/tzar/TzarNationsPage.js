@@ -6,8 +6,8 @@ import navigationTitles from "../../_config/navigationTitles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-
 import TzarNationsTable from "./data/TzarNationsTable";
+
 import { Layout } from "antd";
 
 const { TZAR_BURDEN_CROWN } = navigationTitles;

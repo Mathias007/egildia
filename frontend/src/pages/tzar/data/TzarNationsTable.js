@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Img from "react-image";
+
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import Img from "react-image";
 
 const componentStyles = {
     content: {
@@ -11,7 +12,7 @@ const componentStyles = {
         padding: 24,
         margin: 0,
         minHeight: 280
-    },
+    }
 };
 
 const componentClassnames = {

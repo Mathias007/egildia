@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import locale from "antd/es/date-picker/locale/pl_PL";
-
-import navigationTitles from "../../../_config/navigationTitles";
-
 import { connect } from "react-redux";
 
+import navigationTitles from "../../../_config/navigationTitles";
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -27,10 +25,6 @@ const { Content } = Layout;
 const { ADMIN_ARTICLES, CREATOR } = navigationTitles;
 
 class ArticleCreator extends Component {
-    state = {
-        errorMessage: ""
-    };
-
     handleSubmit = e => {
         e.preventDefault();
 

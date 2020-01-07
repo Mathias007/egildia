@@ -16,7 +16,6 @@ class PageContentComponent extends Component {
 
     render() {
         const { content } = this.props.article;
-
         return (
             <Content
                 style={{

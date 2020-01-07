@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import navigationTitles from "../../../_config/navigationTitles";
-
 import { auth } from "../../../_store/_actions";
-
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import {
     Button,
@@ -22,8 +18,6 @@ import {
 const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
-
-const { USERS, REGISTER } = navigationTitles;
 
 class RegistrationForm extends Component {
     state = {
@@ -94,142 +88,137 @@ class RegistrationForm extends Component {
         };
 
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent section={USERS} page={REGISTER} />
-
-                <Content
-                    style={{
-                        background: "#fff",
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280
-                    }}
+            <Content
+                style={{
+                    background: "#fff",
+                    padding: 24,
+                    margin: 0,
+                    minHeight: 280
+                }}
+            >
+                <Form
+                    {...formItemLayout}
+                    onSubmit={this.handleSubmit}
+                    className="registration-form"
                 >
-                    <Form
-                        {...formItemLayout}
-                        onSubmit={this.handleSubmit}
-                        className="registration-form"
+                    <PageHeader
+                        className="registration-header"
+                        title="Formularz rejestracji"
+                    />
+                    <Item
+                        label={
+                            <span>
+                                Nazwa użytkownika&nbsp;
+                                <Tooltip title="Unikalna nazwa, pod którą będziesz widoczny w serwisie.">
+                                    <Icon type="question-circle-o" />
+                                </Tooltip>
+                            </span>
+                        }
                     >
-                        <PageHeader
-                            className="registration-header"
-                            title="Formularz rejestracji"
-                        />
-                        <Item
-                            label={
-                                <span>
-                                    Nazwa użytkownika&nbsp;
-                                    <Tooltip title="Unikalna nazwa, pod którą będziesz widoczny w serwisie.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
-                                </span>
-                            }
-                        >
-                            {getFieldDecorator("nickname", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: "Wpisz swoją nazwę!",
-                                        whitespace: true
-                                    }
-                                ]
-                            })(<Input />)}
-                        </Item>
-                        <Item
-                            label={
-                                <span>
-                                    Adres e-mail&nbsp;
-                                    <Tooltip title="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
-                                </span>
-                            }
-                        >
-                            {getFieldDecorator("email", {
-                                rules: [
-                                    {
-                                        type: "email",
-                                        message: "Podaj poprawny adres e-mail!"
-                                    },
-                                    {
-                                        required: true,
-                                        message: "Wpisz adres e-mail!"
-                                    }
-                                ]
-                            })(<Input />)}
-                        </Item>
-                        <Item
-                            label={
-                                <span>
-                                    Hasło&nbsp;
-                                    <Tooltip title="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
-                                </span>
-                            }
-                            hasFeedback
-                        >
-                            {getFieldDecorator("password", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: "Wpisz swoje hasło!"
-                                    },
-                                    { min: 8, message: "Hasło za krótkie!" },
-                                    {
-                                        pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
-                                        message: "Hasło nie spełnia wymagań!"
-                                    },
-                                    {
-                                        validator: this.validateToNextPassword
-                                    }
-                                ]
-                            })(<Password />)}
-                        </Item>
-                        <Item
-                            label={
-                                <span>
-                                    Potwierdź hasło&nbsp;
-                                    <Tooltip title="Dla pewności wpisz swoje hasło raz jeszcze.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
-                                </span>
-                            }
-                            hasFeedback
-                        >
-                            {getFieldDecorator("confirm", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message:
-                                            "Wpisz jeszcze raz swoje hasło!"
-                                    },
-                                    {
-                                        validator: this.compareToFirstPassword
-                                    }
-                                ]
-                            })(<Password onBlur={this.handleConfirmBlur} />)}
-                        </Item>
+                        {getFieldDecorator("nickname", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Wpisz swoją nazwę!",
+                                    whitespace: true
+                                }
+                            ]
+                        })(<Input />)}
+                    </Item>
+                    <Item
+                        label={
+                            <span>
+                                Adres e-mail&nbsp;
+                                <Tooltip title="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu.">
+                                    <Icon type="question-circle-o" />
+                                </Tooltip>
+                            </span>
+                        }
+                    >
+                        {getFieldDecorator("email", {
+                            rules: [
+                                {
+                                    type: "email",
+                                    message: "Podaj poprawny adres e-mail!"
+                                },
+                                {
+                                    required: true,
+                                    message: "Wpisz adres e-mail!"
+                                }
+                            ]
+                        })(<Input />)}
+                    </Item>
+                    <Item
+                        label={
+                            <span>
+                                Hasło&nbsp;
+                                <Tooltip title="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
+                                    <Icon type="question-circle-o" />
+                                </Tooltip>
+                            </span>
+                        }
+                        hasFeedback
+                    >
+                        {getFieldDecorator("password", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Wpisz swoje hasło!"
+                                },
+                                { min: 8, message: "Hasło za krótkie!" },
+                                {
+                                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
+                                    message: "Hasło nie spełnia wymagań!"
+                                },
+                                {
+                                    validator: this.validateToNextPassword
+                                }
+                            ]
+                        })(<Password />)}
+                    </Item>
+                    <Item
+                        label={
+                            <span>
+                                Potwierdź hasło&nbsp;
+                                <Tooltip title="Dla pewności wpisz swoje hasło raz jeszcze.">
+                                    <Icon type="question-circle-o" />
+                                </Tooltip>
+                            </span>
+                        }
+                        hasFeedback
+                    >
+                        {getFieldDecorator("confirm", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Wpisz jeszcze raz swoje hasło!"
+                                },
+                                {
+                                    validator: this.compareToFirstPassword
+                                }
+                            ]
+                        })(<Password onBlur={this.handleConfirmBlur} />)}
+                    </Item>
 
-                        <Item {...tailFormItemLayout}>
-                            {getFieldDecorator("remember", {
-                                valuePropName: "checked"
-                            })(<Checkbox>Zapamiętaj</Checkbox>)}
+                    <Item {...tailFormItemLayout}>
+                        {getFieldDecorator("remember", {
+                            valuePropName: "checked"
+                        })(<Checkbox>Zapamiętaj</Checkbox>)}
 
-                            <Button
-                                icon="user-add"
-                                type="primary"
-                                htmlType="submit"
-                            >
-                                Zarejestruj się
-                            </Button>
-                        </Item>
-                        <Item {...tailFormItemLayout}>
-                            Posiadasz konto w serwisie?{" "}
-                            <Link to="login">Zaloguj się</Link>
-                        </Item>
-                    </Form>
-                </Content>
-            </Layout>
+                        <Button
+                            icon="user-add"
+                            type="primary"
+                            htmlType="submit"
+                        >
+                            Zarejestruj się
+                        </Button>
+                    </Item>
+                    <Item {...tailFormItemLayout}>
+                        Posiadasz konto w serwisie?{" "}
+                        <Link to="login">Zaloguj się</Link>
+                    </Item>
+                </Form>
+            </Content>
         );
     }
 }

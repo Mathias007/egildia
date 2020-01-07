@@ -2,15 +2,27 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
+import navigationTitles from "../../_config/navigationTitles";
+
+import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import RegistrationForm from "./components/RegistrationForm";
+
+import { Layout } from "antd";
+
+const { USERS, REGISTER } = navigationTitles;
 
 class RegistrationPage extends Component {
     render() {
         if (this.props.isAuthenticated || this.props.remember) {
-            return <Redirect to="/knights" />;
+            return <Redirect to="/" />;
         }
 
-        return <RegistrationForm />;
+        return (
+            <Layout style={{ padding: "0 24px 24px" }}>
+                <BreadcrumbComponent section={USERS} page={REGISTER} />
+                <RegistrationForm />
+            </Layout>
+        );
     }
 }
 

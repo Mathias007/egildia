@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
-import navigationTitles from "../_config/navigationTitles";
-
 import moment from "moment";
 import "moment/locale/pl";
 
+import navigationTitles from "../_config/navigationTitles";
 import { news } from "../_store/_actions";
 
 import BreadcrumbComponent from "./global/BreadcrumbComponent";
@@ -15,7 +13,7 @@ import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;
 const { Content } = Layout;
 
-const {GENERAL_INDEX} = navigationTitles;
+const { GENERAL_INDEX } = navigationTitles;
 
 class NewsPage extends Component {
     componentDidMount() {

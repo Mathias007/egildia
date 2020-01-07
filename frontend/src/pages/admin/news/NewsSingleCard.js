@@ -1,25 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import moment from "moment";
 import "moment/locale/pl";
 
 import navigationTitles from "../../../_config/navigationTitles";
-
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import { Avatar, Card, Divider, Icon, Layout } from "antd";
-
 const { Meta } = Card;
 
 const { ADMIN_NEWS } = navigationTitles;
 
 class NewsSingleCard extends Component {
-    state = {};
-
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperNews(this.props.match.params._id);

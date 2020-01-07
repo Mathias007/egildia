@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-
-import "./App.css";
-import "antd/dist/antd.css";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Layout } from "antd";
+import routesPaths from "../_config/routesPaths";
 
 import FooterComponent from "../pages/global/FooterComponent";
 import HeaderComponent from "../pages/global/HeaderComponent";
@@ -41,15 +37,16 @@ import TzarSpellsPage from "../pages/tzar/TzarSpellsPage";
 import TzarTechnologiesPage from "../pages/tzar/TzarTechnologiesPage";
 import TzarUnitsPage from "../pages/tzar/TzarUnitsPage";
 
-import routesPaths from "../_config/routesPaths";
+import "./App.css";
+import "antd/dist/antd.css";
+import { Layout } from "antd";
+
 const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR } = routesPaths;
 
 class App extends Component {
     state = {
         collapsed: false
     };
-
-    componentDidMount() {}
 
     toggle = () => {
         this.setState({

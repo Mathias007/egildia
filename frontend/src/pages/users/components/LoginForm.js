@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import navigationTitles from "../../../_config/navigationTitles";
-
 import { auth } from "../../../_store/_actions";
 
 import {
@@ -17,19 +15,11 @@ import {
     Tooltip
 } from "antd";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-
 const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
 
-const { USERS, LOGIN } = navigationTitles;
-
 class LoginForm extends Component {
-    state = {
-        errorMessage: ""
-    };
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -48,98 +38,95 @@ class LoginForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent section={USERS} page={LOGIN} />
-                <Content
-                    style={{
-                        background: "#fff",
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280
-                    }}
-                >
-                    <Form onSubmit={this.handleSubmit} className="login-form">
-                        <PageHeader
-                            className="login-header"
-                            title="Formularz logowania"
-                        />
-                        <Item>
-                            {getFieldDecorator("username", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message:
-                                            "Wpisz nazwę użytkownika lub adres e-mail!"
-                                    }
-                                ]
-                            })(
-                                <Input
-                                    prefix={
+            <Content
+                style={{
+                    background: "#fff",
+                    padding: 24,
+                    margin: 0,
+                    minHeight: 280
+                }}
+            >
+                <Form onSubmit={this.handleSubmit} className="login-form">
+                    <PageHeader
+                        className="login-header"
+                        title="Formularz logowania"
+                    />
+                    <Item>
+                        {getFieldDecorator("username", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message:
+                                        "Wpisz nazwę użytkownika lub adres e-mail!"
+                                }
+                            ]
+                        })(
+                            <Input
+                                prefix={
+                                    <Icon
+                                        type="user"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                suffix={
+                                    <Tooltip title="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail.">
                                         <Icon
-                                            type="user"
+                                            type="info-circle"
                                             style={{
-                                                color: "rgba(0,0,0,.25)"
+                                                color: "rgba(0,0,0,.45)"
                                             }}
                                         />
-                                    }
-                                    suffix={
-                                        <Tooltip title="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail.">
-                                            <Icon
-                                                type="info-circle"
-                                                style={{
-                                                    color: "rgba(0,0,0,.45)"
-                                                }}
-                                            />
-                                        </Tooltip>
-                                    }
-                                    placeholder="Login lub e-mail"
-                                />
-                            )}
-                        </Item>
-                        <Item>
-                            {getFieldDecorator("password", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: "Wpisz hasło!"
-                                    }
-                                ]
-                            })(
-                                <Password
-                                    prefix={
-                                        <Icon
-                                            type="lock"
-                                            style={{
-                                                color: "rgba(0,0,0,.25)"
-                                            }}
-                                        />
-                                    }
-                                    type="password"
-                                    placeholder="Hasło"
-                                />
-                            )}
-                        </Item>
-                        <Item>
-                            {getFieldDecorator("remember", {
-                                valuePropName: "checked",
-                                initialValue: true
-                            })(<Checkbox>Zapamiętaj</Checkbox>)}
-                            <Button
-                                icon="login"
-                                type="primary"
-                                htmlType="submit"
-                                className="login-form-button"
-                            >
-                                Zaloguj się
-                            </Button>
-                        </Item>
-                        <Item>
-                            Nie masz konta?{" "}
-                            <Link to="/register">Zarejestruj się</Link>
-                        </Item>
-                    </Form>
-                </Content>
-            </Layout>
+                                    </Tooltip>
+                                }
+                                placeholder="Login lub e-mail"
+                            />
+                        )}
+                    </Item>
+                    <Item>
+                        {getFieldDecorator("password", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Wpisz hasło!"
+                                }
+                            ]
+                        })(
+                            <Password
+                                prefix={
+                                    <Icon
+                                        type="lock"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                type="password"
+                                placeholder="Hasło"
+                            />
+                        )}
+                    </Item>
+                    <Item>
+                        {getFieldDecorator("remember", {
+                            valuePropName: "checked",
+                            initialValue: true
+                        })(<Checkbox>Zapamiętaj</Checkbox>)}
+                        <Button
+                            icon="login"
+                            type="primary"
+                            htmlType="submit"
+                            className="login-form-button"
+                        >
+                            Zaloguj się
+                        </Button>
+                    </Item>
+                    <Item>
+                        Nie masz konta?{" "}
+                        <Link to="/register">Zarejestruj się</Link>
+                    </Item>
+                </Form>
+            </Content>
         );
     }
 }
