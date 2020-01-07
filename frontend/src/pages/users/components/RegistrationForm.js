@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { auth } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -20,6 +22,8 @@ import {
 const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
+
+const { USERS, REGISTER } = navigationTitles;
 
 class RegistrationForm extends Component {
     state = {
@@ -91,7 +95,7 @@ class RegistrationForm extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent section={USERS} page={REGISTER} />
 
                 <Content
                     style={{

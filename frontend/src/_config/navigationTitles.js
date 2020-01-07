@@ -15,7 +15,14 @@ const navigationTitles = {
     ADMINISTRATION: "Administracja",
     ADMIN_ARTICLES: "Artykuły",
     ADMIN_NEWS: "Wpisy",
-    ADMIN_USERS: "Użytkownicy"
+    ADMIN_USERS: "Użytkownicy",
+    LOGIN: "Logowanie",
+    REGISTER: "Rejestracja",
+    USERS: "Użytkownicy",
+    CREATOR: "Dodaj",
+    EDITOR: "Edytuj",
+    REMOVER: "Usuń",
+    LIST: "Lista"
 };
 
 export default navigationTitles;

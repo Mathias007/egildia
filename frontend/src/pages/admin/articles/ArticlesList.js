@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
+import navigationTitles from "../../../_config/navigationTitles";
 
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+
+import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
 
 const componentStyles = {
     content: {
@@ -24,6 +26,8 @@ const componentClassnames = {
     layout: "admin-articles-layout",
     table: "admin-articles-table"
 };
+
+const { ADMIN_ARTICLES, LIST } = navigationTitles;
 
 class ArticlesList extends Component {
     state = {
@@ -162,7 +166,11 @@ class ArticlesList extends Component {
                 className={componentClassnames.layout}
                 style={componentStyles.layout}
             >
-                <BreadcrumbComponent />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_ARTICLES}
+                    page={LIST}
+                />
                 <Content
                     className={componentClassnames.content}
                     style={componentStyles.content}
@@ -177,7 +185,10 @@ class ArticlesList extends Component {
                                     type="primary"
                                     className="add-article-button"
                                 >
-                                    <Link to="articles/add"> Dodaj artykuł</Link>
+                                    <Link to="articles/add">
+                                        {" "}
+                                        Dodaj artykuł
+                                    </Link>
                                 </Button>
                             }
                         />

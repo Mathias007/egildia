@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { articles } from "../../../_store/_actions";
+import navigationTitles from "../../../_config/navigationTitles";
 
-import { Button, Divider, Form, Layout, PageHeader } from "antd";
+import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
+import { Button, Divider, Form, Layout, PageHeader } from "antd";
+
 const { Item } = Form;
 const { Content } = Layout;
+
+const { ADMIN_ARTICLES, REMOVER } = navigationTitles;
 
 class ArticleRemover extends Component {
     state = {};
@@ -29,7 +33,11 @@ class ArticleRemover extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_ARTICLES}
+                    page={REMOVER}
+                />
                 <Content
                     style={{
                         background: "#fff",

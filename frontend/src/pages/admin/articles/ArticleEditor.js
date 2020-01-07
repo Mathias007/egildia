@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { articles } from "../../../_store/_actions";
+
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import {
     Button,
@@ -15,11 +19,11 @@ import {
     Tooltip
 } from "antd";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-
 const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
+
+const { ADMIN_ARTICLES, EDITOR } = navigationTitles;
 
 class ArticleEditor extends Component {
     state = {};
@@ -57,7 +61,7 @@ class ArticleEditor extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent isAdminContent section={ADMIN_ARTICLES} page={EDITOR} />
                 <Content
                     style={{
                         background: "#fff",

@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import locale from "antd/es/date-picker/locale/pl_PL";
-
 import { connect } from "react-redux";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { news } from "../../../_store/_actions";
+
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import {
     Button,
@@ -16,11 +19,11 @@ import {
     Tooltip
 } from "antd";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-
 const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
+
+const { ADMIN_NEWS, CREATOR } = navigationTitles;
 
 class NewsCreator extends Component {
     state = {
@@ -52,7 +55,11 @@ class NewsCreator extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_NEWS}
+                    page={CREATOR}
+                />
                 <Content
                     style={{
                         background: "#fff",

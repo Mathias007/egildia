@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { auth } from "../../../_store/_actions";
 
 import {
@@ -20,6 +22,8 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
+
+const { USERS, LOGIN } = navigationTitles;
 
 class LoginForm extends Component {
     state = {
@@ -45,7 +49,7 @@ class LoginForm extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent section={USERS} page={LOGIN} />
                 <Content
                     style={{
                         background: "#fff",

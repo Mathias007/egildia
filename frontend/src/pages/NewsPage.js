@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import navigationTitles from "../_config/navigationTitles";
+
 import moment from "moment";
 import "moment/locale/pl";
 
@@ -12,6 +14,8 @@ import BreadcrumbComponent from "./global/BreadcrumbComponent";
 import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;
 const { Content } = Layout;
+
+const {GENERAL_INDEX} = navigationTitles;
 
 class NewsPage extends Component {
     componentDidMount() {
@@ -83,11 +87,12 @@ class NewsPage extends Component {
                             description={
                                 <>
                                     <span>
-                                        Dodano: {" "}
-                                        {moment(date).format("LLLL")}
+                                        Dodano: {moment(date).format("LLLL")}
                                     </span>
                                     <Divider type="vertical" />
-                                    <span>Autor: <strong>{author}</strong></span>
+                                    <span>
+                                        Autor: <strong>{author}</strong>
+                                    </span>
                                 </>
                             }
                         />
@@ -104,7 +109,7 @@ class NewsPage extends Component {
     render() {
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent page={GENERAL_INDEX} />
                 <Content
                     style={{
                         background: "#fff",

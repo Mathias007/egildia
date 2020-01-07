@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/pl";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { news } from "../../../_store/_actions";
+
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 import { Avatar, Card, Divider, Icon, Layout } from "antd";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 const { Meta } = Card;
+
+const { ADMIN_NEWS } = navigationTitles;
 
 class NewsSingleCard extends Component {
     state = {};
@@ -32,7 +37,7 @@ class NewsSingleCard extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent section={ADMIN_NEWS} page={title} />
                 <Card
                     type="inner"
                     style={{ marginBottom: 16 }}

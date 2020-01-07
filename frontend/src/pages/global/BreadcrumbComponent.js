@@ -6,16 +6,17 @@ import { Breadcrumb } from "antd";
 
 const { Item } = Breadcrumb;
 
-const {WORTAL} = navigationTitles;
+const { WORTAL, ADMINISTRATION } = navigationTitles;
 
 class BreadcrumbComponent extends Component {
     state = {};
     render() {
+        const { isAdminContent, section, page } = this.props;
         return (
             <Breadcrumb style={{ margin: "16px 0" }}>
-                <Item>{WORTAL}</Item>
-                <Item>{this.props.section}</Item>
-                <Item>{this.props.page}</Item>
+                <Item>{isAdminContent ? ADMINISTRATION : WORTAL}</Item>
+                <Item>{section}</Item>
+                <Item>{page}</Item>
             </Breadcrumb>
         );
     }

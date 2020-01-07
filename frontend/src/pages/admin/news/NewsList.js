@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
+import navigationTitles from "../../../_config/navigationTitles";
 
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+
+import { Button, Layout, Table, Divider, Icon, PageHeader } from "antd";
 
 const componentStyles = {
     content: {
@@ -24,6 +26,8 @@ const componentClassnames = {
     layout: "admin-news-layout",
     table: "admin-news-table"
 };
+
+const { ADMIN_NEWS, LIST } = navigationTitles;
 
 class NewsList extends Component {
     state = {
@@ -162,7 +166,11 @@ class NewsList extends Component {
                 className={componentClassnames.layout}
                 style={componentStyles.layout}
             >
-                <BreadcrumbComponent />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_NEWS}
+                    page={LIST}
+                />
                 <Content
                     className={componentClassnames.content}
                     style={componentStyles.content}

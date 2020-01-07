@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import navigationTitles from "../../../_config/navigationTitles";
+
 import { news } from "../../../_store/_actions";
 
 import { Button, Divider, Form, Layout, PageHeader } from "antd";
@@ -10,6 +12,8 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
 const { Item } = Form;
 const { Content } = Layout;
+
+const { ADMIN_NEWS, REMOVER } = navigationTitles;
 
 class NewsRemover extends Component {
     state = {};
@@ -29,7 +33,11 @@ class NewsRemover extends Component {
 
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
-                <BreadcrumbComponent />
+                <BreadcrumbComponent
+                    isAdminContent
+                    section={ADMIN_NEWS}
+                    page={REMOVER}
+                />
                 <Content
                     style={{
                         background: "#fff",
@@ -90,9 +98,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-NewsRemover = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(NewsRemover);
+NewsRemover = connect(mapStateToProps, mapDispatchToProps)(NewsRemover);
 
 export default Form.create()(NewsRemover);
