@@ -289,12 +289,28 @@
 
     **INNE**: stworzenie pisemnej listy rzeczy do zrobienia w systemie newsów i artykułów (większość już wykonana).
 
-## Poniedziałek 6.01.2020 - 
+## Poniedziałek 6.01.2020 - wygenerowanie treści podstron z bazy i nowa struktura komponentów
     **FRONTEND**:
-        - dodanie reduxa dla wyszukiwania artykułu po id (GET),
-        - implementacja w/w Editorze i Removerze artykułów,
-        - finalne poprawki i debug systemu newsów i artykułów.
+        - dodanie reduxa dla wyszukiwania artykułu po id (GET);
+        - implementacja w/w Editorze i Removerze artykułów;
+        - finalne poprawki i debug systemu newsów i artykułów;
+        - dodanie pliku konfiguracyjnego z kluczami artykułów;
+        - implementacja nowej struktury (szablonowej) w sekcjach Knights i Tzar, obejmującej:
+            > wrapper (Layout z andt),
+            > komponent z Breadcrumbem,
+            > uniwersalny komponent nagłówka (generowanego z API),
+            > uniwersalny komponent treści tekstowej (generowanej z API),
+            > komponenty szczególne (tabele, formularze, etc.);
+        - dodanie funkcji obsługującej sidebara, refaktoryzacja tego komponentu (plik konfiguracyjny navigationTitles).
 
     **BACKEND**:
-        - utworzenie API dla wyszukiwania artykułu po id,
+        - utworzenie API dla wyszukiwania artykułu po id;
         - finalne poprawki i debug systemu newsów i artykułów.
+
+## Wtorek 7.01.2020 - parsowanie HTML z bazy danych, zmiany drobne i drobniejsze
+    **FRONTEND**:
+        - implementacja biblioteki react-html-parser w komponencie treści tekstowej - dzięki temu artykuły tematyczne będą generowane wraz z przypisaną im strukturą HTML, co znacznie uprości pracę nad nimi;
+        - usprawnienie struktury w/w komponentu (Card z andt);
+        - Funkcjonalizacja komponentu Breadcrumb - generowanie właściwych ścieżek po propsach, uzupełnienie propsów w poszczególnych komponentach z użyciem pliku konfiguracyjnego z tytułami nawigacji;
+        - drobny refactoring komponentów, dodanie działającego favicona.
+        
