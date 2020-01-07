@@ -1,4 +1,5 @@
 const navigationTitles = {
+    WORTAL: "e-Gildia Graczy",
     GENERAL_INDEX: "Strona główna",
     KNIGHTS_AND_MERCHANTS: "Knights and Merchants",
     KNIGHTS_MAIN: "Wprowadzenie",

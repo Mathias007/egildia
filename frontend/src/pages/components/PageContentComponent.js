@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import moment from "moment";
+import ReactHtmlParser from "react-html-parser";
 
 import { articles } from "../../_store/_actions";
 
-import { Layout } from "antd";
-
+import { Card, Layout } from "antd";
 const { Content } = Layout;
 
 class PageContentComponent extends Component {
@@ -14,8 +13,10 @@ class PageContentComponent extends Component {
         const { allocationKey, showAllocatedArticle } = this.props;
         showAllocatedArticle(allocationKey);
     }
+
     render() {
         const { content } = this.props.article;
+
         return (
             <Content
                 style={{
@@ -25,7 +26,7 @@ class PageContentComponent extends Component {
                     minHeight: 280
                 }}
             >
-                {content}
+                <Card>{ReactHtmlParser(content)}</Card>
             </Content>
         );
     }
