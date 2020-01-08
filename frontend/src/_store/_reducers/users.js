@@ -11,7 +11,7 @@ const {
     USER_EDITING_FAILED,
     USER_SUCCESFULLY_DELETED,
     USER_DELETING_FAILED
-} = eventStatuses.auth;
+} = eventStatuses.users;
 
 export const initialState = {
     usersList: [],
@@ -22,15 +22,15 @@ export const initialState = {
 export default function auth(state = initialState, action) {
     switch (action.type) {
         case USER_SUCCESSFULLY_LOADED:
-            console.log(action.data.user);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
-                selectedUser: action.data.user
+                selectedUser: action.data.selectedUser
             };
 
         case USER_NOT_FOUND:
-            console.log(action.data.message);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
@@ -38,7 +38,7 @@ export default function auth(state = initialState, action) {
             };
 
         case USERS_LIST_LOADED:
-            console.log(action.data.users);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
@@ -46,7 +46,7 @@ export default function auth(state = initialState, action) {
             };
 
         case USER_ADDED:
-            console.log(action.data.message);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
@@ -54,7 +54,7 @@ export default function auth(state = initialState, action) {
             };
 
         case AUTHENTICATION_ERROR:
-            console.log(action.data.message);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
@@ -62,7 +62,7 @@ export default function auth(state = initialState, action) {
             };
 
         case USER_ADDING_FAILED:
-            console.log(action.data.message);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
@@ -74,6 +74,7 @@ export default function auth(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
+                selectedUser: action.data.selectedUser,
                 errorMessage: action.data.message
             };
 

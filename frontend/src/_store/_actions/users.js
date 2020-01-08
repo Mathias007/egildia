@@ -53,10 +53,10 @@ export const showUserProfile = id => {
 
 export const showUsersList = () => {
     return (dispatch, getState) => {
-        const dispatchUsersListLoaded = function(users) {
+        const dispatchUsersListLoaded = function(response) {
             dispatch({
                 type: USERS_LIST_LOADED,
-                data: users
+                data: response
             });
         };
 
@@ -66,10 +66,10 @@ export const showUsersList = () => {
 
 export const register = (name, email, password, remember) => {
     return (dispatch, getState) => {
-        const dispatchRegistrationSuccessful = function(res) {
+        const dispatchRegistrationSuccessful = function(response) {
             dispatch({
                 type: USER_ADDED,
-                data: res.data,
+                data: response.data,
                 name: name,
                 remember
             });
@@ -79,23 +79,23 @@ export const register = (name, email, password, remember) => {
                 remember
             });
 
-            return res.data, name, remember;
+            return response.data, name, remember;
         };
 
-        const dispatchRegistrationError = function(res) {
+        const dispatchRegistrationError = function(response) {
             dispatch({
                 type: AUTHENTICATION_ERROR,
-                data: res.data
+                data: response.data
             });
-            throw res.data;
+            throw response.data;
         };
 
-        const dispatchRegistrationFailed = function(res) {
+        const dispatchRegistrationFailed = function(response) {
             dispatch({
                 type: USER_ADDING_FAILED,
-                data: res.data
+                data: response.data
             });
-            throw res.data;
+            throw response.data;
         };
 
         return addUser(

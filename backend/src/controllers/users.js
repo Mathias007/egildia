@@ -61,13 +61,13 @@ exports.createUser = (req, res, next) => {
                     if (error) next(error);
                     else
                         res.json({
-                            message: "The user was created"
+                            message: "Użytkownik został utworzony!"
                         });
                 }
             );
         } else {
             res.status(409).send({
-                message: "The request could not be completed due to a conflict"
+                message: "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
             });
         }
     });

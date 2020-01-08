@@ -24,7 +24,7 @@ export const login = (name, password, remember) => {
                 name: name
             });
 
-            return res.data, name, remember;
+            return (res.data, name, remember);
         };
 
         const dispatchUserAuthError = function(res) {
