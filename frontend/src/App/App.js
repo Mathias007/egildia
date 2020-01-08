@@ -37,11 +37,17 @@ import TzarSpellsPage from "../pages/tzar/TzarSpellsPage";
 import TzarTechnologiesPage from "../pages/tzar/TzarTechnologiesPage";
 import TzarUnitsPage from "../pages/tzar/TzarUnitsPage";
 
+// admin users imports
+import UserCreator from "../pages/admin/users/UserCreator";
+import UserEditor from "../pages/admin/users/UserEditor";
+import UserRemover from "../pages/admin/users/UserRemover";
+import UsersList from "../pages/admin/users/UsersList";
+
 import "./App.css";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
 
-const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR } = routesPaths;
+const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR, USERS } = routesPaths;
 
 class App extends Component {
     state = {
@@ -159,6 +165,24 @@ class App extends Component {
                                     <Route
                                         path={TZAR.UNITS}
                                         component={TzarUnitsPage}
+                                    />
+
+                                    {/* admin users routes */}
+                                    <Route exact
+                                        path={USERS.MAIN}
+                                        component={UsersList}
+                                    />
+                                    <Route
+                                        path={USERS.ADD}
+                                        component={UserCreator}
+                                    />
+                                    <Route
+                                        path={USERS.EDIT}
+                                        component={UserEditor}
+                                    />
+                                    <Route
+                                        path={USERS.REMOVE}
+                                        component={UserRemover}
                                     />
                                 </Switch>
                             </Layout>

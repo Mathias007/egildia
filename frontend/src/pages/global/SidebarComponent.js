@@ -10,7 +10,7 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 const { Item } = Menu;
 
-const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR } = routesPaths;
+const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR, USERS } = routesPaths;
 const {
     GENERAL_INDEX,
     KNIGHTS_AND_MERCHANTS,
@@ -57,6 +57,7 @@ class SidebarComponent extends Component {
                     mode="inline"
                     openKeys={this.state.openKeys}
                     onOpenChange={this.onOpenChange}
+                    defaultSelectedKeys={"0"}
                     style={{ height: "100%", borderRight: 0 }}
                 >
                     <Item key="0">
@@ -138,7 +139,7 @@ class SidebarComponent extends Component {
                                 <NavLink to={NEWS.MAIN}>{ADMIN_NEWS}</NavLink>
                             </Item>
                             <Item key="12">
-                                <NavLink to="#">{ADMIN_USERS}</NavLink>
+                                <NavLink to={USERS.MAIN}>{ADMIN_USERS}</NavLink>
                             </Item>
                         </SubMenu>
                     ) : null}
@@ -154,6 +155,6 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {};
+// const mapDispatchToProps = dispatch => {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);
+export default connect(mapStateToProps)(SidebarComponent);
