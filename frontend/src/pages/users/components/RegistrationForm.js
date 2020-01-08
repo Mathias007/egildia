@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { auth } from "../../../_store/_actions";
+// import { auth } from "../../../_store/_actions";
+
+import { users } from "../../../_store/_actions";
 
 import {
     Button,
@@ -234,7 +236,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         register: (name, email, password, remember) => {
-            return dispatch(auth.register(name, email, password, remember));
+            return dispatch(users.register(name, email, password, remember));
         }
     };
 };
