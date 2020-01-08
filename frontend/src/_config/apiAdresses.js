@@ -4,6 +4,7 @@ const {
     API_URL,
     ARTICLES,
     NEWS,
+    USERS,
     ADD,
     EDIT,
     REMOVE,
@@ -11,7 +12,6 @@ const {
     KEY,
     LIST,
     LOGIN,
-    REGISTER,
     KNIGHTS,
     BUILDINGS,
     UNITS,
@@ -39,10 +39,7 @@ const apiAdressses = {
         REMOVE: `${API_URL}${NEWS}/${REMOVE}`,
         SINGLE: `${API_URL}${NEWS}/${SINGLE}`
     },
-    USERS: {
-        LOGIN: `${API_URL}${LOGIN}`,
-        REGISTER: `${API_URL}${REGISTER}`
-    },
+
     KNIGHTS: {
         MAIN: `${API_URL}${KNIGHTS}`,
         BUILDINGS: `${API_URL}${KNIGHTS}/${BUILDINGS}`,
@@ -54,6 +51,15 @@ const apiAdressses = {
         SPELLS: `${API_URL}${TZAR}/${SPELLS}`,
         TECHNOLOGIES: `${API_URL}${TZAR}/${TECHNOLOGIES}`,
         UNITS: `${API_URL}${TZAR}/${UNITS}`
+    },
+    USERS: {
+        MAIN: `${API_URL}${USERS}`,
+        LIST: `${API_URL}${USERS}/${LIST}`,
+        ADD: `${API_URL}${USERS}/${ADD}`,
+        EDIT: `${API_URL}${USERS}/${EDIT}`,
+        REMOVE: `${API_URL}${USERS}/${REMOVE}`,
+        SINGLE: `${API_URL}${USERS}/${SINGLE}`,
+        LOGIN: `${API_URL}${LOGIN}`
     }
 };
 

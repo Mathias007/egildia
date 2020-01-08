@@ -4,6 +4,7 @@ const {
     ADMIN,
     ARTICLES,
     NEWS,
+    USERS,
     ADD,
     EDIT,
     REMOVE,
@@ -51,6 +52,13 @@ const routesPaths = {
         SPELLS: `/${TZAR}/${SPELLS}`,
         TECHNOLOGIES: `/${TZAR}/${TECHNOLOGIES}`,
         UNITS: `/${TZAR}/${UNITS}`
+    },
+    USERS: {
+        SINGLE: `/${USERS}/:${ID_PARAM}`,
+        MAIN: `/${ADMIN}/${USERS}`,
+        ADD: `/${ADMIN}/${USERS}/${ADD}`,
+        EDIT: `/${ADMIN}/${USERS}/${EDIT}/:${ID_PARAM}`,
+        REMOVE: `/${ADMIN}/${USERS}/${REMOVE}/:${ID_PARAM}`
     }
 };
 

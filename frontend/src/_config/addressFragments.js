@@ -5,9 +5,12 @@ const addressFragments = {
     // admin panel
     ADMIN: "admin",
 
-    // articles & news
+    // articles, news & users
     ARTICLES: "articles",
     NEWS: "news",
+    USERS: "users",
+
+    // CRUD (common fragments)
     ADD: "add",
     EDIT: "edit",
     REMOVE: "remove",
@@ -16,7 +19,7 @@ const addressFragments = {
     LIST: "list",
     ID_PARAM: "_id",
 
-    // users
+    // auth
     LOGIN: "login",
     REGISTER: "register",
 
