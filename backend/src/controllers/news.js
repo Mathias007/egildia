@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import NewsSchema from "../models/news";
+import resStatuses from "../config/resStatuses";
+
+const { UNAUTHORIZED, NOT_FOUND, CONFLICT } = resStatuses;
 
 function validateTitle(title) {
     return NewsSchema.findOne({
@@ -12,12 +15,12 @@ function validateTitle(title) {
 exports.getNewsList = (req, res, next) => {
     NewsSchema.find({}, {}, (err, news) => {
         if (err || !news) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message: "Wystąpił problem z autoryzacją!"
             });
             next(err);
         } else if (!news) {
-            res.status(404).send({ message: "Nie znaleziono wpisu." });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono żadnego wpisu!" });
         } else {
             res.json({ message: "Lista wpisów została znaleziona.", news });
         }
@@ -28,12 +31,12 @@ exports.getNewsById = (req, res, next) => {
     let newsId = mongoose.Types.ObjectId(req.body.id);
     NewsSchema.findOne({ _id: newsId }, (err, news) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message: "Wystąpił problem z autoryzacją!"
             });
             next(err);
         } else if (!news) {
-            res.status(404).send({ message: "Nie znaleziono wpisu!" });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono wpisu!" });
         } else {
             console.log(news);
             res.json({
@@ -54,12 +57,12 @@ exports.modifyNewsById = (req, res, next) => {
         },
         (err, singleNews) => {
             if (err) {
-                res.status(401).send({
+                res.status(UNAUTHORIZED).send({
                     message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
             } else if (!singleNews) {
-                res.status(404).send({
+                res.status(NOT_FOUND).send({
                     message: "Nie znaleziono wpisu o wybranym identyfikatorze!"
                 });
             } else {
@@ -75,12 +78,12 @@ exports.deleteNewsById = (req, res, next) => {
 
     NewsSchema.deleteOne({ _id: newsId }, (err, news) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message: "Wystąpił problem z autoryzacją!"
             });
             next(err);
         } else if (!news.deletedCount) {
-            res.status(404).send({ message: "Nie ma takiego wpisu!" });
+            res.status(NOT_FOUND).send({ message: "Nie ma takiego wpisu!" });
         } else {
             console.log(news);
             res.json({ message: "Wybrany wpis został usunięty!" });
@@ -108,7 +111,7 @@ exports.createNews = (req, res, next) => {
                 }
             );
         } else {
-            res.status(409).send({
+            res.status(CONFLICT).send({
                 message:
                     "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
             });

@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import ArticlesSchema from "../models/articles";
+import resStatuses from "../config/resStatuses";
+
+const { UNAUTHORIZED, NOT_FOUND, CONFLICT } = resStatuses;
 
 function validateAllocationKey(allocationKey) {
     return ArticlesSchema.findOne({
@@ -12,13 +15,13 @@ function validateAllocationKey(allocationKey) {
 exports.getArticlesList = (req, res, next) => {
     ArticlesSchema.find({}, {}, (err, articles) => {
         if (err || !articles) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message:
                     "Wystąpił problem z autoryzacją przy pobieraniu artykułów!"
             });
             next(err);
         } else if (!articles) {
-            res.status(404).send({ message: "Nie znaleziono artykułów." });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono artykułów." });
         } else {
             res.json({
                 message: "Lista artykułów została znaleziona.",
@@ -32,12 +35,12 @@ exports.getArticleById = (req, res, next) => {
     let articleId = mongoose.Types.ObjectId(req.body.id);
     ArticlesSchema.findOne({ _id: articleId }, (err, article) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message: "Wystąpił problem z autoryzacją!"
             });
             next(err);
         } else if (!article) {
-            res.status(404).send({ message: "Nie znaleziono artykułu!" });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono artykułu!" });
         } else {
             console.log(article);
             res.json({
@@ -53,13 +56,13 @@ exports.getArticleByAllocationKey = (req, res, next) => {
         { allocationKey: req.body.allocationKey },
         (err, article) => {
             if (err) {
-                res.status(401).send({
+                res.status(UNAUTHORIZED).send({
                     message:
                         "Wystąpił problem z autoryzacją przy pobieraniu artykułu!"
                 });
                 next(err);
             } else if (!article) {
-                res.status(404).send({
+                res.status(NOT_FOUND).send({
                     message: "Nie znaleziono artykułu o podanym kluczu!"
                 });
             } else {
@@ -94,7 +97,7 @@ exports.createArticle = (req, res, next) => {
                 }
             );
         } else {
-            res.status(409).send({
+            res.status(CONFLICT).send({
                 message:
                     "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
             });
@@ -112,13 +115,13 @@ exports.modifyArticleById = (req, res, next) => {
         },
         (err, article) => {
             if (err) {
-                res.status(401).send({
+                res.status(UNAUTHORIZED).send({
                     message:
                         "Wystąpił problem z autoryzacją podczas modyfikacji artykułu!"
                 });
                 next(err);
             } else if (!article) {
-                res.status(404).send({
+                res.status(NOT_FOUND).send({
                     message:
                         "Nie znaleziono artykułu o wybranym identyfikatorze!"
                 });
@@ -135,13 +138,13 @@ exports.deleteArticleById = (req, res, next) => {
 
     ArticlesSchema.deleteOne({ _id: articleId }, (err, article) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message:
                     "Wystąpił problem z autoryzacją podczas usuwania artykułu!"
             });
             next(err);
         } else if (!article.deletedCount) {
-            res.status(404).send({
+            res.status(NOT_FOUND).send({
                 message: "Nie ma artykułu o wybranym identyfikatorze!"
             });
         } else {

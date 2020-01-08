@@ -12,10 +12,10 @@ const {
 
 export const login = (name, password, remember) => {
     return (dispatch, getState) => {
-        const dispatchLoginSuccessful = function(res, name, remember) {
+        const dispatchLoginSuccessful = function(response, name, remember) {
             dispatch({
                 type: LOGIN_SUCCESSFUL,
-                data: res.data,
+                data: response.data,
                 name: name,
                 remember: remember
             });
@@ -24,24 +24,24 @@ export const login = (name, password, remember) => {
                 name: name
             });
 
-            return (res.data, name, remember);
+            return (response.data, name, remember);
         };
 
-        const dispatchUserAuthError = function(res) {
+        const dispatchUserAuthError = function(response) {
             dispatch({
                 type: AUTHENTICATION_ERROR,
-                data: res.data
+                data: response.data
             });
 
-            throw res.data;
+            throw response.data;
         };
 
-        const dispatchLoginFailed = function(res) {
+        const dispatchLoginFailed = function(response) {
             dispatch({
                 type: LOGIN_FAILED,
-                data: res.data
+                data: response.data
             });
-            throw res.data;
+            throw response.data;
         };
 
         return fetchLogin(

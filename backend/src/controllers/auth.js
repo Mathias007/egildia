@@ -2,6 +2,9 @@ import UserSchema from "../models/users";
 // import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET_JWT } from "../config/config";
+import resStatuses from "../config/resStatuses";
+
+const { UNAUTHORIZED, NOT_FOUND, CONFLICT } = resStatuses;
 
 // Generate token
 const generateTokens = (req, user) => {
@@ -43,12 +46,12 @@ exports.loginUser = (req, res, next) => {
         (err, user) => {
             console.log(user);
             if (err || !user) {
-                res.status(401).send({
+                res.status(UNAUTHORIZED).send({
                     message: "Wystąpił problem z autoryzacją!"
                 });
                 next(err);
             } else if (!user) {
-                res.status(404).send({
+                res.status(NOT_FOUND).send({
                     message: "Nie znaleziono użytkownika!"
                 });
                 // if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -68,20 +71,20 @@ exports.loginUser = (req, res, next) => {
 // Verify accessToken
 exports.accessTokenVerify = (req, res, next) => {
     if (!req.headers.authorization) {
-        return res.status(401).send({
+        return res.status(UNAUTHORIZED).send({
             error: "Token is missing"
         });
     }
     const BEARER = "Bearer";
     const AUTHORIZATION_TOKEN = req.headers.authorization.split(" ");
     if (AUTHORIZATION_TOKEN[0] !== BEARER) {
-        return res.status(401).send({
+        return res.status(UNAUTHORIZED).send({
             error: "Token is not complete"
         });
     }
     jwt.verify(AUTHORIZATION_TOKEN[1], TOKEN_SECRET_JWT, function(err) {
         if (err) {
-            return res.status(401).send({
+            return res.status(UNAUTHORIZED).send({
                 error: "Token is invalid"
             });
         }
@@ -92,26 +95,26 @@ exports.accessTokenVerify = (req, res, next) => {
 // Verify refreshToken
 exports.refreshTokenVerify = (req, res, next) => {
     if (!req.body.refreshToken) {
-        res.status(401).send({
+        res.status(UNAUTHORIZED).send({
             message: "Token refresh is missing"
         });
     }
     const BEARER = "Bearer";
     const REFRESH_TOKEN = req.body.refreshToken.split(" ");
     if (REFRESH_TOKEN[0] !== BEARER) {
-        return res.status(401).send({
+        return res.status(UNAUTHORIZED).send({
             error: "Token is not complete"
         });
     }
     jwt.verify(REFRESH_TOKEN[1], TOKEN_SECRET_JWT, function(err, payload) {
         if (err) {
-            return res.status(401).send({
+            return res.status(UNAUTHORIZED).send({
                 error: "Token refresh is invalid"
             });
         }
         UserSchema.findById(payload.sub, function(err, person) {
             if (!person) {
-                return res.status(401).send({
+                return res.status(UNAUTHORIZED).send({
                     error: "Person not found"
                 });
             }

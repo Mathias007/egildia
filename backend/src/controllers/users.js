@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import UserSchema from "../models/users";
+import resStatuses from "../config/resStatuses";
+
+const { UNAUTHORIZED, NOT_FOUND, CONFLICT } = resStatuses;
 
 function validateEmailAccessibility(email) {
     return UserSchema.findOne({
@@ -12,13 +15,13 @@ function validateEmailAccessibility(email) {
 exports.getUsersList = (req, res, next) => {
     UserSchema.find({}, {}, (err, users) => {
         if (err || !users) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message:
                     "Wystąpił problem z autoryzacją przy pobieraniu listy użytkowników!"
             });
             next(err);
         } else if (!users) {
-            res.status(404).send({ message: "Nie znaleziono użytkowników." });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono użytkowników." });
         } else {
             res.json({
                 message: "Lista użytkowników została znaleziona.",
@@ -32,12 +35,12 @@ exports.getUserById = (req, res, next) => {
     let userId = mongoose.Types.ObjectId(req.body.id);
     UserSchema.findOne({ _id: userId }, (err, selectedUser) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message: "Wystąpił problem z autoryzacją!"
             });
             next(err);
         } else if (!selectedUser) {
-            res.status(404).send({ message: "Nie znaleziono użytkownika!" });
+            res.status(NOT_FOUND).send({ message: "Nie znaleziono użytkownika!" });
         } else {
             console.log(selectedUser);
             res.json({
@@ -55,7 +58,9 @@ exports.createUser = (req, res, next) => {
                 {
                     name: req.body.name,
                     email: req.body.email,
-                    password: req.body.password
+                    password: req.body.password,
+                    role: req.body.role,
+                    date: req.body.date
                 },
                 (error, result) => {
                     if (error) next(error);
@@ -66,8 +71,9 @@ exports.createUser = (req, res, next) => {
                 }
             );
         } else {
-            res.status(409).send({
-                message: "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
+            res.status(CONFLICT).send({
+                message:
+                    "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
             });
         }
     });
@@ -83,13 +89,13 @@ exports.modifyUserData = (req, res, next) => {
         },
         (err, selectedUser) => {
             if (err) {
-                res.status(401).send({
+                res.status(UNAUTHORIZED).send({
                     message:
                         "Wystąpił problem z autoryzacją podczas modyfikacji danych użytkownika!"
                 });
                 next(err);
             } else if (!selectedUser) {
-                res.status(404).send({
+                res.status(NOT_FOUND).send({
                     message:
                         "Nie znaleziono użytkownika o wybranym identyfikatorze!"
                 });
@@ -109,13 +115,13 @@ exports.deleteUserData = (req, res, next) => {
 
     UserSchema.deleteOne({ _id: userId }, (err, selectedUser) => {
         if (err) {
-            res.status(401).send({
+            res.status(UNAUTHORIZED).send({
                 message:
                     "Wystąpił problem z autoryzacją podczas usuwania użytkownika!"
             });
             next(err);
         } else if (!selectedUser.deletedCount) {
-            res.status(404).send({
+            res.status(NOT_FOUND).send({
                 message: "Nie ma użytkownika o wybranym identyfikatorze!"
             });
         } else {

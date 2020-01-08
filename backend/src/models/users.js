@@ -27,6 +27,14 @@ const UserSchema = new Schema(
             type: String,
             trim: true,
             default: "USER"
+        },
+        date: {
+            type: Date,
+            default: new Date()
+        },
+        lastModified: {
+            type: Date,
+            default: new Date()
         }
     },
     {

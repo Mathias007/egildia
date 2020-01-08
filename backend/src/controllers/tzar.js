@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+import resStatuses from "../config/resStatuses";
+
+const { UNAUTHORIZED } = resStatuses;
+
 const Schema = mongoose.Schema;
 
 const NationsSchema = new Schema({}, { strict: false });
@@ -15,11 +19,10 @@ const Technologies = mongoose.model(
     "tzar/technologies"
 );
 
-// Controller get buildings list
 exports.getNationsList = (req, res, next) => {
     Nations.find({}, {}, (err, nations) => {
         if (err || !nations) {
-            res.status(401).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
             next(err);
         } else {
             res.json(nations);
@@ -27,11 +30,10 @@ exports.getNationsList = (req, res, next) => {
     });
 };
 
-// Controller get units list
 exports.getUnitsList = (req, res, next) => {
     Units.find({}, {}, (err, units) => {
         if (err || !units) {
-            res.status(401).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
             next(err);
         } else {
             res.json(units);
@@ -43,7 +45,7 @@ exports.getUnitsList = (req, res, next) => {
 exports.getSpellsList = (req, res, next) => {
     Spells.find({}, {}, (err, spells) => {
         if (err || !spells) {
-            res.status(401).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
             next(err);
         } else {
             res.json(spells);
@@ -55,7 +57,7 @@ exports.getSpellsList = (req, res, next) => {
 exports.getTechnologiesList = (req, res, next) => {
     Technologies.find({}, {}, (err, technologies) => {
         if (err || !technologies) {
-            res.status(401).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
             next(err);
         } else {
             res.json(technologies);

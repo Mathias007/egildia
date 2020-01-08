@@ -64,7 +64,7 @@ export const showUsersList = () => {
     };
 };
 
-export const register = (name, email, password, remember) => {
+export const register = (name, email, password, role, date, remember) => {
     return (dispatch, getState) => {
         const dispatchRegistrationSuccessful = function(response) {
             dispatch({
@@ -102,13 +102,15 @@ export const register = (name, email, password, remember) => {
             name,
             email,
             password,
+            role, 
+            date,
             dispatchRegistrationSuccessful,
             dispatchRegistrationError,
             dispatchRegistrationFailed
         );
     };
 };
-export const editSelectedUser = (id, name, email, password) => {
+export const editSelectedUser = (id, name, email, password, role, date) => {
     return (dispatch, getState) => {
         const dispatchUserEdited = function(response) {
             dispatch({

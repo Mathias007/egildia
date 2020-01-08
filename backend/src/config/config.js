@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     // MONGO CONFIG
     URI_MONGO: process.env.URI_MONGO || "mongodb://localhost:27017/egildia",
     // APP CONFIG
@@ -17,4 +17,6 @@ module.exports = {
         TZAR: "tzar",
         USERS: "users"
     }
-};
+}
+
+export default config;
