@@ -14,6 +14,7 @@ module.exports = {
         ARTICLES: "articles",
         NEWS: "news",
         KNIGHTS: "knights",
-        TZAR: "tzar"
+        TZAR: "tzar",
+        USERS: "users"
     }
 };

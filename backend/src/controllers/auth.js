@@ -3,15 +3,6 @@ import UserSchema from "../models/users";
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET_JWT } from "../config/config";
 
-// Validate email address
-function validateEmailAccessibility(email) {
-    return UserSchema.findOne({
-        email: email
-    }).then(result => {
-        return !result;
-    });
-}
-
 // Generate token
 const generateTokens = (req, user) => {
     const ACCESS_TOKEN = jwt.sign(
@@ -40,32 +31,6 @@ const generateTokens = (req, user) => {
         accessToken: ACCESS_TOKEN,
         refreshToken: REFRESH_TOKEN
     };
-};
-
-// Controller create user
-exports.createUser = (req, res, next) => {
-    validateEmailAccessibility(req.body.email).then(valid => {
-        if (valid) {
-            UserSchema.create(
-                {
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password
-                },
-                (error, result) => {
-                    if (error) next(error);
-                    else
-                        res.json({
-                            message: "The user was created"
-                        });
-                }
-            );
-        } else {
-            res.status(409).send({
-                message: "The request could not be completed due to a conflict"
-            });
-        }
-    });
 };
 
 // Controller login user

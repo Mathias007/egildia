@@ -10,19 +10,24 @@ import knightsController from "./src/controllers/knights";
 import tzarControlles from "./src/controllers/tzar";
 
 const { ROUTES } = config;
-const { API, ARTICLES, NEWS, KNIGHTS, TZAR } = ROUTES;
+const { API, ARTICLES, NEWS, KNIGHTS, TZAR, USERS } = ROUTES;
 
 const router = express.Router();
 
 // auth API
 router.post(`/${API}/login`, authController.loginUser);
-router.post(`/${API}/register`, authController.createUser);
 router.post(`/${API}/refresh`, authController.refreshTokenVerify);
+
+// users API
 router.get(
-    `/${API}/users`,
-    authController.accessTokenVerify,
-    usersController.getUserList
+    `/${API}/${USERS}/list`,
+    // authController.accessTokenVerify,
+    usersController.getUsersList
 );
+router.post(`/${API}/${USERS}/single`, usersController.getUserById);
+router.post(`/${API}/${USERS}/add`, usersController.createUser);
+router.patch(`/${API}/${USERS}/edit`, usersController.modifyUserData);
+router.delete(`/${API}/${USERS}/remove`, usersController.deleteUserData);
 
 // news API
 router.get(`/${API}/${NEWS}/list`, newsController.getNewsList);
