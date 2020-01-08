@@ -22,8 +22,8 @@ export const getAllNews = dispatchNewsListLoaded => {
     };
 
     fetch(LIST, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(news => {
             return dispatchNewsListLoaded(news);

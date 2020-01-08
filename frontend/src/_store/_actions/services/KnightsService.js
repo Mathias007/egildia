@@ -16,8 +16,8 @@ export const fetchBuildingsList = dispatchBuildingsListLoaded => {
     };
 
     fetch(BUILDINGS, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(buildings => {
             return dispatchBuildingsListLoaded(buildings);
@@ -31,8 +31,8 @@ export const fetchUnitsList = dispatchUnitsListLoaded => {
     };
 
     fetch(UNITS, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(units => {
             return dispatchUnitsListLoaded(units);

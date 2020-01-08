@@ -16,8 +16,8 @@ export const fetchNationsList = dispatchNationsListLoaded => {
     };
 
     fetch(NATIONS, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(nations => {
             return dispatchNationsListLoaded(nations);
@@ -31,8 +31,8 @@ export const fetchSpellsList = dispatchSpellsListLoaded => {
     };
 
     fetch(SPELLS, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(spells => {
             return dispatchSpellsListLoaded(spells);
@@ -46,8 +46,8 @@ export const fetchTechnologiesList = dispatchTechnologiesListLoaded => {
     };
 
     fetch(TECHNOLOGIES, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(technologies => {
             return dispatchTechnologiesListLoaded(technologies);
@@ -61,8 +61,8 @@ export const fetchUnitsList = dispatchUnitsListLoaded => {
     };
 
     fetch(UNITS, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(units => {
             return dispatchUnitsListLoaded(units);

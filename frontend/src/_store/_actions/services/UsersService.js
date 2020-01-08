@@ -23,8 +23,8 @@ export const getAllUsers = dispatchUsersListLoaded => {
     };
 
     fetch(LIST, options)
-        .then(res => {
-            return res.json();
+        .then(response => {
+            return response.json();
         })
         .then(users => {
             return dispatchUsersListLoaded(users);
@@ -73,6 +73,8 @@ export const addUser = (
     name,
     email,
     password,
+    role,
+    date,
     dispatchRegistrationSuccessful,
     dispatchRegistrationError,
     dispatchRegistrationFailed
@@ -80,31 +82,31 @@ export const addUser = (
     const options = {
         method: POST,
         headers,
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password, role, date })
     };
 
     fetch(ADD, options)
-        .then(res => {
-            if (res.status < INTERNAL_ERROR) {
-                return res.json().then(data => {
-                    return { status: res.status, data };
+        .then(response => {
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
+                    return { status: response.status, data };
                 });
             } else {
                 console.log("Server Error!");
-                throw res;
+                throw response;
             }
         })
-        .then(res => {
-            console.log(res);
-            if (res.status === STATUS_OK || STATUS_CREATED) {
-                dispatchRegistrationSuccessful(res);
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK || STATUS_CREATED) {
+                dispatchRegistrationSuccessful(response);
             } else if (
-                res.status === STATUS_FORBIDDEN ||
-                res.status === STATUS_UNAUTHORIZED
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
             ) {
-                return dispatchRegistrationError(res);
+                return dispatchRegistrationError(response);
             } else {
-                return dispatchRegistrationFailed(res);
+                return dispatchRegistrationFailed(response);
             }
         });
 };
@@ -114,6 +116,8 @@ export const editUser = (
     name,
     email,
     password,
+    role,
+    date,
     dispatchUserEdited,
     dispatchUserAuthError,
     dispatchUserEditingFailed
@@ -125,7 +129,9 @@ export const editUser = (
             id,
             name,
             email,
-            password
+            password,
+            role,
+            date
         })
     };
 

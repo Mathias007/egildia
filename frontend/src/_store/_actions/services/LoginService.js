@@ -30,30 +30,30 @@ const fetchLogin = (
     };
 
     fetch(LOGIN, options)
-        .then(res => {
-            if (res.status < INTERNAL_ERROR) {
-                return res.json().then(data => {
+        .then(response => {
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
                     return {
-                        status: res.status,
+                        status: response.status,
                         data
                     };
                 });
             } else {
                 console.log("Server error!");
-                throw res;
+                throw response;
             }
         })
-        .then(res => {
-            console.log(res);
-            if (res.status === STATUS_OK) {
-                dispatchLoginSuccessful(res, name, remember);
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK) {
+                dispatchLoginSuccessful(response, name, remember);
             } else if (
-                res.status === STATUS_FORBIDDEN ||
-                res.status === STATUS_UNAUTHORIZED
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
             ) {
-                dispatchUserAuthError(res);
+                dispatchUserAuthError(response);
             } else {
-                dispatchLoginFailed(res);
+                dispatchLoginFailed(response);
             }
         });
 };
