@@ -240,6 +240,7 @@
     **INNE*: wstępne rozważenie planów i celów rozwoju projektu na I kwartał 2020 roku (szczegóły wkrótce).
 
 ## Czwartek 2.01.2020 - budowa systemu artykułów i newsów
+
     **FRONTEND**:
         - rozbudowa komponentu dodawania artykułu (struktura i logika);
         - utworzenie komponentów do usuwania i edycji artykułów oraz szkicu strony głównej (newsy);
@@ -258,6 +259,7 @@
         - podmiana require na importy oraz stworzenie katalogu config
 
 ## Piątek 3.01.2020 - kolejne postępy w budowie systemu newsów i artykułów
+
     **FRONTEND**:
         - utworzenie plików i funkcji reduxa dla news (CRUD), uzupełnienie plików konfiguracyjnych;
         - połączenie NewsPage ze storem i utworzenie dynamicznego komponentu z aktualnościami;
@@ -271,6 +273,7 @@
     **BACKEND**: kosmetyczne poprawki po stronie backendu.
 
 ## Sobota 4.01.2020 - refaktoryzacja i konfiguracja we frontendzie
+
     **FRONTEND**:
         - poprawki w plikach konfiguracyjnych (statuses -> serverStatuses), pomniejsze zmiany w różnych plikach;
         - dodanie plików addressFragments i apiAddresses i refaktoryzacja adresów w funkcjach fetch;
@@ -278,7 +281,8 @@
         - zmiany w systemach artykułów i newsów - poprawki w parametrach, implementacja moment.js i dodanie opcji edycji/usuwania w listach, dodanie resetu pól w formularzach, refaktoryzacja.
 
 ## Niedziela 5.01.2020 - prace wykończeniowe nad systemem newsów i artykułów
-    **FRONTEND**: 
+
+    **FRONTEND**:
         - Edycja i rozbudowa komponentów Newsów (style, format, struktura, funkcje, itp.);
         - dodanie komponentu pojedynczego newsa (NewsSingleCard) - struktura, logika, routing;
         - debug systemu newsów, poprawki w komponentach;
@@ -290,6 +294,7 @@
     **INNE**: stworzenie pisemnej listy rzeczy do zrobienia w systemie newsów i artykułów (większość już wykonana).
 
 ## Poniedziałek 6.01.2020 - wygenerowanie treści podstron z bazy i nowa struktura komponentów
+
     **FRONTEND**:
         - dodanie reduxa dla wyszukiwania artykułu po id (GET);
         - implementacja w/w Editorze i Removerze artykułów;
@@ -308,9 +313,25 @@
         - finalne poprawki i debug systemu newsów i artykułów.
 
 ## Wtorek 7.01.2020 - parsowanie HTML z bazy danych, zmiany drobne i drobniejsze
+
     **FRONTEND**:
         - implementacja biblioteki react-html-parser w komponencie treści tekstowej - dzięki temu artykuły tematyczne będą generowane wraz z przypisaną im strukturą HTML, co znacznie uprości pracę nad nimi;
         - usprawnienie struktury w/w komponentu (Card z andt);
         - Funkcjonalizacja komponentu Breadcrumb - generowanie właściwych ścieżek po propsach, uzupełnienie propsów w poszczególnych komponentach z użyciem pliku konfiguracyjnego z tytułami nawigacji;
         - drobny refactoring komponentów, dodanie działającego favicona.
-        
+
+
+## Środa 8.01.2020 - implementacja systemu użytkowników
+
+    **FRONTEND**:
+        - utworzenie plików reduxowych dla systemu użytkowników, modyfikacja istniejących plików autoryzacyjnych;
+        - utworzenie komponentów do zarządzania użytkownikami: Creator, Editor, Remover i List (toDo: ProfileCard);
+        - uzupełnienie routingu i plików konfiguracyjnych;
+        - bugfix & refactor.
+
+    **BACKEND**:
+        - uzupełnienie controllerów i routingu dla API użytkowników (CRUD);
+        - modyfikacja UsersSchema (rola na stronie i daty);
+        - początek prac refaktoryzacyjnych w backendzie - wydzielenie statusów do pliku konfiguracyjnego, podmiana module.exports na składnię ES6.
+
+    **INNE**: system userów został utworzony na bazie systemu artykułów i newsów, pozostaje on jednak w związku z systemem autoryzacji/autentykacji, nad którym prace zostaną niebawem wznowione.
