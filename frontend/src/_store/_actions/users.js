@@ -79,7 +79,7 @@ export const register = (name, email, password, role, date, remember) => {
                 remember
             });
 
-            return response.data, name, remember;
+            return (response.data, name, remember);
         };
 
         const dispatchRegistrationError = function(response) {

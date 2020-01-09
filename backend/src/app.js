@@ -26,7 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.get(`/${API}`, (req, res) => {
+app.get(API, (req, res) => {
     res.json({
         message: "e-Gildia Graczy 2.0 - API. Witamy w kolonii!"
     });

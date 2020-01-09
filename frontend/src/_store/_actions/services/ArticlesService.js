@@ -1,8 +1,8 @@
-import apiAdressses from "../../../_config/apiAdresses";
+import apiAddresses from "../../../_config/apiAddresses";
 import serverStatuses from "../../../_config/serverStatuses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { ARTICLES } = apiAdressses;
+const { ARTICLES } = apiAddresses;
 const { LIST, ADD, EDIT, REMOVE, SINGLE, SINGLE_KEY } = ARTICLES;
 
 const {

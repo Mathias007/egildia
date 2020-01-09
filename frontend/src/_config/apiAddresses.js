@@ -21,7 +21,7 @@ const {
     TECHNOLOGIES
 } = addressFragments;
 
-const apiAdressses = {
+const apiAddresses = {
     ARTICLES: {
         MAIN: `${API_URL}${ARTICLES}`,
         LIST: `${API_URL}${ARTICLES}/${LIST}`,
@@ -63,4 +63,4 @@ const apiAdressses = {
     }
 };
 
-export default apiAdressses;
+export default apiAddresses;

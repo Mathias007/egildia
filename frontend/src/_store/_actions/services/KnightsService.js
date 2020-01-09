@@ -1,7 +1,7 @@
-import apiAdressses from "../../../_config/apiAdresses";
+import apiAddresses from "../../../_config/apiAddresses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { KNIGHTS } = apiAdressses;
+const { KNIGHTS } = apiAddresses;
 const { BUILDINGS, UNITS } = KNIGHTS;
 
 const { method, headers } = fetchOptions;

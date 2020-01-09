@@ -1,9 +1,11 @@
-import UserSchema from "../models/users";
-// import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET_JWT } from "../config/config";
+// import bcrypt from 'bcrypt'
+import config from "../config/config";
 import resStatuses from "../config/resStatuses";
 
+import UserSchema from "../models/users";
+
+const {TOKEN_SECRET_JWT} = config;
 const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
 
 // Generate token

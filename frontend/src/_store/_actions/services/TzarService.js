@@ -1,7 +1,7 @@
-import apiAdressses from "../../../_config/apiAdresses";
+import apiAddresses from "../../../_config/apiAddresses";
 import fetchOptions from "../../../_config/fetchOptions";
 
-const { TZAR } = apiAdressses;
+const { TZAR } = apiAddresses;
 const { NATIONS, SPELLS, TECHNOLOGIES, UNITS } = TZAR;
 
 const { method, headers } = fetchOptions;

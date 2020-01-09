@@ -170,8 +170,7 @@ class UserEditor extends Component {
                             {getFieldDecorator("password", {
                                 rules: [
                                     {
-                                        required: true,
-                                        message: "Wpisz swoje hasło!"
+                                        required: false,
                                     },
                                     { min: 8, message: "Hasło za krótkie!" },
                                     {
