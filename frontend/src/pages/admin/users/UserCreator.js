@@ -197,13 +197,14 @@ class UserCreator extends Component {
 
                         <Item label="Rola w serwisie">
                             {getFieldDecorator("role", {
+                                initialValue: "USER",
                                 rules: [
                                     {
                                         required: false
                                     }
                                 ]
                             })(
-                                <Select defaultValue="USER">
+                                <Select>
                                     <Option value="USER">USER</Option>
                                     <Option value="ADMIN">ADMIN</Option>
                                     <Option value="WRITER">WRITER</Option>

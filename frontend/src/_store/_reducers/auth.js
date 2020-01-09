@@ -28,12 +28,19 @@ export default function auth(state = initialState, action) {
 
         case USER_ADDED:
             console.log(action.data);
-            return {
-                ...state,
-                ...action.data,
-                autoLogin: action.stayLogged,
-                name: action.name
-            };
+            if (!state.name) {
+                return {
+                    ...state,
+                    ...action.data,
+                    autoLogin: action.stayLogged,
+                    name: action.name
+                };
+            } else {
+                return {
+                    ...state,
+                    ...action.data
+                };
+            }
 
         case LOGIN_SUCCESSFUL:
             console.log(action.remember);

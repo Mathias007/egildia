@@ -116,7 +116,11 @@ exports.modifyNewsById = (req, res, next) => {
         CASE_SUCCESS_MESSAGE: "Wpis został zmodyfikowany!"
     };
 
-    const { CASE_UNAUTHORIZED_MESSAGE, CASE_NOT_FOUND_MESSAGE } = messages;
+    const {
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
+    } = messages;
 
     let newsId = mongoose.Types.ObjectId(req.body.id);
 

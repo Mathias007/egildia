@@ -8,7 +8,7 @@ import { users } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 
-import { Button, Divider, Icon, Layout, PageHeader, Table } from "antd";
+import { Avatar, Button, Divider, Icon, Layout, PageHeader, Table } from "antd";
 
 const componentStyles = {
     content: {
@@ -36,6 +36,11 @@ class UsersList extends Component {
                 dataIndex: "number",
                 align: "center"
             },
+            col_avatar: {
+                title: "Avatar",
+                dataIndex: "avatar",
+                align: "center"
+            },
             col_username: {
                 title: "Nazwa użytkownika",
                 dataIndex: "username",
@@ -60,7 +65,6 @@ class UsersList extends Component {
 
     componentDidMount() {
         this.props.showUsersList();
-        console.log(this.props.usersList);
     }
 
     renderUsers() {
@@ -72,7 +76,8 @@ class UsersList extends Component {
 
                 return {
                     number: index,
-                    // key: _id,
+                    key: _id,
+                    avatar: name,
                     username: name,
                     email,
                     role,
@@ -92,6 +97,7 @@ class UsersList extends Component {
 
         const {
             col_number,
+            col_avatar,
             col_username,
             col_email,
             col_role,
@@ -104,6 +110,22 @@ class UsersList extends Component {
                 title: col_number.title,
                 dataIndex: col_number.dataIndex,
                 align: col_number.align
+            },
+            {
+                title: col_avatar.title,
+                dataIndex: col_avatar.dataIndex,
+                align: col_avatar.align,
+                render: name => (
+                    <Avatar
+                        style={{
+                            backgroundColor: "#f56a00",
+                            verticalAlign: "middle"
+                        }}
+                        size="large"
+                    >
+                        {name.charAt(0).toUpperCase()}
+                    </Avatar>
+                )
             },
             {
                 title: col_username.title,

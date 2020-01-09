@@ -110,6 +110,7 @@ export const register = (name, email, password, role, date, remember) => {
         );
     };
 };
+
 export const editSelectedUser = (id, name, email, password, role, date) => {
     return (dispatch, getState) => {
         const dispatchUserEdited = function(response) {
@@ -135,6 +136,8 @@ export const editSelectedUser = (id, name, email, password, role, date) => {
             name,
             email,
             password,
+            role,
+            date,
             dispatchUserEdited,
             dispatchUserAuthError,
             dispatchUserEditingFailed

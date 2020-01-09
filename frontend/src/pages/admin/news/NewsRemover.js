@@ -44,7 +44,7 @@ class NewsRemover extends Component {
                 >
                     <div>
                         <PageHeader
-                            onBack={() => null}
+                            onBack={() => window.history.back()}
                             title="Powrót"
                             subTitle="Panel administracyjny"
                         />

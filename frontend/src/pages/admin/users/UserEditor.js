@@ -170,7 +170,7 @@ class UserEditor extends Component {
                             {getFieldDecorator("password", {
                                 rules: [
                                     {
-                                        required: false,
+                                        required: false
                                     },
                                     { min: 8, message: "Hasło za krótkie!" },
                                     {
@@ -212,7 +212,7 @@ class UserEditor extends Component {
                                     }
                                 ]
                             })(
-                                <Select defaultValue="USER">
+                                <Select>
                                     <Option value="USER">USER</Option>
                                     <Option value="ADMIN">ADMIN</Option>
                                     <Option value="WRITER">WRITER</Option>
