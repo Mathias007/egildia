@@ -1,19 +1,8 @@
-import mongoose from "mongoose";
+import { BuildingsSchema, UnitsSchema } from "../models/knights";
+
 import resStatuses from "../config/resStatuses";
 
 const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
-
-const Schema = mongoose.Schema;
-
-const BuildingsSchema = new Schema({}, { strict: false });
-const UnitsSchema = new Schema({}, { strict: false });
-
-const Buildings = mongoose.model(
-    "knights/buildings",
-    BuildingsSchema,
-    "knights/buildings"
-);
-const Units = mongoose.model("knights/units", UnitsSchema, "knights/units");
 
 exports.getBuildingsList = (req, res, next) => {
     const messages = {
@@ -31,7 +20,7 @@ exports.getBuildingsList = (req, res, next) => {
         CASE_SUCCESS_MESSAGE
     } = messages;
 
-    Buildings.find({}, {}, (err, buildings) => {
+    BuildingsSchema.find({}, {}, (err, buildings) => {
         if (err || !buildings) {
             res.status(UNAUTHORIZED).send({
                 message: CASE_UNAUTHORIZED_MESSAGE
@@ -63,7 +52,7 @@ exports.getUnitsList = (req, res, next) => {
         CASE_SUCCESS_MESSAGE
     } = messages;
 
-    Units.find({}, {}, (err, units) => {
+    UnitsSchema.find({}, {}, (err, units) => {
         if (err || !units) {
             res.status(UNAUTHORIZED).send({
                 message: CASE_UNAUTHORIZED_MESSAGE
