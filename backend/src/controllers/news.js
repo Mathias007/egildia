@@ -13,85 +13,74 @@ function validateTitle(title) {
 }
 
 exports.getNewsList = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją przy pobieraniu wpisów!",
+        CASE_NOT_FOUND_MESSAGE: "Nie znaleziono wpisów.",
+        CASE_SUCCESS_MESSAGE: "Lista wpisów została znaleziona."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
+    } = messages;
+
     NewsSchema.find({}, {}, (err, news) => {
         if (err || !news) {
             res.status(UNAUTHORIZED).send({
-                message: "Wystąpił problem z autoryzacją!"
+                message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
         } else if (!news) {
-            res.status(NOT_FOUND).send({ message: "Nie znaleziono żadnego wpisu!" });
+            res.status(NOT_FOUND).send({ message: CASE_NOT_FOUND_MESSAGE });
         } else {
-            res.json({ message: "Lista wpisów została znaleziona.", news });
+            res.json({ message: CASE_SUCCESS_MESSAGE, news });
         }
     });
 };
 
 exports.getNewsById = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE: "Wystąpił problem z autoryzacją!",
+        CASE_NOT_FOUND_MESSAGE: "Nie znaleziono wpisu!",
+        CASE_SUCCESS_MESSAGE: "Wyszukiwanie wpisu zakończyło się powodzeniem."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
+    } = messages;
+
     let newsId = mongoose.Types.ObjectId(req.body.id);
     NewsSchema.findOne({ _id: newsId }, (err, news) => {
         if (err) {
             res.status(UNAUTHORIZED).send({
-                message: "Wystąpił problem z autoryzacją!"
+                message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
         } else if (!news) {
-            res.status(NOT_FOUND).send({ message: "Nie znaleziono wpisu!" });
+            res.status(NOT_FOUND).send({ message: CASE_NOT_FOUND_MESSAGE });
         } else {
             console.log(news);
             res.json({
-                message: "Wyszukiwanie wpisu zakończyło się powodzeniem.",
+                message: CASE_SUCCESS_MESSAGE,
                 singleNews: news
             });
         }
     });
 };
 
-exports.modifyNewsById = (req, res, next) => {
-    let newsId = mongoose.Types.ObjectId(req.body.id);
-
-    NewsSchema.updateOne(
-        { _id: newsId },
-        {
-            $set: req.body
-        },
-        (err, singleNews) => {
-            if (err) {
-                res.status(UNAUTHORIZED).send({
-                    message: "Wystąpił problem z autoryzacją!"
-                });
-                next(err);
-            } else if (!singleNews) {
-                res.status(NOT_FOUND).send({
-                    message: "Nie znaleziono wpisu o wybranym identyfikatorze!"
-                });
-            } else {
-                console.log(singleNews);
-                res.json({ message: "Wpis został zmodyfikowany!", singleNews });
-            }
-        }
-    );
-};
-
-exports.deleteNewsById = (req, res, next) => {
-    let newsId = mongoose.Types.ObjectId(req.body.id);
-
-    NewsSchema.deleteOne({ _id: newsId }, (err, news) => {
-        if (err) {
-            res.status(UNAUTHORIZED).send({
-                message: "Wystąpił problem z autoryzacją!"
-            });
-            next(err);
-        } else if (!news.deletedCount) {
-            res.status(NOT_FOUND).send({ message: "Nie ma takiego wpisu!" });
-        } else {
-            console.log(news);
-            res.json({ message: "Wybrany wpis został usunięty!" });
-        }
-    });
-};
-
 exports.createNews = (req, res, next) => {
+    const messages = {
+        CASE_CONFLICT_MESSAGE: "Wpis został skutecznie utworzony!",
+        CASE_SUCCESS_MESSAGE:
+            "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
+    };
+
+    const { CASE_CONFLICT_MESSAGE, CASE_SUCCESS_MESSAGE } = messages;
+
     validateTitle(req.body.title).then(valid => {
         if (valid) {
             NewsSchema.create(
@@ -106,15 +95,81 @@ exports.createNews = (req, res, next) => {
                     if (error) next(error);
                     else
                         res.json({
-                            message: "Wpis został skutecznie utworzony!"
+                            message: CASE_SUCCESS_MESSAGE
                         });
                 }
             );
         } else {
             res.status(CONFLICT).send({
-                message:
-                    "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
+                message: CASE_CONFLICT_MESSAGE
             });
+        }
+    });
+};
+
+exports.modifyNewsById = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją podczas modyfikacji wpisu!",
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono wpisu o wybranym identyfikatorze!",
+        CASE_SUCCESS_MESSAGE: "Wpis został zmodyfikowany!"
+    };
+
+    const { CASE_UNAUTHORIZED_MESSAGE, CASE_NOT_FOUND_MESSAGE } = messages;
+
+    let newsId = mongoose.Types.ObjectId(req.body.id);
+
+    NewsSchema.updateOne(
+        { _id: newsId },
+        {
+            $set: req.body
+        },
+        (err, singleNews) => {
+            if (err) {
+                res.status(UNAUTHORIZED).send({
+                    message: CASE_UNAUTHORIZED_MESSAGE
+                });
+                next(err);
+            } else if (!singleNews) {
+                res.status(NOT_FOUND).send({
+                    message: CASE_NOT_FOUND_MESSAGE
+                });
+            } else {
+                console.log(singleNews);
+                res.json({ message: CASE_SUCCESS_MESSAGE, singleNews });
+            }
+        }
+    );
+};
+
+exports.deleteNewsById = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją podczas usuwania wpisu!",
+        CASE_NOT_FOUND_MESSAGE: "Nie ma wpisu o wybranym identyfikatorze!",
+        CASE_SUCCESS_MESSAGE: "Wybrany wpis został usunięty!"
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
+    } = messages;
+
+    let newsId = mongoose.Types.ObjectId(req.body.id);
+
+    NewsSchema.deleteOne({ _id: newsId }, (err, news) => {
+        if (err) {
+            res.status(UNAUTHORIZED).send({
+                message: CASE_UNAUTHORIZED_MESSAGE
+            });
+            next(err);
+        } else if (!news.deletedCount) {
+            res.status(NOT_FOUND).send({ message: CASE_NOT_FOUND_MESSAGE });
+        } else {
+            console.log(news);
+            res.json({ message: CASE_SUCCESS_MESSAGE });
         }
     });
 };

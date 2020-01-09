@@ -20,9 +20,26 @@ const Technologies = mongoose.model(
 );
 
 exports.getNationsList = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją przy pobieraniu listy nacji Tzar: Ciężar Korony."
+        // CASE_NOT_FOUND_MESSAGE:
+        //     "Nie znaleziono listy nacji Tzar: Ciężar Korony.",
+        // CASE_SUCCESS_MESSAGE:
+        //     "Lista nacji Tzar: Ciężar Korony została znaleziona."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE
+        // CASE_NOT_FOUND_MESSAGE,
+        // CASE_SUCCESS_MESSAGE
+    } = messages;
+
     Nations.find({}, {}, (err, nations) => {
         if (err || !nations) {
-            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({
+                message: CASE_UNAUTHORIZED_MESSAGE
+            });
             next(err);
         } else {
             res.json(nations);
@@ -31,9 +48,26 @@ exports.getNationsList = (req, res, next) => {
 };
 
 exports.getUnitsList = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją przy pobieraniu listy jednostek Tzar: Ciężar Korony."
+        // CASE_NOT_FOUND_MESSAGE:
+        //     "Nie znaleziono listy jednostek Tzar: Ciężar Korony.",
+        // CASE_SUCCESS_MESSAGE:
+        //     "Lista jednostek Tzar: Ciężar Korony została znaleziona."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE
+        // CASE_NOT_FOUND_MESSAGE,
+        // CASE_SUCCESS_MESSAGE
+    } = messages;
+
     Units.find({}, {}, (err, units) => {
         if (err || !units) {
-            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({
+                message: CASE_UNAUTHORIZED_MESSAGE
+            });
             next(err);
         } else {
             res.json(units);
@@ -41,11 +75,27 @@ exports.getUnitsList = (req, res, next) => {
     });
 };
 
-// Controller get spells list
 exports.getSpellsList = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją przy pobieraniu listy zaklęć Tzar: Ciężar Korony."
+        // CASE_NOT_FOUND_MESSAGE:
+        //     "Nie znaleziono listy zaklęć Tzar: Ciężar Korony.",
+        // CASE_SUCCESS_MESSAGE:
+        //     "Lista zaklęć Tzar: Ciężar Korony została znaleziona."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE
+        // CASE_NOT_FOUND_MESSAGE,
+        // CASE_SUCCESS_MESSAGE
+    } = messages;
+
     Spells.find({}, {}, (err, spells) => {
         if (err || !spells) {
-            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({
+                message: CASE_UNAUTHORIZED_MESSAGE
+            });
             next(err);
         } else {
             res.json(spells);
@@ -53,11 +103,27 @@ exports.getSpellsList = (req, res, next) => {
     });
 };
 
-// Controller get spells list
 exports.getTechnologiesList = (req, res, next) => {
+    const messages = {
+        CASE_UNAUTHORIZED_MESSAGE:
+            "Wystąpił problem z autoryzacją przy pobieraniu listy technologii Tzar: Ciężar Korony."
+        // CASE_NOT_FOUND_MESSAGE:
+        //     "Nie znaleziono listy technologii Tzar: Ciężar Korony.",
+        // CASE_SUCCESS_MESSAGE:
+        //     "Lista technologii Tzar: Ciężar Korony została znaleziona."
+    };
+
+    const {
+        CASE_UNAUTHORIZED_MESSAGE
+        // CASE_NOT_FOUND_MESSAGE,
+        // CASE_SUCCESS_MESSAGE
+    } = messages;
+
     Technologies.find({}, {}, (err, technologies) => {
         if (err || !technologies) {
-            res.status(UNAUTHORIZED).send({ message: "Unauthorized" });
+            res.status(UNAUTHORIZED).send({
+                message: CASE_UNAUTHORIZED_MESSAGE
+            });
             next(err);
         } else {
             res.json(technologies);
