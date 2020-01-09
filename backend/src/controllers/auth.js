@@ -5,7 +5,7 @@ import resStatuses from "../config/resStatuses";
 
 import UserSchema from "../models/users";
 
-const {TOKEN_SECRET_JWT} = config;
+const { TOKEN_SECRET_JWT } = config;
 const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
 
 // Generate token

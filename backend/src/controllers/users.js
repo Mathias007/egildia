@@ -78,8 +78,8 @@ exports.getUserById = (req, res, next) => {
 
 exports.createUser = (req, res, next) => {
     const messages = {
-        CASE_CONFLICT_MESSAGE: "Artykuł został skutecznie utworzony!",
-        CASE_SUCCESS_MESSAGE:
+        CASE_SUCCESS_MESSAGE: "Artykuł został skutecznie utworzony!",
+        CASE_CONFLICT_MESSAGE:
             "Żądanie nie może zostać wykonane z powodu zaistnienia konfliktu!"
     };
 

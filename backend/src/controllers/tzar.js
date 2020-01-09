@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import resStatuses from "../config/resStatuses";
 
-const { UNAUTHORIZED } = resStatuses;
+const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
 
 const Schema = mongoose.Schema;
 
@@ -22,17 +22,17 @@ const Technologies = mongoose.model(
 exports.getNationsList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
-            "Wystąpił problem z autoryzacją przy pobieraniu listy nacji Tzar: Ciężar Korony."
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy nacji Tzar: Ciężar Korony.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista nacji Tzar: Ciężar Korony została znaleziona."
+            "Wystąpił problem z autoryzacją przy pobieraniu listy nacji Tzar: Ciężar Korony.",
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy nacji Tzar: Ciężar Korony.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista nacji Tzar: Ciężar Korony została znaleziona."
     };
 
     const {
-        CASE_UNAUTHORIZED_MESSAGE
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Nations.find({}, {}, (err, nations) => {
@@ -41,8 +41,12 @@ exports.getNationsList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!nations) {
+            res.status(NOT_FOUND).send({
+                message: CASE_NOT_FOUND_MESSAGE
+            });
         } else {
-            res.json(nations);
+            res.json({ message: CASE_SUCCESS_MESSAGE, nations });
         }
     });
 };
@@ -50,17 +54,17 @@ exports.getNationsList = (req, res, next) => {
 exports.getUnitsList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
-            "Wystąpił problem z autoryzacją przy pobieraniu listy jednostek Tzar: Ciężar Korony."
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy jednostek Tzar: Ciężar Korony.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista jednostek Tzar: Ciężar Korony została znaleziona."
+            "Wystąpił problem z autoryzacją przy pobieraniu listy jednostek Tzar: Ciężar Korony.",
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy jednostek Tzar: Ciężar Korony.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista jednostek Tzar: Ciężar Korony została znaleziona."
     };
 
     const {
-        CASE_UNAUTHORIZED_MESSAGE
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Units.find({}, {}, (err, units) => {
@@ -69,8 +73,12 @@ exports.getUnitsList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!units) {
+            res.status(NOT_FOUND).send({
+                message: CASE_NOT_FOUND_MESSAGE
+            });
         } else {
-            res.json(units);
+            res.json({ message: CASE_SUCCESS_MESSAGE, units });
         }
     });
 };
@@ -78,17 +86,17 @@ exports.getUnitsList = (req, res, next) => {
 exports.getSpellsList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
-            "Wystąpił problem z autoryzacją przy pobieraniu listy zaklęć Tzar: Ciężar Korony."
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy zaklęć Tzar: Ciężar Korony.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista zaklęć Tzar: Ciężar Korony została znaleziona."
+            "Wystąpił problem z autoryzacją przy pobieraniu listy zaklęć Tzar: Ciężar Korony.",
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy zaklęć Tzar: Ciężar Korony.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista zaklęć Tzar: Ciężar Korony została znaleziona."
     };
 
     const {
-        CASE_UNAUTHORIZED_MESSAGE
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Spells.find({}, {}, (err, spells) => {
@@ -97,8 +105,10 @@ exports.getSpellsList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!spells) {
+            res.status(NOT_FOUND).send({ message: CASE_NOT_FOUND_MESSAGE });
         } else {
-            res.json(spells);
+            res.json({ CASE_SUCCESS_MESSAGE, spells });
         }
     });
 };
@@ -106,17 +116,17 @@ exports.getSpellsList = (req, res, next) => {
 exports.getTechnologiesList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
-            "Wystąpił problem z autoryzacją przy pobieraniu listy technologii Tzar: Ciężar Korony."
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy technologii Tzar: Ciężar Korony.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista technologii Tzar: Ciężar Korony została znaleziona."
+            "Wystąpił problem z autoryzacją przy pobieraniu listy technologii Tzar: Ciężar Korony.",
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy technologii Tzar: Ciężar Korony.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista technologii Tzar: Ciężar Korony została znaleziona."
     };
 
     const {
-        CASE_UNAUTHORIZED_MESSAGE
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_UNAUTHORIZED_MESSAGE,
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Technologies.find({}, {}, (err, technologies) => {
@@ -125,8 +135,12 @@ exports.getTechnologiesList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!technologies) {
+            res.status(NOT_FOUND).send({
+                message: CASE_NOT_FOUND_MESSAGE
+            });
         } else {
-            res.json(technologies);
+            res.json({ message: CASE_SUCCESS_MESSAGE, technologies });
         }
     });
 };

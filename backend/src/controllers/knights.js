@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import resStatuses from "../config/resStatuses";
 
-const { UNAUTHORIZED } = resStatuses;
+const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
 
 const Schema = mongoose.Schema;
 
@@ -19,16 +19,16 @@ exports.getBuildingsList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
             "Wystąpił problem z autoryzacją przy pobieraniu listy budynków Knights and Merchants.",
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy budynków Knights and Merchants.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista budynków Knights and Merchants została znaleziona."
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy budynków Knights and Merchants.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista budynków Knights and Merchants została znaleziona."
     };
 
     const {
         CASE_UNAUTHORIZED_MESSAGE,
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Buildings.find({}, {}, (err, buildings) => {
@@ -37,8 +37,12 @@ exports.getBuildingsList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!buildings) {
+            res.status(NOT_FOUND).send({
+                message: CASE_NOT_FOUND_MESSAGE
+            });
         } else {
-            res.json(buildings);
+            res.json({ message: CASE_SUCCESS_MESSAGE, buildings });
         }
     });
 };
@@ -47,16 +51,16 @@ exports.getUnitsList = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE:
             "Wystąpił problem z autoryzacją przy pobieraniu listy jednostek Knights and Merchants.",
-        // CASE_NOT_FOUND_MESSAGE:
-        //     "Nie znaleziono listy jednostek Knights and Merchants.",
-        // CASE_SUCCESS_MESSAGE:
-        //     "Lista jednostek Knights and Merchants została znaleziona."
+        CASE_NOT_FOUND_MESSAGE:
+            "Nie znaleziono listy jednostek Knights and Merchants.",
+        CASE_SUCCESS_MESSAGE:
+            "Lista jednostek Knights and Merchants została znaleziona."
     };
 
     const {
         CASE_UNAUTHORIZED_MESSAGE,
-        // CASE_NOT_FOUND_MESSAGE,
-        // CASE_SUCCESS_MESSAGE
+        CASE_NOT_FOUND_MESSAGE,
+        CASE_SUCCESS_MESSAGE
     } = messages;
 
     Units.find({}, {}, (err, units) => {
@@ -65,8 +69,12 @@ exports.getUnitsList = (req, res, next) => {
                 message: CASE_UNAUTHORIZED_MESSAGE
             });
             next(err);
+        } else if (!units) {
+            res.status(NOT_FOUND).send({
+                message: CASE_NOT_FOUND_MESSAGE
+            });
         } else {
-            res.json(units);
+            res.json({ message: CASE_SUCCESS_MESSAGE, units });
         }
     });
 };
