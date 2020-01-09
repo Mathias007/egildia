@@ -20,7 +20,7 @@ router.post(AUTH.REFRESH, authController.refreshTokenVerify);
 // users API
 router.get(
     USERS.LIST,
-    // authController.accessTokenVerify,
+    authController.accessTokenVerify,
     usersController.getUsersList
 );
 router.post(USERS.SINGLE, usersController.getUserById);

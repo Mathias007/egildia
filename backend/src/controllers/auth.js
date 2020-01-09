@@ -100,20 +100,20 @@ exports.accessTokenVerify = (req, res, next) => {
 
     if (!req.headers.authorization) {
         return res.status(UNAUTHORIZED).send({
-            error: CASE_TOKEN_MISSING
+            message: CASE_TOKEN_MISSING
         });
     }
     const BEARER = "Bearer";
     const AUTHORIZATION_TOKEN = req.headers.authorization.split(" ");
     if (AUTHORIZATION_TOKEN[0] !== BEARER) {
         return res.status(UNAUTHORIZED).send({
-            error: CASE_TOKEN_INCOMPLETE
+            message: CASE_TOKEN_INCOMPLETE
         });
     }
     jwt.verify(AUTHORIZATION_TOKEN[1], TOKEN_SECRET_JWT, function(err) {
         if (err) {
             return res.status(UNAUTHORIZED).send({
-                error: CASE_TOKEN_INVALID
+                message: CASE_TOKEN_INVALID
             });
         }
         next();
@@ -144,19 +144,19 @@ exports.refreshTokenVerify = (req, res, next) => {
     const REFRESH_TOKEN = req.body.refreshToken.split(" ");
     if (REFRESH_TOKEN[0] !== BEARER) {
         return res.status(UNAUTHORIZED).send({
-            error: CASE_TOKEN_INCOMPLETE
+            message: CASE_TOKEN_INCOMPLETE
         });
     }
     jwt.verify(REFRESH_TOKEN[1], TOKEN_SECRET_JWT, function(err, payload) {
         if (err) {
             return res.status(UNAUTHORIZED).send({
-                error: CASE_TOKEN_INVALID
+                message: CASE_TOKEN_INVALID
             });
         }
         UserSchema.findById(payload.sub, function(err, person) {
             if (!person) {
                 return res.status(UNAUTHORIZED).send({
-                    error: CASE_USER_NOT_FOUND
+                    message: CASE_USER_NOT_FOUND
                 });
             }
             return res.json(generateTokens(req, person));

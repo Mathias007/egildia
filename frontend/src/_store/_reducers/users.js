@@ -67,7 +67,7 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: "Something went wrong."
+                errorMessage: action.data.message
             };
 
         case USER_ADDING_FAILED:

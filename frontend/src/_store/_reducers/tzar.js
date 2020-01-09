@@ -91,7 +91,7 @@ export default function tzar(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: "Something went wrong"
+                errorMessage: action.data.message
             };
 
         default:
