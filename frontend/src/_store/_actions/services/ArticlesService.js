@@ -15,7 +15,11 @@ const {
 const { method, headers } = fetchOptions;
 const { GET, POST, PATCH, DELETE } = method;
 
-export const getAllArticles = dispatchArticlesListLoaded => {
+export const getAllArticles = (
+    dispatchArticlesListLoaded,
+    dispatchArticlesLoadingError,
+    dispatchArticlesNotFound
+) => {
     const options = {
         method: GET,
         headers
@@ -23,10 +27,27 @@ export const getAllArticles = dispatchArticlesListLoaded => {
 
     fetch(LIST, options)
         .then(response => {
-            return response.json();
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
+                    return { status: response.status, data };
+                });
+            } else {
+                console.log("Server Error!");
+                throw response;
+            }
         })
-        .then(articles => {
-            return dispatchArticlesListLoaded(articles);
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK) {
+                dispatchArticlesListLoaded(response);
+            } else if (
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
+            ) {
+                return dispatchArticlesLoadingError(response);
+            } else {
+                return dispatchArticlesNotFound(response);
+            }
         });
 };
 

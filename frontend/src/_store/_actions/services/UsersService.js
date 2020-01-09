@@ -16,7 +16,11 @@ const {
 const { method, headers } = fetchOptions;
 const { GET, POST, PATCH, DELETE } = method;
 
-export const getAllUsers = dispatchUsersListLoaded => {
+export const getAllUsers = (
+    dispatchUsersListLoaded,
+    dispatchUsersLoadingError,
+    dispatchUsersNotFound
+) => {
     const options = {
         method: GET,
         headers
@@ -24,10 +28,27 @@ export const getAllUsers = dispatchUsersListLoaded => {
 
     fetch(LIST, options)
         .then(response => {
-            return response.json();
+            if (response.status < INTERNAL_ERROR) {
+                return response.json().then(data => {
+                    return { status: response.status, data };
+                });
+            } else {
+                console.log("Server Error!");
+                throw response;
+            }
         })
-        .then(users => {
-            return dispatchUsersListLoaded(users);
+        .then(response => {
+            console.log(response);
+            if (response.status === STATUS_OK) {
+                dispatchUsersListLoaded(response);
+            } else if (
+                response.status === STATUS_FORBIDDEN ||
+                response.status === STATUS_UNAUTHORIZED
+            ) {
+                return dispatchUsersLoadingError(response);
+            } else {
+                return dispatchUsersNotFound(response);
+            }
         });
 };
 

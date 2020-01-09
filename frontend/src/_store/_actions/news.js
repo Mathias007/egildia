@@ -12,14 +12,41 @@ const {
     NEWS_SUCCESSFULLY_LOADED,
     NEWS_NOT_FOUND,
     NEWS_LIST_LOADED,
+    NEWS_LIST_NOT_FOUND,
     NEWS_ADDED,
-    AUTHENTICATION_ERROR,
     NEWS_ADDING_FAILED,
     NEWS_SUCCESFULLY_EDITED,
     NEWS_EDITING_FAILED,
     NEWS_SUCCESFULLY_DELETED,
-    NEWS_DELETING_FAILED
+    NEWS_DELETING_FAILED,
+    AUTHENTICATION_ERROR
 } = eventStatuses.news;
+
+export const showNewsList = () => {
+    return (dispatch, getState) => {
+        const dispatchNewsListLoaded = function(response) {
+            dispatch({
+                type: NEWS_LIST_LOADED,
+                data: response.data
+            });
+        };
+
+        const dispatchNewsAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchNewsNotFound = function(response) {
+            dispatch({ type: NEWS_LIST_NOT_FOUND, data: response.data });
+        };
+
+        return getAllNews(
+            dispatchNewsListLoaded,
+            dispatchNewsAuthError,
+            dispatchNewsNotFound
+        );
+    };
+};
 
 export const showProperNews = id => {
     return (dispatch, getState) => {
@@ -46,19 +73,6 @@ export const showProperNews = id => {
             dispatchNewsAuthError,
             dispatchNewsNotFound
         );
-    };
-};
-
-export const showNewsList = () => {
-    return (dispatch, getState) => {
-        const dispatchNewsListLoaded = function(news) {
-            dispatch({
-                type: NEWS_LIST_LOADED,
-                data: news
-            });
-        };
-
-        return getAllNews(dispatchNewsListLoaded);
     };
 };
 

@@ -4,6 +4,7 @@ const {
     NEWS_SUCCESSFULLY_LOADED,
     NEWS_NOT_FOUND,
     NEWS_LIST_LOADED,
+    NEWS_LIST_NOT_FOUND,
     NEWS_ADDED,
     AUTHENTICATION_ERROR,
     NEWS_ADDING_FAILED,
@@ -21,6 +22,22 @@ const initialState = {
 
 export default function news(state = initialState, action) {
     switch (action.type) {
+        case NEWS_LIST_LOADED:
+            console.log(action.data.news);
+            return {
+                ...state,
+                ...action.data,
+                news: action.data.news
+            };
+
+        case NEWS_LIST_NOT_FOUND:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
+            };
+
         case NEWS_SUCCESSFULLY_LOADED:
             console.log(action.data.singleNews);
             return {
@@ -35,14 +52,6 @@ export default function news(state = initialState, action) {
                 ...state,
                 ...action.data,
                 errorMessage: action.data.message
-            };
-
-        case NEWS_LIST_LOADED:
-            console.log(action.data.news);
-            return {
-                ...state,
-                ...action.data,
-                news: action.data.news
             };
 
         case NEWS_ADDED:

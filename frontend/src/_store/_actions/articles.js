@@ -13,14 +13,41 @@ const {
     ARTICLE_SUCCESSFULLY_LOADED,
     ARTICLE_NOT_FOUND,
     ARTS_LIST_LOADED,
+    ARTS_LIST_NOT_FOUND,
     ARTICLE_ADDED,
-    AUTHENTICATION_ERROR,
     ARTICLE_ADDING_FAILED,
     ARTICLE_SUCCESFULLY_EDITED,
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
-    ARTICLE_DELETING_FAILED
+    ARTICLE_DELETING_FAILED,
+    AUTHENTICATION_ERROR
 } = eventStatuses.articles;
+
+export const showArticlesList = () => {
+    return (dispatch, getState) => {
+        const dispatchArticlesListLoaded = function(response) {
+            dispatch({
+                type: ARTS_LIST_LOADED,
+                data: response.data
+            });
+        };
+
+        const dispatchArticlesAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchArticlesNotFound = function(response) {
+            dispatch({ type: ARTS_LIST_NOT_FOUND, data: response.data });
+        };
+
+        return getAllArticles(
+            dispatchArticlesListLoaded,
+            dispatchArticlesAuthError,
+            dispatchArticlesNotFound
+        );
+    };
+};
 
 export const showAllocatedArticle = allocationKey => {
     return (dispatch, getState) => {
@@ -75,19 +102,6 @@ export const showProperArticle = id => {
             dispatchArticleAuthError,
             dispatchArticleNotFound
         );
-    };
-};
-
-export const showArticlesList = () => {
-    return (dispatch, getState) => {
-        const dispatchArticlesListLoaded = function(articles) {
-            dispatch({
-                type: ARTS_LIST_LOADED,
-                data: articles
-            });
-        };
-
-        return getAllArticles(dispatchArticlesListLoaded);
     };
 };
 

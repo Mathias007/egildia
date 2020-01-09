@@ -12,16 +12,43 @@ const {
     USER_SUCCESSFULLY_LOADED,
     USER_NOT_FOUND,
     USERS_LIST_LOADED,
+    USERS_LIST_NOT_FOUND,
     USER_ADDED,
-    AUTHENTICATION_ERROR,
     USER_ADDING_FAILED,
     USER_SUCCESFULLY_EDITED,
     USER_EDITING_FAILED,
     USER_SUCCESFULLY_DELETED,
-    USER_DELETING_FAILED
+    USER_DELETING_FAILED,
+    AUTHENTICATION_ERROR
 } = eventStatuses.users;
 
 const { USER_LOADED } = eventStatuses.auth;
+
+export const showUsersList = () => {
+    return (dispatch, getState) => {
+        const dispatchUsersListLoaded = function(response) {
+            dispatch({
+                type: USERS_LIST_LOADED,
+                data: response.data
+            });
+        };
+
+        const dispatchUsersAuthError = function(response) {
+            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            throw response.data;
+        };
+
+        const dispatchUsersNotFound = function(response) {
+            dispatch({ type: USERS_LIST_NOT_FOUND, data: response.data });
+        };
+
+        return getAllUsers(
+            dispatchUsersListLoaded,
+            dispatchUsersAuthError,
+            dispatchUsersNotFound
+        );
+    };
+};
 
 export const showUserProfile = id => {
     return (dispatch, getState) => {
@@ -51,19 +78,6 @@ export const showUserProfile = id => {
     };
 };
 
-export const showUsersList = () => {
-    return (dispatch, getState) => {
-        const dispatchUsersListLoaded = function(response) {
-            dispatch({
-                type: USERS_LIST_LOADED,
-                data: response
-            });
-        };
-
-        return getAllUsers(dispatchUsersListLoaded);
-    };
-};
-
 export const register = (name, email, password, role, date, remember) => {
     return (dispatch, getState) => {
         const dispatchRegistrationSuccessful = function(response) {
@@ -79,7 +93,10 @@ export const register = (name, email, password, role, date, remember) => {
                 remember
             });
 
-            return (response.data, name, remember);
+            return (
+                response.data, 
+                name, 
+                remember);
         };
 
         const dispatchRegistrationError = function(response) {
@@ -102,7 +119,7 @@ export const register = (name, email, password, role, date, remember) => {
             name,
             email,
             password,
-            role, 
+            role,
             date,
             dispatchRegistrationSuccessful,
             dispatchRegistrationError,
