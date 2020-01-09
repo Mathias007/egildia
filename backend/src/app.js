@@ -6,14 +6,15 @@ import mongoose from "mongoose";
 // import routes & config files
 import routes from "../routes";
 import config from "./config/config";
+import routesPaths from "./config/routesPaths";
 
 // import seeders
 import { initializeUsersData } from "./seed/user-seeder";
 import { initializeArticlesData } from "./seed/article-seeder";
 import { initializeNewsData } from "./seed/news-seeder";
 
-const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN, ROUTES } = config;
-const { API } = ROUTES;
+const { URI_MONGO, PORT_LISTEN, CORS_ORIGIN } = config;
+const { API } = routesPaths;
 
 // Initialize app
 const app = express();

@@ -8,15 +8,6 @@ const config = {
         process.env.TOKEN_SECRET_JWT || "V)W&z,U[MxQb1X^h@o;(_ITskQg6](",
     // CORS CONFIG
     CORS_ORIGIN: process.env.CORS_ORIGIN || "http://localhost:3000",
-    // API CONFIG
-    ROUTES: {
-        API: "api",
-        ARTICLES: "articles",
-        NEWS: "news",
-        KNIGHTS: "knights",
-        TZAR: "tzar",
-        USERS: "users"
-    }
 }
 
 export default config;
