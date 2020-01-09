@@ -42,6 +42,7 @@ import UserCreator from "../pages/admin/users/UserCreator";
 import UserEditor from "../pages/admin/users/UserEditor";
 import UserRemover from "../pages/admin/users/UserRemover";
 import UsersList from "../pages/admin/users/UsersList";
+import UserProfileCard from "../pages/admin/users/UserProfileCard";
 
 import "./App.css";
 import "antd/dist/antd.css";
@@ -168,9 +169,14 @@ class App extends Component {
                                     />
 
                                     {/* admin users routes */}
-                                    <Route exact
+                                    <Route
+                                        exact
                                         path={USERS.MAIN}
                                         component={UsersList}
+                                    />
+                                    <Route
+                                        path={USERS.SINGLE}
+                                        component={UserProfileCard}
                                     />
                                     <Route
                                         path={USERS.ADD}

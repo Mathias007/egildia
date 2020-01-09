@@ -4,39 +4,45 @@ import { Link } from "react-router-dom";
 
 import { auth } from "../../_store/_actions";
 
-import { Avatar, Button } from "antd";
+import { Avatar, Button, Dropdown, Icon, Menu } from "antd";
+const { Divider, Item } = Menu;
 
 class AvatarComponent extends Component {
     render() {
+        const menu = (
+            <Menu>
+                <Item key="0">
+                    <Link to="/login">
+                        <Icon type="user" /> Zobacz profil
+                    </Link>
+                </Item>
+                <Divider />
+                <Item key="2" onClick={this.props.logout}>
+                    <Icon type="logout" /> Wyloguj się
+                </Item>
+            </Menu>
+        );
+
         return (
             <>
                 {this.props.name ? (
                     <div className="avatar-component">
                         <p className="avatar-component-username">
-                            <Avatar
-                                style={{
-                                    backgroundColor: "#f56a00",
-                                    verticalAlign: "middle"
-                                }}
-                                size="large"
-                            >
-                                {this.props.name.charAt(0)}
-                            </Avatar>
                             <span>
                                 Witaj <strong>{this.props.name}</strong>!
                             </span>
-                            <Button
-                                icon="logout"
-                                type="primary"
-                                size="small"
-                                style={{
-                                    marginLeft: 16,
-                                    verticalAlign: "middle"
-                                }}
-                                onClick={this.props.logout}
-                            >
-                                Wyloguj się
-                            </Button>
+                            <Dropdown overlay={menu}>
+                                <Avatar
+                                    style={{
+                                        cursor: "pointer",
+                                        backgroundColor: "#f56a00",
+                                        verticalAlign: "middle"
+                                    }}
+                                    size="large"
+                                >
+                                    {this.props.name.charAt(0)}
+                                </Avatar>
+                            </Dropdown>
                         </p>
                     </div>
                 ) : (
@@ -70,7 +76,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(AvatarComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(AvatarComponent);
