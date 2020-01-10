@@ -22,6 +22,7 @@ import {
     Tooltip
 } from "antd";
 
+const { Meta } = Card;
 const { Item } = Form;
 const { Password } = Input;
 const { Option } = Select;
@@ -59,10 +60,8 @@ class UserProfileCard extends Component {
         const { getFieldDecorator } = this.props.form;
 
         const {
-            _id,
             name,
             email,
-            password,
             role,
             date
         } = this.props.selectedUser;
@@ -85,6 +84,24 @@ class UserProfileCard extends Component {
                         </span>
                     }
                 >
+                    <Meta
+                        avatar={
+                            <Avatar
+                                style={{
+                                    backgroundColor: "#1890ff",
+                                    verticalAlign: "middle"
+                                }}
+                                size="large"
+                            >
+                                {name}
+                            </Avatar>
+                        }
+                        description={
+                            <span>
+                                Data rejestracji: {moment(date).format("LLLL")}
+                            </span>
+                        }
+                    />
                     <Form
                         onSubmit={this.handleSubmit}
                         className="edit-user-form"
