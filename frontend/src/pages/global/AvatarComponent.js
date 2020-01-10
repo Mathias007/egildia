@@ -9,10 +9,12 @@ const { Divider, Item } = Menu;
 
 class AvatarComponent extends Component {
     render() {
+        const { userId } = this.props;
+
         const menu = (
             <Menu>
                 <Item key="0">
-                    <Link to="/login">
+                    <Link to={`/users/${userId}`}>
                         <Icon type="user" /> Zobacz profil
                     </Link>
                 </Item>
@@ -64,7 +66,8 @@ class AvatarComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        name: state.auth.name
+        name: state.auth.name,
+        userId: state.auth.userId
     };
 };
 

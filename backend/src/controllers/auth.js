@@ -34,7 +34,8 @@ const generateTokens = (req, user) => {
     );
     return {
         accessToken: ACCESS_TOKEN,
-        refreshToken: REFRESH_TOKEN
+        refreshToken: REFRESH_TOKEN,
+        _id: user._id
     };
 };
 
