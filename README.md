@@ -335,3 +335,29 @@
         - początek prac refaktoryzacyjnych w backendzie - wydzielenie statusów do pliku konfiguracyjnego, podmiana module.exports na składnię ES6.
 
     **INNE**: system userów został utworzony na bazie systemu artykułów i newsów, pozostaje on jednak w związku z systemem autoryzacji/autentykacji, nad którym prace zostaną niebawem wznowione.
+
+
+## Czwartek 9.01.2020 - wielkie porządkowanie kodu
+
+    **FRONTEND**:
+        - usprawnienie systemu użytkowników, uzupełnienie niedoróbek;
+        - rozszerzenie obsługi statusów/komunikatów serwera dla sekcji knights i tzar (Redux);
+        - analogiczne rozszerzenie w przypadku systemów newsów, artykułów i użytkowników;
+        - uzupełnienie eventStatuses o nowe akcje;
+        - poprawki drobne;
+        - utworzenie komponentu UserProfileCard i jego wstępna funkcjonalizacja;
+        - dodanie menu typu dropdown do komponentu globalnego avatara (otwieranego po najechaniu na tenże avatar).
+
+    **BACKEND**:
+        - utworzenie nowych plików konfiguracyjnych (na wzór FE);
+        - refaktoryzacja ścieżek API;
+        - dodanie i poprawa komunikatów wysyłanych z API;
+        - wydzielenie konfiguracji mongoose dla sekcji knights i tzar do nowych plików (models);
+        - poprawki drobne.
+
+## Piątek 10.01.2020 - testy czas zacząć!
+    **FRONDEND**: 
+        - przygotowanie testów jednostkowych (JEST) dla reducerów: articles, news, knights, tzar, users (a więc większości);
+        - otwarcie profilu użytkownika z opcją jego modyfikacji przez menu w nagłówku (Breadcrumb).
+
+    **BACKEND**: dodanie wysyłania id użytkownika do frontendu przy logowaniu (potrzebnego do wejścia w profil).
