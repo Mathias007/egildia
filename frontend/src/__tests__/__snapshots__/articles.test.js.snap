@@ -83,21 +83,7 @@ Object {
 
 exports[`test articles reducer should load a single article 1`] = `
 Object {
-  "_id": "1111-2222-3333-4444",
-  "allocationKey": "test-article",
-  "articles": Array [],
-  "author": "tester",
-  "content": "Zawartość artykułu testowego",
-  "date": "01-01-2020",
-  "errorMessage": "",
-  "properArticle": undefined,
-  "title": "Artykuł testowy",
-}
-`;
-
-exports[`test articles reducer should load articles list 1`] = `
-Object {
-  "0": Object {
+  "article": Object {
     "_id": "1111-2222-3333-4444",
     "allocationKey": "test-article",
     "author": "tester",
@@ -105,8 +91,34 @@ Object {
     "date": "01-01-2020",
     "title": "Artykuł testowy",
   },
-  "articles": undefined,
+  "articles": Array [],
   "errorMessage": "",
+  "message": "Okuratna wiadomość z serwera!",
+  "properArticle": Object {
+    "_id": "1111-2222-3333-4444",
+    "allocationKey": "test-article",
+    "author": "tester",
+    "content": "Zawartość artykułu testowego",
+    "date": "01-01-2020",
+    "title": "Artykuł testowy",
+  },
+}
+`;
+
+exports[`test articles reducer should load articles list 1`] = `
+Object {
+  "articles": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "allocationKey": "test-article",
+      "author": "tester",
+      "content": "Zawartość artykułu testowego",
+      "date": "01-01-2020",
+      "title": "Artykuł testowy",
+    },
+  ],
+  "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "properArticle": Object {},
 }
 `;

@@ -83,21 +83,10 @@ Object {
 
 exports[`test news reducer should load a single news 1`] = `
 Object {
-  "_id": "1111-2222-3333-4444",
-  "author": "tester",
-  "category": "test-news",
-  "content": "Zawartość wpisu testowego",
-  "date": "01-01-2020",
   "errorMessage": "",
+  "message": "Okuratna wiadomość z serwera!",
   "news": Array [],
-  "properNews": undefined,
-  "title": "Wpis testowy",
-}
-`;
-
-exports[`test news reducer should load news list 1`] = `
-Object {
-  "0": Object {
+  "properNews": Object {
     "_id": "1111-2222-3333-4444",
     "author": "tester",
     "category": "test-news",
@@ -105,8 +94,31 @@ Object {
     "date": "01-01-2020",
     "title": "Wpis testowy",
   },
+  "singleNews": Object {
+    "_id": "1111-2222-3333-4444",
+    "author": "tester",
+    "category": "test-news",
+    "content": "Zawartość wpisu testowego",
+    "date": "01-01-2020",
+    "title": "Wpis testowy",
+  },
+}
+`;
+
+exports[`test news reducer should load news list 1`] = `
+Object {
   "errorMessage": "",
-  "news": undefined,
+  "message": "Pozytywna wiadomość z serwera!",
+  "news": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "author": "tester",
+      "category": "test-news",
+      "content": "Zawartość wpisu testowego",
+      "date": "01-01-2020",
+      "title": "Wpis testowy",
+    },
+  ],
   "properNews": Object {},
 }
 `;

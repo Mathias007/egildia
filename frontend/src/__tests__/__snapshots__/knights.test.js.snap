@@ -29,30 +29,28 @@ Object {
 
 exports[`test users reducer should load buildings list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
-  "buildings": undefined,
+  "buildings": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Budynki Knights and Merchants",
+    },
+  ],
   "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "units": Array [],
 }
 `;
 
 exports[`test users reducer should load units list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
   "buildings": Array [],
   "errorMessage": "",
-  "units": undefined,
+  "message": "Pozytywna wiadomość z serwera!",
+  "units": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Jednostki Knights and Merchants",
+    },
+  ],
 }
 `;

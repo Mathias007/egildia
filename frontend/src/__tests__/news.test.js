@@ -24,7 +24,7 @@ const initialState = {
 describe("test news reducer", () => {
     const newsList = {
         message: "Pozytywna wiadomość z serwera!",
-        data: [
+        news: [
             {
                 _id: "1111-2222-3333-4444",
                 category: "test-news",
@@ -38,7 +38,7 @@ describe("test news reducer", () => {
 
     const singleNews = {
         message: "Okuratna wiadomość z serwera!",
-        data: {
+        singleNews: {
             _id: "1111-2222-3333-4444",
             category: "test-news",
             title: "Wpis testowy",
@@ -55,7 +55,7 @@ describe("test news reducer", () => {
     });
 
     it("should load news list", () => {
-        const action = { type: NEWS_LIST_LOADED, data: newsList.data };
+        const action = { type: NEWS_LIST_LOADED, data: newsList };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
@@ -67,7 +67,7 @@ describe("test news reducer", () => {
     it("should load a single news", () => {
         const action = {
             type: NEWS_SUCCESSFULLY_LOADED,
-            data: singleNews.data
+            data: singleNews
         };
         expect(news(initialState, action)).toMatchSnapshot();
     });

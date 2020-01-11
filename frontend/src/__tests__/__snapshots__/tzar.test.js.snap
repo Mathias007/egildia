@@ -57,15 +57,14 @@ Object {
 
 exports[`test users reducer should load nations list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
   "errorMessage": "",
-  "nations": undefined,
+  "message": "Pozytywna wiadomość z serwera!",
+  "nations": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Nacje Tzar",
+    },
+  ],
   "spells": Array [],
   "technologies": Array [],
   "units": Array [],
@@ -74,16 +73,15 @@ Object {
 
 exports[`test users reducer should load spells list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
   "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
-  "spells": undefined,
+  "spells": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Zaklęcia Tzar",
+    },
+  ],
   "technologies": Array [],
   "units": Array [],
 }
@@ -91,34 +89,32 @@ Object {
 
 exports[`test users reducer should load technologies list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
   "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
   "spells": Array [],
-  "technologies": undefined,
+  "technologies": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Technologie Tzar",
+    },
+  ],
   "units": Array [],
 }
 `;
 
 exports[`test users reducer should load units list 1`] = `
 Object {
-  "0": Object {
-    "_id": "1111-2222-3333-4444",
-    "cost": "1488 gold",
-    "hp": "500",
-    "name": "Hobok",
-    "worker": "tester",
-  },
   "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
   "spells": Array [],
   "technologies": Array [],
-  "units": undefined,
+  "units": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "name": "Jednostki Tzar",
+    },
+  ],
 }
 `;

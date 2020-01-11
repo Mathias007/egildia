@@ -24,7 +24,7 @@ const initialState = {
 describe("test users reducer", () => {
     const usersList = {
         message: "Pozytywna wiadomość z serwera!",
-        data: [
+        users: [
             {
                 _id: "1111-2222-3333-4444",
                 name: "tester",
@@ -38,7 +38,7 @@ describe("test users reducer", () => {
 
     const singleUser = {
         message: "Okuratna wiadomość z serwera!",
-        data: {
+        selectedUser: {
             _id: "1111-2222-3333-4444",
             name: "tester",
             email: "test@mail.com",
@@ -55,7 +55,7 @@ describe("test users reducer", () => {
     });
 
     it("should load users list", () => {
-        const action = { type: USERS_LIST_LOADED, data: usersList.data };
+        const action = { type: USERS_LIST_LOADED, data: usersList };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
@@ -67,7 +67,7 @@ describe("test users reducer", () => {
     it("should load a single user", () => {
         const action = {
             type: USER_SUCCESSFULLY_LOADED,
-            data: singleUser.data
+            data: singleUser
         };
         expect(users(initialState, action)).toMatchSnapshot();
     });
@@ -90,7 +90,7 @@ describe("test users reducer", () => {
     it("should get message about modifying user in database", () => {
         const action = {
             type: USER_SUCCESFULLY_EDITED,
-            data: { singleUser }
+            data: singleUser 
         };
         expect(users(initialState, action)).toMatchSnapshot();
     });

@@ -20,18 +20,15 @@ Object {
 
 exports[`test users reducer should get message about modifying user in database 1`] = `
 Object {
-  "errorMessage": undefined,
-  "selectedUser": undefined,
-  "singleUser": Object {
-    "data": Object {
-      "_id": "1111-2222-3333-4444",
-      "date": "01-01-2020",
-      "email": "test@mail.com",
-      "name": "tester",
-      "password": "Terror2137",
-      "role": "TESTER",
-    },
-    "message": "Okuratna wiadomość z serwera!",
+  "errorMessage": "Okuratna wiadomość z serwera!",
+  "message": "Okuratna wiadomość z serwera!",
+  "selectedUser": Object {
+    "_id": "1111-2222-3333-4444",
+    "date": "01-01-2020",
+    "email": "test@mail.com",
+    "name": "tester",
+    "password": "Terror2137",
+    "role": "TESTER",
   },
   "usersList": Array [],
 }
@@ -93,21 +90,9 @@ Object {
 
 exports[`test users reducer should load a single user 1`] = `
 Object {
-  "_id": "1111-2222-3333-4444",
-  "date": "01-01-2020",
-  "email": "test@mail.com",
   "errorMessage": "",
-  "name": "tester",
-  "password": "Terror2137",
-  "role": "TESTER",
-  "selectedUser": undefined,
-  "usersList": Array [],
-}
-`;
-
-exports[`test users reducer should load users list 1`] = `
-Object {
-  "0": Object {
+  "message": "Okuratna wiadomość z serwera!",
+  "selectedUser": Object {
     "_id": "1111-2222-3333-4444",
     "date": "01-01-2020",
     "email": "test@mail.com",
@@ -115,8 +100,34 @@ Object {
     "password": "Terror2137",
     "role": "TESTER",
   },
+  "usersList": Array [],
+}
+`;
+
+exports[`test users reducer should load users list 1`] = `
+Object {
   "errorMessage": "",
+  "message": "Pozytywna wiadomość z serwera!",
   "selectedUser": Object {},
-  "usersList": undefined,
+  "users": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "date": "01-01-2020",
+      "email": "test@mail.com",
+      "name": "tester",
+      "password": "Terror2137",
+      "role": "TESTER",
+    },
+  ],
+  "usersList": Array [
+    Object {
+      "_id": "1111-2222-3333-4444",
+      "date": "01-01-2020",
+      "email": "test@mail.com",
+      "name": "tester",
+      "password": "Terror2137",
+      "role": "TESTER",
+    },
+  ],
 }
 `;

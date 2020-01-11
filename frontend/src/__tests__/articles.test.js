@@ -24,7 +24,7 @@ const initialState = {
 describe("test articles reducer", () => {
     const articlesList = {
         message: "Pozytywna wiadomość z serwera!",
-        data: [
+        articles: [
             {
                 _id: "1111-2222-3333-4444",
                 allocationKey: "test-article",
@@ -38,7 +38,7 @@ describe("test articles reducer", () => {
 
     const singleArticle = {
         message: "Okuratna wiadomość z serwera!",
-        data: {
+        article: {
             _id: "1111-2222-3333-4444",
             allocationKey: "test-article",
             title: "Artykuł testowy",
@@ -55,7 +55,7 @@ describe("test articles reducer", () => {
     });
 
     it("should load articles list", () => {
-        const action = { type: ARTS_LIST_LOADED, data: articlesList.data };
+        const action = { type: ARTS_LIST_LOADED, data: articlesList };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
@@ -67,7 +67,7 @@ describe("test articles reducer", () => {
     it("should load a single article", () => {
         const action = {
             type: ARTICLE_SUCCESSFULLY_LOADED,
-            data: singleArticle.data
+            data: singleArticle
         };
         expect(articles(initialState, action)).toMatchSnapshot();
     });

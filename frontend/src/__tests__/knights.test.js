@@ -16,18 +16,7 @@ const initialState = {
 };
 
 describe("test users reducer", () => {
-    const knightsList = {
-        message: "Pozytywna wiadomość z serwera!",
-        data: [
-            {
-                _id: "1111-2222-3333-4444",
-                name: "Hobok",
-                cost: "1488 gold",
-                hp: "500",
-                worker: "tester"
-            }
-        ]
-    };
+    let knightsList;
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
@@ -36,9 +25,19 @@ describe("test users reducer", () => {
     });
 
     it("should load buildings list", () => {
+        knightsList = {
+            message: "Pozytywna wiadomość z serwera!",
+            buildings: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Budynki Knights and Merchants"
+                }
+            ]
+        };
+
         const action = {
             type: KAM_BUILDINGS_LOADED,
-            data: knightsList.data
+            data: knightsList
         };
         expect(knights(initialState, action)).toMatchSnapshot();
     });
@@ -49,7 +48,17 @@ describe("test users reducer", () => {
     });
 
     it("should load units list", () => {
-        const action = { type: KAM_UNITS_LOADED, data: knightsList.data };
+        knightsList = {
+            message: "Pozytywna wiadomość z serwera!",
+            units: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Jednostki Knights and Merchants"
+                }
+            ]
+        };
+
+        const action = { type: KAM_UNITS_LOADED, data: knightsList };
         expect(knights(initialState, action)).toMatchSnapshot();
     });
 

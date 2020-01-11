@@ -22,18 +22,7 @@ const initialState = {
 };
 
 describe("test users reducer", () => {
-    const tzarList = {
-        message: "Pozytywna wiadomość z serwera!",
-        data: [
-            {
-                _id: "1111-2222-3333-4444",
-                name: "Hobok",
-                cost: "1488 gold",
-                hp: "500",
-                worker: "tester"
-            }
-        ]
-    };
+    let tzarList;
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
@@ -42,9 +31,19 @@ describe("test users reducer", () => {
     });
 
     it("should load nations list", () => {
+        tzarList = {
+            message: "Pozytywna wiadomość z serwera!",
+            nations: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Nacje Tzar",
+                }
+            ]
+        };
+
         const action = {
             type: TZAR_NATIONS_LOADED,
-            data: tzarList.data
+            data: tzarList
         };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
@@ -55,9 +54,19 @@ describe("test users reducer", () => {
     });
 
     it("should load spells list", () => {
+        tzarList = {
+            message: "Pozytywna wiadomość z serwera!",
+            spells: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Zaklęcia Tzar",
+                }
+            ]
+        };
+
         const action = {
             type: TZAR_SPELLS_LOADED,
-            data: tzarList.data
+            data: tzarList
         };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
@@ -68,9 +77,19 @@ describe("test users reducer", () => {
     });
 
     it("should load technologies list", () => {
+        tzarList = {
+            message: "Pozytywna wiadomość z serwera!",
+            technologies: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Technologie Tzar",
+                }
+            ]
+        };
+
         const action = {
             type: TZAR_TECHNOLOGIES_LOADED,
-            data: tzarList.data
+            data: tzarList
         };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
@@ -84,7 +103,17 @@ describe("test users reducer", () => {
     });
 
     it("should load units list", () => {
-        const action = { type: TZAR_UNITS_LOADED, data: tzarList.data };
+        tzarList = {
+            message: "Pozytywna wiadomość z serwera!",
+            units: [
+                {
+                    _id: "1111-2222-3333-4444",
+                    name: "Jednostki Tzar",
+                }
+            ]
+        };
+
+        const action = { type: TZAR_UNITS_LOADED, data: tzarList };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
