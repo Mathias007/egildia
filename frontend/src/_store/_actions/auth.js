@@ -10,14 +10,14 @@ const {
     LOGOUT_SUCCESSFUL
 } = eventStatuses.auth;
 
-export const login = (name, password, remember) => {
+export const login = (name, password, stayLogged) => {
     return (dispatch, getState) => {
-        const dispatchLoginSuccessful = function(response, name, remember) {
+        const dispatchLoginSuccessful = function(response, name, stayLogged) {
             dispatch({
                 type: LOGIN_SUCCESSFUL,
                 data: response.data,
-                name: name,
-                remember: remember
+                name,
+                stayLogged
             });
             dispatch({
                 type: USER_LOADED,

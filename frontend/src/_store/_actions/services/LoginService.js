@@ -46,7 +46,7 @@ const fetchLogin = (
         .then(response => {
             console.log(response);
             if (response.status === STATUS_OK) {
-                dispatchLoginSuccessful(response, name, remember);
+                dispatchLoginSuccessful(response, name, stayLogged);
             } else if (
                 response.status === STATUS_FORBIDDEN ||
                 response.status === STATUS_UNAUTHORIZED

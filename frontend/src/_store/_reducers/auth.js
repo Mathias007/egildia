@@ -3,9 +3,9 @@ import eventStatuses from "../../_config/eventStatuses";
 const {
     USER_LOADED,
     LOGIN_SUCCESSFUL,
-    AUTHENTICATION_ERROR,
     LOGIN_FAILED,
-    LOGOUT_SUCCESSFUL
+    LOGOUT_SUCCESSFUL,
+    AUTHENTICATION_ERROR
 } = eventStatuses.auth;
 
 const { USER_ADDED } = eventStatuses.users;
@@ -13,6 +13,7 @@ const { USER_ADDED } = eventStatuses.users;
 export const initialState = {
     accessToken: localStorage.getItem("accessToken"),
     refreshToken: localStorage.getItem("refreshToken"),
+    autoLogin: null,
     isAuthenticated: null,
     userId: "",
     name: "",
@@ -24,8 +25,8 @@ export default function auth(state = initialState, action) {
         case USER_LOADED:
             return {
                 ...state,
-                isAuthenticated: true,
-                };
+                isAuthenticated: true
+            };
 
         case USER_ADDED:
             console.log(action.data);
@@ -50,22 +51,17 @@ export default function auth(state = initialState, action) {
                 ...action.data,
                 userId: action.data._id,
                 name: action.name,
-                remember: action.remember
-            };
-
-        case AUTHENTICATION_ERROR:
-            return {
-                ...state,
-                ...action.data,
-                errorMessage: "Something went wrong."
+                autoLogin: action.stayLogged
             };
 
         case LOGIN_FAILED:
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
-                errorMessage: "Failed login or password"
+                errorMessage: action.data.message
             };
+
         case LOGOUT_SUCCESSFUL:
             return {
                 ...state,
@@ -73,6 +69,14 @@ export default function auth(state = initialState, action) {
                 remember: false,
                 name: null,
                 isAuthenticated: false
+            };
+
+        case AUTHENTICATION_ERROR:
+            console.log(action.data);
+            return {
+                ...state,
+                ...action.data,
+                errorMessage: action.data.message
             };
 
         default:
