@@ -35,7 +35,7 @@ describe("test users reducer", () => {
         ]
     };
 
-    const message = "Ważna wiadomość z serwera!";
+    const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
     it("should return the initial state", () => {
         expect(tzar(undefined, {})).toEqual(initialState);
@@ -50,7 +50,7 @@ describe("test users reducer", () => {
     });
 
     it("should get message about nations list's not finding", () => {
-        const action = { type: TZAR_NATIONS_NOT_FOUND, data: message };
+        const action = { type: TZAR_NATIONS_NOT_FOUND, data: serverMessage };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
@@ -63,7 +63,7 @@ describe("test users reducer", () => {
     });
 
     it("should get message about nations list's not finding", () => {
-        const action = { type: TZAR_SPELLS_NOT_FOUND, data: message };
+        const action = { type: TZAR_SPELLS_NOT_FOUND, data: serverMessage };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
@@ -76,7 +76,10 @@ describe("test users reducer", () => {
     });
 
     it("should get message about nations list's not finding", () => {
-        const action = { type: TZAR_TECHNOLOGIES_NOT_FOUND, data: message };
+        const action = {
+            type: TZAR_TECHNOLOGIES_NOT_FOUND,
+            data: serverMessage
+        };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
@@ -86,12 +89,12 @@ describe("test users reducer", () => {
     });
 
     it("should get message about units list's not finding", () => {
-        const action = { type: TZAR_UNITS_NOT_FOUND, data: message };
+        const action = { type: TZAR_UNITS_NOT_FOUND, data: serverMessage };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: message };
+        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
         expect(tzar(initialState, action)).toMatchSnapshot();
     });
 });

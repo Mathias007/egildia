@@ -29,7 +29,7 @@ describe("test users reducer", () => {
         ]
     };
 
-    const message = "Ważna wiadomość z serwera!";
+    const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
     it("should return the initial state", () => {
         expect(knights(undefined, {})).toEqual(initialState);
@@ -44,7 +44,7 @@ describe("test users reducer", () => {
     });
 
     it("should get message about buildings list's not finding", () => {
-        const action = { type: KAM_BUILDINGS_NOT_FOUND, data: message };
+        const action = { type: KAM_BUILDINGS_NOT_FOUND, data: serverMessage };
         expect(knights(initialState, action)).toMatchSnapshot();
     });
 
@@ -54,12 +54,12 @@ describe("test users reducer", () => {
     });
 
     it("should get message about units list's not finding", () => {
-        const action = { type: KAM_UNITS_NOT_FOUND, data: message };
+        const action = { type: KAM_UNITS_NOT_FOUND, data: serverMessage };
         expect(knights(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: message };
+        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
         expect(knights(initialState, action)).toMatchSnapshot();
     });
 });

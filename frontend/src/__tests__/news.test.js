@@ -48,7 +48,7 @@ describe("test news reducer", () => {
         }
     };
 
-    const message = "Ważna wiadomość z serwera!";
+    const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
     it("should return the initial state", () => {
         expect(news(undefined, {})).toEqual(initialState);
@@ -60,7 +60,7 @@ describe("test news reducer", () => {
     });
 
     it("should get message about news list's not finding", () => {
-        const action = { type: NEWS_LIST_NOT_FOUND, data: message };
+        const action = { type: NEWS_LIST_NOT_FOUND, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
@@ -73,42 +73,42 @@ describe("test news reducer", () => {
     });
 
     it("should get message about single news' not finding", () => {
-        const action = { type: NEWS_NOT_FOUND, data: message };
+        const action = { type: NEWS_NOT_FOUND, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about adding news to database", () => {
-        const action = { type: NEWS_ADDED, data: message };
+        const action = { type: NEWS_ADDED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news' adding fail", () => {
-        const action = { type: NEWS_ADDING_FAILED, data: message };
+        const action = { type: NEWS_ADDING_FAILED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about modifying news in database", () => {
-        const action = { type: NEWS_SUCCESFULLY_EDITED, data: message };
+        const action = { type: NEWS_SUCCESFULLY_EDITED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news's modifying fail", () => {
-        const action = { type: NEWS_EDITING_FAILED, data: message };
+        const action = { type: NEWS_EDITING_FAILED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about removing news from database", () => {
-        const action = { type: NEWS_SUCCESFULLY_DELETED, data: message };
+        const action = { type: NEWS_SUCCESFULLY_DELETED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news' removing fail", () => {
-        const action = { type: NEWS_DELETING_FAILED, data: message };
+        const action = { type: NEWS_DELETING_FAILED, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: message };
+        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
         expect(news(initialState, action)).toMatchSnapshot();
     });
 });

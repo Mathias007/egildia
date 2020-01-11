@@ -31,7 +31,7 @@ describe("test auth reducer", () => {
     const name = "testUser";
     const stayLogged = true;
 
-    const message = "Ważna wiadomość z serwera!";
+    const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
     it("should return the initial state", () => {
         expect(auth(undefined, {})).toEqual(initialState);
@@ -50,7 +50,7 @@ describe("test auth reducer", () => {
     it("should login user", () => {
         const action = {
             type: LOGIN_SUCCESSFUL,
-            data: authTokens.id,
+            data: authTokens,
             name,
             stayLogged
         };
@@ -58,7 +58,7 @@ describe("test auth reducer", () => {
     });
 
     it("should get message about user's login fail", () => {
-        const action = { type: LOGIN_FAILED, data: message };
+        const action = { type: LOGIN_FAILED, data: serverMessage };
         expect(auth(initialState, action)).toMatchSnapshot();
     });
 
@@ -68,7 +68,7 @@ describe("test auth reducer", () => {
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: message };
+        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
         expect(auth(initialState, action)).toMatchSnapshot();
     });
 });
