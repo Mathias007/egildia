@@ -56,22 +56,12 @@ describe("test news reducer", () => {
 
     it("should load news list", () => {
         const action = { type: NEWS_LIST_LOADED, data: newsList.data };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            news: action.data.newsList
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news list's not finding", () => {
         const action = { type: NEWS_LIST_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should load a single news", () => {
@@ -79,91 +69,46 @@ describe("test news reducer", () => {
             type: NEWS_SUCCESSFULLY_LOADED,
             data: singleNews.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            properNews: action.data.singleNews
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about single news' not finding", () => {
         const action = { type: NEWS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about adding news to database", () => {
         const action = { type: NEWS_ADDED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news' adding fail", () => {
         const action = { type: NEWS_ADDING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about modifying news in database", () => {
         const action = { type: NEWS_SUCCESFULLY_EDITED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news's modifying fail", () => {
         const action = { type: NEWS_EDITING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about removing news from database", () => {
         const action = { type: NEWS_SUCCESFULLY_DELETED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about news' removing fail", () => {
         const action = { type: NEWS_DELETING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(news(initialState, action)).toEqual(expectedState);
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 });

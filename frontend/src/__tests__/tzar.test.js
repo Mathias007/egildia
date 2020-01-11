@@ -46,22 +46,12 @@ describe("test users reducer", () => {
             type: TZAR_NATIONS_LOADED,
             data: tzarList.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            nations: action.data.tzarList
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about nations list's not finding", () => {
         const action = { type: TZAR_NATIONS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should load spells list", () => {
@@ -69,22 +59,12 @@ describe("test users reducer", () => {
             type: TZAR_SPELLS_LOADED,
             data: tzarList.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            spells: action.data.tzarList
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about nations list's not finding", () => {
         const action = { type: TZAR_SPELLS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should load technologies list", () => {
@@ -92,51 +72,26 @@ describe("test users reducer", () => {
             type: TZAR_TECHNOLOGIES_LOADED,
             data: tzarList.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            technologies: action.data.tzarList
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about nations list's not finding", () => {
         const action = { type: TZAR_TECHNOLOGIES_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should load units list", () => {
         const action = { type: TZAR_UNITS_LOADED, data: tzarList.data };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            units: action.data.tzarList
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about units list's not finding", () => {
         const action = { type: TZAR_UNITS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(tzar(initialState, action)).toEqual(expectedState);
+        expect(tzar(initialState, action)).toMatchSnapshot();
     });
 });

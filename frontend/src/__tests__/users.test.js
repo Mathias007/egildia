@@ -56,22 +56,12 @@ describe("test users reducer", () => {
 
     it("should load users list", () => {
         const action = { type: USERS_LIST_LOADED, data: usersList.data };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            usersList: action.data.usersList
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about users list's not finding", () => {
         const action = { type: USERS_LIST_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should load a single user", () => {
@@ -79,42 +69,22 @@ describe("test users reducer", () => {
             type: USER_SUCCESSFULLY_LOADED,
             data: singleUser.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            selectedUser: action.data.singleUser
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about single users' not finding", () => {
         const action = { type: USER_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about adding user to database", () => {
         const action = { type: USER_ADDED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's adding fail", () => {
         const action = { type: USER_ADDING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about modifying user in database", () => {
@@ -122,52 +92,26 @@ describe("test users reducer", () => {
             type: USER_SUCCESFULLY_EDITED,
             data: { singleUser }
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            selectedUser: action.data.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's modifying fail", () => {
         const action = { type: USER_EDITING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about removing user from database", () => {
         const action = { type: USER_SUCCESFULLY_DELETED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's removing fail", () => {
         const action = { type: USER_DELETING_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(users(initialState, action)).toEqual(expectedState);
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 });

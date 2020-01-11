@@ -39,22 +39,12 @@ describe("test auth reducer", () => {
 
     it("should confirm user's authentication", () => {
         const action = { type: USER_LOADED };
-        const expectedState = {
-            ...initialState,
-            isAuthenticated: true
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 
     it("should confirm user's adding", () => {
         const action = { type: USER_ADDED, name, stayLogged };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            autoLogin: action.stayLogged,
-            name: action.name
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 
     it("should login user", () => {
@@ -64,45 +54,21 @@ describe("test auth reducer", () => {
             name,
             stayLogged
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            userId: action.data.id,
-            name: action.name,
-            autoLogin: action.stayLogged
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's login fail", () => {
         const action = { type: LOGIN_FAILED, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 
     it("should logout user", () => {
         const action = { type: LOGOUT_SUCCESSFUL };
-        const expectedState = {
-            ...initialState,
-            accessToken: null,
-            remember: false,
-            name: null,
-            isAuthenticated: false
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(auth(initialState, action)).toEqual(expectedState);
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 });

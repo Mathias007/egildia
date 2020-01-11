@@ -40,51 +40,26 @@ describe("test users reducer", () => {
             type: KAM_BUILDINGS_LOADED,
             data: knightsList.data
         };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            buildings: action.data.knightsList
-        };
-        expect(knights(initialState, action)).toEqual(expectedState);
+        expect(knights(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about buildings list's not finding", () => {
         const action = { type: KAM_BUILDINGS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(knights(initialState, action)).toEqual(expectedState);
+        expect(knights(initialState, action)).toMatchSnapshot();
     });
 
     it("should load units list", () => {
         const action = { type: KAM_UNITS_LOADED, data: knightsList.data };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            units: action.data.knightsList
-        };
-        expect(knights(initialState, action)).toEqual(expectedState);
+        expect(knights(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about units list's not finding", () => {
         const action = { type: KAM_UNITS_NOT_FOUND, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(knights(initialState, action)).toEqual(expectedState);
+        expect(knights(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: message };
-        const expectedState = {
-            ...initialState,
-            ...action.data,
-            errorMessage: action.data.message
-        };
-        expect(knights(initialState, action)).toEqual(expectedState);
+        expect(knights(initialState, action)).toMatchSnapshot();
     });
 });
