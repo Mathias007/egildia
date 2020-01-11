@@ -92,7 +92,7 @@ Object {
     "title": "Artykuł testowy",
   },
   "articles": Array [],
-  "errorMessage": "",
+  "errorMessage": "Okuratna wiadomość z serwera!",
   "message": "Okuratna wiadomość z serwera!",
   "properArticle": Object {
     "_id": "1111-2222-3333-4444",
@@ -117,7 +117,7 @@ Object {
       "title": "Artykuł testowy",
     },
   ],
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "properArticle": Object {},
 }

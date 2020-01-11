@@ -4,8 +4,9 @@ exports[`test auth reducer should confirm user's adding 1`] = `
 Object {
   "accessToken": null,
   "autoLogin": true,
-  "errorMessage": "",
+  "errorMessage": "Ważna wiadomość z serwera!",
   "isAuthenticated": null,
+  "message": "Ważna wiadomość z serwera!",
   "name": "testUser",
   "refreshToken": null,
   "userId": "",

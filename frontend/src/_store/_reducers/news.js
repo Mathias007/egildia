@@ -27,7 +27,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                news: action.data.news
+                news: action.data.news,
+                errorMessage: action.data.message
             };
 
         case NEWS_LIST_NOT_FOUND:
@@ -43,7 +44,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                properNews: action.data.singleNews
+                properNews: action.data.singleNews,
+                errorMessage: action.data.message
             };
 
         case NEWS_NOT_FOUND:

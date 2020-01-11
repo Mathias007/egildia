@@ -27,7 +27,8 @@ export default function tzar(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                nations: action.data.nations
+                nations: action.data.nations,
+                errorMessage: action.data.message
             };
 
         case TZAR_NATIONS_NOT_FOUND:
@@ -43,7 +44,8 @@ export default function tzar(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                spells: action.data.spells
+                spells: action.data.spells,
+                errorMessage: action.data.message
             };
 
         case TZAR_SPELLS_NOT_FOUND:
@@ -59,7 +61,8 @@ export default function tzar(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                technologies: action.data.technologies
+                technologies: action.data.technologies,
+                errorMessage: action.data.message
             };
 
         case TZAR_TECHNOLOGIES_NOT_FOUND:
@@ -75,7 +78,8 @@ export default function tzar(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                units: action.data.units
+                units: action.data.units,
+                errorMessage: action.data.message
             };
 
         case TZAR_UNITS_NOT_FOUND:

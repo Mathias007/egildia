@@ -27,7 +27,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                usersList: action.data.users
+                usersList: action.data.users,
+                errorMessage: action.data.message
             };
 
         case USERS_LIST_NOT_FOUND:
@@ -43,7 +44,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                selectedUser: action.data.selectedUser
+                selectedUser: action.data.selectedUser,
+                errorMessage: action.data.message
             };
 
         case USER_NOT_FOUND:

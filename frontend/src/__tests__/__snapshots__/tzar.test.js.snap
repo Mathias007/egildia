@@ -57,7 +57,7 @@ Object {
 
 exports[`test users reducer should load nations list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [
     Object {
@@ -73,7 +73,7 @@ Object {
 
 exports[`test users reducer should load spells list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
   "spells": Array [
@@ -89,7 +89,7 @@ Object {
 
 exports[`test users reducer should load technologies list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
   "spells": Array [],
@@ -105,7 +105,7 @@ Object {
 
 exports[`test users reducer should load units list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "nations": Array [],
   "spells": Array [],

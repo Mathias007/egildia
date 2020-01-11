@@ -90,7 +90,7 @@ Object {
 
 exports[`test users reducer should load a single user 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Okuratna wiadomość z serwera!",
   "message": "Okuratna wiadomość z serwera!",
   "selectedUser": Object {
     "_id": "1111-2222-3333-4444",
@@ -106,7 +106,7 @@ Object {
 
 exports[`test users reducer should load users list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "selectedUser": Object {},
   "users": Array [

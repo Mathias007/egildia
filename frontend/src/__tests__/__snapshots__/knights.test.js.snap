@@ -35,7 +35,7 @@ Object {
       "name": "Budynki Knights and Merchants",
     },
   ],
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "units": Array [],
 }
@@ -44,7 +44,7 @@ Object {
 exports[`test users reducer should load units list 1`] = `
 Object {
   "buildings": Array [],
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "units": Array [
     Object {

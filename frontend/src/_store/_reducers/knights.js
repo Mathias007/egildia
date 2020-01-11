@@ -21,7 +21,8 @@ export default function knights(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                buildings: action.data.buildings
+                buildings: action.data.buildings,
+                errorMessage: action.data.message
             };
 
         case KAM_BUILDINGS_NOT_FOUND:
@@ -37,7 +38,8 @@ export default function knights(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                units: action.data.units
+                units: action.data.units,
+                errorMessage: action.data.message
             };
 
         case KAM_UNITS_NOT_FOUND:

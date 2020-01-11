@@ -1,17 +1,17 @@
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
-    ARTICLE_SUCCESSFULLY_LOADED,
-    ARTICLE_NOT_FOUND,
     ARTS_LIST_LOADED,
     ARTS_LIST_NOT_FOUND,
+    ARTICLE_SUCCESSFULLY_LOADED,
+    ARTICLE_NOT_FOUND,
     ARTICLE_ADDED,
-    AUTHENTICATION_ERROR,
     ARTICLE_ADDING_FAILED,
     ARTICLE_SUCCESFULLY_EDITED,
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
-    ARTICLE_DELETING_FAILED
+    ARTICLE_DELETING_FAILED,
+    AUTHENTICATION_ERROR,
 } = eventStatuses.articles;
 
 const initialState = {
@@ -23,11 +23,12 @@ const initialState = {
 export default function articles(state = initialState, action) {
     switch (action.type) {
         case ARTS_LIST_LOADED:
-            console.log(action.data.articles);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
-                articles: action.data.articles
+                articles: action.data.articles,
+                errorMessage: action.data.message
             };
 
         case ARTS_LIST_NOT_FOUND:
@@ -39,11 +40,12 @@ export default function articles(state = initialState, action) {
             };
 
         case ARTICLE_SUCCESSFULLY_LOADED:
-            console.log(action.data.article);
+            console.log(action.data);
             return {
                 ...state,
                 ...action.data,
-                properArticle: action.data.article
+                properArticle: action.data.article,
+                errorMessage: action.data.message
             };
 
         case ARTICLE_NOT_FOUND:

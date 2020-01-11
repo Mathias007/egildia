@@ -43,7 +43,7 @@ describe("test auth reducer", () => {
     });
 
     it("should confirm user's adding", () => {
-        const action = { type: USER_ADDED, name, stayLogged };
+        const action = { type: USER_ADDED, data: serverMessage, name, stayLogged };
         expect(auth(initialState, action)).toMatchSnapshot();
     });
 

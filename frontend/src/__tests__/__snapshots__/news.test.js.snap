@@ -83,7 +83,7 @@ Object {
 
 exports[`test news reducer should load a single news 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Okuratna wiadomość z serwera!",
   "message": "Okuratna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {
@@ -107,7 +107,7 @@ Object {
 
 exports[`test news reducer should load news list 1`] = `
 Object {
-  "errorMessage": "",
+  "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "news": Array [
     Object {

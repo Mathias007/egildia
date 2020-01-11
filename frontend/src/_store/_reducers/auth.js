@@ -35,12 +35,14 @@ export default function auth(state = initialState, action) {
                     ...state,
                     ...action.data,
                     autoLogin: action.stayLogged,
-                    name: action.name
+                    name: action.name,
+                    errorMessage: action.data.message
                 };
             } else {
                 return {
                     ...state,
-                    ...action.data
+                    ...action.data,
+                    errorMessage: action.data.message
                 };
             }
 
