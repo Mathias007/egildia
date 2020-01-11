@@ -361,3 +361,15 @@
         - otwarcie profilu użytkownika z opcją jego modyfikacji przez menu w nagłówku (Breadcrumb).
 
     **BACKEND**: dodanie wysyłania id użytkownika do frontendu przy logowaniu (potrzebnego do wejścia w profil).
+
+## Sobota 11.01.2020 - testowania ciąg dalszy
+    **FRONTEND**:
+        - uzupełnienie testów reducerów o segment autoryzacyjny (przy okazji jego drobne poprawienie);
+        - utworzenie snapshotów, skrócenie i uelastycznienie w ten sposób kodu testów (funkcja matchToSnapshot());
+        - poprawienie testów i snapshotów w celu wiernego odwzorowania przekazywanych danych (obiektów);
+        - uzupełnienie reducerów o obsługę komunikatów serwera przy pozytywnych akcjach (dotąd pominiętych);
+        - prace refaktoryzacyjne w komponentach administracyjnych: 
+            > articles - wydzielenie formularzy i list do osobnych komponentów (folder data),
+            > news - j.w. + poprawki w NewsCard (opcje edycji).
+
+    **INNE*: dodanie obrazka dla repozytorium egildia (tiamath).
