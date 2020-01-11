@@ -18,7 +18,7 @@ const { POST } = method;
 const fetchLogin = (
     name,
     password,
-    remember,
+    stayLogged,
     dispatchLoginSuccessful,
     dispatchUserAuthError,
     dispatchLoginFailed

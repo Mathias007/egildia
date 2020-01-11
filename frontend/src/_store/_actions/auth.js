@@ -24,7 +24,7 @@ export const login = (name, password, stayLogged) => {
                 name: name
             });
 
-            return (response.data, name, remember);
+            return (response.data, name, stayLogged);
         };
 
         const dispatchUserAuthError = function(response) {
@@ -47,7 +47,7 @@ export const login = (name, password, stayLogged) => {
         return fetchLogin(
             name,
             password,
-            remember,
+            stayLogged,
             dispatchLoginSuccessful,
             dispatchUserAuthError,
             dispatchLoginFailed
