@@ -43,7 +43,7 @@ class NewsAddForm extends Component {
                     minHeight: 280
                 }}
             >
-                <Form onSubmit={this.handleSubmit} className="add-article-form">
+                <Form onSubmit={this.handleSubmit} id="add-news-form">
                     <Item label="Kategoria wpisu">
                         {getFieldDecorator("category", {
                             rules: [

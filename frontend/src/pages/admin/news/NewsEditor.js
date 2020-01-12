@@ -5,11 +5,20 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import NewsEditForm from "../data/NewsEditForm";
 
-import { Button, Layout, PageHeader } from "antd";
+import { Button, Layout } from "antd";
 
 const { ADMIN_NEWS, EDITOR } = navigationTitles;
+
+const buttonData = {
+    icon: "edit",
+    type: "primary",
+    htmlType: "submit",
+    form: "edit-news-form",
+    text: "Edytuj wpis"
+};
 
 class NewsEditor extends Component {
     componentDidMount() {
@@ -18,31 +27,27 @@ class NewsEditor extends Component {
     }
 
     render() {
+        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent
-                    isAdminContent
+                    isAdminComponent
                     section={ADMIN_NEWS}
                     page={EDITOR}
                 />
-                <div>
-                    <PageHeader
-                        onBack={() => window.history.back()}
-                        title="Powrót"
-                        subTitle="Panel administracyjny"
-                        extra={
-                            <Button
-                                icon="edit"
-                                type="primary"
-                                htmlType="submit"
-                                className="edit-news-button"
-                            >
-                                Edytuj wpis{" "}
-                            </Button>
-                        }
-                    />
-                </div>
-
+                <PageHeaderComponent
+                    isAdminComponent
+                    button={
+                        <Button
+                            icon={icon}
+                            type={type}
+                            htmlType={htmlType}
+                            form={form}
+                        >
+                            {text}
+                        </Button>
+                    }
+                />
                 <NewsEditForm idParam={this.props.match.params._id} />
             </Layout>
         );

@@ -6,9 +6,10 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import NewsTable from "../data/NewsTable";
 
-import { Button, Layout, PageHeader } from "antd";
+import { Button, Layout } from "antd";
 
 const componentStyles = {
     layout: { padding: "0 24px 24px" }
@@ -20,34 +21,35 @@ const componentClassnames = {
 
 const { ADMIN_NEWS, LIST } = navigationTitles;
 
+const buttonData = {
+    icon: "file-add",
+    type: "primary",
+    text: "Edytuj wpis"
+};
+
 class NewsList extends Component {
     render() {
+        const { icon, type, text } = buttonData;
         return (
             <Layout
                 className={componentClassnames.layout}
                 style={componentStyles.layout}
             >
                 <BreadcrumbComponent
-                    isAdminContent
+                    isAdminComponent
                     section={ADMIN_NEWS}
                     page={LIST}
                 />
-                <div>
-                    <PageHeader
-                        title="Lista wpisów"
-                        subTitle="Panel administracyjny"
-                        extra={
-                            <Button
-                                icon="file-add"
-                                type="primary"
-                                className="add-news-button"
-                            >
-                                <Link to="news/add"> Dodaj wpis</Link>
+                <PageHeaderComponent
+                    isAdminComponent
+                    button={
+                        <Link to="news/add">
+                            <Button icon={icon} type={type}>
+                                {text}
                             </Button>
-                        }
-                    />
-                </div>
-
+                        </Link>
+                    }
+                />
                 <NewsTable />
             </Layout>
         );
