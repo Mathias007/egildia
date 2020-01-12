@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import UsersRemoveForm from "../data/UsersRemoveForm";
 
-import { Button, Divider, Form, Layout, PageHeader } from "antd";
-const { Item } = Form;
-const { Content } = Layout;
+import { Layout, PageHeader } from "antd";
 
 const { ADMIN_USERS, REMOVER } = navigationTitles;
 
@@ -19,14 +17,7 @@ class UserRemover extends Component {
         this.props.showUserProfile(this.props.match.params._id);
     }
 
-    handleDeletingSubmit = e => {
-        e.preventDefault();
-        this.props.deleteSelectedUser(this.props.match.params._id);
-    };
-
     render() {
-        const { selectedUser } = this.props;
-
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent
@@ -34,66 +25,29 @@ class UserRemover extends Component {
                     section={ADMIN_USERS}
                     page={REMOVER}
                 />
-                <Content
-                    style={{
-                        background: "#fff",
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280
-                    }}
-                >
-                    <div>
-                        <PageHeader
-                            onBack={() => window.history.back()}
-                            title="Powrót"
-                            subTitle="Panel administracyjny"
-                        />
-                    </div>
-                    <p>
-                        Czy na pewno chcesz usunąć użytkownika o nazwie{" "}
-                        <strong>{selectedUser.name}</strong>? Tej operacji nie
-                        będzie można cofnąć.
-                    </p>
-                    <Item className="btn-wrap">
-                        <Button
-                            icon="user-delete"
-                            type="primary"
-                            htmlType="submit"
-                            className="remove-user-button"
-                            onClick={this.handleDeletingSubmit}
-                        >
-                            Usuń użytkownika
-                        </Button>
-                        <Divider type="vertical" dashed style={{ border: 0 }} />
-                        <Button>
-                            <Link to="/admin/users">Zrezygnuj</Link>
-                        </Button>
-                    </Item>
-                    <Item>{this.props.errorMessage}</Item>
-                </Content>
+                <div>
+                    <PageHeader
+                        onBack={() => window.history.back()}
+                        title="Powrót"
+                        subTitle="Panel administracyjny"
+                    />
+                </div>
+                <UsersRemoveForm idParam={this.props.match.params._id} />
             </Layout>
         );
     }
 }
 
 const mapStateToProps = state => {
-    return {
-        errorMessage: state.users.errorMessage,
-        selectedUser: state.users.selectedUser
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         showUserProfile: id => {
             return dispatch(users.showUserProfile(id));
-        },
-        deleteSelectedUser: id => {
-            return dispatch(users.deleteSelectedUser(id));
         }
     };
 };
 
-UserRemover = connect(mapStateToProps, mapDispatchToProps)(UserRemover);
-
-export default Form.create()(UserRemover);
+export default connect(mapStateToProps, mapDispatchToProps)(UserRemover);
