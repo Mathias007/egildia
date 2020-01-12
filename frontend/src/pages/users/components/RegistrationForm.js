@@ -14,6 +14,7 @@ import {
     PageHeader,
     Tooltip
 } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -88,14 +89,7 @@ class RegistrationForm extends Component {
         };
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form
                     {...formItemLayout}
                     onSubmit={this.handleSubmit}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { articles } from "../../../_store/_actions";
 
 import { Button, Divider, Form, Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { Content } = Layout;
@@ -19,14 +20,7 @@ class ArticlesRemoveForm extends Component {
         const { properArticle } = this.props;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <p>
                     Czy na pewno chcesz usunąć artykuł o tytule{" "}
                     <strong>{properArticle.title}</strong>? Tej operacji nie

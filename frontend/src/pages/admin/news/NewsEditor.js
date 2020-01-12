@@ -9,6 +9,7 @@ import PageHeaderComponent from "../../components/PageHeaderComponent";
 import NewsEditForm from "../data/NewsEditForm";
 
 import { Button, Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { ADMIN_NEWS, EDITOR } = navigationTitles;
 
@@ -29,7 +30,7 @@ class NewsEditor extends Component {
     render() {
         const { icon, type, htmlType, form, text } = buttonData;
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminComponent
                     section={ADMIN_NEWS}

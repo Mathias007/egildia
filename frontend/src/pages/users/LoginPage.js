@@ -8,6 +8,7 @@ import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import LoginForm from "./components/LoginForm";
 
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { USERS, LOGIN } = navigationTitles;
 
@@ -19,7 +20,7 @@ class LoginPage extends Component {
             return <Redirect to="/" />;
         }
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent section={USERS} page={LOGIN} />
                 <LoginForm />
             </Layout>

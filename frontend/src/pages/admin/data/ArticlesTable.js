@@ -5,21 +5,8 @@ import moment from "moment";
 
 import { articles } from "../../../_store/_actions";
 
-import { Layout, Table, Divider, Icon} from "antd";
-
-const componentStyles = {
-    content: {
-        background: "#fff",
-        padding: 24,
-        margin: 0,
-        minHeight: 280
-    },
-};
-
-const componentClassnames = {
-    content: "admin-articles-content",
-    table: "admin-articles-table"
-};
+import { Layout, Table, Divider, Icon } from "antd";
+import styles from "../../../styles/styles";
 
 class ArticlesTable extends Component {
     state = {
@@ -154,15 +141,8 @@ class ArticlesTable extends Component {
         ];
 
         return (
-            <Content
-                className={componentClassnames.content}
-                style={componentStyles.content}
-            >
-                <Table
-                    className={componentClassnames.table}
-                    dataSource={tableData}
-                    columns={tableColumns}
-                />
+            <Content style={styles.content}>
+                <Table dataSource={tableData} columns={tableColumns} />
             </Content>
         );
     }

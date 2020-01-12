@@ -8,6 +8,7 @@ import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
 
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { KNIGHTS_AND_MERCHANTS } = navigationTitles;
 const { KNIGHTS_HOME } = allocationKeys;
@@ -19,7 +20,7 @@ class KnightsHomePage extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     section={KNIGHTS_AND_MERCHANTS}
                     page={navigationTitles.KNIGHTS_MAIN}

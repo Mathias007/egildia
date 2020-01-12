@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { news } from "../../../_store/_actions";
 
 import { Button, Divider, Form, Layout } from "antd";
+import styles from "../../../styles/styles";
+
 const { Item } = Form;
 const { Content } = Layout;
 
@@ -16,14 +18,7 @@ class NewsRemoveForm extends Component {
 
     render() {
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Item className="btn-wrap">
                     <Button
                         icon="delete"

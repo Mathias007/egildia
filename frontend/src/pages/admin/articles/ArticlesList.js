@@ -8,14 +8,7 @@ import PageHeaderComponent from "../../components/PageHeaderComponent";
 import ArticlesTable from "../data/ArticlesTable";
 
 import { Button, Layout } from "antd";
-
-const componentStyles = {
-    layout: { padding: "0 24px 24px" }
-};
-
-const componentClassnames = {
-    layout: "admin-articles-layout"
-};
+import styles from "../../../styles/styles";
 
 const { ADMIN_ARTICLES, LIST } = navigationTitles;
 
@@ -29,10 +22,7 @@ class ArticlesList extends Component {
     render() {
         const { icon, type, text } = buttonData;
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
-            >
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminComponent
                     section={ADMIN_ARTICLES}

@@ -3,23 +3,14 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-import Img from "react-image";
+import styles from "../../../styles/styles";
 
-const componentStyles = {
-    content: {
-        background: "#fff",
-        padding: 24,
-        margin: 0,
-        minHeight: 280
-    }
-};
+import Img from "react-image";
 
 const componentClassnames = {
     images: {
         spell: "tzar-image-spell"
-    },
-    content: "tzar-spells-content",
-    table: "tzar-spells-table"
+    }
 };
 
 class TzarSpellsTable extends Component {
@@ -134,15 +125,8 @@ class TzarSpellsTable extends Component {
         ];
 
         return (
-            <Content
-                className={componentClassnames.images.content}
-                style={componentStyles.content}
-            >
-                <Table
-                    className={componentClassnames.table}
-                    dataSource={tableData}
-                    columns={tableColumns}
-                />
+            <Content style={styles.content}>
+                <Table dataSource={tableData} columns={tableColumns} />
             </Content>
         );
     }

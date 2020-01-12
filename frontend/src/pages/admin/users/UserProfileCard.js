@@ -8,6 +8,7 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import UsersCard from "../data/UsersCard";
 
 import { Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { ADMIN_USERS } = navigationTitles;
 
@@ -19,7 +20,7 @@ class UserProfileCard extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminContent
                     section={ADMIN_USERS}

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { users } from "../../../_store/_actions";
 
 import { Button, Divider, Form, Layout } from "antd";
+import styles from "../../../styles/styles";
+
 const { Item } = Form;
 const { Content } = Layout;
 
@@ -18,14 +20,7 @@ class UsersRemoveForm extends Component {
         const { selectedUser } = this.props;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <p>
                     Czy na pewno chcesz usunąć użytkownika o nazwie{" "}
                     <strong>{selectedUser.name}</strong>? Tej operacji nie

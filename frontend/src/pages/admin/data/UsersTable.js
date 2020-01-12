@@ -6,20 +6,7 @@ import moment from "moment";
 import { users } from "../../../_store/_actions";
 
 import { Avatar, Divider, Icon, Layout, Table } from "antd";
-
-const componentStyles = {
-    content: {
-        background: "#fff",
-        padding: 24,
-        margin: 0,
-        minHeight: 280
-    }
-};
-
-const componentClassnames = {
-    content: "admin-users-content",
-    table: "admin-users-table"
-};
+import styles from "../../../styles/styles";
 
 class UsersTable extends Component {
     state = {
@@ -161,15 +148,8 @@ class UsersTable extends Component {
         ];
 
         return (
-            <Content
-                className={componentClassnames.content}
-                style={componentStyles.content}
-            >
-                <Table
-                    className={componentClassnames.table}
-                    dataSource={tableData}
-                    columns={tableColumns}
-                />
+            <Content style={styles.content}>
+                <Table dataSource={tableData} columns={tableColumns} />
             </Content>
         );
     }

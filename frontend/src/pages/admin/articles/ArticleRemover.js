@@ -9,6 +9,7 @@ import PageHeaderComponent from "../../components/PageHeaderComponent";
 import ArticlesRemoveForm from "../data/ArticlesRemoveForm";
 
 import { Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { ADMIN_ARTICLES, REMOVER } = navigationTitles;
 
@@ -20,7 +21,7 @@ class ArticleRemover extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminComponent
                     section={ADMIN_ARTICLES}

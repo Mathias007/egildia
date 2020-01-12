@@ -5,6 +5,8 @@ import ReactHtmlParser from "react-html-parser";
 import { articles } from "../../_store/_actions";
 
 import { Card, Layout } from "antd";
+import styles from "../../styles/styles";
+
 const { Content } = Layout;
 
 class PageContentComponent extends Component {
@@ -17,14 +19,7 @@ class PageContentComponent extends Component {
     render() {
         const { content } = this.props.article;
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Card>{ReactHtmlParser(content)}</Card>
             </Content>
         );

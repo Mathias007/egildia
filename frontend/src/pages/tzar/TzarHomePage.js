@@ -8,6 +8,7 @@ import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
 
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { TZAR_BURDEN_CROWN } = navigationTitles;
 const { TZAR_HOME } = allocationKeys;
@@ -19,7 +20,7 @@ class TzarHomePage extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     section={TZAR_BURDEN_CROWN}
                     page={navigationTitles.TZAR_MAIN}

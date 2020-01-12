@@ -10,6 +10,8 @@ import { news } from "../_store/_actions";
 import BreadcrumbComponent from "./global/BreadcrumbComponent";
 
 import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
+import styles from "../styles/styles";
+
 const { Meta } = Card;
 const { Content } = Layout;
 
@@ -106,16 +108,9 @@ class NewsPage extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent page={GENERAL_INDEX} />
-                <Content
-                    style={{
-                        background: "#fff",
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280
-                    }}
-                >
+                <Content style={styles.content}>
                     <Card
                         title="Aktualności"
                         extra={
@@ -125,7 +120,7 @@ class NewsPage extends Component {
                                     type="primary"
                                     className="add-news-button"
                                 >
-                                    <Link to="admin/news/add"> Dodaj wpis</Link>
+                                    <Link to="admin/news/add">Dodaj wpis</Link>
                                 </Button>
                             ) : null
                         }

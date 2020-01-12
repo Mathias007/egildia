@@ -8,6 +8,7 @@ import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import NewsCard from "../data/NewsCard";
 
 import { Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { ADMIN_NEWS } = navigationTitles;
 
@@ -19,7 +20,7 @@ class NewsSingleCard extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     section={ADMIN_NEWS}
                     page={this.props.properNews.title}

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { news } from "../../../_store/_actions";
 
 import { Button, DatePicker, Form, Icon, Input, Layout, Tooltip } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -35,14 +36,7 @@ class NewsAddForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-news-form">
                     <Item label="Kategoria wpisu">
                         {getFieldDecorator("category", {

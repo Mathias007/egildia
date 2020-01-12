@@ -8,6 +8,7 @@ import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import RegistrationForm from "./components/RegistrationForm";
 
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { USERS, REGISTER } = navigationTitles;
 
@@ -18,7 +19,7 @@ class RegistrationPage extends Component {
         }
 
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent section={USERS} page={REGISTER} />
                 <RegistrationForm />
             </Layout>

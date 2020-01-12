@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { news } from "../../../_store/_actions";
 
 import { Button, Divider, Form, Icon, Input, Layout, Tooltip } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -37,14 +38,7 @@ class NewsEditForm extends Component {
         const { properNews } = this.props;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-news-form">
                     <Item label="Kategoria wpisu">
                         {getFieldDecorator("category", {

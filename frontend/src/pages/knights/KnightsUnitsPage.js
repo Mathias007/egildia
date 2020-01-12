@@ -9,6 +9,7 @@ import PageContentComponent from "../components/PageContentComponent";
 import KnightsUnitsTable from "./data/KnightsUnitsTable";
 
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { KNIGHTS_AND_MERCHANTS } = navigationTitles;
 const { KNIGHTS_UNITS } = allocationKeys;
@@ -19,7 +20,7 @@ class KnightsUnitsPage extends Component {
     };
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     section={KNIGHTS_AND_MERCHANTS}
                     page={navigationTitles.KNIGHTS_UNITS}

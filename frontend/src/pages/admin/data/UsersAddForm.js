@@ -14,6 +14,7 @@ import {
     Select,
     Tooltip
 } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -45,185 +46,175 @@ class UsersAddForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-                <Content
-                    style={{
-                        background: "#fff",
-                        padding: 24,
-                        margin: 0,
-                        minHeight: 280
-                    }}
-                >
-                    <Form
-                        onSubmit={this.handleSubmit}
-                        id="add-user-form"
-                    >
-                        <Item label="Nazwa użytkownika">
-                            {getFieldDecorator("username", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message:
-                                            "Określ unikalną nazwę użytkownika!"
-                                    }
-                                ]
-                            })(
-                                <Input
-                                    prefix={
+            <Content style={styles.content}>
+                <Form onSubmit={this.handleSubmit} id="add-user-form">
+                    <Item label="Nazwa użytkownika">
+                        {getFieldDecorator("username", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message:
+                                        "Określ unikalną nazwę użytkownika!"
+                                }
+                            ]
+                        })(
+                            <Input
+                                prefix={
+                                    <Icon
+                                        type="user"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                suffix={
+                                    <Tooltip title="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie.">
                                         <Icon
-                                            type="user"
+                                            type="info-circle"
                                             style={{
-                                                color: "rgba(0,0,0,.25)"
+                                                color: "rgba(0,0,0,.45)"
                                             }}
                                         />
-                                    }
-                                    suffix={
-                                        <Tooltip title="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie.">
-                                            <Icon
-                                                type="info-circle"
-                                                style={{
-                                                    color: "rgba(0,0,0,.45)"
-                                                }}
-                                            />
-                                        </Tooltip>
-                                    }
-                                    placeholder="Podaj nazwę użytkownika"
-                                />
-                            )}
-                        </Item>
+                                    </Tooltip>
+                                }
+                                placeholder="Podaj nazwę użytkownika"
+                            />
+                        )}
+                    </Item>
 
-                        <Item label="Adres e-mail">
-                            {getFieldDecorator("email", {
-                                rules: [
-                                    {
-                                        type: "email",
-                                        message: "Podaj poprawny adres e-mail!"
-                                    },
-                                    {
-                                        required: true,
-                                        message: "Wpisz adres e-mail!"
-                                    }
-                                ]
-                            })(
-                                <Input
-                                    prefix={
+                    <Item label="Adres e-mail">
+                        {getFieldDecorator("email", {
+                            rules: [
+                                {
+                                    type: "email",
+                                    message: "Podaj poprawny adres e-mail!"
+                                },
+                                {
+                                    required: true,
+                                    message: "Wpisz adres e-mail!"
+                                }
+                            ]
+                        })(
+                            <Input
+                                prefix={
+                                    <Icon
+                                        type="mail"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                suffix={
+                                    <Tooltip title="Adres e-mail powiązany z kontem.">
                                         <Icon
-                                            type="mail"
+                                            type="info-circle"
                                             style={{
-                                                color: "rgba(0,0,0,.25)"
+                                                color: "rgba(0,0,0,.45)"
                                             }}
                                         />
-                                    }
-                                    suffix={
-                                        <Tooltip title="Adres e-mail powiązany z kontem.">
-                                            <Icon
-                                                type="info-circle"
-                                                style={{
-                                                    color: "rgba(0,0,0,.45)"
-                                                }}
-                                            />
-                                        </Tooltip>
-                                    }
-                                    placeholder="Podaj adres e-mail"
-                                />
-                            )}
-                        </Item>
+                                    </Tooltip>
+                                }
+                                placeholder="Podaj adres e-mail"
+                            />
+                        )}
+                    </Item>
 
-                        <Item label="Hasło">
-                            {getFieldDecorator("password", {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: "Wpisz swoje hasło!"
-                                    },
-                                    { min: 8, message: "Hasło za krótkie!" },
-                                    {
-                                        pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
-                                        message: "Hasło nie spełnia wymagań!"
-                                    }
-                                ]
-                            })(
-                                <Password
-                                    prefix={
+                    <Item label="Hasło">
+                        {getFieldDecorator("password", {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Wpisz swoje hasło!"
+                                },
+                                { min: 8, message: "Hasło za krótkie!" },
+                                {
+                                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
+                                    message: "Hasło nie spełnia wymagań!"
+                                }
+                            ]
+                        })(
+                            <Password
+                                prefix={
+                                    <Icon
+                                        type="key"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                suffix={
+                                    <Tooltip title="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
                                         <Icon
-                                            type="key"
+                                            type="info-circle"
                                             style={{
-                                                color: "rgba(0,0,0,.25)"
+                                                color: "rgba(0,0,0,.45)"
                                             }}
                                         />
-                                    }
-                                    suffix={
-                                        <Tooltip title="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
-                                            <Icon
-                                                type="info-circle"
-                                                style={{
-                                                    color: "rgba(0,0,0,.45)"
-                                                }}
-                                            />
-                                        </Tooltip>
-                                    }
-                                    placeholder="Wpisz hasło użytkownika."
-                                />
-                            )}
-                        </Item>
+                                    </Tooltip>
+                                }
+                                placeholder="Wpisz hasło użytkownika."
+                            />
+                        )}
+                    </Item>
 
-                        <Item label="Rola w serwisie">
-                            {getFieldDecorator("role", {
-                                initialValue: "USER",
-                                rules: [
-                                    {
-                                        required: false
-                                    }
-                                ]
-                            })(
-                                <Select>
-                                    <Option value="USER">USER</Option>
-                                    <Option value="ADMIN">ADMIN</Option>
-                                    <Option value="WRITER">WRITER</Option>
-                                </Select>
-                            )}
-                        </Item>
+                    <Item label="Rola w serwisie">
+                        {getFieldDecorator("role", {
+                            initialValue: "USER",
+                            rules: [
+                                {
+                                    required: false
+                                }
+                            ]
+                        })(
+                            <Select>
+                                <Option value="USER">USER</Option>
+                                <Option value="ADMIN">ADMIN</Option>
+                                <Option value="WRITER">WRITER</Option>
+                            </Select>
+                        )}
+                    </Item>
 
-                        <Item label="Data utworzenia konta (pole nieobowiązkowe)">
-                            {getFieldDecorator("date", {
-                                rules: [
-                                    {
-                                        type: "object",
-                                        required: false
-                                    }
-                                ]
-                            })(
-                                <DatePicker
-                                    locale={locale}
-                                    style={{ width: "100%" }}
-                                    suffixIcon={
-                                        <Icon
-                                            type="calendar"
-                                            style={{
-                                                color: "rgba(0,0,0,.25)"
-                                            }}
-                                        />
-                                    }
-                                    showTime
-                                    showToday
-                                    format="LLLL"
-                                    placeholder="Data utworzenia (domyślnie wygenerowana zostanie aktualna)"
-                                />
-                            )}
-                        </Item>
+                    <Item label="Data utworzenia konta (pole nieobowiązkowe)">
+                        {getFieldDecorator("date", {
+                            rules: [
+                                {
+                                    type: "object",
+                                    required: false
+                                }
+                            ]
+                        })(
+                            <DatePicker
+                                locale={locale}
+                                style={{ width: "100%" }}
+                                suffixIcon={
+                                    <Icon
+                                        type="calendar"
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
+                                    />
+                                }
+                                showTime
+                                showToday
+                                format="LLLL"
+                                placeholder="Data utworzenia (domyślnie wygenerowana zostanie aktualna)"
+                            />
+                        )}
+                    </Item>
 
-                        <Item className="btn-wrap">
-                            <Button
-                                icon="user-add"
-                                type="primary"
-                                htmlType="submit"
-                                className="create-user-button"
-                            >
-                                Dodaj użytkownika{" "}
-                            </Button>
-                        </Item>
-                        <Item>{this.props.errorMessage}</Item>
-                    </Form>
-                </Content>
+                    <Item className="btn-wrap">
+                        <Button
+                            icon="user-add"
+                            type="primary"
+                            htmlType="submit"
+                            className="create-user-button"
+                        >
+                            Dodaj użytkownika{" "}
+                        </Button>
+                    </Item>
+                    <Item>{this.props.errorMessage}</Item>
+                </Form>
+            </Content>
         );
     }
 }

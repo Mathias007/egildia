@@ -14,6 +14,7 @@ import {
     PageHeader,
     Tooltip
 } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -38,14 +39,7 @@ class LoginForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <PageHeader
                         className="login-header"

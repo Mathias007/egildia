@@ -5,18 +5,10 @@ import Img from "react-image";
 import { knights } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
+import styles from "../../../styles/styles";
 
 // eslint-disable-next-line
 const textBetweenTagsRegEx = /[^<\}]+(?=>)/g;
-
-const componentStyles = {
-    content: {
-        background: "#fff",
-        padding: 24,
-        margin: 0,
-        minHeight: 280
-    }
-};
 
 const componentClassnames = {
     images: {
@@ -242,15 +234,8 @@ class KnightsBuildingsTable extends Component {
         ];
 
         return (
-            <Content
-                className={componentClassnames.images.content}
-                style={componentStyles.content}
-            >
-                <Table
-                    className={componentClassnames.table}
-                    dataSource={tableData}
-                    columns={tableColumns}
-                />
+            <Content style={styles.content}>
+                <Table dataSource={tableData} columns={tableColumns} />
             </Content>
         );
     }

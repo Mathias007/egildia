@@ -9,6 +9,7 @@ import PageHeaderComponent from "../../components/PageHeaderComponent";
 import UsersRemoveForm from "../data/UsersRemoveForm";
 
 import { Layout } from "antd";
+import styles from "../../../styles/styles";
 
 const { ADMIN_USERS, REMOVER } = navigationTitles;
 
@@ -20,7 +21,7 @@ class UserRemover extends Component {
 
     render() {
         return (
-            <Layout style={{ padding: "0 24px 24px" }}>
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminContent
                     section={ADMIN_USERS}

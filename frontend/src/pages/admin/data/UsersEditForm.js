@@ -14,6 +14,7 @@ import {
     Select,
     Tooltip
 } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -47,14 +48,7 @@ class UserEditForm extends Component {
         const { selectedUser } = this.props;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-user-form">
                     <Item label="Nazwa użytkownika">
                         {getFieldDecorator("username", {

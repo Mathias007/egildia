@@ -5,22 +5,12 @@ import Img from "react-image";
 import { tzar } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
-
-const componentStyles = {
-    content: {
-        background: "#fff",
-        padding: 24,
-        margin: 0,
-        minHeight: 280
-    }
-};
+import styles from "../../../styles/styles";
 
 const componentClassnames = {
     images: {
         technology: "tzar-image-technology"
-    },
-    content: "tzar-technologies-content",
-    table: "tzar-technologies-table"
+    }
 };
 
 class TzarTechnologiesTable extends Component {
@@ -161,15 +151,8 @@ class TzarTechnologiesTable extends Component {
         ];
 
         return (
-            <Content
-                className={componentClassnames.images.content}
-                style={componentStyles.content}
-            >
-                <Table
-                    className={componentClassnames.table}
-                    dataSource={tableData}
-                    columns={tableColumns}
-                />
+            <Content style={styles.content}>
+                <Table dataSource={tableData} columns={tableColumns} />
             </Content>
         );
     }

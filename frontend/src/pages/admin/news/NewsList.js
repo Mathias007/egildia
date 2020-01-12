@@ -10,31 +10,21 @@ import PageHeaderComponent from "../../components/PageHeaderComponent";
 import NewsTable from "../data/NewsTable";
 
 import { Button, Layout } from "antd";
-
-const componentStyles = {
-    layout: { padding: "0 24px 24px" }
-};
-
-const componentClassnames = {
-    layout: "admin-news-layout"
-};
+import styles from "../../../styles/styles";
 
 const { ADMIN_NEWS, LIST } = navigationTitles;
 
 const buttonData = {
     icon: "file-add",
     type: "primary",
-    text: "Edytuj wpis"
+    text: "Dodaj wpis"
 };
 
 class NewsList extends Component {
     render() {
         const { icon, type, text } = buttonData;
         return (
-            <Layout
-                className={componentClassnames.layout}
-                style={componentStyles.layout}
-            >
+            <Layout style={styles.layout}>
                 <BreadcrumbComponent
                     isAdminComponent
                     section={ADMIN_NEWS}

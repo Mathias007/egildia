@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { articles } from "../../../_store/_actions";
 
 import { Button, DatePicker, Form, Icon, Input, Layout, Tooltip } from "antd";
+import styles from "../../../styles/styles";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -35,14 +36,7 @@ class ArticlesAddForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <Content
-                style={{
-                    background: "#fff",
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280
-                }}
-            >
+            <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-article-form">
                     <Item label="Klucz identyfikacyjny artykułu">
                         {getFieldDecorator("allocationKey", {
