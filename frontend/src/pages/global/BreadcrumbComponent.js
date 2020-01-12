@@ -9,10 +9,10 @@ const { WORTAL, ADMINISTRATION } = navigationTitles;
 
 class BreadcrumbComponent extends Component {
     render() {
-        const { isAdminContent, section, page } = this.props;
+        const { isAdminComponent, section, page } = this.props;
         return (
             <Breadcrumb style={{ margin: "16px 0" }}>
-                <Item>{isAdminContent ? ADMINISTRATION : WORTAL}</Item>
+                <Item>{isAdminComponent ? ADMINISTRATION : WORTAL}</Item>
                 <Item>{section}</Item>
                 <Item>{page}</Item>
             </Breadcrumb>
