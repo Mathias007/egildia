@@ -372,4 +372,16 @@
             > articles - wydzielenie formularzy i list do osobnych komponentów (folder data),
             > news - j.w. + poprawki w NewsCard (opcje edycji).
 
-    **INNE*: dodanie obrazka dla repozytorium egildia (tiamath).
+    **INNE*: dodanie obrazka dla repozytorium egildia (tiamath) na GitHubie.
+
+## Niedziela 12.02.2020 - refaktoryzacja komponentów administracyjnych
+    **FRONTEND**:
+        - sekcja users - wydzielenie formularzy i list do osobnych komponentów;
+        - rozbudowa PageHeaderComponent o funkcje dla panelu administracyjnego;
+        - implementacja PageHeaderComponent w komponentach sekcji: articles, news, users;
+        - refaktoryzacja treści w/w komponentów;
+        - utworzenie pliku styles.js, w którym docelowo przechowywane mają być style dodawane do komponentów liniowo w formacie obiektowym;
+        - implementacja pliku styles.js w komponentach oraz rozpoczęcie refaktoryzacji (style);
+        - prace nad przenoszeniem danych buttonów do zmiennych (buttonData).
+
+    **INNE**: dodanie tagów (titles) dla repozytorium egildia na GitHubie.
