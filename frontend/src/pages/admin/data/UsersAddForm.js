@@ -21,6 +21,13 @@ const { Password } = Input;
 const { Content } = Layout;
 const { Option } = Select;
 
+const buttonData = {
+    icon: "user-add",
+    type: "primary",
+    htmlType: "submit",
+    text: "Dodaj użytkownika"
+};
+
 class UsersAddForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -44,7 +51,7 @@ class UsersAddForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-user-form">
@@ -62,18 +69,14 @@ class UsersAddForm extends Component {
                                 prefix={
                                     <Icon
                                         type="user"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -99,18 +102,14 @@ class UsersAddForm extends Component {
                                 prefix={
                                     <Icon
                                         type="mail"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Adres e-mail powiązany z kontem.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -135,20 +134,13 @@ class UsersAddForm extends Component {
                         })(
                             <Password
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -185,13 +177,11 @@ class UsersAddForm extends Component {
                         })(
                             <DatePicker
                                 locale={locale}
-                                style={{ width: "100%" }}
+                                style={styles.datePicker}
                                 suffixIcon={
                                     <Icon
                                         type="calendar"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 showTime
@@ -203,13 +193,8 @@ class UsersAddForm extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="user-add"
-                            type="primary"
-                            htmlType="submit"
-                            className="create-user-button"
-                        >
-                            Dodaj użytkownika{" "}
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                     </Item>
                     <Item>{this.props.errorMessage}</Item>

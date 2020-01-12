@@ -11,6 +11,13 @@ const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "file-edit",
+    type: "primary",
+    htmlType: "submit",
+    text: "Edytuj artykuł"
+};
+
 class ArticleEditForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -37,7 +44,7 @@ class ArticleEditForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { properArticle } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-article-form">
@@ -53,20 +60,13 @@ class ArticleEditForm extends Component {
                         })(
                             <Input
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -89,18 +89,14 @@ class ArticleEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="flag"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Tytuł artykułu, wyświetlany jako nagłówek podstrony zawierającej.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -124,18 +120,14 @@ class ArticleEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="read"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Zawartość artykułu, czyli tekst umieszczany jako content strony">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -158,18 +150,14 @@ class ArticleEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="crown"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -179,13 +167,8 @@ class ArticleEditForm extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="file-edit"
-                            type="primary"
-                            htmlType="submit"
-                            className="edit-article-button"
-                        >
-                            Edytuj artykuł{" "}
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}{" "}
                         </Button>
                         <Divider type="vertical" dashed style={{ border: 0 }} />
                         <Button>

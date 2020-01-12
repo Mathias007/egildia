@@ -10,6 +10,13 @@ import styles from "../../../styles/styles";
 const { Item } = Form;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "delete",
+    type: "primary",
+    htmlType: "submit",
+    text: "Usuń artykuł"
+};
+
 class ArticlesRemoveForm extends Component {
     handleDeletingSubmit = e => {
         e.preventDefault();
@@ -18,7 +25,7 @@ class ArticlesRemoveForm extends Component {
 
     render() {
         const { properArticle } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <p>
@@ -28,13 +35,12 @@ class ArticlesRemoveForm extends Component {
                 </p>
                 <Item className="btn-wrap">
                     <Button
-                        icon="delete"
-                        type="primary"
-                        htmlType="submit"
-                        className="remove-article-button"
+                        icon={icon}
+                        type={type}
+                        htmlType={htmlType}
                         onClick={this.handleDeletingSubmit}
                     >
-                        Usuń artykuł
+                        {text}
                     </Button>
                     <Divider type="vertical" dashed style={{ border: 0 }} />
                     <Button>

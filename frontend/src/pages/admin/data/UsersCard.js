@@ -17,11 +17,19 @@ import {
     Select,
     Tooltip
 } from "antd";
+import styles from "../../../styles/styles";
 
 const { Meta } = Card;
 const { Item } = Form;
 const { Password } = Input;
 const { Option } = Select;
+
+const buttonData = {
+    icon: "user",
+    type: "primary",
+    htmlType: "submit",
+    text: "Edytuj użytkownika"
+};
 
 class UsersCard extends Component {
     handleSubmit = e => {
@@ -47,15 +55,12 @@ class UsersCard extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
         const { name, email, role, date } = this.props.selectedUser;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Card
                 type="inner"
-                style={{
-                    marginBottom: 16
-                }}
+                style={styles.card}
                 title={
                     <span>
                         Profil użytkownika: <strong>{name}</strong>
@@ -64,13 +69,7 @@ class UsersCard extends Component {
             >
                 <Meta
                     avatar={
-                        <Avatar
-                            style={{
-                                backgroundColor: "#1890ff",
-                                verticalAlign: "middle"
-                            }}
-                            size="large"
-                        >
+                        <Avatar style={styles.userAvatar} size="large">
                             {name}
                         </Avatar>
                     }
@@ -96,18 +95,14 @@ class UsersCard extends Component {
                                 prefix={
                                     <Icon
                                         type="user"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -134,18 +129,14 @@ class UsersCard extends Component {
                                 prefix={
                                     <Icon
                                         type="mail"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Adres e-mail powiązany z kontem.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -168,20 +159,13 @@ class UsersCard extends Component {
                         })(
                             <Password
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -208,13 +192,8 @@ class UsersCard extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="user"
-                            type="primary"
-                            htmlType="submit"
-                            className="edit-user-button"
-                        >
-                            Edytuj użytkownika{" "}
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                         <Divider type="vertical" dashed style={{ border: 0 }} />
                         <Button>

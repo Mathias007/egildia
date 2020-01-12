@@ -11,6 +11,13 @@ const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "edit",
+    type: "primary",
+    htmlType: "submit",
+    text: "Edytuj wpis"
+};
+
 class NewsEditForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -36,7 +43,7 @@ class NewsEditForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { properNews } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-news-form">
@@ -52,20 +59,13 @@ class NewsEditForm extends Component {
                         })(
                             <Input
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Kategorie systematyzują wpisy pod kątem merytorycznym.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -88,18 +88,14 @@ class NewsEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="flag"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Tytuł wpisu, wyświetlany jako nagłówek w aktualnościach i na stronie danego wpisu.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -123,18 +119,14 @@ class NewsEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="read"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Zawartość tekstowa wpisu.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -157,18 +149,14 @@ class NewsEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="crown"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Wpisz nazwę użytkownika, który jest autorem wpisu. Domyślnie jest nim zalogowany użytkownik.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -178,13 +166,8 @@ class NewsEditForm extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="edit"
-                            type="primary"
-                            htmlType="submit"
-                            className="edit-article-button"
-                        >
-                            Edytuj wpis
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                         <Divider type="vertical" dashed style={{ border: 0 }} />
                         <Button>

@@ -11,6 +11,13 @@ const { Item } = Form;
 const { TextArea } = Input;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "file-add",
+    type: "primary",
+    htmlType: "submit",
+    text: "Dodaj artykuł"
+};
+
 class ArticlesAddForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -34,7 +41,7 @@ class ArticlesAddForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-article-form">
@@ -49,20 +56,13 @@ class ArticlesAddForm extends Component {
                         })(
                             <Input
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -84,18 +84,14 @@ class ArticlesAddForm extends Component {
                                 prefix={
                                     <Icon
                                         type="flag"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Tytuł artykułu, wyświetlany jako nagłówek podstrony zawierającej.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -118,18 +114,14 @@ class ArticlesAddForm extends Component {
                                 prefix={
                                     <Icon
                                         type="read"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Zawartość artykułu, czyli tekst umieszczany jako content strony">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -149,13 +141,11 @@ class ArticlesAddForm extends Component {
                         })(
                             <DatePicker
                                 locale={locale}
-                                style={{ width: "100%" }}
+                                style={styles.datePicker}
                                 suffixIcon={
                                     <Icon
                                         type="calendar"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 showTime
@@ -180,18 +170,14 @@ class ArticlesAddForm extends Component {
                                 prefix={
                                     <Icon
                                         type="crown"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -201,13 +187,8 @@ class ArticlesAddForm extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="file-add"
-                            type="primary"
-                            htmlType="submit"
-                            className="add-article-button"
-                        >
-                            Dodaj artykuł{" "}
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                     </Item>
                     <Item>{this.props.errorMessage}</Item>
