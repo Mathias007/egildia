@@ -5,11 +5,20 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import UsersEditForm from "../data/UsersEditForm";
 
-import { Button, Layout, PageHeader } from "antd";
+import { Button, Layout } from "antd";
 
 const { ADMIN_USERS, EDITOR } = navigationTitles;
+
+const buttonData = {
+    icon: "user",
+    type: "primary",
+    htmlType: "submit",
+    form: "edit-user-form",
+    text: "Edytuj użytkownika"
+};
 
 class UserEditor extends Component {
     componentDidMount() {
@@ -18,6 +27,7 @@ class UserEditor extends Component {
     }
 
     render() {
+        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent
@@ -25,23 +35,19 @@ class UserEditor extends Component {
                     section={ADMIN_USERS}
                     page={EDITOR}
                 />
-                <div>
-                    <PageHeader
-                        onBack={() => window.history.back()}
-                        title="Powrót"
-                        subTitle="Panel administracyjny"
-                        extra={
-                            <Button
-                                icon="user"
-                                type="primary"
-                                htmlType="submit"
-                                className="edit-user-button"
-                            >
-                                Edytuj użytkownika{" "}
-                            </Button>
-                        }
-                    />
-                </div>
+                <PageHeaderComponent
+                    isAdminComponent
+                    button={
+                        <Button
+                            icon={icon}
+                            type={type}
+                            htmlType={htmlType}
+                            form={form}
+                        >
+                            {text}
+                        </Button>
+                    }
+                />
                 <UsersEditForm idParam={this.props.match.params._id} />
             </Layout>
         );

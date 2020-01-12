@@ -55,7 +55,7 @@ class UsersAddForm extends Component {
                 >
                     <Form
                         onSubmit={this.handleSubmit}
-                        className="add-user-form"
+                        id="add-user-form"
                     >
                         <Item label="Nazwa użytkownika">
                             {getFieldDecorator("username", {

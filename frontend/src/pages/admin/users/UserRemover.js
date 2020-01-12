@@ -5,9 +5,10 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import UsersRemoveForm from "../data/UsersRemoveForm";
 
-import { Layout, PageHeader } from "antd";
+import { Layout } from "antd";
 
 const { ADMIN_USERS, REMOVER } = navigationTitles;
 
@@ -25,13 +26,7 @@ class UserRemover extends Component {
                     section={ADMIN_USERS}
                     page={REMOVER}
                 />
-                <div>
-                    <PageHeader
-                        onBack={() => window.history.back()}
-                        title="Powrót"
-                        subTitle="Panel administracyjny"
-                    />
-                </div>
+                <PageHeaderComponent isAdminComponent />
                 <UsersRemoveForm idParam={this.props.match.params._id} />
             </Layout>
         );

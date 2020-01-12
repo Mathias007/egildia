@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import navigationTitles from "../../../_config/navigationTitles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import UsersTable from "../data/UsersTable";
 
-import { Button, Layout, PageHeader } from "antd";
+import { Button, Layout } from "antd";
 
 const componentStyles = {
     layout: { padding: "0 24px 24px" }
@@ -18,8 +19,15 @@ const componentClassnames = {
 
 const { ADMIN_USERS, LIST } = navigationTitles;
 
+const buttonData = {
+    icon: "user-add",
+    type: "primary",
+    text: "Dodaj użytkownika"
+};
+
 class UsersList extends Component {
     render() {
+        const { icon, type, text } = buttonData;
         return (
             <Layout
                 className={componentClassnames.layout}
@@ -30,21 +38,16 @@ class UsersList extends Component {
                     section={ADMIN_USERS}
                     page={LIST}
                 />
-                <div>
-                    <PageHeader
-                        title="Lista użytkowników"
-                        subTitle="Panel administracyjny"
-                        extra={
-                            <Button
-                                icon="user-add"
-                                type="primary"
-                                className="add-user-button"
-                            >
-                                <Link to="users/add"> Dodaj użytkownika</Link>
+                <PageHeaderComponent
+                    isAdminComponent
+                    button={
+                        <Link to="users/add">
+                            <Button icon={icon} type={type}>
+                                {text}
                             </Button>
-                        }
-                    />
-                </div>
+                        </Link>
+                    }
+                />
                 <UsersTable />
             </Layout>
         );

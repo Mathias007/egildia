@@ -55,7 +55,7 @@ class UserEditForm extends Component {
                     minHeight: 280
                 }}
             >
-                <Form onSubmit={this.handleSubmit} className="edit-user-form">
+                <Form onSubmit={this.handleSubmit} id="edit-user-form">
                     <Item label="Nazwa użytkownika">
                         {getFieldDecorator("username", {
                             initialValue: selectedUser.name,
