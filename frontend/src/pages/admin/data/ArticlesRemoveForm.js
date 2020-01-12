@@ -28,7 +28,7 @@ class ArticlesRemoveForm extends Component {
                 }}
             >
                 <p>
-                    Czy na pewno chcesz usunąć wpis o tytule{" "}
+                    Czy na pewno chcesz usunąć artykuł o tytule{" "}
                     <strong>{properArticle.title}</strong>? Tej operacji nie
                     będzie można cofnąć.
                 </p>

@@ -43,7 +43,7 @@ class ArticlesAddForm extends Component {
                     minHeight: 280
                 }}
             >
-                <Form onSubmit={this.handleSubmit} className="add-article-form">
+                <Form onSubmit={this.handleSubmit} id="add-article-form">
                     <Item label="Klucz identyfikacyjny artykułu">
                         {getFieldDecorator("allocationKey", {
                             rules: [

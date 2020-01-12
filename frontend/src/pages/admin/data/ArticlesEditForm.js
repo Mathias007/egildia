@@ -48,7 +48,7 @@ class ArticleEditForm extends Component {
             >
                 <Form
                     onSubmit={this.handleSubmit}
-                    className="edit-article-form"
+                    id="edit-article-form"
                 >
                     <Item label="Klucz identyfikacyjny artykułu">
                         {getFieldDecorator("allocationKey", {

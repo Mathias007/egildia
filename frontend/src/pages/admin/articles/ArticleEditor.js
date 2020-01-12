@@ -5,11 +5,20 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import ArticlesEditForm from "../data/ArticlesEditForm";
 
-import { Button, Layout, PageHeader } from "antd";
+import { Button, Layout } from "antd";
 
 const { ADMIN_ARTICLES, EDITOR } = navigationTitles;
+
+const buttonData = {
+    icon: "edit",
+    type: "primary",
+    htmlType: "submit",
+    form: "edit-article-form",
+    text: "Edytuj artykuł"
+};
 
 class ArticleEditor extends Component {
     componentDidMount() {
@@ -17,30 +26,29 @@ class ArticleEditor extends Component {
         this.props.showProperArticle(this.props.match.params._id);
     }
     render() {
+        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent
-                    isAdminContent
+                    isAdminComponent
                     section={ADMIN_ARTICLES}
                     page={EDITOR}
                 />
-                <div>
-                    <PageHeader
-                        onBack={() => window.history.back()}
-                        title="Powrót"
-                        subTitle="Panel administracyjny"
-                        extra={
-                            <Button
-                                icon="edit"
-                                type="primary"
-                                htmlType="submit"
-                                className="edit-article-button"
-                            >
-                                Edytuj artykuł{" "}
-                            </Button>
-                        }
-                    />
-                </div>
+
+                <PageHeaderComponent
+                    isAdminComponent
+                    button={
+                        <Button
+                            icon={icon}
+                            type={type}
+                            htmlType={htmlType}
+                            form={form}
+                        >
+                            {text}
+                        </Button>
+                    }
+                />
+
                 <ArticlesEditForm idParam={this.props.match.params._id} />
             </Layout>
         );
@@ -55,7 +63,7 @@ const mapDispatchToProps = dispatch => {
     return {
         showProperArticle: id => {
             return dispatch(articles.showProperArticle(id));
-        },
+        }
     };
 };
 

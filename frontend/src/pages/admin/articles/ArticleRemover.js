@@ -5,9 +5,10 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { articles } from "../../../_store/_actions";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/PageHeaderComponent";
 import ArticlesRemoveForm from "../data/ArticlesRemoveForm";
 
-import { Layout, PageHeader } from "antd";
+import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, REMOVER } = navigationTitles;
 
@@ -21,18 +22,12 @@ class ArticleRemover extends Component {
         return (
             <Layout style={{ padding: "0 24px 24px" }}>
                 <BreadcrumbComponent
-                    isAdminContent
+                    isAdminComponent
                     section={ADMIN_ARTICLES}
                     page={REMOVER}
                 />
-                    <div>
-                        <PageHeader
-                            onBack={() => window.history.back()}
-                            title="Powrót"
-                            subTitle="Panel administracyjny"
-                        />
-                    </div>
-                    <ArticlesRemoveForm idParam={this.props.match.params._id} /> 
+                <PageHeaderComponent isAdminComponent />
+                <ArticlesRemoveForm idParam={this.props.match.params._id} />
             </Layout>
         );
     }
@@ -46,8 +41,7 @@ const mapDispatchToProps = dispatch => {
     return {
         showProperArticle: id => {
             return dispatch(articles.showProperArticle(id));
-        },
-
+        }
     };
 };
 
