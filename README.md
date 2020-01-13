@@ -374,7 +374,7 @@
 
     **INNE*: dodanie obrazka dla repozytorium egildia (tiamath) na GitHubie.
 
-## Niedziela 12.02.2020 - refaktoryzacja komponentów administracyjnych
+## Niedziela 12.01.2020 - refaktoryzacja komponentów administracyjnych
     **FRONTEND**:
         - sekcja users - wydzielenie formularzy i list do osobnych komponentów;
         - rozbudowa PageHeaderComponent o funkcje dla panelu administracyjnego;
@@ -385,3 +385,11 @@
         - prace nad przenoszeniem danych buttonów do zmiennych (buttonData).
 
     **INNE**: dodanie tagów (titles) dla repozytorium egildia na GitHubie.
+
+## Poniedziałek 13.01.2020 - dalsze prace refaktoryzacyjne
+    **FRONTEND**:
+        - refaktoryzacja kolejnych styli dodawanych liniowo obiektem z wykorzystaniem pliku styles.js oraz danych buttonów;
+        - implementacja PageHeaderComponent w stronach logowania i rejestracji;
+        - refaktoryzacja NewsPage i przeniesienie do folderu general (wraz z komponentami logowania i rejestracji).
+        - wznowienie prac nad autoryzacją po stronie frontendu (JWT).
+        
