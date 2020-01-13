@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
+import styles from "../../styles/styles";
 
 const { Footer } = Layout;
 
 class FooterComponent extends Component {
     render() {
         return (
-            <Footer style={{ textAlign: "center" }}>
+            <Footer style={styles.footer}>
                 egildia.pl © 2019-2020 Mateusz Mathias Stawowski
             </Footer>
         );

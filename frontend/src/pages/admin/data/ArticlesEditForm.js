@@ -168,9 +168,13 @@ class ArticleEditForm extends Component {
 
                     <Item className="btn-wrap">
                         <Button icon={icon} type={type} htmlType={htmlType}>
-                            {text}{" "}
+                            {text}
                         </Button>
-                        <Divider type="vertical" dashed style={{ border: 0 }} />
+                        <Divider
+                            type="vertical"
+                            dashed
+                            style={styles.hiddenDivider}
+                        />
                         <Button>
                             <Link to="/admin/articles">Zrezygnuj</Link>
                         </Button>

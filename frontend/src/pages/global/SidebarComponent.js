@@ -6,6 +6,7 @@ import routesPaths from "../../_config/routesPaths";
 import navigationTitles from "../../_config/navigationTitles";
 
 import { Layout, Menu, Icon } from "antd";
+import styles from "../../styles/styles";
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 const { Item } = Menu;
@@ -52,13 +53,13 @@ class SidebarComponent extends Component {
 
     render() {
         return (
-            <Sider width={230} style={{ background: "#fff" }}>
+            <Sider width={230} style={styles.sider}>
                 <Menu
                     mode="inline"
                     openKeys={this.state.openKeys}
                     onOpenChange={this.onOpenChange}
                     defaultSelectedKeys={"0"}
-                    style={{ height: "100%", borderRight: 0 }}
+                    style={styles.sidebarMenu}
                 >
                     <Item key="0">
                         <NavLink to={GENERAL.INDEX}>

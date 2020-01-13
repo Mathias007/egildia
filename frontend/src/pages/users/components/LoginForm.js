@@ -20,6 +20,13 @@ const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "login",
+    type: "primary",
+    htmlType: "submit",
+    text: "Zaloguj się"
+};
+
 class LoginForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -37,7 +44,7 @@ class LoginForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} className="login-form">
@@ -59,18 +66,14 @@ class LoginForm extends Component {
                                 prefix={
                                     <Icon
                                         type="user"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -91,9 +94,7 @@ class LoginForm extends Component {
                                 prefix={
                                     <Icon
                                         type="lock"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 type="password"
@@ -106,13 +107,8 @@ class LoginForm extends Component {
                             valuePropName: "checked",
                             initialValue: true
                         })(<Checkbox>Zapamiętaj</Checkbox>)}
-                        <Button
-                            icon="login"
-                            type="primary"
-                            htmlType="submit"
-                            className="login-form-button"
-                        >
-                            Zaloguj się
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                     </Item>
                     <Item>

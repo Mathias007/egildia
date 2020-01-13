@@ -7,6 +7,8 @@ import "moment/locale/pl";
 import { news } from "../../../_store/_actions";
 
 import { Avatar, Card, Divider, Icon } from "antd";
+import styles from "../../../styles/styles";
+
 const { Meta } = Card;
 
 class NewsCard extends Component {
@@ -23,7 +25,7 @@ class NewsCard extends Component {
         return (
             <Card
                 type="inner"
-                style={{ marginBottom: 16 }}
+                style={styles.card}
                 title={
                     <>
                         <Link to={"/"}>
@@ -56,13 +58,7 @@ class NewsCard extends Component {
             >
                 <Meta
                     avatar={
-                        <Avatar
-                            style={{
-                                backgroundColor: "#1890ff",
-                                verticalAlign: "middle"
-                            }}
-                            size="large"
-                        >
+                        <Avatar style={styles.newsAvatar} size="large">
                             {category}
                         </Avatar>
                     }

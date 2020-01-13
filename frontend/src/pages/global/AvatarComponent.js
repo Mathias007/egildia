@@ -5,12 +5,21 @@ import { Link } from "react-router-dom";
 import { auth } from "../../_store/_actions";
 
 import { Avatar, Button, Dropdown, Icon, Menu } from "antd";
+import styles from "../../styles/styles";
+
 const { Divider, Item } = Menu;
+
+const buttonData = {
+    icon: "login",
+    type: "primary",
+    size: "small",
+    text: "Zaloguj się"
+};
 
 class AvatarComponent extends Component {
     render() {
         const { userId } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         const menu = (
             <Menu>
                 <Item key="0">
@@ -35,11 +44,7 @@ class AvatarComponent extends Component {
                             </span>
                             <Dropdown overlay={menu}>
                                 <Avatar
-                                    style={{
-                                        cursor: "pointer",
-                                        backgroundColor: "#f56a00",
-                                        verticalAlign: "middle"
-                                    }}
+                                    style={styles.actualUserAvatar}
                                     size="large"
                                 >
                                     {this.props.name.charAt(0)}
@@ -50,12 +55,12 @@ class AvatarComponent extends Component {
                 ) : (
                     <Link to="/login">
                         <Button
-                            icon="login"
-                            type="primary"
-                            size="small"
-                            style={{ marginLeft: 16, verticalAlign: "middle" }}
+                            icon={icon}
+                            type={type}
+                            htmlType={htmlType}
+                            style={styles.loginButton}
                         >
-                            Zaloguj się
+                            {text}
                         </Button>
                     </Link>
                 )}

@@ -20,6 +20,13 @@ const { Item } = Form;
 const { Password } = Input;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "user-add",
+    type: "primary",
+    htmlType: "submit",
+    text: "Zarejestruj się"
+};
+
 class RegistrationForm extends Component {
     state = {
         confirmDirty: false
@@ -63,6 +70,7 @@ class RegistrationForm extends Component {
     };
 
     render() {
+        const { icon, type, htmlType, text } = buttonData;
         const { getFieldDecorator } = this.props.form;
 
         const formItemLayout = {
@@ -199,12 +207,8 @@ class RegistrationForm extends Component {
                             valuePropName: "checked"
                         })(<Checkbox>Zapamiętaj</Checkbox>)}
 
-                        <Button
-                            icon="user-add"
-                            type="primary"
-                            htmlType="submit"
-                        >
-                            Zarejestruj się
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
                     </Item>
                     <Item {...tailFormItemLayout}>

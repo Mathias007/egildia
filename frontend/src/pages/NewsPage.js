@@ -17,6 +17,12 @@ const { Content } = Layout;
 
 const { GENERAL_INDEX } = navigationTitles;
 
+const buttonData = {
+    icon: "file-add",
+    type: "primary",
+    text: "Dodaj wpis"
+};
+
 class NewsPage extends Component {
     componentDidMount() {
         this.props.showNewsList();
@@ -24,7 +30,6 @@ class NewsPage extends Component {
 
     renderNews() {
         let { news } = this.props;
-
         if (news) {
             return news.map((singleNews, index) => {
                 const {
@@ -39,7 +44,7 @@ class NewsPage extends Component {
                     <Card
                         key={_id}
                         type="inner"
-                        style={{ marginBottom: 16 }}
+                        style={styles.card}
                         title={title}
                         extra={
                             this.props.isAuthenticated ? (
@@ -74,13 +79,7 @@ class NewsPage extends Component {
                     >
                         <Meta
                             avatar={
-                                <Avatar
-                                    style={{
-                                        backgroundColor: "#1890ff",
-                                        verticalAlign: "middle"
-                                    }}
-                                    size="large"
-                                >
+                                <Avatar style={styles.newsAvatar} size="large">
                                     {category.charAt(0).toUpperCase()}
                                 </Avatar>
                             }
@@ -107,6 +106,7 @@ class NewsPage extends Component {
     }
 
     render() {
+        const { icon, type, text } = buttonData;
         return (
             <Layout style={styles.layout}>
                 <BreadcrumbComponent page={GENERAL_INDEX} />
@@ -115,13 +115,11 @@ class NewsPage extends Component {
                         title="Aktualności"
                         extra={
                             this.props.isAuthenticated ? (
-                                <Button
-                                    icon="file-add"
-                                    type="primary"
-                                    className="add-news-button"
-                                >
-                                    <Link to="admin/news/add">Dodaj wpis</Link>
-                                </Button>
+                                <Link to="admin/news/add">
+                                    <Button icon={icon} type={type}>
+                                        {text}
+                                    </Button>
+                                </Link>
                             ) : null
                         }
                     >

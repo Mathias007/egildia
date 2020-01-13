@@ -5,6 +5,8 @@ import AvatarComponent from "./AvatarComponent";
 import eGildiaLogo from "../../img/logo/egg-logo-poziome.png";
 
 import { Layout, Menu } from "antd";
+import styles from "../../styles/styles";
+
 const { Header } = Layout;
 const { Item } = Menu;
 
@@ -21,7 +23,7 @@ class HeaderComponent extends Component {
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={["2"]}
-                    style={{ lineHeight: "64px" }}
+                    style={styles.headerMenu}
                 >
                     <Item key="1">nav 1</Item>
                     <Item key="2">nav 2</Item>

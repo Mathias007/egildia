@@ -10,6 +10,13 @@ import styles from "../../../styles/styles";
 const { Item } = Form;
 const { Content } = Layout;
 
+const buttonData = {
+    icon: "user-delete",
+    type: "primary",
+    htmlType: "submit",
+    text: "Usuń użytkownika"
+};
+
 class UsersRemoveForm extends Component {
     handleDeletingSubmit = e => {
         e.preventDefault();
@@ -18,7 +25,7 @@ class UsersRemoveForm extends Component {
 
     render() {
         const { selectedUser } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <p>
@@ -27,16 +34,14 @@ class UsersRemoveForm extends Component {
                     będzie można cofnąć.
                 </p>
                 <Item className="btn-wrap">
-                    <Button
-                        icon="user-delete"
-                        type="primary"
-                        htmlType="submit"
-                        className="remove-user-button"
-                        onClick={this.handleDeletingSubmit}
-                    >
-                        Usuń użytkownika
+                    <Button icon={icon} type={type} htmlType={htmlType}>
+                        {text}
                     </Button>
-                    <Divider type="vertical" dashed style={{ border: 0 }} />
+                    <Divider
+                        type="vertical"
+                        dashed
+                        style={styles.hiddenDivider}
+                    />
                     <Button>
                         <Link to="/admin/users">Zrezygnuj</Link>
                     </Button>

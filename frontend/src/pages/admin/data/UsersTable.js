@@ -96,13 +96,7 @@ class UsersTable extends Component {
                 dataIndex: col_avatar.dataIndex,
                 align: col_avatar.align,
                 render: name => (
-                    <Avatar
-                        style={{
-                            backgroundColor: "#f56a00",
-                            verticalAlign: "middle"
-                        }}
-                        size="large"
-                    >
+                    <Avatar style={styles.userAvatar} size="large">
                         {name.charAt(0).toUpperCase()}
                     </Avatar>
                 )

@@ -195,7 +195,11 @@ class UsersCard extends Component {
                         <Button icon={icon} type={type} htmlType={htmlType}>
                             {text}
                         </Button>
-                        <Divider type="vertical" dashed style={{ border: 0 }} />
+                        <Divider
+                            type="vertical"
+                            dashed
+                            style={styles.hiddenDivider}
+                        />
                         <Button>
                             <Link to="/admin/users">Zrezygnuj</Link>
                         </Button>

@@ -21,6 +21,13 @@ const { Password } = Input;
 const { Content } = Layout;
 const { Option } = Select;
 
+const buttonData = {
+    icon: "user",
+    type: "primary",
+    htmlType: "submit",
+    text: "Edytuj użytkownika"
+};
+
 class UserEditForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
@@ -46,7 +53,7 @@ class UserEditForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { selectedUser } = this.props;
-
+        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-user-form">
@@ -65,18 +72,14 @@ class UserEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="user"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -103,18 +106,14 @@ class UserEditForm extends Component {
                                 prefix={
                                     <Icon
                                         type="mail"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
+                                        style={styles.inputIcon}
                                     />
                                 }
                                 suffix={
                                     <Tooltip title="Adres e-mail powiązany z kontem.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -138,20 +137,13 @@ class UserEditForm extends Component {
                         })(
                             <Password
                                 prefix={
-                                    <Icon
-                                        type="key"
-                                        style={{
-                                            color: "rgba(0,0,0,.25)"
-                                        }}
-                                    />
+                                    <Icon type="key" style={styles.inputIcon} />
                                 }
                                 suffix={
                                     <Tooltip title="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
                                         <Icon
                                             type="info-circle"
-                                            style={{
-                                                color: "rgba(0,0,0,.45)"
-                                            }}
+                                            style={styles.tooltipIcon}
                                         />
                                     </Tooltip>
                                 }
@@ -178,15 +170,10 @@ class UserEditForm extends Component {
                     </Item>
 
                     <Item className="btn-wrap">
-                        <Button
-                            icon="user"
-                            type="primary"
-                            htmlType="submit"
-                            className="edit-user-button"
-                        >
-                            Edytuj użytkownika{" "}
+                        <Button icon={icon} type={type} htmlType={htmlType}>
+                            {text}
                         </Button>
-                        <Divider type="vertical" dashed style={{ border: 0 }} />
+                        <Divider type="vertical" dashed style={styles.hiddenDivider} />
                         <Button>
                             <Link to="/admin/users">Zrezygnuj</Link>
                         </Button>
