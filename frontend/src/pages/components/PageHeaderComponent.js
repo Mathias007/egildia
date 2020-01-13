@@ -31,6 +31,9 @@ class PageHeaderComponent extends Component {
                     extra={button}
                 />
             );
+        } else if (this.props.shortHeader) {
+            const { title } = this.props;
+            return <PageHeader title={title} ghost={false} />;
         } else {
             const { author, date, title } = this.props.article;
 
