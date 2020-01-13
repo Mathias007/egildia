@@ -4,18 +4,13 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/pl";
 
-import navigationTitles from "../_config/navigationTitles";
-import { news } from "../_store/_actions";
-
-import BreadcrumbComponent from "./global/BreadcrumbComponent";
+import { news } from "../../../_store/_actions";
 
 import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
-import styles from "../styles/styles";
+import styles from "../../../styles/styles";
 
 const { Meta } = Card;
 const { Content } = Layout;
-
-const { GENERAL_INDEX } = navigationTitles;
 
 const buttonData = {
     icon: "file-add",
@@ -23,7 +18,7 @@ const buttonData = {
     text: "Dodaj wpis"
 };
 
-class NewsPage extends Component {
+class NewsPageContent extends Component {
     componentDidMount() {
         this.props.showNewsList();
     }
@@ -108,25 +103,22 @@ class NewsPage extends Component {
     render() {
         const { icon, type, text } = buttonData;
         return (
-            <Layout style={styles.layout}>
-                <BreadcrumbComponent page={GENERAL_INDEX} />
-                <Content style={styles.content}>
-                    <Card
-                        title="Aktualności"
-                        extra={
-                            this.props.isAuthenticated ? (
-                                <Link to="admin/news/add">
-                                    <Button icon={icon} type={type}>
-                                        {text}
-                                    </Button>
-                                </Link>
-                            ) : null
-                        }
-                    >
-                        {this.renderNews()}
-                    </Card>
-                </Content>
-            </Layout>
+            <Content style={styles.content}>
+                <Card
+                    title="Aktualności"
+                    extra={
+                        this.props.isAuthenticated ? (
+                            <Link to="admin/news/add">
+                                <Button icon={icon} type={type}>
+                                    {text}
+                                </Button>
+                            </Link>
+                        ) : null
+                    }
+                >
+                    {this.renderNews()}
+                </Card>
+            </Content>
         );
     }
 }
@@ -144,4 +136,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPageContent);

@@ -8,9 +8,9 @@ import HeaderComponent from "../pages/global/HeaderComponent";
 import SidebarComponent from "../pages/global/SidebarComponent";
 
 // general imports
-import NewsPage from "../pages/NewsPage";
-import LoginPage from "../pages/users/LoginPage";
-import RegistrationPage from "../pages/users/RegistrationPage";
+import NewsPage from "../pages/general/NewsPage";
+import LoginPage from "../pages/general/LoginPage";
+import RegistrationPage from "../pages/general/RegistrationPage";
 
 // admin articles imports
 import ArticlesList from "../pages/admin/articles/ArticlesList";
