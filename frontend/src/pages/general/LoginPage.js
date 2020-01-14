@@ -14,8 +14,6 @@ import styles from "../../styles/styles";
 const { USERS, LOGIN, LOGIN_FORM } = navigationTitles;
 
 class LoginPage extends Component {
-    state = {};
-
     render() {
         if (this.props.isAuthenticated || this.props.remember) {
             return <Redirect to="/" />;
