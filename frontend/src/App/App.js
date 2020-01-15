@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Redirect,
+    Route,
+    Switch
+} from "react-router-dom";
+import { connect } from "react-redux";
 
 import routesPaths from "../_config/routesPaths";
+import { auth } from "../_store/_actions";
 
 import FooterComponent from "../pages/global/FooterComponent";
 import HeaderComponent from "../pages/global/HeaderComponent";
@@ -55,6 +62,26 @@ class App extends Component {
         collapsed: false
     };
 
+    PrivateRoute = ({ component: ChildComponent, ...rest }) => {
+        return (
+            <Route
+                {...rest}
+                render={props => {
+                    if (this.props.auth.isLoading) {
+                        return <em>Loading...</em>;
+                    } else if (
+                        !this.props.auth.isAuthenticated &&
+                        !this.props.auth.autoLogin
+                    ) {
+                        return <Redirect to="/" />;
+                    } else {
+                        return <ChildComponent {...props} />;
+                    }
+                }}
+            />
+        );
+    };
+
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed
@@ -62,6 +89,8 @@ class App extends Component {
     };
 
     render() {
+        let { PrivateRoute } = this;
+
         return (
             <Router>
                 <div className="containter">
@@ -89,43 +118,43 @@ class App extends Component {
                                     />
 
                                     {/* admin articles routes */}
-                                    <Route
+                                    <PrivateRoute
                                         exact
                                         path={ARTICLES.MAIN}
                                         component={ArticlesList}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={ARTICLES.ADD}
                                         component={ArticleCreator}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={ARTICLES.EDIT}
                                         component={ArticleEditor}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={ARTICLES.REMOVE}
                                         component={ArticleRemover}
                                     />
 
                                     {/* admin news routes */}
-                                    <Route
+                                    <PrivateRoute
                                         exact
                                         path={NEWS.MAIN}
                                         component={NewsList}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={NEWS.SINGLE}
                                         component={NewsSingleCard}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={NEWS.ADD}
                                         component={NewsCreator}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={NEWS.EDIT}
                                         component={NewsEditor}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={NEWS.REMOVE}
                                         component={NewsRemover}
                                     />
@@ -169,24 +198,24 @@ class App extends Component {
                                     />
 
                                     {/* admin users routes */}
-                                    <Route
+                                    <PrivateRoute
                                         exact
                                         path={USERS.MAIN}
                                         component={UsersList}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={USERS.SINGLE}
                                         component={UserProfileCard}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={USERS.ADD}
                                         component={UserCreator}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={USERS.EDIT}
                                         component={UserEditor}
                                     />
-                                    <Route
+                                    <PrivateRoute
                                         path={USERS.REMOVE}
                                         component={UserRemover}
                                     />
@@ -201,4 +230,18 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadUser: () => {
+            return dispatch(auth.loadUser());
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
