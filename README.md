@@ -392,4 +392,9 @@
         - implementacja PageHeaderComponent w stronach logowania i rejestracji;
         - refaktoryzacja NewsPage i przeniesienie do folderu general (wraz z komponentami logowania i rejestracji).
         - wznowienie prac nad autoryzacją po stronie frontendu (JWT).
+
+## Wtorek 14.01.2020 - Środa 15.01.2020 - eksperymenty z autoryzacją
+    **FRONTEND**:
+        - próby implementacji nowych rozwiązań dla autoryzacji JWT (rezygnacja),
+        - uzupełnienie artykułów w bazie danych (z wykorzystaniem zbudowanego wcześniej panelu admina).
         
