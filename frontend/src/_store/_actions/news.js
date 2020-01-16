@@ -9,10 +9,10 @@ import {
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
-    NEWS_SUCCESSFULLY_LOADED,
-    NEWS_NOT_FOUND,
     NEWS_LIST_LOADED,
     NEWS_LIST_NOT_FOUND,
+    NEWS_SUCCESSFULLY_LOADED,
+    NEWS_NOT_FOUND,
     NEWS_ADDED,
     NEWS_ADDING_FAILED,
     NEWS_SUCCESFULLY_EDITED,

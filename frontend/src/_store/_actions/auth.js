@@ -5,9 +5,9 @@ import fetchLogin from "./services/LoginService";
 const {
     USER_LOADED,
     LOGIN_SUCCESSFUL,
-    AUTHENTICATION_ERROR,
     LOGIN_FAILED,
-    LOGOUT_SUCCESSFUL
+    LOGOUT_SUCCESSFUL,
+    AUTHENTICATION_ERROR,
 } = eventStatuses.auth;
 
 export const login = (name, password, stayLogged) => {

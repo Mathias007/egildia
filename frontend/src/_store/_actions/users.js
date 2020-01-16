@@ -9,10 +9,10 @@ import {
 import eventStatuses from "../../_config/eventStatuses";
 
 const {
-    USER_SUCCESSFULLY_LOADED,
-    USER_NOT_FOUND,
     USERS_LIST_LOADED,
     USERS_LIST_NOT_FOUND,
+    USER_SUCCESSFULLY_LOADED,
+    USER_NOT_FOUND,
     USER_ADDED,
     USER_ADDING_FAILED,
     USER_SUCCESFULLY_EDITED,
@@ -93,10 +93,7 @@ export const register = (name, email, password, role, date, remember) => {
                 remember
             });
 
-            return (
-                response.data, 
-                name, 
-                remember);
+            return response.data, name, remember;
         };
 
         const dispatchRegistrationError = function(response) {

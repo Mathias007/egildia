@@ -398,3 +398,36 @@
         - próby implementacji nowych rozwiązań dla autoryzacji JWT (rezygnacja),
         - uzupełnienie artykułów w bazie danych (z wykorzystaniem zbudowanego wcześniej panelu admina).
         
+## Czwartek 16.01.2020 - PrivateRoute i przebudowa kodu komponentów globalnych
+    **FRONTEND**:
+        - Utworzenie funkcjonalności PrivateRoute dla zabezpieczenia sekcji administracyjnej projektu przed niezalogowanymi;
+        - Sidebar: 
+            > dodanie możliwości włączania i wyłączania widoczności panelu bocznego po kliknięciu,
+            > wydzielenie submenów do oddzielnych komponentów (funkcyjnych) wedle kategorii, rozwiązanie problemów z przekazywaniem props,
+            > refaktoryzacja komponentu, poprawienie defaultów;
+        - Header:
+            > wydzielenie logo i górnego menu do oddzielnych komponentów (funkcyjnych),
+            > przekształcenie komponentów headera oraz avatara w funkcyjne;
+        - Breadcrumb - przekształcenie w komponent funkcyjny;
+        - Footer:
+            > dodanie funkcji generującej aktualny rok,
+            > dodanie hiperłącza do serwisu egildia.pl,
+            > przekształcenie w komponent funkcyjny.
+        - Rozpoczęcie prac nad przebudową formularzy:
+            > utworzenie komponentu ogólnego SingleFormElement, zawierającego alternatywy dla inputów zwykłych, textarea i datepicker,
+            > utworzenie prostych komponentów ogólnych ButtonComponent oraz ErrorMesageComponent,
+            > implementacja w/w komponentów w formularzu dodawania artykułów (w celach głównie testowych).
+
+    **INNE**: 
+        + od dnia dzisiejszego zamierzam przeprowadzić poważniejszą refaktoryzację według kilku podstawowych założeń:
+            (1) rozbicie większych komponentów na mniejsze,
+            (2) utworzenie jak największej liczby komponentów uniwersalnych, do zastosowania w wielu miejscach projektu,
+            (3) zwiększenie roli i liczby komponentów funkcyjnych w projekcie (w pewnym momencie praktycznie z nich zrezygnowałem),
+            (4) przygotowanie budowy komponentów pod kątem przyszłych testów;
+        + powyższe ma na celu możliwe zmniejszenie ilości kodu oraz pojemności projektu, uwzględnienie dobrych praktyk oraz przygotowanie do dalszego poszerzania sekcji merytorycznych;
+        + cel poboczny acz również istotny stanowić ma ułatwienie pracy z projektem, tak aby następnie móc dopracować poszczególne komponenty, wyodrębnić ich specyfikę, itd;
+    
+    **PODSUMOWANIE**: 
+        - Po nieco ponad miesiącu prac stan projektu uważam za zadowalający, już w dużej mierze odzwierciedlający mój obecny stan wiedzy programistycznej. 
+        - Przez ten krótki czas rozwinąłem swoje umiejętności w większym stopniu niż miało to miejsce we wcześniejszej pracy. 
+        - Zaczynam coraz bardziej wierzyć, że projekt egildia 2.0, który zacząłem z dość minimalistycznymi założeniami, a który z czasem stał się naprawdę poważną inwestycją czasu i wysiłku, ma szansę ujrzeć światło dzienne.
