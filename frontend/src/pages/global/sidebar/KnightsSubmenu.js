@@ -17,13 +17,10 @@ const {
     KNIGHTS_REVIEW
 } = navigationTitles;
 
-function KnightsSubmenu(props) {
-    console.log(props);
-
+export default function KnightsSubmenu(props) {
     return (
         <SubMenu
             {...props}
-            key="knights"
             title={
                 <span>
                     <Icon type="skin" />
@@ -46,5 +43,3 @@ function KnightsSubmenu(props) {
         </SubMenu>
     );
 }
-
-export default KnightsSubmenu;

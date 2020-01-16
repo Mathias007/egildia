@@ -5,7 +5,7 @@ import styles from "../../styles/styles";
 
 const { Footer } = Layout;
 
-function FooterComponent(props) {
+export default function FooterComponent(props) {
     const generateActualYear = () => {
         return new Date().getFullYear();
     };
@@ -21,5 +21,3 @@ function FooterComponent(props) {
         </Footer>
     );
 }
-
-export default FooterComponent;

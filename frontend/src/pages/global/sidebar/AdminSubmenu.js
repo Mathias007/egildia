@@ -16,14 +16,10 @@ const {
     ADMIN_USERS
 } = navigationTitles;
 
-function AdminSubmenu(props) {
-    console.log(props)
-
+export default function AdminSubmenu(props) {
     return (
-        
         <SubMenu
             {...props}
-            key="admin"
             title={
                 <span>
                     <Icon type="setting" />
@@ -43,5 +39,3 @@ function AdminSubmenu(props) {
         </SubMenu>
     );
 }
-
-export default AdminSubmenu;

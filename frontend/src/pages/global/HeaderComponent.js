@@ -7,7 +7,7 @@ import HeaderMenu from "./header/HeaderMenu";
 import { Layout } from "antd";
 const { Header } = Layout;
 
-function HeaderComponent(props) {
+export default function HeaderComponent(props) {
     return (
         <Header className="header">
             <HeaderLogo />
@@ -16,5 +16,3 @@ function HeaderComponent(props) {
         </Header>
     );
 }
-
-export default HeaderComponent;

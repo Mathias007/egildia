@@ -33,10 +33,11 @@ const styles = {
         backgroundColor: "#1890ff",
         verticalAlign: "middle"
     },
-    sider: { background: "#fff" },
+    sider: { background: "#fff", collapsedWidth: 0, width: 230 },
     sidebarMenu: {
+        borderRight: 0,
         height: "100%",
-        borderRight: 0
+        mode: "inline"
     },
     tooltipIcon: {
         color: "rgba(0,0,0,.45)"

@@ -10,11 +10,9 @@ const { Item } = Menu;
 const { GENERAL } = routesPaths;
 const { GENERAL_INDEX } = navigationTitles;
 
-function AdminSubmenu(props) {
-    console.log(props);
-
+export default function GeneralSubmenu(props) {
     return (
-        <Item {...props} key="0">
+        <Item {...props}>
             <NavLink to={GENERAL.INDEX}>
                 <Icon type="pie-chart" />
                 <span> {GENERAL_INDEX}</span>
@@ -22,5 +20,3 @@ function AdminSubmenu(props) {
         </Item>
     );
 }
-
-export default AdminSubmenu;

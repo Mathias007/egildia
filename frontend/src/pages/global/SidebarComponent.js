@@ -11,11 +11,20 @@ import styles from "../../styles/styles";
 const { Sider } = Layout;
 const { Divider } = Menu;
 
+const submenuKeys = {
+    ADMIN_KEY: "admin",
+    GENERAL_KEY: "general",
+    KNIGHTS_KEY: "knights",
+    TZAR_KEY: "tzar"
+};
+
+const { ADMIN_KEY, GENERAL_KEY, KNIGHTS_KEY, TZAR_KEY } = submenuKeys;
+
 class SidebarComponent extends Component {
-    rootSubmenuKeys = ["knights", "tzar", "admin"];
+    rootSubmenuKeys = [KNIGHTS_KEY, TZAR_KEY, ADMIN_KEY];
 
     state = {
-        openKeys: ["knights", "tzar"]
+        openKeys: [KNIGHTS_KEY, TZAR_KEY, ADMIN_KEY]
     };
 
     onOpenChange = openKeys => {
@@ -32,29 +41,31 @@ class SidebarComponent extends Component {
     };
 
     render() {
-        const { isAuthenticated, dispatch, ...other } = this.props;
+        const { isAuthenticated, dispatch, ...menuProps } = this.props;
 
         return (
             <Sider
-                width={230}
-                collapsedWidth={0}
+                collapsedWidth={styles.sider.collapsedWidth}
                 collapsible
                 style={styles.sider}
+                width={styles.sider.width}
             >
                 <Menu
-                    mode="inline"
+                    mode={styles.sidebarMenu.mode}
                     openKeys={this.state.openKeys}
                     onOpenChange={this.onOpenChange}
-                    defaultSelectedKeys={"0"}
+                    defaultSelectedKeys={GENERAL_KEY}
                     style={styles.sidebarMenu}
                 >
-                    <GeneralSubmenu {...other} />
+                    <GeneralSubmenu {...menuProps} key={GENERAL_KEY} />
                     <Divider />
-                    <KnightsSubmenu {...other} />
+                    <KnightsSubmenu {...menuProps} key={KNIGHTS_KEY} />
                     <Divider />
-                    <TzarSubmenu {...other} />
+                    <TzarSubmenu {...menuProps} key={TZAR_KEY} />
                     <Divider />
-                    {isAuthenticated ? <AdminSubmenu {...other} /> : null}
+                    {isAuthenticated ? (
+                        <AdminSubmenu {...menuProps} key={ADMIN_KEY} />
+                    ) : null}
                 </Menu>
             </Sider>
         );
@@ -66,7 +77,5 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.isAuthenticated
     };
 };
-
-// const mapDispatchToProps = dispatch => {};
 
 export default connect(mapStateToProps)(SidebarComponent);

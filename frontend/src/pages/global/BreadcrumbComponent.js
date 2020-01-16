@@ -8,7 +8,7 @@ import styles from "../../styles/styles";
 const { Item } = Breadcrumb;
 const { WORTAL, ADMINISTRATION } = navigationTitles;
 
-function BreadcrumbComponent(props) {
+export default function BreadcrumbComponent(props) {
     const { isAdminComponent, section, page } = props;
     return (
         <Breadcrumb style={styles.breadcrumb}>
@@ -18,5 +18,3 @@ function BreadcrumbComponent(props) {
         </Breadcrumb>
     );
 }
-
-export default BreadcrumbComponent;

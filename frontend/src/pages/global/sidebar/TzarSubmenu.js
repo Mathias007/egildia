@@ -18,13 +18,10 @@ const {
     TZAR_UNITS
 } = navigationTitles;
 
-function TzarSubmenu(props) {
-    console.log(props);
-
+export default function TzarSubmenu(props) {
     return (
         <SubMenu
             {...props}
-            key="tzar"
             title={
                 <span>
                     <Icon type="crown" />
@@ -50,5 +47,3 @@ function TzarSubmenu(props) {
         </SubMenu>
     );
 }
-
-export default TzarSubmenu;
