@@ -40,6 +40,7 @@ const styles = {
         mode: "inline"
     },
     tooltipIcon: {
+        type: "info-circle",
         color: "rgba(0,0,0,.45)"
     },
     userAvatar: {

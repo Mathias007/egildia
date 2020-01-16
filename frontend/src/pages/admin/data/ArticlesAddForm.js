@@ -4,19 +4,13 @@ import { connect } from "react-redux";
 import { articles } from "../../../_store/_actions";
 
 import SingleFormElement from "../../components/SingleFormElement";
+import ButtonComponent from "../../components/ButtonComponent";
+import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
-import { Button, Form, Layout } from "antd";
+import { Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
-const { Item } = Form;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "file-add",
-    type: "primary",
-    htmlType: "submit",
-    text: "Dodaj artykuł"
-};
 
 class ArticlesAddForm extends Component {
     handleSubmit = e => {
@@ -41,7 +35,6 @@ class ArticlesAddForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-article-form">
@@ -101,12 +94,15 @@ class ArticlesAddForm extends Component {
                         tooltip="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik."
                     />
 
-                    <Item className="btn-wrap">
-                        <Button icon={icon} type={type} htmlType={htmlType}>
-                            {text}
-                        </Button>
-                    </Item>
-                    <Item>{this.props.errorMessage}</Item>
+                    <ButtonComponent
+                        icon="file-add"
+                        type="primary"
+                        htmlType="submit"
+                        text="Dodaj artykuł"
+                    />
+                    <ErrorMessageComponent
+                        errorMessage={this.props.errorMessage}
+                    />
                 </Form>
             </Content>
         );

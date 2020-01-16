@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import navigationTitles from "../../../_config/navigationTitles";
 
@@ -19,33 +19,29 @@ const buttonData = {
     text: "Dodaj artykuł"
 };
 
-class ArticleCreator extends Component {
-    render() {
-        const { icon, type, htmlType, form, text } = buttonData;
-        return (
-            <Layout style={styles.layout}>
-                <BreadcrumbComponent
-                    isAdminComponent
-                    section={ADMIN_ARTICLES}
-                    page={CREATOR}
-                />
-                <PageHeaderComponent
-                    isAdminComponent
-                    button={
-                        <Button
-                            icon={icon}
-                            type={type}
-                            htmlType={htmlType}
-                            form={form}
-                        >
-                            {text}
-                        </Button>
-                    }
-                />
-                <ArticlesAddForm />
-            </Layout>
-        );
-    }
+export default function ArticleCreator(props) {
+    const { icon, type, htmlType, form, text } = buttonData;
+    return (
+        <Layout style={styles.layout}>
+            <BreadcrumbComponent
+                isAdminComponent
+                section={ADMIN_ARTICLES}
+                page={CREATOR}
+            />
+            <PageHeaderComponent
+                isAdminComponent
+                button={
+                    <Button
+                        icon={icon}
+                        type={type}
+                        htmlType={htmlType}
+                        form={form}
+                    >
+                        {text}
+                    </Button>
+                }
+            />
+            <ArticlesAddForm />
+        </Layout>
+    );
 }
-
-export default ArticleCreator;

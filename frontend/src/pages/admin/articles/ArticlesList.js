@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
@@ -18,30 +18,26 @@ const buttonData = {
     text: "Dodaj artykuł"
 };
 
-class ArticlesList extends Component {
-    render() {
-        const { icon, type, text } = buttonData;
-        return (
-            <Layout style={styles.layout}>
-                <BreadcrumbComponent
-                    isAdminComponent
-                    section={ADMIN_ARTICLES}
-                    page={LIST}
-                />
-                <PageHeaderComponent
-                    isAdminComponent
-                    button={
-                        <Link to="articles/add">
-                            <Button icon={icon} type={type}>
-                                {text}
-                            </Button>
-                        </Link>
-                    }
-                />
-                <ArticlesTable />
-            </Layout>
-        );
-    }
+export default function ArticlesList() {
+    const { icon, type, text } = buttonData;
+    return (
+        <Layout style={styles.layout}>
+            <BreadcrumbComponent
+                isAdminComponent
+                section={ADMIN_ARTICLES}
+                page={LIST}
+            />
+            <PageHeaderComponent
+                isAdminComponent
+                button={
+                    <Link to="articles/add">
+                        <Button icon={icon} type={type}>
+                            {text}
+                        </Button>
+                    </Link>
+                }
+            />
+            <ArticlesTable />
+        </Layout>
+    );
 }
-
-export default ArticlesList;
