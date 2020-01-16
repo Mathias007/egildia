@@ -1,38 +1,20 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-import AvatarComponent from "./AvatarComponent";
-import eGildiaLogo from "../../img/logo/egg-logo-poziome.png";
+import HeaderAvatar from "./header/HeaderAvatar";
+import HeaderLogo from "./header/HeaderLogo";
+import HeaderMenu from "./header/HeaderMenu";
 
-import { Layout, Menu } from "antd";
-import styles from "../../styles/styles";
-
+import { Layout } from "antd";
 const { Header } = Layout;
-const { Item } = Menu;
 
-class HeaderComponent extends Component {
-    render() {
-        return (
-            <Header className="header">
-                <div className="logo">
-                    <Link to="/">
-                        <img src={eGildiaLogo} alt="e-Gildia Graczy" />
-                    </Link>
-                </div>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={["2"]}
-                    style={styles.headerMenu}
-                >
-                    <Item key="1">nav 1</Item>
-                    <Item key="2">nav 2</Item>
-                    <Item key="3">nav 3</Item>
-                </Menu>
-                <AvatarComponent />
-            </Header>
-        );
-    }
+function HeaderComponent(props) {
+    return (
+        <Header className="header">
+            <HeaderLogo />
+            <HeaderMenu />
+            <HeaderAvatar />
+        </Header>
+    );
 }
 
 export default HeaderComponent;
