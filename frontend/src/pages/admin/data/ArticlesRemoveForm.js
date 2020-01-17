@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { articles } from "../../../_store/_actions";
 
-import { Button, Divider, Form, Layout } from "antd";
+import ButtonComponent from "../../components/ButtonComponent";
+import ErrorMessageComponent from "../../components/ErrorMessageComponent";
+
+import { Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
-const { Item } = Form;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "delete",
-    type: "primary",
-    htmlType: "submit",
-    text: "Usuń artykuł"
-};
 
 class ArticlesRemoveForm extends Component {
     handleDeletingSubmit = e => {
@@ -25,7 +19,6 @@ class ArticlesRemoveForm extends Component {
 
     render() {
         const { properArticle } = this.props;
-        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <p>
@@ -33,25 +26,16 @@ class ArticlesRemoveForm extends Component {
                     <strong>{properArticle.title}</strong>? Tej operacji nie
                     będzie można cofnąć.
                 </p>
-                <Item className="btn-wrap">
-                    <Button
-                        icon={icon}
-                        type={type}
-                        htmlType={htmlType}
-                        onClick={this.handleDeletingSubmit}
-                    >
-                        {text}
-                    </Button>
-                    <Divider
-                        type="vertical"
-                        dashed
-                        style={styles.hiddenDivider}
-                    />
-                    <Button>
-                        <Link to="/admin/articles">Zrezygnuj</Link>
-                    </Button>
-                </Item>
-                <Item>{this.props.errorMessage}</Item>
+                <ButtonComponent
+                    composition="double"
+                    cancelLink="/admin/articles"
+                    cancelText="Zrezygnuj"
+                    htmlType="submit"
+                    icon="delete"
+                    text="Usuń artykuł"
+                    type="primary"
+                />
+                <ErrorMessageComponent errorMessage={this.props.errorMessage} />{" "}
             </Content>
         );
     }

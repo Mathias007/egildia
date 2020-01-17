@@ -43,10 +43,10 @@ class ArticleEditForm extends Component {
                 <Form onSubmit={this.handleSubmit} id="edit-article-form">
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
-                        label="Klucz identyfikacyjny artykułu"
                         fieldName="allocationKey"
                         initialValue={properArticle.allocationKey}
                         inputIcon="key"
+                        label="Klucz identyfikacyjny artykułu"
                         message="Podaj klucz artykułu!"
                         placeholder="Wpisz unikalny klucz artykułu"
                         required
@@ -55,10 +55,10 @@ class ArticleEditForm extends Component {
 
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
-                        label="Tytuł artykułu"
                         fieldName="title"
                         initialValue={properArticle.title}
                         inputIcon="flag"
+                        label="Tytuł artykułu"
                         message="Wpisz tytuł artykułu!"
                         placeholder="Nadaj artykułowi tytuł"
                         required
@@ -69,8 +69,8 @@ class ArticleEditForm extends Component {
                         getFieldDecorator={getFieldDecorator}
                         fieldName="content"
                         fieldType="text-area"
-                        label="Zawartość artykułu"
                         initialValue={properArticle.content}
+                        label="Zawartość artykułu"
                         message="Wpisz zawartość artykułu!"
                         placeholder="Daj ponieść się ekspresji..."
                         required
@@ -93,12 +93,11 @@ class ArticleEditForm extends Component {
                         composition="double"
                         cancelLink="/admin/articles"
                         cancelText="Zrezygnuj"
-                        icon="file-edit"
-                        type="primary"
                         htmlType="submit"
+                        icon="file-edit"
                         text="Edytuj artykuł"
+                        type="primary"
                     />
-
                     <ErrorMessageComponent
                         errorMessage={this.props.errorMessage}
                     />

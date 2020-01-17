@@ -38,23 +38,22 @@ class ArticlesAddForm extends Component {
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-article-form">
-                    
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
-                        label="Klucz identyfikacyjny artykułu"
                         fieldName="allocationKey"
                         inputIcon="key"
+                        label="Klucz identyfikacyjny artykułu"
                         message="Podaj klucz artykułu!"
                         placeholder="Wpisz unikalny klucz artykułu"
                         required
                         tooltip="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie."
                     />
-                    
+
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
-                        label="Tytuł artykułu"
                         fieldName="title"
                         inputIcon="flag"
+                        label="Tytuł artykułu"
                         message="Wpisz tytuł artykułu!"
                         placeholder="Nadaj artykułowi tytuł"
                         required
@@ -84,10 +83,10 @@ class ArticlesAddForm extends Component {
 
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
-                        label="Autor artykułu"
                         fieldName="author"
                         initialValue={this.props.name}
                         inputIcon="crown"
+                        label="Autor artykułu"
                         message="Podaj autora artykułu!"
                         placeholder="Podaj autora artykułu"
                         required
@@ -95,10 +94,10 @@ class ArticlesAddForm extends Component {
                     />
 
                     <ButtonComponent
-                        icon="file-add"
-                        type="primary"
                         htmlType="submit"
+                        icon="file-add"
                         text="Dodaj artykuł"
+                        type="primary"
                     />
                     <ErrorMessageComponent
                         errorMessage={this.props.errorMessage}
