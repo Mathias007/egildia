@@ -13,6 +13,7 @@ import styles from "../../../styles/styles";
 const { Content } = Layout;
 
 const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g;
+const selectRoleOptions = ["USER", "ADMIN", "WRITER"];
 
 class UsersAddForm extends Component {
     handleSubmit = e => {
@@ -79,7 +80,7 @@ class UsersAddForm extends Component {
                         fieldName="role"
                         fieldType="select"
                         initialValue="USER"
-                        options={["USER", "ADMIN", "WRITER"]}
+                        options={selectRoleOptions}
                         label="Rola w serwisie"
                         message="Wpisz swoje hasło!"
                         required={false}
