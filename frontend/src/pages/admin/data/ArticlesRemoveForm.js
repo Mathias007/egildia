@@ -35,7 +35,7 @@ class ArticlesRemoveForm extends Component {
                     text="Usuń artykuł"
                     type="primary"
                 />
-                <ErrorMessageComponent errorMessage={this.props.errorMessage} />{" "}
+                <ErrorMessageComponent errorMessage={this.props.errorMessage} />
             </Content>
         );
     }

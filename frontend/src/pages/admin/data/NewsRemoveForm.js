@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { news } from "../../../_store/_actions";
 
-import { Button, Divider, Form, Layout } from "antd";
+import ButtonComponent from "../../components/ButtonComponent";
+import ErrorMessageComponent from "../../components/ErrorMessageComponent";
+
+import { Layout } from "antd";
 import styles from "../../../styles/styles";
 
-const { Item } = Form;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "delete",
-    type: "primary",
-    htmlType: "submit",
-    text: "Usuń wpis"
-};
 
 class NewsRemoveForm extends Component {
     handleDeletingSubmit = e => {
@@ -24,19 +18,25 @@ class NewsRemoveForm extends Component {
     };
 
     render() {
-        const { icon, type, htmlType, text } = buttonData;
+        const { properNews } = this.props;
         return (
             <Content style={styles.content}>
-                <Item className="btn-wrap">
-                    <Button icon={icon} type={type} htmlType={htmlType}>
-                        {text}
-                    </Button>
-                    <Divider type="vertical" dashed style={{ border: 0 }} />
-                    <Button>
-                        <Link to="/admin/news">Zrezygnuj</Link>
-                    </Button>
-                </Item>
-                <Item>{this.props.errorMessage}</Item>
+                <p>
+                    Czy na pewno chcesz usunąć artykuł o tytule{" "}
+                    <strong>{properNews.title}</strong>? Tej operacji nie będzie
+                    można cofnąć.
+                </p>
+
+                <ButtonComponent
+                    composition="double"
+                    cancelLink="/admin/articles"
+                    cancelText="Zrezygnuj"
+                    htmlType="submit"
+                    icon="delete"
+                    text="Usuń wpis"
+                    type="primary"
+                />
+                <ErrorMessageComponent errorMessage={this.props.errorMessage} />
             </Content>
         );
     }
