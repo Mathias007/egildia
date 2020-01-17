@@ -33,6 +33,7 @@ class NewsRemoveForm extends Component {
                     cancelText="Zrezygnuj"
                     htmlType="submit"
                     icon="delete"
+                    onClick={this.handleDeletingSubmit}
                     text="Usuń wpis"
                     type="primary"
                 />

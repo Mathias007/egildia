@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { users } from "../../../_store/_actions";
 
-import { Button, Divider, Form, Layout } from "antd";
+import ButtonComponent from "../../components/ButtonComponent";
+import ErrorMessageComponent from "../../components/ErrorMessageComponent";
+
+import { Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
-const { Item } = Form;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "user-delete",
-    type: "primary",
-    htmlType: "submit",
-    text: "Usuń użytkownika"
-};
 
 class UsersRemoveForm extends Component {
     handleDeletingSubmit = e => {
@@ -25,7 +19,6 @@ class UsersRemoveForm extends Component {
 
     render() {
         const { selectedUser } = this.props;
-        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <p>
@@ -33,20 +26,18 @@ class UsersRemoveForm extends Component {
                     <strong>{selectedUser.name}</strong>? Tej operacji nie
                     będzie można cofnąć.
                 </p>
-                <Item className="btn-wrap">
-                    <Button icon={icon} type={type} htmlType={htmlType}>
-                        {text}
-                    </Button>
-                    <Divider
-                        type="vertical"
-                        dashed
-                        style={styles.hiddenDivider}
-                    />
-                    <Button>
-                        <Link to="/admin/users">Zrezygnuj</Link>
-                    </Button>
-                </Item>
-                <Item>{this.props.errorMessage}</Item>
+
+                <ButtonComponent
+                    composition="double"
+                    cancelLink="/admin/users"
+                    cancelText="Zrezygnuj"
+                    htmlType="submit"
+                    icon="user-delete"
+                    onClick={this.handleDeletingSubmit}
+                    text="Usuń użytkownika"
+                    type="primary"
+                />
+                <ErrorMessageComponent errorMessage={this.props.errorMessage} />
             </Content>
         );
     }

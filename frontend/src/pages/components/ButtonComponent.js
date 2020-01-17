@@ -11,6 +11,7 @@ export default function ButtonComponent(props) {
         cancelLink,
         cancelText,
         icon,
+        onClick,
         type,
         htmlType,
         text
@@ -19,7 +20,7 @@ export default function ButtonComponent(props) {
     if (composition === "double")
         return (
             <Item className="btn-wrap">
-                <Button icon={icon} type={type} htmlType={htmlType}>
+                <Button icon={icon} type={type} htmlType={htmlType} onClick={onClick}>
                     {text}
                 </Button>
                 <Divider

@@ -32,6 +32,7 @@ class ArticlesRemoveForm extends Component {
                     cancelText="Zrezygnuj"
                     htmlType="submit"
                     icon="delete"
+                    onClick={this.handleDeletingSubmit}
                     text="Usuń artykuł"
                     type="primary"
                 />
