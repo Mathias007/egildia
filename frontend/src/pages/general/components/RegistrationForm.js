@@ -2,18 +2,17 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { passwordPattern } from "../../../_config/globalContentVariables";
 import { users } from "../../../_store/_actions";
+
+import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
 
 import { Checkbox, Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Item } = Form;
 const { Content } = Layout;
-
-const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g;
 
 class RegistrationForm extends Component {
     state = {

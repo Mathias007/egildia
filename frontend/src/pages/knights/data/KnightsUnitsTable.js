@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Img from "react-image";
 
+import { textBetweenTags } from "../../../_config/globalContentVariables";
 import { knights } from "../../../_store/_actions";
 
 import { Layout, Table } from "antd";
 import styles from "../../../styles/styles";
-
-// eslint-disable-next-line
-const textBetweenTagsRegEx = /[^<\}]+(?=>)/g;
 
 const componentClassnames = {
     images: {
@@ -133,7 +131,7 @@ class KnightsUnitsTable extends Component {
                 render: specification => {
                     if (specification[0] === "cywil") {
                         let workplaceElements = specification[1].match(
-                            textBetweenTagsRegEx
+                            textBetweenTags
                         );
                         console.log(workplaceElements);
 
@@ -150,7 +148,7 @@ class KnightsUnitsTable extends Component {
                         );
                     } else {
                         let equipmentElements = specification[2].match(
-                            textBetweenTagsRegEx
+                            textBetweenTags
                         );
                         console.log(equipmentElements);
 

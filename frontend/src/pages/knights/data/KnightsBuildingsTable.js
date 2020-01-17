@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Img from "react-image";
 
+import { textBetweenTags } from "../../../_config/globalContentVariables";
 import { knights } from "../../../_store/_actions";
 
-import { Layout, Table } from "antd";
 import styles from "../../../styles/styles";
-
-// eslint-disable-next-line
-const textBetweenTagsRegEx = /[^<\}]+(?=>)/g;
+import { Layout, Table } from "antd";
 
 const componentClassnames = {
     images: {
@@ -175,7 +173,7 @@ class KnightsBuildingsTable extends Component {
                             {description.map((fragment, index) => {
                                 if (fragment) {
                                     let materialElements = fragment.match(
-                                        textBetweenTagsRegEx
+                                        textBetweenTags
                                     );
                                     return (
                                         <p key={fragment}>
