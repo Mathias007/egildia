@@ -4,19 +4,14 @@ import { connect } from "react-redux";
 
 import { auth } from "../../../_store/_actions";
 
-import { Button, Checkbox, Form, Icon, Input, Layout, Tooltip } from "antd";
+import SingleFormElement from "../../components/SingleFormElement";
+import ButtonComponent from "../../components/ButtonComponent";
+
+import { Checkbox, Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
 const { Item } = Form;
-const { Password } = Input;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "login",
-    type: "primary",
-    htmlType: "submit",
-    text: "Zaloguj się"
-};
 
 class LoginForm extends Component {
     handleSubmit = e => {
@@ -35,68 +30,41 @@ class LoginForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} className="login-form">
-                    <Item>
-                        {getFieldDecorator("username", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message:
-                                        "Wpisz nazwę użytkownika lub adres e-mail!"
-                                }
-                            ]
-                        })(
-                            <Input
-                                prefix={
-                                    <Icon
-                                        type="user"
-                                        style={styles.inputIcon}
-                                    />
-                                }
-                                suffix={
-                                    <Tooltip title="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail.">
-                                        <Icon
-                                            type="info-circle"
-                                            style={styles.tooltipIcon}
-                                        />
-                                    </Tooltip>
-                                }
-                                placeholder="Login lub e-mail"
-                            />
-                        )}
-                    </Item>
-                    <Item>
-                        {getFieldDecorator("password", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz hasło!"
-                                }
-                            ]
-                        })(
-                            <Password
-                                prefix={
-                                    <Icon
-                                        type="lock"
-                                        style={styles.inputIcon}
-                                    />
-                                }
-                                type="password"
-                                placeholder="Hasło"
-                            />
-                        )}
-                    </Item>
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="username"
+                        inputIcon="user"
+                        message="Wpisz nazwę użytkownika lub adres e-mail!"
+                        placeholder="Login lub e-mail"
+                        required
+                        tooltip="W celu zalogowania możesz podać - wedle wyboru - albo nazwę użytkownika, albo powiązany z kontem adres e-mail."
+                    />
+
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="password"
+                        fieldType="password"
+                        inputIcon="lock"
+                        message="Wpisz hasło!"
+                        placeholder="Hasło"
+                        required
+                    />
                     <Item>
                         {getFieldDecorator("remember", {
                             valuePropName: "checked",
                             initialValue: true
                         })(<Checkbox>Zapamiętaj</Checkbox>)}
-                        <Button icon={icon} type={type} htmlType={htmlType}>
-                            {text}
-                        </Button>
+
+                        <ButtonComponent
+                            composition="nowrap"
+                            htmlType="submit"
+                            icon="login"
+                            text="Zaloguj się"
+                            type="primary"
+                        />
                     </Item>
                     <Item>
                         Nie masz konta?{" "}

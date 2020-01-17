@@ -14,16 +14,19 @@ export default function SingleFormElement(props) {
         fieldName,
         fieldType,
         getFieldDecorator,
+        hasFeedback,
         initialValue,
         inputIcon,
         message,
         minLength,
+        onBlur,
         options,
         pattern,
         placeholder,
         required,
         rows,
-        tooltip
+        tooltip,
+        validator
     } = props;
 
     if (fieldType === "text-area")
@@ -67,7 +70,7 @@ export default function SingleFormElement(props) {
         );
     else if (fieldType === "password")
         return (
-            <Item label={label}>
+            <Item label={label} hasFeedback={hasFeedback}>
                 {getFieldDecorator(fieldName, {
                     rules: [
                         {
@@ -78,10 +81,12 @@ export default function SingleFormElement(props) {
                         {
                             pattern,
                             message: "Hasło nie spełnia wymagań!"
-                        }
+                        },
+                        { validator }
                     ]
                 })(
                     <Password
+                        onBlur={onBlur}
                         prefix={
                             <Icon type={inputIcon} style={styles.inputIcon} />
                         }

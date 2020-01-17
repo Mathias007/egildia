@@ -4,19 +4,16 @@ import { connect } from "react-redux";
 
 import { users } from "../../../_store/_actions";
 
-import { Button, Checkbox, Form, Icon, Input, Layout, Tooltip } from "antd";
+import SingleFormElement from "../../components/SingleFormElement";
+import ButtonComponent from "../../components/ButtonComponent";
+
+import { Checkbox, Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
 const { Item } = Form;
-const { Password } = Input;
 const { Content } = Layout;
 
-const buttonData = {
-    icon: "user-add",
-    type: "primary",
-    htmlType: "submit",
-    text: "Zarejestruj się"
-};
+const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g;
 
 class RegistrationForm extends Component {
     state = {
@@ -61,7 +58,6 @@ class RegistrationForm extends Component {
     };
 
     render() {
-        const { icon, type, htmlType, text } = buttonData;
         const { getFieldDecorator } = this.props.form;
 
         const formItemLayout = {
@@ -94,109 +90,66 @@ class RegistrationForm extends Component {
                     onSubmit={this.handleSubmit}
                     className="registration-form"
                 >
-                    <Item
-                        label={
-                            <span>
-                                Nazwa użytkownika&nbsp;
-                                <Tooltip title="Unikalna nazwa, pod którą będziesz widoczny w serwisie.">
-                                    <Icon type="question-circle-o" />
-                                </Tooltip>
-                            </span>
-                        }
-                    >
-                        {getFieldDecorator("nickname", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz swoją nazwę!",
-                                    whitespace: true
-                                }
-                            ]
-                        })(<Input />)}
-                    </Item>
-                    <Item
-                        label={
-                            <span>
-                                Adres e-mail&nbsp;
-                                <Tooltip title="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu.">
-                                    <Icon type="question-circle-o" />
-                                </Tooltip>
-                            </span>
-                        }
-                    >
-                        {getFieldDecorator("email", {
-                            rules: [
-                                {
-                                    type: "email",
-                                    message: "Podaj poprawny adres e-mail!"
-                                },
-                                {
-                                    required: true,
-                                    message: "Wpisz adres e-mail!"
-                                }
-                            ]
-                        })(<Input />)}
-                    </Item>
-                    <Item
-                        label={
-                            <span>
-                                Hasło&nbsp;
-                                <Tooltip title="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę.">
-                                    <Icon type="question-circle-o" />
-                                </Tooltip>
-                            </span>
-                        }
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="nickname"
+                        inputIcon="user"
+                        label="Nazwa użytkownika"
+                        message="Wpisz swoją nazwę!"
+                        placeholder="Podaj nazwę użytkownika"
+                        required
+                        tooltip="Unikalna nazwa, pod którą będziesz widoczny w serwisie."
+                    />
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="email"
+                        fieldType="email"
+                        inputIcon="mail"
+                        label="Zawartość artykułu"
+                        message="Podaj poprawny adres e-mail!"
+                        placeholder="Podaj adres e-mail"
+                        required
+                        tooltip="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu."
+                    />
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="password"
+                        fieldType="password"
                         hasFeedback
-                    >
-                        {getFieldDecorator("password", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz swoje hasło!"
-                                },
-                                { min: 8, message: "Hasło za krótkie!" },
-                                {
-                                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g,
-                                    message: "Hasło nie spełnia wymagań!"
-                                },
-                                {
-                                    validator: this.validateToNextPassword
-                                }
-                            ]
-                        })(<Password />)}
-                    </Item>
-                    <Item
-                        label={
-                            <span>
-                                Potwierdź hasło&nbsp;
-                                <Tooltip title="Dla pewności wpisz swoje hasło raz jeszcze.">
-                                    <Icon type="question-circle-o" />
-                                </Tooltip>
-                            </span>
-                        }
+                        inputIcon="key"
+                        label="Hasło"
+                        message="Wpisz swoje hasło!"
+                        minLength={8}
+                        pattern={passwordPattern}
+                        placeholder="Wpisz hasło użytkownika."
+                        required
+                        tooltip="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę."
+                    />
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="confirm"
+                        fieldType="password"
                         hasFeedback
-                    >
-                        {getFieldDecorator("confirm", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz jeszcze raz swoje hasło!"
-                                },
-                                {
-                                    validator: this.compareToFirstPassword
-                                }
-                            ]
-                        })(<Password onBlur={this.handleConfirmBlur} />)}
-                    </Item>
-
+                        inputIcon="key"
+                        label="Potwierdź hasło"
+                        message="Wpisz jeszcze raz swoje hasło!"
+                        placeholder="Wpisz jeszcze raz swoje hasło."
+                        required
+                        tooltip="Dla pewności wpisz swoje hasło raz jeszcze."
+                        onBlur={this.handleConfirmBlur}
+                        validator={this.compareToFirstPassword}
+                    />
                     <Item {...tailFormItemLayout}>
                         {getFieldDecorator("remember", {
                             valuePropName: "checked"
                         })(<Checkbox>Zapamiętaj</Checkbox>)}
-
-                        <Button icon={icon} type={type} htmlType={htmlType}>
-                            {text}
-                        </Button>
+                        <ButtonComponent
+                            composition="nowrap"
+                            htmlType="submit"
+                            icon="user-add"
+                            text="Zarejestruj się"
+                            type="primary"
+                        />
                     </Item>
                     <Item {...tailFormItemLayout}>
                         Posiadasz konto w serwisie?{" "}

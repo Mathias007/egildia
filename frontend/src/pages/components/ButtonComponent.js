@@ -20,7 +20,12 @@ export default function ButtonComponent(props) {
     if (composition === "double")
         return (
             <Item className="btn-wrap">
-                <Button icon={icon} type={type} htmlType={htmlType} onClick={onClick}>
+                <Button
+                    icon={icon}
+                    type={type}
+                    htmlType={htmlType}
+                    onClick={onClick}
+                >
                     {text}
                 </Button>
                 <Divider
@@ -32,6 +37,17 @@ export default function ButtonComponent(props) {
                     <Link to={cancelLink}>{cancelText}</Link>
                 </Button>
             </Item>
+        );
+    else if (composition === "nowrap")
+        return (
+            <Button
+                icon={icon}
+                type={type}
+                htmlType={htmlType}
+                onClick={onClick}
+            >
+                {text}
+            </Button>
         );
     else
         return (
