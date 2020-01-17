@@ -1,22 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { articles } from "../../../_store/_actions";
 
-import { Button, Divider, Form, Icon, Input, Layout, Tooltip } from "antd";
+import ButtonComponent from "../../components/ButtonComponent";
+import SingleFormElement from "../../components/SingleFormElement";
+import ErrorMessageComponent from "../../components/ErrorMessageComponent";
+
+import { Form, Layout } from "antd";
 import styles from "../../../styles/styles";
 
-const { Item } = Form;
-const { TextArea } = Input;
 const { Content } = Layout;
-
-const buttonData = {
-    icon: "file-edit",
-    type: "primary",
-    htmlType: "submit",
-    text: "Edytuj artykuł"
-};
 
 class ArticleEditForm extends Component {
     handleSubmit = e => {
@@ -44,142 +38,70 @@ class ArticleEditForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { properArticle } = this.props;
-        const { icon, type, htmlType, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="edit-article-form">
-                    <Item label="Klucz identyfikacyjny artykułu">
-                        {getFieldDecorator("allocationKey", {
-                            initialValue: properArticle.allocationKey,
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Podaj klucz artykułu!"
-                                }
-                            ]
-                        })(
-                            <Input
-                                prefix={
-                                    <Icon type="key" style={styles.inputIcon} />
-                                }
-                                suffix={
-                                    <Tooltip title="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie.">
-                                        <Icon
-                                            type="info-circle"
-                                            style={styles.tooltipIcon}
-                                        />
-                                    </Tooltip>
-                                }
-                                placeholder="Wpisz unikalny klucz artykułu"
-                            />
-                        )}
-                    </Item>
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        label="Klucz identyfikacyjny artykułu"
+                        fieldName="allocationKey"
+                        initialValue={properArticle.allocationKey}
+                        inputIcon="key"
+                        message="Podaj klucz artykułu!"
+                        placeholder="Wpisz unikalny klucz artykułu"
+                        required
+                        tooltip="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie."
+                    />
 
-                    <Item label="Tytuł artykułu">
-                        {getFieldDecorator("title", {
-                            initialValue: properArticle.title,
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz tytuł artykułu!"
-                                }
-                            ]
-                        })(
-                            <Input
-                                prefix={
-                                    <Icon
-                                        type="flag"
-                                        style={styles.inputIcon}
-                                    />
-                                }
-                                suffix={
-                                    <Tooltip title="Tytuł artykułu, wyświetlany jako nagłówek podstrony zawierającej.">
-                                        <Icon
-                                            type="info-circle"
-                                            style={styles.tooltipIcon}
-                                        />
-                                    </Tooltip>
-                                }
-                                placeholder="Nadaj artykułowi tytuł"
-                            />
-                        )}
-                    </Item>
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        label="Tytuł artykułu"
+                        fieldName="title"
+                        initialValue={properArticle.title}
+                        inputIcon="flag"
+                        message="Wpisz tytuł artykułu!"
+                        placeholder="Nadaj artykułowi tytuł"
+                        required
+                        tooltip="Tytuł artykułu, wyświetlany jako nagłówek podstrony zawierającej."
+                    />
 
-                    <Item label="Zawartość artykułu">
-                        {getFieldDecorator("content", {
-                            initialValue: properArticle.content,
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Wpisz zawartość artykułu!"
-                                }
-                            ]
-                        })(
-                            <TextArea
-                                rows={4}
-                                prefix={
-                                    <Icon
-                                        type="read"
-                                        style={styles.inputIcon}
-                                    />
-                                }
-                                suffix={
-                                    <Tooltip title="Zawartość artykułu, czyli tekst umieszczany jako content strony">
-                                        <Icon
-                                            type="info-circle"
-                                            style={styles.tooltipIcon}
-                                        />
-                                    </Tooltip>
-                                }
-                                placeholder="Daj ponieść się ekspresji..."
-                            />
-                        )}
-                    </Item>
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        fieldName="content"
+                        fieldType="text-area"
+                        label="Zawartość artykułu"
+                        initialValue={properArticle.content}
+                        message="Wpisz zawartość artykułu!"
+                        placeholder="Daj ponieść się ekspresji..."
+                        required
+                        rows={8}
+                    />
 
-                    <Item label="Autor artykułu">
-                        {getFieldDecorator("author", {
-                            initialValue: properArticle.author,
-                            rules: [
-                                {
-                                    required: true,
-                                    message: "Podaj autora artykułu!"
-                                }
-                            ]
-                        })(
-                            <Input
-                                prefix={
-                                    <Icon
-                                        type="crown"
-                                        style={styles.inputIcon}
-                                    />
-                                }
-                                suffix={
-                                    <Tooltip title="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik.">
-                                        <Icon
-                                            type="info-circle"
-                                            style={styles.tooltipIcon}
-                                        />
-                                    </Tooltip>
-                                }
-                                placeholder="Podaj autora artykułu"
-                            />
-                        )}
-                    </Item>
+                    <SingleFormElement
+                        getFieldDecorator={getFieldDecorator}
+                        label="Autor artykułu"
+                        fieldName="author"
+                        initialValue={properArticle.author}
+                        inputIcon="crown"
+                        message="Podaj autora artykułu!"
+                        placeholder="Podaj autora artykułu"
+                        required
+                        tooltip="Wpisz nazwę użytkownika, który jest autorem artykułu. Domyślnie jest nim zalogowany użytkownik."
+                    />
 
-                    <Item className="btn-wrap">
-                        <Button icon={icon} type={type} htmlType={htmlType}>
-                            {text}
-                        </Button>
-                        <Divider
-                            type="vertical"
-                            dashed
-                            style={styles.hiddenDivider}
-                        />
-                        <Button>
-                            <Link to="/admin/articles">Zrezygnuj</Link>
-                        </Button>
-                    </Item>
-                    <Item>{this.props.errorMessage}</Item>
+                    <ButtonComponent
+                        composition="double"
+                        cancelLink="/admin/articles"
+                        cancelText="Zrezygnuj"
+                        icon="file-edit"
+                        type="primary"
+                        htmlType="submit"
+                        text="Edytuj artykuł"
+                    />
+
+                    <ErrorMessageComponent
+                        errorMessage={this.props.errorMessage}
+                    />
                 </Form>
             </Content>
         );

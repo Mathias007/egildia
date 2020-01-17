@@ -38,6 +38,7 @@ class ArticlesAddForm extends Component {
         return (
             <Content style={styles.content}>
                 <Form onSubmit={this.handleSubmit} id="add-article-form">
+                    
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
                         label="Klucz identyfikacyjny artykułu"
@@ -48,6 +49,7 @@ class ArticlesAddForm extends Component {
                         required
                         tooltip="Klucz artykułu to nadany przez autora identyfikator tekstowy, który umożliwia wygenerowanie treści w odpowiednim miejscu w serwisie."
                     />
+                    
                     <SingleFormElement
                         getFieldDecorator={getFieldDecorator}
                         label="Tytuł artykułu"
@@ -76,10 +78,8 @@ class ArticlesAddForm extends Component {
                         fieldType="date"
                         label="Data dodania lub utworzenia (pole nieobowiązkowe)"
                         inputIcon="calendar"
-                        message="content"
                         placeholder="Data utworzenia (domyślnie wygenerowana zostanie aktualna)"
                         required={false}
-                        rows={8}
                     />
 
                     <SingleFormElement

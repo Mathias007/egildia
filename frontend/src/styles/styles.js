@@ -19,6 +19,7 @@ const styles = {
     },
     headerMenu: { lineHeight: "64px" },
     hiddenDivider: {
+        type:"vertical",
         border: 0
     },
     inputIcon: {
