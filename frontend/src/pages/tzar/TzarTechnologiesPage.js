@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 import allocationKeys from "../../_config/allocationKeys";
 import navigationTitles from "../../_config/navigationTitles";
+
+import styles from "../../styles/styles";
 
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
@@ -9,30 +11,20 @@ import PageContentComponent from "../components/PageContentComponent";
 import TzarTechnologiesTable from "./data/TzarTechnologiesTable";
 
 import { Layout } from "antd";
-import styles from "../../styles/styles";
 
 const { TZAR_BURDEN_CROWN } = navigationTitles;
 const { TZAR_TECHNOLOGIES } = allocationKeys;
 
-class TzarTechnologiesPage extends Component {
-    state = {
-        allocationKey: TZAR_TECHNOLOGIES
-    };
-    render() {
-        return (
-            <Layout style={styles.layout}>
-                <BreadcrumbComponent
-                    section={TZAR_BURDEN_CROWN}
-                    page={navigationTitles.TZAR_TECHNOLOGIES}
-                />
-                <PageHeaderComponent allocationKey={this.state.allocationKey} />
-                <PageContentComponent
-                    allocationKey={this.state.allocationKey}
-                />
-                <TzarTechnologiesTable />
-            </Layout>
-        );
-    }
+export default function TzarTechnologiesPage(props) {
+    return (
+        <Layout style={styles.layout}>
+            <BreadcrumbComponent
+                section={TZAR_BURDEN_CROWN}
+                page={navigationTitles.TZAR_TECHNOLOGIES}
+            />
+            <PageHeaderComponent allocationKey={TZAR_TECHNOLOGIES} />
+            <PageContentComponent allocationKey={TZAR_TECHNOLOGIES} />
+            <TzarTechnologiesTable />
+        </Layout>
+    );
 }
-
-export default TzarTechnologiesPage;
