@@ -431,3 +431,15 @@
         - Po nieco ponad miesiącu prac stan projektu uważam za zadowalający, już w dużej mierze odzwierciedlający mój obecny stan wiedzy programistycznej. 
         - Przez ten krótki czas rozwinąłem swoje umiejętności w większym stopniu niż miało to miejsce we wcześniejszej pracy. 
         - Zaczynam coraz bardziej wierzyć, że projekt egildia 2.0, który zacząłem z dość minimalistycznymi założeniami, a który z czasem stał się naprawdę poważną inwestycją czasu i wysiłku, ma szansę ujrzeć światło dzienne.
+
+## Piątek 17.01.2020 - dalsza przebudowa komponentów
+    **FRONTEND**:
+        - implementacja SingleFormElement, ButtonComponent i ErrorMessageComponent w formularzach:
+            > ArticlesEdit, ArticlesRemove,
+            > NewsAdd, NewsEdit, NewsRemove,
+            > UsersAdd, UsersEdit, UsersRemove, UsersCard,
+            > Login, Register;
+        - rozbudowa SingleFormElement i ButtonComponent dla potrzeb obsługi różnych przypadków;
+        - poważna przebudowa SingleFormComponent w celu racjonalizacji kodu (wykorzystanie m. in. instrukcji switch);
+        - utworzenie pliku konfiguracyjnego dla danych typu wzory Regex, wykorzystywanych w komponentach;
+        - przebudowa kolejnych kompunentów na funkcyjne.
