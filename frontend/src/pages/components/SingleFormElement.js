@@ -29,31 +29,20 @@ export default function SingleFormElement(props) {
         validator
     } = props;
 
-    if (fieldType === "text-area")
-        return (
-            <Item label={label}>
-                {getFieldDecorator(fieldName, {
-                    initialValue,
-                    rules: [
-                        {
-                            required,
-                            message
-                        }
-                    ]
-                })(<TextArea rows={rows} placeholder={placeholder} />)}
-            </Item>
-        );
-    else if (fieldType === "date")
-        return (
-            <Item label={label}>
-                {getFieldDecorator(fieldName, {
-                    rules: [
-                        {
-                            type: "object",
-                            required
-                        }
-                    ]
-                })(
+    let decoratorRules;
+    let formElement;
+
+    const getFormElement = () => {
+        switch (fieldType) {
+            case "date":
+                decoratorRules = [
+                    {
+                        type: "object",
+                        required
+                    }
+                ];
+
+                formElement = (
                     <DatePicker
                         locale={locale}
                         style={styles.datePicker}
@@ -65,26 +54,25 @@ export default function SingleFormElement(props) {
                         format="LLLL"
                         placeholder={placeholder}
                     />
-                )}
-            </Item>
-        );
-    else if (fieldType === "password")
-        return (
-            <Item label={label} hasFeedback={hasFeedback}>
-                {getFieldDecorator(fieldName, {
-                    rules: [
-                        {
-                            required,
-                            message
-                        },
-                        { min: minLength, message: "Hasło za krótkie!" },
-                        {
-                            pattern,
-                            message: "Hasło nie spełnia wymagań!"
-                        },
-                        { validator }
-                    ]
-                })(
+                );
+
+                return decoratorRules, formElement;
+
+            case "password":
+                decoratorRules = [
+                    {
+                        required,
+                        message
+                    },
+                    { min: minLength, message: "Hasło za krótkie!" },
+                    {
+                        pattern,
+                        message: "Hasło nie spełnia wymagań!"
+                    },
+                    { validator }
+                ];
+
+                formElement = (
                     <Password
                         onBlur={onBlur}
                         prefix={
@@ -100,20 +88,17 @@ export default function SingleFormElement(props) {
                         }
                         placeholder={placeholder}
                     />
-                )}
-            </Item>
-        );
-    else if (fieldType === "select") {
-        return (
-            <Item label={label}>
-                {getFieldDecorator(fieldName, {
-                    initialValue,
-                    rules: [
-                        {
-                            required
-                        }
-                    ]
-                })(
+                );
+                return decoratorRules, formElement;
+
+            case "select":
+                decoratorRules = [
+                    {
+                        required
+                    }
+                ];
+
+                formElement = (
                     <Select>
                         {options.map((option, index) => {
                             return (
@@ -123,22 +108,34 @@ export default function SingleFormElement(props) {
                             );
                         })}
                     </Select>
-                )}
-            </Item>
-        );
-    } else
-        return (
-            <Item label={label}>
-                {getFieldDecorator(fieldName, {
-                    initialValue,
-                    rules: [
-                        {
-                            type: fieldType,
-                            required,
-                            message
-                        }
-                    ]
-                })(
+                );
+
+                return decoratorRules, formElement;
+
+            case "text-area":
+                decoratorRules = [
+                    {
+                        required,
+                        message
+                    }
+                ];
+
+                formElement = (
+                    <TextArea rows={rows} placeholder={placeholder} />
+                );
+
+                return decoratorRules, formElement;
+
+            default:
+                decoratorRules = [
+                    {
+                        type: fieldType,
+                        required,
+                        message
+                    }
+                ];
+
+                formElement = (
                     <Input
                         prefix={
                             <Icon type={inputIcon} style={styles.inputIcon} />
@@ -153,7 +150,20 @@ export default function SingleFormElement(props) {
                         }
                         placeholder={placeholder}
                     />
-                )}
-            </Item>
-        );
+                );
+
+                return decoratorRules, formElement;
+        }
+    };
+
+    getFormElement();
+
+    return (
+        <Item label={label} hasFeedback={hasFeedback}>
+            {getFieldDecorator(fieldName, {
+                initialValue,
+                rules: decoratorRules
+            })(formElement)}
+        </Item>
+    );
 }
