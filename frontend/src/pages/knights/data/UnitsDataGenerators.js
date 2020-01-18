@@ -3,35 +3,7 @@ import Img from "react-image";
 
 import { textBetweenTags } from "../../../_config/globalContentVariables";
 
-const componentClassnames = {
-    images: {
-        building: "knights-image-building",
-        icon: "knights-image-icon",
-        material: "knights-image-material",
-        unit: "knights-image-unit"
-    },
-    content: "knights-units-content",
-    table: "knights-units-table"
-};
-
-const imgPath = {
-    general: "img",
-    section: {
-        knights: "knights"
-    },
-    dir: {
-        buildings: "budynki",
-        icons: "ikony",
-        materials: "surowce",
-        units: "jednostki"
-    },
-    format: {
-        bmp: "bmp",
-        png: "png",
-        PNG: "PNG"
-    }
-};
-
+import { imgPath } from "./serviceData";
 const { general, section, dir, format } = imgPath;
 
 export const generateName = name => (
@@ -42,7 +14,6 @@ export const generateName = name => (
 
 export const generateImage = image => (
     <Img
-        className={componentClassnames.images.unit}
         src={require(`../../../${general}/${section.knights}/${dir.units}/${image}.${format.PNG}`)}
     />
 );
@@ -56,7 +27,6 @@ export const generateSpecification = specification => {
             workplaceElements.map((element, index) => (
                 <Img
                     key={element}
-                    className={componentClassnames.images.icon}
                     src={require(`../../../${general}/${section.knights}/${dir.icons}/${element}.${format.png}`)}
                 />
             ))
@@ -70,7 +40,6 @@ export const generateSpecification = specification => {
         return equipmentElements
             ? equipmentElements.map((element, index) => (
                   <Img
-                      className={componentClassnames.images.material}
                       src={require(`../../../${general}/${section.knights}/${dir.materials}/${element}.${format.png}`)}
                   />
               ))
