@@ -320,7 +320,6 @@
         - Funkcjonalizacja komponentu Breadcrumb - generowanie właściwych ścieżek po propsach, uzupełnienie propsów w poszczególnych komponentach z użyciem pliku konfiguracyjnego z tytułami nawigacji;
         - drobny refactoring komponentów, dodanie działającego favicona.
 
-
 ## Środa 8.01.2020 - implementacja systemu użytkowników
 
     **FRONTEND**:
@@ -335,7 +334,6 @@
         - początek prac refaktoryzacyjnych w backendzie - wydzielenie statusów do pliku konfiguracyjnego, podmiana module.exports na składnię ES6.
 
     **INNE**: system userów został utworzony na bazie systemu artykułów i newsów, pozostaje on jednak w związku z systemem autoryzacji/autentykacji, nad którym prace zostaną niebawem wznowione.
-
 
 ## Czwartek 9.01.2020 - wielkie porządkowanie kodu
 
@@ -356,25 +354,28 @@
         - poprawki drobne.
 
 ## Piątek 10.01.2020 - testy czas zacząć!
-    **FRONDEND**: 
+
+    **FRONDEND**:
         - przygotowanie testów jednostkowych (JEST) dla reducerów: articles, news, knights, tzar, users (a więc większości);
         - otwarcie profilu użytkownika z opcją jego modyfikacji przez menu w nagłówku (Breadcrumb).
 
     **BACKEND**: dodanie wysyłania id użytkownika do frontendu przy logowaniu (potrzebnego do wejścia w profil).
 
 ## Sobota 11.01.2020 - testowania ciąg dalszy
+
     **FRONTEND**:
         - uzupełnienie testów reducerów o segment autoryzacyjny (przy okazji jego drobne poprawienie);
         - utworzenie snapshotów, skrócenie i uelastycznienie w ten sposób kodu testów (funkcja matchToSnapshot());
         - poprawienie testów i snapshotów w celu wiernego odwzorowania przekazywanych danych (obiektów);
         - uzupełnienie reducerów o obsługę komunikatów serwera przy pozytywnych akcjach (dotąd pominiętych);
-        - prace refaktoryzacyjne w komponentach administracyjnych: 
+        - prace refaktoryzacyjne w komponentach administracyjnych:
             > articles - wydzielenie formularzy i list do osobnych komponentów (folder data),
             > news - j.w. + poprawki w NewsCard (opcje edycji).
 
     **INNE*: dodanie obrazka dla repozytorium egildia (tiamath) na GitHubie.
 
 ## Niedziela 12.01.2020 - refaktoryzacja komponentów administracyjnych
+
     **FRONTEND**:
         - sekcja users - wydzielenie formularzy i list do osobnych komponentów;
         - rozbudowa PageHeaderComponent o funkcje dla panelu administracyjnego;
@@ -387,6 +388,7 @@
     **INNE**: dodanie tagów (titles) dla repozytorium egildia na GitHubie.
 
 ## Poniedziałek 13.01.2020 - dalsze prace refaktoryzacyjne
+
     **FRONTEND**:
         - refaktoryzacja kolejnych styli dodawanych liniowo obiektem z wykorzystaniem pliku styles.js oraz danych buttonów;
         - implementacja PageHeaderComponent w stronach logowania i rejestracji;
@@ -394,14 +396,17 @@
         - wznowienie prac nad autoryzacją po stronie frontendu (JWT).
 
 ## Wtorek 14.01.2020 - Środa 15.01.2020 - eksperymenty z autoryzacją
+
     **FRONTEND**:
         - próby implementacji nowych rozwiązań dla autoryzacji JWT (rezygnacja),
         - uzupełnienie artykułów w bazie danych (z wykorzystaniem zbudowanego wcześniej panelu admina).
-        
+
+
 ## Czwartek 16.01.2020 - PrivateRoute i przebudowa kodu komponentów globalnych
+
     **FRONTEND**:
         - Utworzenie funkcjonalności PrivateRoute dla zabezpieczenia sekcji administracyjnej projektu przed niezalogowanymi;
-        - Sidebar: 
+        - Sidebar:
             > dodanie możliwości włączania i wyłączania widoczności panelu bocznego po kliknięciu,
             > wydzielenie submenów do oddzielnych komponentów (funkcyjnych) wedle kategorii, rozwiązanie problemów z przekazywaniem props,
             > refaktoryzacja komponentu, poprawienie defaultów;
@@ -418,7 +423,7 @@
             > utworzenie prostych komponentów ogólnych ButtonComponent oraz ErrorMesageComponent,
             > implementacja w/w komponentów w formularzu dodawania artykułów (w celach głównie testowych).
 
-    **INNE**: 
+    **INNE**:
         + od dnia dzisiejszego zamierzam przeprowadzić poważniejszą refaktoryzację według kilku podstawowych założeń:
             (1) rozbicie większych komponentów na mniejsze,
             (2) utworzenie jak największej liczby komponentów uniwersalnych, do zastosowania w wielu miejscach projektu,
@@ -426,13 +431,14 @@
             (4) przygotowanie budowy komponentów pod kątem przyszłych testów;
         + powyższe ma na celu możliwe zmniejszenie ilości kodu oraz pojemności projektu, uwzględnienie dobrych praktyk oraz przygotowanie do dalszego poszerzania sekcji merytorycznych;
         + cel poboczny acz również istotny stanowić ma ułatwienie pracy z projektem, tak aby następnie móc dopracować poszczególne komponenty, wyodrębnić ich specyfikę, itd;
-    
-    **PODSUMOWANIE**: 
-        - Po nieco ponad miesiącu prac stan projektu uważam za zadowalający, już w dużej mierze odzwierciedlający mój obecny stan wiedzy programistycznej. 
-        - Przez ten krótki czas rozwinąłem swoje umiejętności w większym stopniu niż miało to miejsce we wcześniejszej pracy. 
+
+    **PODSUMOWANIE**:
+        - Po nieco ponad miesiącu prac stan projektu uważam za zadowalający, już w dużej mierze odzwierciedlający mój obecny stan wiedzy programistycznej.
+        - Przez ten krótki czas rozwinąłem swoje umiejętności w większym stopniu niż miało to miejsce we wcześniejszej pracy.
         - Zaczynam coraz bardziej wierzyć, że projekt egildia 2.0, który zacząłem z dość minimalistycznymi założeniami, a który z czasem stał się naprawdę poważną inwestycją czasu i wysiłku, ma szansę ujrzeć światło dzienne.
 
 ## Piątek 17.01.2020 - dalsza przebudowa komponentów
+
     **FRONTEND**:
         - implementacja SingleFormElement, ButtonComponent i ErrorMessageComponent w formularzach:
             > ArticlesEdit, ArticlesRemove,
@@ -443,3 +449,24 @@
         - poważna przebudowa SingleFormComponent w celu racjonalizacji kodu (wykorzystanie m. in. instrukcji switch);
         - utworzenie pliku konfiguracyjnego dla danych typu wzory Regex, wykorzystywanych w komponentach;
         - przebudowa kolejnych kompunentów na funkcyjne.
+
+## Sobota 18.01.2020 - refaktoryzacja na całego
+
+    **FRONTEND**:
+        - utworzenie pliku FormElementsBuilder i przeniesienie do niego switcha z SingleFormElement;
+        - utworzenie pliku InputCreators, a w nim funkcji kreujących poszczególne typy elementów formularza;
+        - aktualnie system tworzenia pól formularzy działa następująco:
+            (1) dodajemy do komponentu głównego formularza SingleFormElement i przekazujemy do niego niezbędne propsy,
+            (2) SingleFormElement buduje komponent Form.Item i uruchamia funkcję FormElementsBuilder,
+            (3) FormElementsBuilder ustala w drodze instrukcji Switch, jaki input i jakie rules dla getFieldDecorator ma zwrócić, wywołując przy tym odpowiednią metodę z InputCreators,
+            (4) odpowiednia funkcja z InputCreator zwraca do FormElementBuilder żądany przez komponent nadrzędny input,
+            (5) FormElementBuilder przesyła do SingleFormElement input i rules,
+            (6) w SingleFormElement następuje ostateczne "złożenie" komponentu od wykorzystania w komponencie głównym formularza;
+        - początek przebudowy tabel (sekcje Tzar & Knights):
+            > plik ColumnData dla przechowywania statycznych fragmentów tabel danej sekcji,
+            > pliki Generators dla tworzenia komponentów wyświetlanych w poszczególnych wierszach danej tabeli,
+            > plik serviceData dla przechowywania stałych niezbędnych do generowania komponentów (w szczególności fragmentów ścieżek obrazków);
+        - refaktoryzacja w powyższy sposób tabel: 
+            > KnightsBuildings, KnightsUnits, 
+            > TzarNations, TzarSpells, TzarTechnologies, TzarUnits,
+            przy czym rozważyć należy dalszą przebudowę dla zaoszczędzenia kodu.
