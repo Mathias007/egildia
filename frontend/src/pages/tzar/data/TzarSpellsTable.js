@@ -1,46 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { tzar } from "../../../_store/_actions";
 
-import { Layout, Table } from "antd";
+import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import Img from "react-image";
+import { spellsColumnsStructure } from "./ColumnsData";
+import { generateName } from "./SpellsGenerators";
 
-const componentClassnames = {
-    images: {
-        spell: "tzar-image-spell"
-    }
-};
+import { Layout, Table } from "antd";
+const { Content } = Layout;
 
 class TzarSpellsTable extends Component {
     state = {
-        imgPath: {
-            general: "img",
-            section: {
-                tzar: "tzar"
-            },
-            dir: {
-                spells: "magia"
-            },
-            format: {
-                png: "png"
-            }
-        },
-        columnsStructure: {
-            col_name: { title: "Czar", dataIndex: "name", align: "center" },
-            col_description: { title: "Działanie", dataIndex: "description" },
-            col_cost: {
-                title: "Koszt rzutu",
-                dataIndex: "cost",
-                align: "left"
-            },
-            col_speller: {
-                title: "Rzucający",
-                dataIndex: "speller",
-                align: "center"
-            }
-        },
         tableColumns: [],
         tableData: []
     };
@@ -75,11 +46,7 @@ class TzarSpellsTable extends Component {
     }
 
     render() {
-        const { Content } = Layout;
-
         let { tableColumns, tableData } = this.state;
-
-        const { general, section, dir, format } = this.state.imgPath;
 
         tableData = this.renderSpells();
 
@@ -88,24 +55,14 @@ class TzarSpellsTable extends Component {
             col_cost,
             col_description,
             col_speller
-        } = this.state.columnsStructure;
+        } = spellsColumnsStructure;
 
         tableColumns = [
             {
                 title: col_name.title,
                 dataIndex: col_name.dataIndex,
                 align: col_name.align,
-                render: name => (
-                    <>
-                        <h3>
-                            <strong>{name[1]}</strong>
-                        </h3>
-                        <Img
-                            className={componentClassnames.images.spell}
-                            src={require(`../../../${general}/${section.tzar}/${dir.spells}/${name[2]}.${format.png}`)}
-                        />
-                    </>
-                )
+                render: name => generateName(name)
             },
             {
                 title: col_description.title,
