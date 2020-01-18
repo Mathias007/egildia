@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { tzar } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import { nationsColumnsStructure } from "./ColumnsData";
 import {
@@ -11,7 +12,7 @@ import {
 } from "./NationsGenerators";
 
 import { Layout, Table } from "antd";
-import styles from "../../../styles/styles";
+const { Content } = Layout;
 
 class TzarNationsTable extends Component {
     state = {
@@ -53,8 +54,6 @@ class TzarNationsTable extends Component {
     }
 
     render() {
-        const { Content } = Layout;
-
         let { tableColumns, tableData } = this.state;
 
         tableData = this.renderNations();

@@ -6,11 +6,15 @@ export const imgPath = {
     dir: {
         buildings: "budynki",
         spells: "magia",
-        technologies: "technologie"
-
+        technologies: "technologie",
+        units: "jednostki",
+        icons: "ikony",
+        views: "wyglad"
     },
     format: {
-        png: "png"
+        png: "png",
+        bmp: "bmp",
+        jpg: "JPG"
     }
 };
 
