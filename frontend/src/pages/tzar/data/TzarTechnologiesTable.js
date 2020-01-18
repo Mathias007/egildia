@@ -1,56 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Img from "react-image";
 
 import { tzar } from "../../../_store/_actions";
-
-import { Layout, Table } from "antd";
 import styles from "../../../styles/styles";
 
-const componentClassnames = {
-    images: {
-        technology: "tzar-image-technology"
-    }
-};
+import { technologiesColumnsStructure } from "./ColumnsData";
+import { generateName, generateImage } from "./TechnologiesGenerators";
+
+import { Layout, Table } from "antd";
+const { Content } = Layout;
 
 class TzarTechnologiesTable extends Component {
     state = {
-        imgPath: {
-            general: "img",
-            section: {
-                tzar: "tzar"
-            },
-            dir: {
-                technologies: "technologie"
-            },
-            format: {
-                png: "png"
-            }
-        },
-        columnsStructure: {
-            col_image: {
-                title: "Grafika",
-                dataIndex: "image",
-                align: "center"
-            },
-            col_name: {
-                title: "Technologia",
-                dataIndex: "name",
-                align: "center"
-            },
-            col_cost: {
-                title: "Cena w złocie",
-                dataIndex: "cost",
-                align: "left"
-            },
-            col_building: {
-                title: "Budynek",
-                dataIndex: "building",
-                align: "center"
-            },
-            col_description: { title: "Działanie", dataIndex: "description" },
-            col_nation: { title: "Nacja", dataIndex: "nation", align: "center" }
-        },
         tableColumns: [],
         tableData: []
     };
@@ -87,11 +48,7 @@ class TzarTechnologiesTable extends Component {
     }
 
     render() {
-        const { Content } = Layout;
-
         let { tableColumns, tableData } = this.state;
-
-        const { general, section, dir, format } = this.state.imgPath;
 
         tableData = this.renderTechnologies();
 
@@ -102,31 +59,20 @@ class TzarTechnologiesTable extends Component {
             col_building,
             col_description,
             col_nation
-        } = this.state.columnsStructure;
+        } = technologiesColumnsStructure;
 
         tableColumns = [
             {
                 title: col_image.title,
                 dataIndex: col_image.dataIndex,
                 align: col_image.align,
-                render: image => (
-                    <>
-                        <Img
-                            className={componentClassnames.images.technology}
-                            src={require(`../../../${general}/${section.tzar}/${dir.technologies}/${image}.${format.png}`)}
-                        />
-                    </>
-                )
+                render: image => generateImage(image)
             },
             {
                 title: col_name.title,
                 dataIndex: col_name.dataIndex,
                 align: col_name.align,
-                render: name => (
-                    <h3>
-                        <strong>{name}</strong>
-                    </h3>
-                )
+                render: name => generateName(name)
             },
             {
                 title: col_cost.title,
