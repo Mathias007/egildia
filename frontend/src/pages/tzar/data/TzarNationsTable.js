@@ -1,45 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Img from "react-image";
 
 import { tzar } from "../../../_store/_actions";
+
+import { nationsColumnsStructure } from "./ColumnsData";
+import {
+    generateName,
+    generateDescription,
+    generateImage
+} from "./NationsGenerators";
 
 import { Layout, Table } from "antd";
 import styles from "../../../styles/styles";
 
-const componentClassnames = {
-    images: {
-        building: "tzar-image-building"
-    },
-};
-
 class TzarNationsTable extends Component {
     state = {
-        imgPath: {
-            general: "img",
-            section: {
-                tzar: "tzar"
-            },
-            dir: {
-                buildings: "budynki"
-            },
-            format: {
-                png: "png"
-            }
-        },
-        columnsStructure: {
-            col_name: { title: "Nazwa", dataIndex: "name", align: "center" },
-            col_cost: { title: "Koszt", dataIndex: "cost", align: "left" },
-            col_hp: { title: "HP", dataIndex: "hp", align: "center" },
-            col_resistance: {
-                title: "Odporność",
-                dataIndex: "resistance",
-                align: "center"
-            },
-            col_description: { title: "Działanie", dataIndex: "description" },
-            col_image: { title: "Grafika", dataIndex: "image", align: "center" }
-        },
-        descriptionSubHeaders: ["Opis: ", "Wymagania: "],
         tableColumns: [],
         tableData: []
     };
@@ -82,8 +57,6 @@ class TzarNationsTable extends Component {
 
         let { tableColumns, tableData } = this.state;
 
-        const { general, section, dir, format } = this.state.imgPath;
-
         tableData = this.renderNations();
 
         const {
@@ -93,24 +66,14 @@ class TzarNationsTable extends Component {
             col_resistance,
             col_description,
             col_image
-        } = this.state.columnsStructure;
+        } = nationsColumnsStructure;
 
         tableColumns = [
             {
                 title: col_name.title,
                 dataIndex: col_name.dataIndex,
                 align: col_name.align,
-                render: name => (
-                    <>
-                        <h3>
-                            <strong>{name[1]}</strong>
-                        </h3>
-                        <Img
-                            className={componentClassnames.images.building}
-                            src={require(`../../../${general}/${section.tzar}/${dir.buildings}/${name[0]}/${name[2]}.${format.png}`)}
-                        />
-                    </>
-                )
+                render: name => generateName(name)
             },
             {
                 title: col_cost.title,
@@ -130,34 +93,13 @@ class TzarNationsTable extends Component {
             {
                 title: col_description.title,
                 dataIndex: col_description.dataIndex,
-                render: description => {
-                    const { descriptionSubHeaders } = this.state;
-                    return (
-                        <span>
-                            <p>
-                                <strong>{descriptionSubHeaders[0]}</strong>
-                                {description[0]}
-                            </p>
-                            <p>
-                                <strong>{descriptionSubHeaders[1]}</strong>
-                                {description[1]}
-                            </p>
-                        </span>
-                    );
-                }
+                render: description => generateDescription(description)
             },
             {
                 title: col_image.title,
                 dataIndex: col_image.dataIndex,
                 align: col_image.align,
-                render: image => (
-                    <Img
-                        className={componentClassnames.images.building}
-                        // width="120px"
-                        // height="100px"
-                        src={require(`../../../${general}/${section.tzar}/${dir.buildings}/${image[0]}/${image[1]}.${format.png}`)}
-                    />
-                )
+                render: image => generateImage(image)
             }
         ];
 
