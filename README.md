@@ -451,7 +451,7 @@
         - przebudowa kolejnych kompunentów na funkcyjne.
 
 ## Sobota 18.01.2020 - refaktoryzacja na całego
-
+  
     **FRONTEND**:
         - utworzenie pliku FormElementsBuilder i przeniesienie do niego switcha z SingleFormElement;
         - utworzenie pliku InputCreators, a w nim funkcji kreujących poszczególne typy elementów formularza;
@@ -470,3 +470,28 @@
             > KnightsBuildings, KnightsUnits, 
             > TzarNations, TzarSpells, TzarTechnologies, TzarUnits,
             przy czym rozważyć należy dalszą przebudowę dla zaoszczędzenia kodu.
+
+## Niedziela 19.01.2020 - ostateczne rozwiązanie kwestii tabel
+  
+    **FRONTEND**:
+        - sekcje Tzar i Knights: przeniesienie wszystkich danych struktury kolumn do odpowiednich zmiennych oraz i zamieszczenie w plikach generatorów poszczególnych komponentów;
+        - dostosowanie nazw plików i komponentów w sekcjach merytorycznych do przyjętej konwencji(Sekcja|Podsekcja|Komponent|Rola|);
+        - aktualnie tabele powstają wedle następującego schematu:
+            (1) komponent główny pobiera z API dane budulcowe, mapowane w odpowiedniej funkcji, a następnie umieszczane w zmiennej tableData, 
+            (2) w plikach DataGenerators znajdują się dwa typy obiektów:
+                > funkcje generate(), służące do renderowania struktur DOM,
+                > obiekty columnsStructure, zawierające "przepisy", na podstawie których składana jest tabela korzystają przy tym z funkcji generate(),
+            (3) gotowa struktura tabeli przekazywana jest do komponentu głównego, a ściślej w zmiennej tableColumns;
+            (4) komponent główny renderuje <Table>, w którym źródłem danych jest tableData, zaś informacji o strukturze poszczególnych kolumn - tableColumns.
+        - implementacja w/w systemu w przypadku tabel artykułów, newsów i użytkowników.
+            > ponieważ funkcje generatorów są w tych sekcjach niemalże identyczne, warto pomyśleć nad ich uwspólnieniem,
+            > czas także zrobić porządek ze ścieżkami Linków, które powinny być wydzielone do zmiennych i racjonalnie przetworzone.
+
+    **PODSUMOWANIE**: 
+        Ostatnie dni przyniosły postęp, jeśli chodzi o realizację postawionych celów refaktoryzacyjnych.
+        + Po pierwsze, zminimalizowałem liczebność komponentów klasowych na rzecz funkcyjnych. Obecnie klasy występują jedynie tam, gdzie komponenty używają lokalnego stanu lub metod cyklu życia.
+        + Po drugie, udało się rozdzielić kod na mniejsze fragmenty, wydzielić drobniejsze komponenty. Staram się w jak największym stopniu doprowadzić do stanu, w którym jedna funkcja odpowiada za jedną funkcjonalność.
+        + Po trzecie, struktura komponentów stała się bardziej (w mojej ocenie) czytelna. Powyższe podziały kodu na mniejsze jednostki zostały dokonane z zachowaniem standardów, które zostaną opisane w dokumentacji projektu (póki co krótko opisane w nin. dzienniku).
+        + Po czwarte, zatrzymana została inflacja kodu, staram się w jak największym stopniu unifikować te fragmenty, które w różnych komponentach są tożsame. Ponadto upraszczam te, które zanadto się przekomplikowały w trakcie pisania.
+        + Po piąte, za standaryzacją struktur i funkcjonalności podąża standaryzacja nazw plików i obiektów. 
+ 
