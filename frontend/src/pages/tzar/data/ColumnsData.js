@@ -1,3 +1,5 @@
+import { generateName } from "./UnitsDataGenerators";
+
 export const nationsColumnsStructure = {
     col_name: { title: "Nazwa", dataIndex: "name", align: "center" },
     col_cost: { title: "Koszt", dataIndex: "cost", align: "left" },
@@ -51,15 +53,36 @@ export const technologiesColumnsStructure = {
     col_nation: { title: "Nacja", dataIndex: "nation", align: "center" }
 };
 
-export const unitsColumnsStructure = {
-    col_name: { title: "Nazwa", dataIndex: "name", align: "center" },
-    col_attack: { title: "Atak", dataIndex: "attack", align: "center" },
-    col_defence: {
+export const unitsColumnsStructure = [
+    {
+        title: "Nazwa",
+        dataIndex: "name",
+        align: "center",
+        render: name => generateName(name)
+    },
+    {
+        title: "Atak",
+        dataIndex: "attack",
+        align: "center"
+    },
+    {
         title: "Obrona",
         dataIndex: "defence",
         align: "center"
     },
-    col_hp: { title: "HP", dataIndex: "hp", align: "center" },
-    col_description: { title: "Opis", dataIndex: "description" },
-    col_cost: { title: "Koszt", dataIndex: "cost", align: "left" }
-};
+    {
+        title: "HP",
+        dataIndex: "hp",
+        align: "center"
+    },
+    {
+        title: "Opis",
+        dataIndex: "description",
+        align: "left"
+    },
+    {
+        title: "Koszt",
+        dataIndex: "cost",
+        align: "left"
+    }
+];
