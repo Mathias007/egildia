@@ -3,10 +3,10 @@ import Img from "react-image";
 
 import { textBetweenTags } from "../../../_config/globalContentVariables";
 
-import { imgPath, descriptionSubHeaders } from "./serviceData";
+import { imgPath, descriptionSubHeaders } from "./_KnightsGeneralData";
 const { general, section, dir, format } = imgPath;
 
-export const generateName = name => {
+const generateName = name => {
     return (
         <>
             <h3>
@@ -19,7 +19,7 @@ export const generateName = name => {
     );
 };
 
-export const generateCost = cost => {
+const generateCost = cost => {
     return (
         <p>
             {cost[0]}
@@ -35,7 +35,7 @@ export const generateCost = cost => {
     );
 };
 
-export const generateDescription = description => {
+const generateDescription = description => {
     return (
         <span>
             {description.map((fragment, index) => {
@@ -60,7 +60,7 @@ export const generateDescription = description => {
     );
 };
 
-export const generateWorker = worker => {
+const generateWorker = worker => {
     return worker ? (
         <Img
             src={require(`../../../${general}/${section.knights}/${dir.units}/${worker}.${format.PNG}`)}
@@ -68,7 +68,7 @@ export const generateWorker = worker => {
     ) : null;
 };
 
-export const generateImage = image => {
+const generateImage = image => {
     return (
         <Img
             width="120px"
@@ -77,3 +77,46 @@ export const generateImage = image => {
         />
     );
 };
+
+export const buildingsColumnsStructure = [
+    {
+        title: "Nazwa",
+        dataIndex: "name",
+        align: "center",
+        render: name => generateName(name)
+    },
+    {
+        title: "Koszt",
+        dataIndex: "cost",
+        align: "left",
+        render: cost => generateCost(cost)
+    },
+    {
+        title: "Pola",
+        dataIndex: "fields",
+        align: "center"
+    },
+    {
+        title: "Wytrzymałość",
+        dataIndex: "durability",
+        align: "center"
+    },
+    {
+        title: "Działanie",
+        dataIndex: "description",
+        align: "left",
+        render: description => generateDescription(description)
+    },
+    {
+        title: "Pracownik",
+        dataIndex: "worker",
+        align: "center",
+        render: worker => generateWorker(worker)
+    },
+    {
+        title: "Grafika",
+        dataIndex: "image",
+        align: "center",
+        render: image => generateImage(image)
+    }
+];

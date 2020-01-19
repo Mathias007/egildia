@@ -3,15 +3,7 @@ import { connect } from "react-redux";
 
 import { knights } from "../../../_store/_actions";
 
-import { buildingsColumnsStructure } from "./ColumnsData";
-
-import {
-    generateName,
-    generateCost,
-    generateDescription,
-    generateWorker,
-    generateImage
-} from "./BuildingsDataGenerators";
+import { buildingsColumnsStructure } from "./KnightsBuildingsDataGenerators";
 
 import styles from "../../../styles/styles";
 import { Layout, Table } from "antd";
@@ -62,58 +54,7 @@ class KnightsBuildingsTable extends Component {
         let { tableColumns, tableData } = this.state;
 
         tableData = this.renderBuildings();
-
-        const {
-            col_name,
-            col_cost,
-            col_fields,
-            col_durability,
-            col_description,
-            col_worker,
-            col_image
-        } = buildingsColumnsStructure;
-
-        tableColumns = [
-            {
-                title: col_name.title,
-                dataIndex: col_name.dataIndex,
-                align: col_name.align,
-                render: name => generateName(name)
-            },
-            {
-                title: col_cost.title,
-                dataIndex: col_cost.dataIndex,
-                align: col_cost.align,
-                render: cost => generateCost(cost)
-            },
-            {
-                title: col_fields.title,
-                dataIndex: col_fields.dataIndex,
-                align: col_fields.align
-            },
-            {
-                title: col_durability.title,
-                dataIndex: col_durability.dataIndex,
-                align: col_durability.align
-            },
-            {
-                title: col_description.title,
-                dataIndex: col_description.dataIndex,
-                render: description => generateDescription(description)
-            },
-            {
-                title: col_worker.title,
-                dataIndex: col_worker.dataIndex,
-                align: col_worker.align,
-                render: worker => generateWorker(worker)
-            },
-            {
-                title: col_image.title,
-                dataIndex: col_image.dataIndex,
-                align: col_image.align,
-                render: image => generateImage(image)
-            }
-        ];
+        tableColumns = buildingsColumnsStructure;
 
         return (
             <Content style={styles.content}>

@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { unitsColumnsStructure } from "./ColumnsData";
-import {
-    generateName,
-    generateImage,
-    generateSpecification
-} from "./UnitsDataGenerators";
+import { unitsColumnsStructure } from "./KnightsUnitsDataGenerators";
 
 import { knights } from "../../../_store/_actions";
 
@@ -54,39 +49,7 @@ class KnightsUnitsTable extends Component {
         let { tableColumns, tableData } = this.state;
 
         tableData = this.renderUnits();
-
-        const {
-            col_name,
-            col_image,
-            col_role,
-            col_specification
-        } = unitsColumnsStructure;
-
-        tableColumns = [
-            {
-                title: col_name.title,
-                dataIndex: col_name.dataIndex,
-                align: col_name.align,
-                render: name => generateName(name)
-            },
-            {
-                title: col_image.title,
-                dataIndex: col_image.dataIndex,
-                align: col_image.align,
-                render: image => generateImage(image)
-            },
-            {
-                title: col_role.title,
-                dataIndex: col_role.dataIndex,
-                align: col_role.align
-            },
-            {
-                title: col_specification.title,
-                dataIndex: col_specification.dataIndex,
-                align: col_specification.align,
-                render: specification => generateSpecification(specification)
-            }
-        ];
+        tableColumns = unitsColumnsStructure
 
         return (
             <Content style={styles.content}>

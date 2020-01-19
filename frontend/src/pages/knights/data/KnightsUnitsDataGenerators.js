@@ -3,22 +3,22 @@ import Img from "react-image";
 
 import { textBetweenTags } from "../../../_config/globalContentVariables";
 
-import { imgPath } from "./serviceData";
+import { imgPath } from "./_KnightsGeneralData";
 const { general, section, dir, format } = imgPath;
 
-export const generateName = name => (
+const generateName = name => (
     <h3>
         <strong>{name}</strong>
     </h3>
 );
 
-export const generateImage = image => (
+const generateImage = image => (
     <Img
         src={require(`../../../${general}/${section.knights}/${dir.units}/${image}.${format.PNG}`)}
     />
 );
 
-export const generateSpecification = specification => {
+const generateSpecification = specification => {
     if (specification[0] === "cywil") {
         let workplaceElements = specification[1].match(textBetweenTags);
         console.log(workplaceElements);
@@ -46,3 +46,29 @@ export const generateSpecification = specification => {
             : null;
     }
 };
+
+export const unitsColumnsStructure = [
+    {
+        title: "Nazwa",
+        dataIndex: "name",
+        align: "center",
+        render: name => generateName(name)
+    },
+    {
+        title: "Grafika",
+        dataIndex: "image",
+        align: "left",
+        render: image => generateImage(image)
+    },
+    {
+        title: "Rola",
+        dataIndex: "role",
+        align: "center"
+    },
+    {
+        title: "Miejsce pracy lub wyposażenie",
+        dataIndex: "specification",
+        align: "center",
+        render: specification => generateSpecification(specification)
+    }
+];
