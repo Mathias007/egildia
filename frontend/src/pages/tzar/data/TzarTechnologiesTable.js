@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { technologiesColumnsStructure } from "./ColumnsData";
-import { generateName, generateImage } from "./TechnologiesDataGenerators";
+import { technologiesColumnsStructure } from "./TzarTechnologiesDataGenerators";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;
 
-class TechnologiesTable extends Component {
+class TzarTechnologiesTable extends Component {
     state = {
         tableColumns: [],
         tableData: []
@@ -51,50 +50,7 @@ class TechnologiesTable extends Component {
         let { tableColumns, tableData } = this.state;
 
         tableData = this.renderTechnologies();
-
-        const {
-            col_image,
-            col_name,
-            col_cost,
-            col_building,
-            col_description,
-            col_nation
-        } = technologiesColumnsStructure;
-
-        tableColumns = [
-            {
-                title: col_image.title,
-                dataIndex: col_image.dataIndex,
-                align: col_image.align,
-                render: image => generateImage(image)
-            },
-            {
-                title: col_name.title,
-                dataIndex: col_name.dataIndex,
-                align: col_name.align,
-                render: name => generateName(name)
-            },
-            {
-                title: col_cost.title,
-                dataIndex: col_cost.dataIndex,
-                align: col_cost.align
-            },
-            {
-                title: col_building.title,
-                dataIndex: col_building.dataIndex,
-                align: col_building.align
-            },
-            {
-                title: col_description.title,
-                dataIndex: col_description.dataIndex,
-                align: col_description.align
-            },
-            {
-                title: col_nation.title,
-                dataIndex: col_nation.dataIndex,
-                align: col_nation.align
-            }
-        ];
+        tableColumns = technologiesColumnsStructure;
 
         return (
             <Content style={styles.content}>
@@ -116,7 +72,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TechnologiesTable);
+export default connect(mapStateToProps, mapDispatchToProps)(TzarTechnologiesTable);

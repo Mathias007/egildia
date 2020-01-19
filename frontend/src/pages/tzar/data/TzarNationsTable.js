@@ -4,17 +4,12 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { nationsColumnsStructure } from "./ColumnsData";
-import {
-    generateName,
-    generateDescription,
-    generateImage
-} from "./NationsDataGenerators";
+import { nationsColumnsStructure } from "./TzarNationsDataGenerators";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;
 
-class NationsTable extends Component {
+class TzarNationsTable extends Component {
     state = {
         tableColumns: [],
         tableData: []
@@ -57,50 +52,7 @@ class NationsTable extends Component {
         let { tableColumns, tableData } = this.state;
 
         tableData = this.renderNations();
-
-        const {
-            col_name,
-            col_cost,
-            col_hp,
-            col_resistance,
-            col_description,
-            col_image
-        } = nationsColumnsStructure;
-
-        tableColumns = [
-            {
-                title: col_name.title,
-                dataIndex: col_name.dataIndex,
-                align: col_name.align,
-                render: name => generateName(name)
-            },
-            {
-                title: col_cost.title,
-                dataIndex: col_cost.dataIndex,
-                align: col_cost.align
-            },
-            {
-                title: col_hp.title,
-                dataIndex: col_hp.dataIndex,
-                align: col_hp.align
-            },
-            {
-                title: col_resistance.title,
-                dataIndex: col_resistance.dataIndex,
-                align: col_resistance.align
-            },
-            {
-                title: col_description.title,
-                dataIndex: col_description.dataIndex,
-                render: description => generateDescription(description)
-            },
-            {
-                title: col_image.title,
-                dataIndex: col_image.dataIndex,
-                align: col_image.align,
-                render: image => generateImage(image)
-            }
-        ];
+        tableColumns = nationsColumnsStructure;
 
         return (
             <Content style={styles.content}>
@@ -122,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NationsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(TzarNationsTable);
