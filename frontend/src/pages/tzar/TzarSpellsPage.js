@@ -8,7 +8,7 @@ import styles from "../../styles/styles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-import TzarSpellsTable from "./data/TzarSpellsTable";
+import SpellsTable from "./data/SpellsTable";
 
 import { Layout } from "antd";
 
@@ -24,7 +24,7 @@ export default function TzarSpellsPage(props) {
             />
             <PageHeaderComponent allocationKey={TZAR_SPELLS} />
             <PageContentComponent allocationKey={TZAR_SPELLS} />
-            <TzarSpellsTable />
+            <SpellsTable />
         </Layout>
     );
 }

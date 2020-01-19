@@ -8,7 +8,7 @@ import styles from "../../styles/styles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-import TzarUnitsTable from "./data/TzarUnitsTable";
+import UnitsTable from "./data/UnitsTable";
 
 import { Layout } from "antd";
 
@@ -24,7 +24,7 @@ export default function TzarUnitsPage(props) {
             />
             <PageHeaderComponent allocationKey={TZAR_UNITS} />
             <PageContentComponent allocationKey={TZAR_UNITS} />
-            <TzarUnitsTable />
+            <UnitsTable />
         </Layout>
     );
 }

@@ -5,12 +5,12 @@ import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
 import { spellsColumnsStructure } from "./ColumnsData";
-import { generateName } from "./SpellsGenerators";
+import { generateName } from "./SpellsDataGenerators";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;
 
-class TzarSpellsTable extends Component {
+class SpellsTable extends Component {
     state = {
         tableColumns: [],
         tableData: []
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TzarSpellsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(SpellsTable);

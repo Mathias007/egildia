@@ -4,50 +4,44 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { nationsColumnsStructure } from "./ColumnsData";
-import {
-    generateName,
-    generateDescription,
-    generateImage
-} from "./NationsGenerators";
+import { technologiesColumnsStructure } from "./ColumnsData";
+import { generateName, generateImage } from "./TechnologiesDataGenerators";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;
 
-class TzarNationsTable extends Component {
+class TechnologiesTable extends Component {
     state = {
         tableColumns: [],
         tableData: []
     };
 
     componentDidMount() {
-        this.props.showNations();
+        this.props.showTechnologies();
     }
 
-    renderNations() {
-        let { nations } = this.props;
+    renderTechnologies() {
+        let { technologies } = this.props;
 
-        if (nations) {
-            return nations.map((nation, index) => {
+        if (technologies) {
+            return technologies.map((technology, index) => {
                 const {
                     _id,
                     nacja,
                     nazwa,
                     cena,
-                    hp,
-                    odpornosc,
                     dzialanie,
-                    wymagania,
+                    budynek,
                     grafika
-                } = nation;
+                } = technology;
                 return {
                     key: _id,
-                    name: [nacja, nazwa, grafika],
+                    image: grafika,
+                    name: nazwa,
                     cost: cena,
-                    hp: hp,
-                    resistance: odpornosc,
-                    description: [dzialanie, wymagania],
-                    image: [nacja, grafika]
+                    description: dzialanie,
+                    building: budynek,
+                    nation: nacja
                 };
             });
         }
@@ -56,18 +50,24 @@ class TzarNationsTable extends Component {
     render() {
         let { tableColumns, tableData } = this.state;
 
-        tableData = this.renderNations();
+        tableData = this.renderTechnologies();
 
         const {
+            col_image,
             col_name,
             col_cost,
-            col_hp,
-            col_resistance,
+            col_building,
             col_description,
-            col_image
-        } = nationsColumnsStructure;
+            col_nation
+        } = technologiesColumnsStructure;
 
         tableColumns = [
+            {
+                title: col_image.title,
+                dataIndex: col_image.dataIndex,
+                align: col_image.align,
+                render: image => generateImage(image)
+            },
             {
                 title: col_name.title,
                 dataIndex: col_name.dataIndex,
@@ -80,25 +80,19 @@ class TzarNationsTable extends Component {
                 align: col_cost.align
             },
             {
-                title: col_hp.title,
-                dataIndex: col_hp.dataIndex,
-                align: col_hp.align
-            },
-            {
-                title: col_resistance.title,
-                dataIndex: col_resistance.dataIndex,
-                align: col_resistance.align
+                title: col_building.title,
+                dataIndex: col_building.dataIndex,
+                align: col_building.align
             },
             {
                 title: col_description.title,
                 dataIndex: col_description.dataIndex,
-                render: description => generateDescription(description)
+                align: col_description.align
             },
             {
-                title: col_image.title,
-                dataIndex: col_image.dataIndex,
-                align: col_image.align,
-                render: image => generateImage(image)
+                title: col_nation.title,
+                dataIndex: col_nation.dataIndex,
+                align: col_nation.align
             }
         ];
 
@@ -112,14 +106,17 @@ class TzarNationsTable extends Component {
 
 const mapStateToProps = state => {
     return {
-        nations: state.tzar.nations
+        technologies: state.tzar.technologies
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        showNations: () => dispatch(tzar.showNations())
+        showTechnologies: () => dispatch(tzar.showTechnologies())
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TzarNationsTable);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TechnologiesTable);

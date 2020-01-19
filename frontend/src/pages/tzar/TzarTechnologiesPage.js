@@ -8,7 +8,7 @@ import styles from "../../styles/styles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-import TzarTechnologiesTable from "./data/TzarTechnologiesTable";
+import TechnologiesTable from "./data/TechnologiesTable";
 
 import { Layout } from "antd";
 
@@ -24,7 +24,7 @@ export default function TzarTechnologiesPage(props) {
             />
             <PageHeaderComponent allocationKey={TZAR_TECHNOLOGIES} />
             <PageContentComponent allocationKey={TZAR_TECHNOLOGIES} />
-            <TzarTechnologiesTable />
+            <TechnologiesTable />
         </Layout>
     );
 }

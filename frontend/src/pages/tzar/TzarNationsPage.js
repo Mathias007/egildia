@@ -8,7 +8,7 @@ import styles from "../../styles/styles";
 import BreadcrumbComponent from "../global/BreadcrumbComponent";
 import PageHeaderComponent from "../components/PageHeaderComponent";
 import PageContentComponent from "../components/PageContentComponent";
-import TzarNationsTable from "./data/TzarNationsTable";
+import NationsTable from "./data/NationsTable";
 
 import { Layout } from "antd";
 
@@ -24,7 +24,7 @@ export default function TzarNationsPage(props) {
             />
             <PageHeaderComponent allocationKey={TZAR_NATIONS} />
             <PageContentComponent allocationKey={TZAR_NATIONS} />
-            <TzarNationsTable />
+            <NationsTable />
         </Layout>
     );
 }
