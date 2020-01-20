@@ -5,18 +5,18 @@ import moment from "moment";
 import "moment/locale/pl";
 
 import { news } from "../../../_store/_actions";
-
-import { Avatar, Button, Card, Divider, Icon, Layout } from "antd";
+import { dateFormat } from "../../../_config/globalContentVariables";
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
+import { generateOptions } from "../../admin/data/AdminDataGenerators";
+import ButtonComponent from "../../components/ButtonComponent";
+
+import { Avatar, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;
 const { Content } = Layout;
 
-const buttonData = {
-    icon: "file-add",
-    type: "primary",
-    text: "Dodaj wpis"
-};
+const { NEWS } = linksPaths;
 
 class NewsPageContent extends Component {
     componentDidMount() {
@@ -45,20 +45,11 @@ class NewsPageContent extends Component {
                             this.props.isAuthenticated ? (
                                 <div key={_id}>
                                     <strong>Opcje</strong>
-                                    <Divider type="vertical" />
-                                    <Link
-                                        key={`edit-${_id}`}
-                                        to={`admin/news/edit/${_id}`}
-                                    >
-                                        <Icon type="edit" />
-                                    </Link>
-                                    <Divider type="vertical" />
-                                    <Link
-                                        key={`remove-${_id}`}
-                                        to={`admin/news/remove/${_id}`}
-                                    >
-                                        <Icon type="delete" />
-                                    </Link>
+                                    {generateOptions(
+                                        NEWS.EDIT,
+                                        NEWS.REMOVE,
+                                        _id
+                                    )}
                                 </div>
                             ) : null
                         }
@@ -67,7 +58,7 @@ class NewsPageContent extends Component {
                                 <Icon type="idcard" /> Komentarze:{" "}
                                 <strong>brak</strong>
                             </span>,
-                            <Link to={`news/${_id}`}>
+                            <Link to={`${NEWS.SINGLE}/${_id}`}>
                                 <Icon type="arrow-right" /> Przejdź do wpisu
                             </Link>
                         ]}
@@ -81,7 +72,8 @@ class NewsPageContent extends Component {
                             description={
                                 <>
                                     <span>
-                                        Dodano: {moment(date).format("LLLL")}
+                                        Dodano:{" "}
+                                        {moment(date).format(dateFormat)}
                                     </span>
                                     <Divider type="vertical" />
                                     <span>
@@ -101,17 +93,19 @@ class NewsPageContent extends Component {
     }
 
     render() {
-        const { icon, type, text } = buttonData;
         return (
             <Content style={styles.content}>
                 <Card
                     title="Aktualności"
                     extra={
                         this.props.isAuthenticated ? (
-                            <Link to="admin/news/add">
-                                <Button icon={icon} type={type}>
-                                    {text}
-                                </Button>
+                            <Link to={NEWS.ADD}>
+                                <ButtonComponent
+                                    composition="nowrap"
+                                    icon="file-add"
+                                    text="Dodaj wpis"
+                                    type="primary"
+                                />
                             </Link>
                         ) : null
                     }

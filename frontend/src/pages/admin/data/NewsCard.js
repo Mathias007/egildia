@@ -5,7 +5,7 @@ import moment from "moment";
 import "moment/locale/pl";
 
 import { news } from "../../../_store/_actions";
-import {dateFormat} from "../../../_config/globalContentVariables"
+import { dateFormat } from "../../../_config/globalContentVariables";
 import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
@@ -62,7 +62,9 @@ class NewsCard extends Component {
                     }
                     description={
                         <>
-                            <span>Dodano: {moment(date).format(dateFormat)}</span>
+                            <span>
+                                Dodano: {moment(date).format(dateFormat)}
+                            </span>
                             <Divider type="vertical" />
                             <span>
                                 Autor: <strong>{author}</strong>
