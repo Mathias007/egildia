@@ -1,25 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import moment from "moment";
+import { generateDate, generateOptions } from "./AdminDataGenerators";
 
-import { Divider, Icon } from "antd";
-
-const generateDate = date => moment(date).format("LLLL");
-
-const generateOptions = id => {
-    return (
-        <>
-            <Divider type="vertical" />
-            <Link to={`news/edit/${id}`}>
-                <Icon type="edit" />
-            </Link>
-            <Divider type="vertical" />
-            <Link to={`news/remove/${id}`}>
-                <Icon type="delete" />
-            </Link>
-        </>
-    );
-};
+import linksPaths from "../../../_config/linksPaths";
+const { NEWS } = linksPaths;
 
 export const newsColumnsStructure = [
     {
@@ -57,6 +39,6 @@ export const newsColumnsStructure = [
         title: "Opcje",
         dataIndex: "options",
         align: "left",
-        render: id => generateOptions(id)
+        render: id => generateOptions(NEWS.EDIT, NEWS.REMOVE, id)
     }
 ];

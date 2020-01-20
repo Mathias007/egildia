@@ -142,7 +142,7 @@ class App extends Component {
                                         path={NEWS.MAIN}
                                         component={NewsList}
                                     />
-                                    <PrivateRoute
+                                    <Route
                                         path={NEWS.SINGLE}
                                         component={NewsSingleCard}
                                     />
