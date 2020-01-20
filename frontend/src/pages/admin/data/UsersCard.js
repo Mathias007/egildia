@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/pl";
 
+import { users } from "../../../_store/_actions";
 import {
+    dateFormat,
     passwordPattern,
     siteRoles
 } from "../../../_config/globalContentVariables";
-import { users } from "../../../_store/_actions";
-
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
@@ -17,6 +18,8 @@ import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
 import { Avatar, Card, Form } from "antd";
 const { Meta } = Card;
+
+const { USERS } = linksPaths;
 
 class UsersCard extends Component {
     handleSubmit = e => {
@@ -61,7 +64,7 @@ class UsersCard extends Component {
                     }
                     description={
                         <span>
-                            Data rejestracji: {moment(date).format("LLLL")}
+                            Data rejestracji: {moment(date).format(dateFormat)}
                         </span>
                     }
                 />
@@ -118,7 +121,7 @@ class UsersCard extends Component {
 
                     <ButtonComponent
                         composition="double"
-                        cancelLink="/admin/users"
+                        cancelLink={USERS.MAIN}
                         cancelText="Zrezygnuj"
                         htmlType="submit"
                         icon="user"

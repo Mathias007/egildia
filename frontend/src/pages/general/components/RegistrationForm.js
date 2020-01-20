@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { passwordPattern } from "../../../_config/globalContentVariables";
 import { users } from "../../../_store/_actions";
-
+import { passwordPattern } from "../../../_config/globalContentVariables";
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
@@ -13,6 +13,8 @@ import ButtonComponent from "../../components/ButtonComponent";
 import { Checkbox, Form, Layout } from "antd";
 const { Item } = Form;
 const { Content } = Layout;
+
+const { GENERAL } = linksPaths;
 
 class RegistrationForm extends Component {
     state = {
@@ -152,7 +154,7 @@ class RegistrationForm extends Component {
                     </Item>
                     <Item {...tailFormItemLayout}>
                         Posiadasz konto w serwisie?{" "}
-                        <Link to="login">Zaloguj się</Link>
+                        <Link to={GENERAL.LOGIN}>Zaloguj się</Link>
                     </Item>
                 </Form>
             </Content>

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { users } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { usersColumnsStructure } from "./UsersDataGenerators";
+import { usersColumnsStructure } from "./usersColumnsStructure";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;

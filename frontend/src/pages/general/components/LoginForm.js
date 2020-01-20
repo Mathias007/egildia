@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { auth } from "../../../_store/_actions";
+import linksPaths from "../../../_config/linksPaths";
+import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
 
 import { Checkbox, Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Item } = Form;
 const { Content } = Layout;
+
+const { GENERAL } = linksPaths;
 
 class LoginForm extends Component {
     handleSubmit = e => {
@@ -68,7 +70,7 @@ class LoginForm extends Component {
                     </Item>
                     <Item>
                         Nie masz konta?{" "}
-                        <Link to="/register">Zarejestruj się</Link>
+                        <Link to={GENERAL.REGISTER}>Zarejestruj się</Link>
                     </Item>
                 </Form>
             </Content>

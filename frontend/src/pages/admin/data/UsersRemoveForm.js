@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { users } from "../../../_store/_actions";
+import linksPaths from "../../../_config/linksPaths";
+import styles from "../../../styles/styles";
 
 import ButtonComponent from "../../components/ButtonComponent";
 import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
 import { Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Content } = Layout;
+
+const { USERS } = linksPaths;
 
 class UsersRemoveForm extends Component {
     handleDeletingSubmit = e => {
@@ -29,7 +31,7 @@ class UsersRemoveForm extends Component {
 
                 <ButtonComponent
                     composition="double"
-                    cancelLink="/admin/users"
+                    cancelLink={USERS.MAIN}
                     cancelText="Zrezygnuj"
                     htmlType="submit"
                     icon="user-delete"

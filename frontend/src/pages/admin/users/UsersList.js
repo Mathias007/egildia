@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import linksPaths from "../../../_config/linksPaths";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
@@ -9,9 +11,9 @@ import ButtonComponent from "../../components/ButtonComponent";
 import UsersTable from "../data/UsersTable";
 
 import { Layout } from "antd";
-import styles from "../../../styles/styles";
 
 const { ADMIN_USERS, LIST } = navigationTitles;
+const { USERS } = linksPaths;
 
 class UsersList extends Component {
     render() {
@@ -25,7 +27,7 @@ class UsersList extends Component {
                 <PageHeaderComponent
                     isAdminComponent
                     button={
-                        <Link to="users/add">
+                        <Link to={USERS.ADD}>
                             <ButtonComponent
                                 icon="user-add"
                                 text="Dodaj użytkownika"
