@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { news } from "../../../_store/_actions";
+import linksPaths from "../../../_config/linksPaths";
+import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
 import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
 import { Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Content } = Layout;
+
+const { NEWS } = linksPaths;
 
 class NewsEditForm extends Component {
     handleSubmit = e => {
@@ -90,7 +92,7 @@ class NewsEditForm extends Component {
 
                     <ButtonComponent
                         composition="double"
-                        cancelLink="/admin/news"
+                        cancelLink={NEWS.MAIN}
                         cancelText="Zrezygnuj"
                         htmlType="submit"
                         icon="edit"

@@ -5,11 +5,16 @@ import moment from "moment";
 import "moment/locale/pl";
 
 import { news } from "../../../_store/_actions";
-
-import { Avatar, Card, Divider, Icon } from "antd";
+import {dateFormat} from "../../../_config/globalContentVariables"
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
+import { generateOptions } from "./AdminDataGenerators";
+
+import { Avatar, Card, Divider, Icon } from "antd";
 const { Meta } = Card;
+
+const { GENERAL, NEWS } = linksPaths;
 
 class NewsCard extends Component {
     render() {
@@ -28,7 +33,7 @@ class NewsCard extends Component {
                 style={styles.card}
                 title={
                     <>
-                        <Link to={"/"}>
+                        <Link to={GENERAL.INDEX}>
                             <Icon type="arrow-left" /> Powrót
                         </Link>
                         <Divider type="vertical" />
@@ -39,14 +44,7 @@ class NewsCard extends Component {
                     this.props.isAuthenticated ? (
                         <div>
                             <strong>Opcje</strong>
-                            <Divider type="vertical" />
-                            <Link to={`/admin/news/edit/${_id}`}>
-                                <Icon type="edit" />
-                            </Link>
-                            <Divider type="vertical" />
-                            <Link to={`/admin/news/remove/${_id}`}>
-                                <Icon type="delete" />
-                            </Link>
+                            {generateOptions(NEWS.EDIT, NEWS.REMOVE, _id)}
                         </div>
                     ) : null
                 }
@@ -64,7 +62,7 @@ class NewsCard extends Component {
                     }
                     description={
                         <>
-                            <span>Dodano: {moment(date).format("LLLL")}</span>
+                            <span>Dodano: {moment(date).format(dateFormat)}</span>
                             <Divider type="vertical" />
                             <span>
                                 Autor: <strong>{author}</strong>

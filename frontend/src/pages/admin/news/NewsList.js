@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -12,6 +13,7 @@ import NewsTable from "../data/NewsTable";
 import { Layout } from "antd";
 
 const { ADMIN_NEWS, LIST } = navigationTitles;
+const { NEWS } = linksPaths;
 
 export default function NewsList(props) {
     return (
@@ -24,7 +26,7 @@ export default function NewsList(props) {
             <PageHeaderComponent
                 isAdminComponent
                 button={
-                    <Link to="news/add">
+                    <Link to={NEWS.ADD}>
                         <ButtonComponent
                             icon="file-add"
                             text="Dodaj wpis"
