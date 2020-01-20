@@ -3,23 +3,16 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
+import ButtonComponent from "../../components/ButtonComponent";
 import UsersEditForm from "../data/UsersEditForm";
 
-import { Button, Layout } from "antd";
-import styles from "../../../styles/styles";
+import { Layout } from "antd";
 
 const { ADMIN_USERS, EDITOR } = navigationTitles;
-
-const buttonData = {
-    icon: "user",
-    type: "primary",
-    htmlType: "submit",
-    form: "edit-user-form",
-    text: "Edytuj użytkownika"
-};
 
 class UserEditor extends Component {
     componentDidMount() {
@@ -28,7 +21,6 @@ class UserEditor extends Component {
     }
 
     render() {
-        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={styles.layout}>
                 <BreadcrumbComponent
@@ -39,14 +31,13 @@ class UserEditor extends Component {
                 <PageHeaderComponent
                     isAdminComponent
                     button={
-                        <Button
-                            icon={icon}
-                            type={type}
-                            htmlType={htmlType}
-                            form={form}
-                        >
-                            {text}
-                        </Button>
+                        <ButtonComponent
+                            form="edit-user-form"
+                            htmlType="submit"
+                            icon="user"
+                            text="Edytuj użytkownika"
+                            type="primary"
+                        />
                     }
                 />
                 <UsersEditForm idParam={this.props.match.params._id} />
