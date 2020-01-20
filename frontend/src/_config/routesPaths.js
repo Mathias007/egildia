@@ -8,8 +8,6 @@ const {
     ADD,
     EDIT,
     REMOVE,
-    // SINGLE,
-    // LIST,
     ID_PARAM,
     LOGIN,
     REGISTER,

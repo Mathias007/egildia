@@ -2,6 +2,8 @@ export const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{7,}$/g;
 // eslint-disable-next-line
 export const textBetweenTags = /[^<\}]+(?=>)/g;
 
+export const dateFormat = "LLLL";
+
 // user roles on the site
 export const siteRoles = ["USER", "ADMIN", "WRITER"];
 
@@ -19,5 +21,5 @@ export const inputFieldTypes = {
 export const buttonCompositionVariations = {
     single: "single",
     single_nowrap: "nowrap",
-    double: "double",
-}
+    double: "double"
+};
