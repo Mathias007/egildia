@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
 import NewsRemoveForm from "../data/NewsRemoveForm";
 
 import { Layout } from "antd";
-import styles from "../../../styles/styles";
 
 const { ADMIN_NEWS, REMOVER } = navigationTitles;
 

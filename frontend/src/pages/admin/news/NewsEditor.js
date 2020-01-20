@@ -3,23 +3,16 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
+import ButtonComponent from "../../components/ButtonComponent";
 import NewsEditForm from "../data/NewsEditForm";
 
-import { Button, Layout } from "antd";
-import styles from "../../../styles/styles";
+import { Layout } from "antd";
 
 const { ADMIN_NEWS, EDITOR } = navigationTitles;
-
-const buttonData = {
-    icon: "edit",
-    type: "primary",
-    htmlType: "submit",
-    form: "edit-news-form",
-    text: "Edytuj wpis"
-};
 
 class NewsEditor extends Component {
     componentDidMount() {
@@ -28,7 +21,6 @@ class NewsEditor extends Component {
     }
 
     render() {
-        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={styles.layout}>
                 <BreadcrumbComponent
@@ -39,14 +31,13 @@ class NewsEditor extends Component {
                 <PageHeaderComponent
                     isAdminComponent
                     button={
-                        <Button
-                            icon={icon}
-                            type={type}
-                            htmlType={htmlType}
-                            form={form}
-                        >
-                            {text}
-                        </Button>
+                        <ButtonComponent
+                            form="edit-news-form"
+                            htmlType="submit"
+                            icon="edit"
+                            text="Edytuj wpis"
+                            type="primary"
+                        />
                     }
                 />
                 <NewsEditForm idParam={this.props.match.params._id} />

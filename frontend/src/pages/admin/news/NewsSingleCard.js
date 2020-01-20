@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import NewsCard from "../data/NewsCard";
 
 import { Layout } from "antd";
-import styles from "../../../styles/styles";
 
 const { ADMIN_NEWS } = navigationTitles;
 
