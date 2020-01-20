@@ -3,23 +3,16 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { articles } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
+import ButtonComponent from "../../components/ButtonComponent";
 import ArticlesEditForm from "../data/ArticlesEditForm";
 
-import { Button, Layout } from "antd";
-import styles from "../../../styles/styles";
+import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, EDITOR } = navigationTitles;
-
-const buttonData = {
-    icon: "edit",
-    type: "primary",
-    htmlType: "submit",
-    form: "edit-article-form",
-    text: "Edytuj artykuł"
-};
 
 class ArticleEditor extends Component {
     componentDidMount() {
@@ -27,7 +20,6 @@ class ArticleEditor extends Component {
         this.props.showProperArticle(this.props.match.params._id);
     }
     render() {
-        const { icon, type, htmlType, form, text } = buttonData;
         return (
             <Layout style={styles.layout}>
                 <BreadcrumbComponent
@@ -39,14 +31,14 @@ class ArticleEditor extends Component {
                 <PageHeaderComponent
                     isAdminComponent
                     button={
-                        <Button
-                            icon={icon}
-                            type={type}
-                            htmlType={htmlType}
-                            form={form}
-                        >
-                            {text}
-                        </Button>
+                        <ButtonComponent
+                        composition="nowrap"
+                        icon="edit"
+                        type="primary"
+                        htmlType="submit"
+                        form="edit-article-form"
+                        text="Edytuj artykuł"
+                    />
                     }
                 />
 

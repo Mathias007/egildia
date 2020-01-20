@@ -1,26 +1,18 @@
 import React from "react";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
+import ButtonComponent from "../../components/ButtonComponent";
 import ArticlesAddForm from "../data/ArticlesAddForm";
 
-import { Button, Layout } from "antd";
-import styles from "../../../styles/styles";
+import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, CREATOR } = navigationTitles;
 
-const buttonData = {
-    icon: "file-add",
-    type: "primary",
-    htmlType: "submit",
-    form: "add-article-form",
-    text: "Dodaj artykuł"
-};
-
 export default function ArticleCreator(props) {
-    const { icon, type, htmlType, form, text } = buttonData;
     return (
         <Layout style={styles.layout}>
             <BreadcrumbComponent
@@ -31,14 +23,14 @@ export default function ArticleCreator(props) {
             <PageHeaderComponent
                 isAdminComponent
                 button={
-                    <Button
-                        icon={icon}
-                        type={type}
-                        htmlType={htmlType}
-                        form={form}
-                    >
-                        {text}
-                    </Button>
+                    <ButtonComponent
+                        composition="nowrap"
+                        icon="file-add"
+                        type="primary"
+                        htmlType="submit"
+                        form="add-article-form"
+                        text="Dodaj artykuł"
+                    />
                 }
             />
             <ArticlesAddForm />

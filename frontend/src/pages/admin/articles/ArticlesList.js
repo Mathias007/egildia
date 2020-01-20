@@ -2,24 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
 import PageHeaderComponent from "../../components/PageHeaderComponent";
+import ButtonComponent from "../../components/ButtonComponent";
 import ArticlesTable from "../data/ArticlesTable";
 
-import { Button, Layout } from "antd";
-import styles from "../../../styles/styles";
+import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, LIST } = navigationTitles;
 
-const buttonData = {
-    icon: "file-add",
-    type: "primary",
-    text: "Dodaj artykuł"
-};
-
-export default function ArticlesList() {
-    const { icon, type, text } = buttonData;
+export default function ArticlesList(props) {
     return (
         <Layout style={styles.layout}>
             <BreadcrumbComponent
@@ -31,9 +25,11 @@ export default function ArticlesList() {
                 isAdminComponent
                 button={
                     <Link to="articles/add">
-                        <Button icon={icon} type={type}>
-                            {text}
-                        </Button>
+                        <ButtonComponent
+                            icon="file-add"
+                            type="primary"
+                            text="Dodaj artykuł"
+                        />
                     </Link>
                 }
             />
