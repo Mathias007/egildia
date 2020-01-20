@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { articles } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { articlesColumnsStructure } from "./ArticlesDataGenerators";
+import { articlesColumnsStructure } from "./articlesColumnsStructure";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;

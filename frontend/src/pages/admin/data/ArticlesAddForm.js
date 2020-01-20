@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { articles } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
 import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
 import { Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Content } = Layout;
 
 class ArticlesAddForm extends Component {

@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { articles } from "../../../_store/_actions";
+import linksPaths from "../../../_config/linksPaths";
+import styles from "../../../styles/styles";
 
 import ButtonComponent from "../../components/ButtonComponent";
 import ErrorMessageComponent from "../../components/ErrorMessageComponent";
 
 import { Form, Layout } from "antd";
-import styles from "../../../styles/styles";
-
 const { Content } = Layout;
+
+const { ARTICLES } = linksPaths;
 
 class ArticlesRemoveForm extends Component {
     handleDeletingSubmit = e => {
@@ -28,7 +30,7 @@ class ArticlesRemoveForm extends Component {
                 </p>
                 <ButtonComponent
                     composition="double"
-                    cancelLink="/admin/articles"
+                    cancelLink={ARTICLES.MAIN}
                     cancelText="Zrezygnuj"
                     htmlType="submit"
                     icon="delete"

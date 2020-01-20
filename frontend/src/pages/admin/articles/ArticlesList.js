@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -12,6 +13,7 @@ import ArticlesTable from "../data/ArticlesTable";
 import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, LIST } = navigationTitles;
+const { ARTICLES } = linksPaths;
 
 export default function ArticlesList(props) {
     return (
@@ -24,7 +26,7 @@ export default function ArticlesList(props) {
             <PageHeaderComponent
                 isAdminComponent
                 button={
-                    <Link to="articles/add">
+                    <Link to={ARTICLES.ADD}>
                         <ButtonComponent
                             icon="file-add"
                             type="primary"
