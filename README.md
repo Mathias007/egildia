@@ -495,3 +495,11 @@
         + Po czwarte, zatrzymana została inflacja kodu, staram się w jak największym stopniu unifikować te fragmenty, które w różnych komponentach są tożsame. Ponadto upraszczam te, które zanadto się przekomplikowały w trakcie pisania.
         + Po piąte, za standaryzacją struktur i funkcjonalności podąża standaryzacja nazw plików i obiektów. 
  
+ ## Poniedziałek 20.01.2020 - przyciski i linki
+    **FRONTEND**:
+        - przebudowa ButtonComponent - przeniesienie funkcji kreujących poszczególne kompozycje do odrębnego pliku, zastosowanie switcha oraz przeniesienie zmiennych określających kompozycję do odpowiedniego pliku konfiguracyjnego;
+        - implementacja ButtonComponent w pozostałych plikach projektu - sekcjach administracyjnych (articles, news, users) i generalnych (login, register, index);
+        - refaktoryzacja ścieżek Linków na wzór Route'ów - utworzenie pliku konfiguracyjnego linksPaths, w których tworzone są poszczególne ścieżki z fragmentów pobranych z addressFragments;
+        - implementacja linksPaths w plikach projektu - sekcjach administracyjnych i generalnych;
+        - unifikacja funkcji generujących DOM w tabelach sekcji administracyjnych w pliku AdminDataGenerators, zmiana nazw plików ze strukturami kolumn (rozmieszczenie elementów systemu jest zatem nieco inne niż w przypadku tabel sekcji merytorycznych, ale ma to swoje uzasadnienie);
+        - inne drobne poprawki i refactoring (np. format daty w zmiennej konfiguracyjnej).
