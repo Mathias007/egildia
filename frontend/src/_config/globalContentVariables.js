@@ -14,3 +14,10 @@ export const inputFieldTypes = {
     select: "select",
     textarea: "text-area"
 };
+
+// composition variations available in ButtonComponent
+export const buttonCompositionVariations = {
+    single: "single",
+    single_nowrap: "nowrap",
+    double: "double",
+}
