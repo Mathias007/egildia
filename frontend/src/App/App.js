@@ -14,6 +14,10 @@ import FooterComponent from "../pages/global/FooterComponent";
 import HeaderComponent from "../pages/global/HeaderComponent";
 import SidebarComponent from "../pages/global/SidebarComponent";
 
+// error imports
+import NotFound from "../pages/errors/NotFound";
+import ErrorPage from "../pages/errors/ErrorPage";
+
 // general imports
 import NewsPage from "../pages/general/NewsPage";
 import LoginPage from "../pages/general/LoginPage";
@@ -106,6 +110,7 @@ class App extends Component {
                                         path={GENERAL.INDEX}
                                         component={NewsPage}
                                     />
+
                                     <Route
                                         exact
                                         path={GENERAL.LOGIN}
