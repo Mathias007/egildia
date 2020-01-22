@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterComponent test FooterComponent should match snapshot 1`] = `
+<footer
+  className="ant-layout-footer"
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <p>
+    © 2019-
+    2020
+     
+    <a
+      href="https://egildia.pl"
+    >
+      egildia.pl
+    </a>
+    <br />
+    Created by Mateusz Mathias Stawowski
+  </p>
+</footer>
+`;
