@@ -503,3 +503,15 @@
         - implementacja linksPaths w plikach projektu - sekcjach administracyjnych i generalnych;
         - unifikacja funkcji generujących DOM w tabelach sekcji administracyjnych w pliku AdminDataGenerators, zmiana nazw plików ze strukturami kolumn (rozmieszczenie elementów systemu jest zatem nieco inne niż w przypadku tabel sekcji merytorycznych, ale ma to swoje uzasadnienie);
         - inne drobne poprawki i refactoring (np. format daty w zmiennej konfiguracyjnej).
+
+## Wtorek 21.01.2020 - obsługa statusów i początek testów komponentów
+    **FRONTEND**: 
+        - dodanie podstawowej struktury komponentów, które mają docelowo obsługiwać określone statusy/błędy, bazujące na <Result> (antd);
+        - research oraz pierwsze kroki w kierunku przygotowania testów poszczególnych komponentów projektu.
+
+## Środa 22.01.2020 - prace nad statusami i testami komponentów
+    **FRONTEND**:
+        - dodanie do dispatchów akcji reduxa przekazywania statusów, celem ich wykorzystania w reducerach, a następnie w komponentach;
+        - rozbudowywanie komponentów błędów (katalog errors);
+        - przygotowanie najbardziej podstawowej struktury testów JEST dla komponentów (bez contextu i specyfiki, zatem większość jeszcze nie przechodzi), z wykorzystaniem doinstalowanej metody **renderer**.
+        
