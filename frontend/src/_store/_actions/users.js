@@ -29,17 +29,26 @@ export const showUsersList = () => {
         const dispatchUsersListLoaded = function(response) {
             dispatch({
                 type: USERS_LIST_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchUsersAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUsersNotFound = function(response) {
-            dispatch({ type: USERS_LIST_NOT_FOUND, data: response.data });
+            dispatch({
+                type: USERS_LIST_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
         };
 
         return getAllUsers(
@@ -55,17 +64,26 @@ export const showUserProfile = id => {
         const dispatchSingleUserLoaded = function(response) {
             dispatch({
                 type: USER_SUCCESSFULLY_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchUserAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUserNotFound = function(response) {
-            dispatch({ type: USER_NOT_FOUND, data: response.data });
+            dispatch({
+                type: USER_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -85,7 +103,8 @@ export const register = (name, email, password, role, date, remember) => {
                 type: USER_ADDED,
                 data: response.data,
                 name: name,
-                remember
+                remember,
+                status: response.status
             });
             dispatch({
                 type: USER_LOADED,
@@ -99,7 +118,8 @@ export const register = (name, email, password, role, date, remember) => {
         const dispatchRegistrationError = function(response) {
             dispatch({
                 type: AUTHENTICATION_ERROR,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             throw response.data;
         };
@@ -107,7 +127,8 @@ export const register = (name, email, password, role, date, remember) => {
         const dispatchRegistrationFailed = function(response) {
             dispatch({
                 type: USER_ADDING_FAILED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             throw response.data;
         };
@@ -130,18 +151,27 @@ export const editSelectedUser = (id, name, email, password, role, date) => {
         const dispatchUserEdited = function(response) {
             dispatch({
                 type: USER_SUCCESFULLY_EDITED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchUserAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUserEditingFailed = function(response) {
-            dispatch({ type: USER_EDITING_FAILED, data: response.data });
+            dispatch({
+                type: USER_EDITING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -164,18 +194,27 @@ export const deleteSelectedUser = id => {
         const dispatchUserDeleted = function(response) {
             dispatch({
                 type: USER_SUCCESFULLY_DELETED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchUserAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUserDeletingFailed = function(response) {
-            dispatch({ type: USER_DELETING_FAILED, data: response.data });
+            dispatch({
+                type: USER_DELETING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 

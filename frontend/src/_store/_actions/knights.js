@@ -15,17 +15,26 @@ export const showBuildings = () => {
         const dispatchBuildingsListLoaded = function(response) {
             dispatch({
                 type: KAM_BUILDINGS_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchBuildingsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchBuildingsNotFound = function(response) {
-            dispatch({ type: KAM_BUILDINGS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: KAM_BUILDINGS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -42,17 +51,26 @@ export const showUnits = () => {
         const dispatchUnitsListLoaded = function(response) {
             dispatch({
                 type: KAM_UNITS_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchUnitsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUnitsNotFound = function(response) {
-            dispatch({ type: KAM_UNITS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: KAM_UNITS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 

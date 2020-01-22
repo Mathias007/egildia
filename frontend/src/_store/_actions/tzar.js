@@ -24,17 +24,26 @@ export const showNations = () => {
         const dispatchNationsListLoaded = function(response) {
             dispatch({
                 type: TZAR_NATIONS_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchNationsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNationsNotFound = function(response) {
-            dispatch({ type: TZAR_NATIONS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: TZAR_NATIONS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -51,17 +60,26 @@ export const showSpells = () => {
         const dispatchSpellsListLoaded = function(response) {
             dispatch({
                 type: TZAR_SPELLS_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchSpellsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchSpellsNotFound = function(response) {
-            dispatch({ type: TZAR_SPELLS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: TZAR_SPELLS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -78,19 +96,25 @@ export const showTechnologies = () => {
         const dispatchTechnologiesListLoaded = function(response) {
             dispatch({
                 type: TZAR_TECHNOLOGIES_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchTechnologiesAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchTechnologiesNotFound = function(response) {
             dispatch({
                 type: TZAR_TECHNOLOGIES_NOT_FOUND,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             throw response.data;
         };
@@ -108,17 +132,26 @@ export const showUnits = () => {
         const dispatchUnitsListLoaded = function(response) {
             dispatch({
                 type: TZAR_UNITS_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchUnitsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchUnitsNotFound = function(response) {
-            dispatch({ type: TZAR_UNITS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: TZAR_UNITS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 

@@ -7,7 +7,7 @@ const {
     LOGIN_SUCCESSFUL,
     LOGIN_FAILED,
     LOGOUT_SUCCESSFUL,
-    AUTHENTICATION_ERROR,
+    AUTHENTICATION_ERROR
 } = eventStatuses.auth;
 
 export const login = (name, password, stayLogged) => {
@@ -17,20 +17,22 @@ export const login = (name, password, stayLogged) => {
                 type: LOGIN_SUCCESSFUL,
                 data: response.data,
                 name,
-                stayLogged
+                stayLogged,
+                status: response.status
             });
             dispatch({
                 type: USER_LOADED,
                 name: name
             });
 
-            return (response.data, name, stayLogged);
+            return response.data, name, stayLogged;
         };
 
         const dispatchUserAuthError = function(response) {
             dispatch({
                 type: AUTHENTICATION_ERROR,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
 
             throw response.data;
@@ -39,7 +41,8 @@ export const login = (name, password, stayLogged) => {
         const dispatchLoginFailed = function(response) {
             dispatch({
                 type: LOGIN_FAILED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             throw response.data;
         };

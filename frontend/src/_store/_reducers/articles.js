@@ -11,7 +11,7 @@ const {
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
     ARTICLE_DELETING_FAILED,
-    AUTHENTICATION_ERROR,
+    AUTHENTICATION_ERROR
 } = eventStatuses.articles;
 
 const initialState = {

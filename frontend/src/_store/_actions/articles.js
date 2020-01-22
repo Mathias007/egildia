@@ -28,17 +28,26 @@ export const showArticlesList = () => {
         const dispatchArticlesListLoaded = function(response) {
             dispatch({
                 type: ARTS_LIST_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchArticlesAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticlesNotFound = function(response) {
-            dispatch({ type: ARTS_LIST_NOT_FOUND, data: response.data });
+            dispatch({
+                type: ARTS_LIST_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
         };
 
         return getAllArticles(
@@ -54,17 +63,26 @@ export const showAllocatedArticle = allocationKey => {
         const dispatchSingleArticleLoaded = function(response) {
             dispatch({
                 type: ARTICLE_SUCCESSFULLY_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchArticleAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticleNotFound = function(response) {
-            dispatch({ type: ARTICLE_NOT_FOUND, data: response.data });
+            dispatch({
+                type: ARTICLE_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -82,17 +100,26 @@ export const showProperArticle = id => {
         const dispatchSingleArticleLoaded = function(response) {
             dispatch({
                 type: ARTICLE_SUCCESSFULLY_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchArticleAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticleNotFound = function(response) {
-            dispatch({ type: ARTICLE_NOT_FOUND, data: response.data });
+            dispatch({
+                type: ARTICLE_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -110,18 +137,27 @@ export const addNewArticle = (allocationKey, title, content, author, date) => {
         const dispatchArticleAdded = function(response) {
             dispatch({
                 type: ARTICLE_ADDED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchArticleAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticleAddingFailed = function(response) {
-            dispatch({ type: ARTICLE_ADDING_FAILED, data: response.data });
+            dispatch({
+                type: ARTICLE_ADDING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -150,18 +186,27 @@ export const editSelectedArticle = (
         const dispatchArticleEdited = function(response) {
             dispatch({
                 type: ARTICLE_SUCCESFULLY_EDITED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchArticleAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticleEditingFailed = function(response) {
-            dispatch({ type: ARTICLE_EDITING_FAILED, data: response.data });
+            dispatch({
+                type: ARTICLE_EDITING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -184,18 +229,27 @@ export const deleteSelectedArticle = id => {
         const dispatchArticleDeleted = function(response) {
             dispatch({
                 type: ARTICLE_SUCCESFULLY_DELETED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchArticleAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchArticleDeletingFailed = function(response) {
-            dispatch({ type: ARTICLE_DELETING_FAILED, data: response.data });
+            dispatch({
+                type: ARTICLE_DELETING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 

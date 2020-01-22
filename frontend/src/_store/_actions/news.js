@@ -27,17 +27,26 @@ export const showNewsList = () => {
         const dispatchNewsListLoaded = function(response) {
             dispatch({
                 type: NEWS_LIST_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchNewsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNewsNotFound = function(response) {
-            dispatch({ type: NEWS_LIST_NOT_FOUND, data: response.data });
+            dispatch({
+                type: NEWS_LIST_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
         };
 
         return getAllNews(
@@ -53,17 +62,26 @@ export const showProperNews = id => {
         const dispatchSingleNewsLoaded = function(response) {
             dispatch({
                 type: NEWS_SUCCESSFULLY_LOADED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
         };
 
         const dispatchNewsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNewsNotFound = function(response) {
-            dispatch({ type: NEWS_NOT_FOUND, data: response.data });
+            dispatch({
+                type: NEWS_NOT_FOUND,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -81,18 +99,27 @@ export const addSingleNews = (title, content, author, date, category) => {
         const dispatchNewsAdded = function(response) {
             dispatch({
                 type: NEWS_ADDED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchNewsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNewsAddingFailed = function(response) {
-            dispatch({ type: NEWS_ADDING_FAILED, data: response.data });
+            dispatch({
+                type: NEWS_ADDING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -121,18 +148,27 @@ export const editSelectedNews = (
         const dispatchNewsEdited = function(response) {
             dispatch({
                 type: NEWS_SUCCESFULLY_EDITED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchNewsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNewsEditingFailed = function(response) {
-            dispatch({ type: NEWS_EDITING_FAILED, data: response.data });
+            dispatch({
+                type: NEWS_EDITING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
@@ -155,18 +191,27 @@ export const deleteSelectedNews = id => {
         const dispatchNewsDeleted = function(response) {
             dispatch({
                 type: NEWS_SUCCESFULLY_DELETED,
-                data: response.data
+                data: response.data,
+                status: response.status
             });
             return response.data;
         };
 
         const dispatchNewsAuthError = function(response) {
-            dispatch({ type: AUTHENTICATION_ERROR, data: response.data });
+            dispatch({
+                type: AUTHENTICATION_ERROR,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
         const dispatchNewsDeletingFailed = function(response) {
-            dispatch({ type: NEWS_DELETING_FAILED, data: response.data });
+            dispatch({
+                type: NEWS_DELETING_FAILED,
+                data: response.data,
+                status: response.status
+            });
             throw response.data;
         };
 
