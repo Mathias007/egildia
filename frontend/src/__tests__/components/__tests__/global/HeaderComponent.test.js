@@ -1,10 +1,6 @@
-// Auto-generated do not edit
-
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import React from "react";
 import renderer from "react-test-renderer";
-import HeaderComponent from "../../HeaderComponent";
+import HeaderComponent from "../../../../pages/global/HeaderComponent";
 
 describe("HeaderComponent test", () => {
     it("HeaderComponent should match snapshot", () => {

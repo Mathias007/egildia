@@ -4,7 +4,7 @@
 /* eslint-disable no-undef */
 import React from "react";
 import renderer from "react-test-renderer";
-import HeaderLogo from "../../../HeaderLogo";
+import HeaderLogo from "../../../../../pages/global/header/HeaderLogo";
 
 describe("HeaderLogo test", () => {
     it("HeaderLogo should match snapshot", () => {
