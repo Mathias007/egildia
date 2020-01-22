@@ -1,10 +1,6 @@
-// Auto-generated do not edit
-
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import React from "react";
 import renderer from "react-test-renderer";
-import TzarSubmenu from "../../../TzarSubmenu";
+import TzarSubmenu from "../../../../pages/global/sidebar/TzarSubmenu";
 
 describe("TzarSubmenu test", () => {
     it("TzarSubmenu should match snapshot", () => {

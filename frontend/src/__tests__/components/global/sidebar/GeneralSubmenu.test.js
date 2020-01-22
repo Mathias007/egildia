@@ -1,10 +1,6 @@
-// Auto-generated do not edit
-
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import React from "react";
 import renderer from "react-test-renderer";
-import GeneralSubmenu from "../../../GeneralSubmenu";
+import GeneralSubmenu from "../../../../pages/global/sidebar/GeneralSubmenu";
 
 describe("GeneralSubmenu test", () => {
     it("GeneralSubmenu should match snapshot", () => {

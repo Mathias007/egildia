@@ -1,5 +1,5 @@
-import eventStatuses from "../_config/eventStatuses";
-import users from "../_store/_reducers/users";
+import eventStatuses from "../../_config/eventStatuses";
+import users from "../../_store/_reducers/users";
 
 const {
     USER_SUCCESSFULLY_LOADED,

@@ -1,5 +1,5 @@
-import eventStatuses from "../_config/eventStatuses";
-import news from "../_store/_reducers/news";
+import eventStatuses from "../../_config/eventStatuses";
+import news from "../../_store/_reducers/news";
 
 const {
     NEWS_SUCCESSFULLY_LOADED,

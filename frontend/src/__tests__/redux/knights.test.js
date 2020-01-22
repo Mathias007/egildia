@@ -1,5 +1,5 @@
-import eventStatuses from "../_config/eventStatuses";
-import knights from "../_store/_reducers/knights";
+import eventStatuses from "../../_config/eventStatuses";
+import knights from "../../_store/_reducers/knights";
 
 const {
     KAM_BUILDINGS_LOADED,

@@ -1,5 +1,5 @@
-import eventStatuses from "../_config/eventStatuses";
-import tzar from "../_store/_reducers/tzar";
+import eventStatuses from "../../_config/eventStatuses";
+import tzar from "../../_store/_reducers/tzar";
 
 const {
     TZAR_NATIONS_LOADED,
