@@ -105,7 +105,8 @@ export default function articles(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case ARTICLE_DELETING_FAILED:
