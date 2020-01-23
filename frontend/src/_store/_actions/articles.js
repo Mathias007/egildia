@@ -20,7 +20,8 @@ const {
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
     ARTICLE_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.articles;
 
 export const showArticlesList = () => {
@@ -259,5 +260,13 @@ export const deleteSelectedArticle = id => {
             dispatchArticleAuthError,
             dispatchArticleDeletingFailed
         );
+    };
+};
+
+export const cleanServerStatus = () => {
+    return (dispatch, getState) => {
+        return dispatch({
+            type: RESET_STATUS
+        });
     };
 };

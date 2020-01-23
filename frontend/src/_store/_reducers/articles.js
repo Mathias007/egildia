@@ -11,13 +11,15 @@ const {
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
     ARTICLE_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.articles;
 
 const initialState = {
     articles: [],
     properArticle: {},
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 export default function articles(state = initialState, action) {
@@ -61,7 +63,8 @@ export default function articles(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case AUTHENTICATION_ERROR:
@@ -111,6 +114,9 @@ export default function articles(state = initialState, action) {
                 ...action.data,
                 errorMessage: action.data.message
             };
+
+        case RESET_STATUS:
+            return { ...state, status: null };
 
         default:
             return state;
