@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { articles } from "../../../_store/_actions";
+import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -13,12 +14,20 @@ import ArticlesEditForm from "../data/ArticlesEditForm";
 import { Layout } from "antd";
 
 const { ADMIN_ARTICLES, EDITOR } = navigationTitles;
+const { STATUS_OK } = serverStatuses;
 
 class ArticleEditor extends Component {
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperArticle(this.props.match.params._id);
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.status === STATUS_OK) {
+            this.props.showProperArticle(this.props.match.params._id);
+        }
+    }
+
     render() {
         return (
             <Layout style={styles.layout}>
@@ -32,13 +41,13 @@ class ArticleEditor extends Component {
                     isAdminComponent
                     button={
                         <ButtonComponent
-                        composition="nowrap"
-                        icon="edit"
-                        type="primary"
-                        htmlType="submit"
-                        form="edit-article-form"
-                        text="Edytuj artykuł"
-                    />
+                            composition="nowrap"
+                            icon="edit"
+                            type="primary"
+                            htmlType="submit"
+                            form="edit-article-form"
+                            text="Edytuj artykuł"
+                        />
                     }
                 />
 
@@ -49,7 +58,9 @@ class ArticleEditor extends Component {
 }
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        status: state.articles.status
+    };
 };
 
 const mapDispatchToProps = dispatch => {

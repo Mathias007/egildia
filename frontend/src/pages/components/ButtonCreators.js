@@ -41,6 +41,7 @@ export const createSingleNonWrappedButton = props => {
 
 export const createDoubleButton = props => {
     const {
+        cancelClick,
         cancelLink,
         cancelText,
         form,
@@ -67,7 +68,7 @@ export const createDoubleButton = props => {
                 dashed
                 style={styles.hiddenDivider}
             />
-            <Button>
+            <Button onClick={cancelClick}>
                 <Link to={cancelLink}>{cancelText}</Link>
             </Button>
         </Item>
