@@ -1,18 +1,32 @@
 import React from "react";
-import { Result, Button } from "antd";
+import { Link } from "react-router-dom";
+
+import styles from "../../styles/styles";
+
+import { Button, Layout, Result } from "antd";
+const { Content } = Layout;
 
 export default function Success(props) {
     return (
-        <Result
-            status="success"
-            title="Successfully Purchased Cloud Server ECS!"
-            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-            extra={[
-                <Button type="primary" key="console">
-                    Go Console
-                </Button>,
-                <Button key="buy">Buy Again</Button>
-            ]}
-        />
+        <Content style={styles.content}>
+            <Result
+                status="success"
+                title={props.message}
+                subTitle="Czy chcesz kontynuować pracę?"
+                extra={[
+                    <Button
+                        key="continue"
+                        type="primary"
+                        onClick={props.continueFunction}
+                    >
+                        Kontynuuj
+                    </Button>,
+
+                    <Button key="cancel">
+                        <Link to={props.cancelLink}>Zakończ</Link>
+                    </Button>
+                ]}
+            />
+        </Content>
     );
 }
