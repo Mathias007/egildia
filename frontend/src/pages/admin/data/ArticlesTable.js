@@ -20,6 +20,12 @@ class ArticlesTable extends Component {
         console.log(this.props.articles);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.articles.length != prevProps.articles.length) {
+            this.props.showArticlesList();
+        }
+    }
+
     renderArticles() {
         let { articles } = this.props;
 

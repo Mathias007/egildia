@@ -47,6 +47,7 @@ class ArticleEditForm extends Component {
                     message={this.props.errorMessage}
                     continueFunction={this.props.cleanServerStatus}
                     cancelLink={ARTICLES.MAIN}
+                    description="Czy chcesz kontynuować pracę?"
                 />
             );
         else {

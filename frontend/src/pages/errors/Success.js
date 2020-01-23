@@ -7,17 +7,19 @@ import { Button, Layout, Result } from "antd";
 const { Content } = Layout;
 
 export default function Success(props) {
-    const { cancelLink, continueFunction, message, oneButton } = props;
+    const {
+        cancelLink,
+        continueFunction,
+        description,
+        message,
+        oneButton
+    } = props;
     return (
         <Content style={styles.content}>
             <Result
                 status="success"
                 title={message}
-                subTitle={
-                    oneButton
-                        ? "Możesz kontynuować swoją pracę"
-                        : "Czy chcesz kontynuować pracę?"
-                }
+                subTitle={description}
                 extra={
                     oneButton ? (
                         <Button key="cancel" onClick={continueFunction}>

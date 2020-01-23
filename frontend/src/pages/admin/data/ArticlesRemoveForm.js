@@ -30,6 +30,7 @@ class ArticlesRemoveForm extends Component {
                     message={this.props.errorMessage}
                     continueFunction={this.props.cleanServerStatus}
                     cancelLink={ARTICLES.MAIN}
+                    description="Możesz wrócić do listy artykułów"
                 />
             );
         else {
