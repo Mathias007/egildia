@@ -21,7 +21,7 @@ class ArticlesTable extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.articles.length != prevProps.articles.length) {
+        if (this.props.articles.length !== prevProps.articles.length) {
             this.props.showArticlesList();
         }
     }

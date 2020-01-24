@@ -20,6 +20,12 @@ class NewsTable extends Component {
         console.log(this.props.news);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.news.length !== prevProps.news.length) {
+            this.props.showNewsList();
+        }
+    }
+
     renderNews() {
         let { news } = this.props;
 

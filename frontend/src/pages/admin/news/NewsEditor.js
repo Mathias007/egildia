@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
+import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -13,11 +14,18 @@ import NewsEditForm from "../data/NewsEditForm";
 import { Layout } from "antd";
 
 const { ADMIN_NEWS, EDITOR } = navigationTitles;
+const { STATUS_OK } = serverStatuses;
 
 class NewsEditor extends Component {
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperNews(this.props.match.params._id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.status === STATUS_OK) {
+            this.props.showProperNews(this.props.match.params._id);
+        }
     }
 
     render() {
@@ -47,7 +55,9 @@ class NewsEditor extends Component {
 }
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        status: state.news.status
+    };
 };
 
 const mapDispatchToProps = dispatch => {
