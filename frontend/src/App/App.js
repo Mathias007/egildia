@@ -17,6 +17,7 @@ import SidebarComponent from "../pages/global/SidebarComponent";
 // error imports
 import NotFound from "../pages/errors/NotFound";
 import ErrorPage from "../pages/errors/ErrorPage";
+import Forbidden from "../pages/errors/Forbidden";
 
 // general imports
 import NewsPage from "../pages/general/NewsPage";
@@ -77,7 +78,7 @@ class App extends Component {
                         !this.props.auth.isAuthenticated &&
                         !this.props.auth.autoLogin
                     ) {
-                        return <Redirect to="/" />;
+                        return <Forbidden />;
                     } else {
                         return <ChildComponent {...props} />;
                     }
