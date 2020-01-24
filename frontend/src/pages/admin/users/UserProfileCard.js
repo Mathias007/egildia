@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
+import serverStatuses from "../../../_config/serverStatuses";
 import { users } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
@@ -11,11 +12,18 @@ import UsersCard from "../data/UsersCard";
 import { Layout } from "antd";
 
 const { ADMIN_USERS } = navigationTitles;
+const { STATUS_OK } = serverStatuses;
 
 class UserProfileCard extends Component {
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showUserProfile(this.props.match.params._id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.status === STATUS_OK) {
+            this.props.showUserProfile(this.props.match.params._id);
+        }
     }
 
     render() {
@@ -34,7 +42,8 @@ class UserProfileCard extends Component {
 
 const mapStateToProps = state => {
     return {
-        selectedUser: state.users.selectedUser
+        selectedUser: state.users.selectedUser,
+        status: state.users.status
     };
 };
 

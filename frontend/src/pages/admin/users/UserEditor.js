@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
+import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
 import BreadcrumbComponent from "../../global/BreadcrumbComponent";
@@ -13,11 +14,18 @@ import UsersEditForm from "../data/UsersEditForm";
 import { Layout } from "antd";
 
 const { ADMIN_USERS, EDITOR } = navigationTitles;
+const { STATUS_OK } = serverStatuses;
 
 class UserEditor extends Component {
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showUserProfile(this.props.match.params._id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.status === STATUS_OK) {
+            this.props.showUserProfile(this.props.match.params._id);
+        }
     }
 
     render() {
@@ -48,8 +56,7 @@ class UserEditor extends Component {
 
 const mapStateToProps = state => {
     return {
-        errorMessage: state.users.errorMessage,
-        selectedUser: state.users.selectedUser
+        status: state.users.status
     };
 };
 

@@ -19,6 +19,12 @@ class UsersTable extends Component {
         this.props.showUsersList();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.usersList.length !== prevProps.usersList.length) {
+            this.props.showUsersList();
+        }
+    }
+
     renderUsers() {
         let { usersList } = this.props;
 
