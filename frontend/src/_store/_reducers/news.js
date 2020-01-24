@@ -11,13 +11,15 @@ const {
     NEWS_EDITING_FAILED,
     NEWS_SUCCESFULLY_DELETED,
     NEWS_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.news;
 
 const initialState = {
     news: [],
     properNews: {},
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 export default function news(state = initialState, action) {
@@ -61,7 +63,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case AUTHENTICATION_ERROR:
@@ -85,7 +88,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case NEWS_EDITING_FAILED:
@@ -101,7 +105,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case NEWS_DELETING_FAILED:
@@ -111,6 +116,9 @@ export default function news(state = initialState, action) {
                 ...action.data,
                 errorMessage: action.data.message
             };
+
+        case RESET_STATUS:
+            return { ...state, status: null };
 
         default:
             return state;

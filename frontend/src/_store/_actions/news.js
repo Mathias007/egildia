@@ -19,7 +19,8 @@ const {
     NEWS_EDITING_FAILED,
     NEWS_SUCCESFULLY_DELETED,
     NEWS_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.news;
 
 export const showNewsList = () => {
@@ -221,5 +222,13 @@ export const deleteSelectedNews = id => {
             dispatchNewsAuthError,
             dispatchNewsDeletingFailed
         );
+    };
+};
+
+export const cleanServerStatus = () => {
+    return (dispatch, getState) => {
+        return dispatch({
+            type: RESET_STATUS
+        });
     };
 };

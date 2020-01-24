@@ -11,13 +11,15 @@ const {
     USER_EDITING_FAILED,
     USER_SUCCESFULLY_DELETED,
     USER_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.users;
 
 export const initialState = {
     usersList: [],
     selectedUser: {},
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 export default function users(state = initialState, action) {
@@ -61,7 +63,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case AUTHENTICATION_ERROR:
@@ -86,7 +89,8 @@ export default function users(state = initialState, action) {
                 ...state,
                 ...action.data,
                 selectedUser: action.data.selectedUser,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case USER_EDITING_FAILED:
@@ -102,7 +106,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case USER_DELETING_FAILED:
@@ -112,6 +117,9 @@ export default function users(state = initialState, action) {
                 ...action.data,
                 errorMessage: action.data.message
             };
+
+        case RESET_STATUS:
+            return { ...state, status: null };
 
         default:
             return state;

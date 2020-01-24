@@ -19,7 +19,8 @@ const {
     USER_EDITING_FAILED,
     USER_SUCCESFULLY_DELETED,
     USER_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.users;
 
 const { USER_LOADED } = eventStatuses.auth;
@@ -224,5 +225,13 @@ export const deleteSelectedUser = id => {
             dispatchUserAuthError,
             dispatchUserDeletingFailed
         );
+    };
+};
+
+export const cleanServerStatus = () => {
+    return (dispatch, getState) => {
+        return dispatch({
+            type: RESET_STATUS
+        });
     };
 };
