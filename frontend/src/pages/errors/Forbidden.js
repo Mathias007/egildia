@@ -27,18 +27,20 @@ export default class Forbidden extends Component {
             return <Redirect to="/" />;
         } else
             return (
-                <Content style={styles.content}>
-                    <Result
-                        status={`${STATUS_FORBIDDEN}`}
-                        title="Błąd 403 - Nie masz dostępu do tej części serwisu."
-                        subTitle=" Po upływie 5 sekund zostaniesz przekierowany na stronę główną. Kliknij poniżej, jeśli nie chcesz czekać."
-                        extra={
-                            <Button type="primary">
-                                <Link to="/">Uciekaj!</Link>
-                            </Button>
-                        }
-                    />
-                </Content>
+                <Layout style={styles.layout}>
+                    <Content style={styles.content}>
+                        <Result
+                            status={`${STATUS_FORBIDDEN}`}
+                            title="Błąd 403 - Nie masz dostępu do tej części serwisu."
+                            subTitle=" Po upływie 5 sekund zostaniesz przekierowany na stronę główną. Kliknij poniżej, jeśli nie chcesz czekać."
+                            extra={
+                                <Button type="primary">
+                                    <Link to="/">Uciekaj!</Link>
+                                </Button>
+                            }
+                        />
+                    </Content>
+                </Layout>
             );
     }
 }
