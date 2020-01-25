@@ -17,7 +17,6 @@ const {
 
 export default function ErrorMessageComponent(props) {
     const { errorMessage, status } = props;
-
     switch (status) {
         case STATUS_OK || STATUS_CREATED:
             return (
@@ -32,10 +31,10 @@ export default function ErrorMessageComponent(props) {
                 </Item>
             );
 
-        case STATUS_UNAUTHORIZED ||
-            STATUS_FORBIDDEN ||
-            STATUS_CONFLICT ||
-            STATUS_NOT_FOUND:
+        case STATUS_CONFLICT:
+        case STATUS_NOT_FOUND:
+        case STATUS_FORBIDDEN:
+        case STATUS_UNAUTHORIZED:
             return (
                 <Item
                     style={{
