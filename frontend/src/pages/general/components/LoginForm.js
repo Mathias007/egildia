@@ -4,16 +4,19 @@ import { connect } from "react-redux";
 
 import { auth } from "../../../_store/_actions";
 import linksPaths from "../../../_config/linksPaths";
+import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
+import Success from "../../errors/Success";
 
 import { Checkbox, Form, Layout } from "antd";
 const { Item } = Form;
 const { Content } = Layout;
 
 const { GENERAL } = linksPaths;
+const { STATUS_OK } = serverStatuses;
 
 class LoginForm extends Component {
     handleSubmit = e => {
@@ -31,6 +34,20 @@ class LoginForm extends Component {
     };
 
     render() {
+        if (
+            (this.props.status === STATUS_OK && this.props.isAuthenticated) ||
+            this.props.remember
+        )
+            return (
+                <Success
+                    oneButton
+                    redirection
+                    message={this.props.errorMessage}
+                    continueFunction={this.props.cleanServerStatus}
+                    cancelLink={GENERAL.INDEX}
+                    description="Za chwilę zostaniesz przekierowany na stronę główną serwisu. Kliknij poniżej, jeżeli nie chcesz czekać."
+                />
+            );
         const { getFieldDecorator } = this.props.form;
         return (
             <Content style={styles.content}>
@@ -82,7 +99,8 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         remember: state.auth.remember,
-        errorMessage: state.auth.errorMessage
+        errorMessage: state.auth.errorMessage,
+        status: state.auth.status
     };
 };
 
@@ -90,6 +108,9 @@ const mapDispatchToProps = dispatch => {
     return {
         login: (name, password, remember) => {
             return dispatch(auth.login(name, password, remember));
+        },
+        cleanServerStatus: () => {
+            return dispatch(auth.cleanServerStatus());
         }
     };
 };

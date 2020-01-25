@@ -7,7 +7,8 @@ const {
     LOGIN_SUCCESSFUL,
     LOGIN_FAILED,
     LOGOUT_SUCCESSFUL,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.auth;
 
 export const login = (name, password, stayLogged) => {
@@ -62,6 +63,14 @@ export const logout = () => {
     return (dispatch, getState) => {
         return dispatch({
             type: LOGOUT_SUCCESSFUL
+        });
+    };
+};
+
+export const cleanServerStatus = () => {
+    return (dispatch, getState) => {
+        return dispatch({
+            type: RESET_STATUS
         });
     };
 };

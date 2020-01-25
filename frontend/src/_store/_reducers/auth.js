@@ -5,7 +5,8 @@ const {
     LOGIN_SUCCESSFUL,
     LOGIN_FAILED,
     LOGOUT_SUCCESSFUL,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.auth;
 
 const { USER_ADDED } = eventStatuses.users;
@@ -17,7 +18,8 @@ export const initialState = {
     isAuthenticated: null,
     userId: "",
     name: "",
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 export default function auth(state = initialState, action) {
@@ -53,7 +55,8 @@ export default function auth(state = initialState, action) {
                 ...action.data,
                 userId: action.data._id,
                 name: action.name,
-                autoLogin: action.stayLogged
+                autoLogin: action.stayLogged,
+                status: action.status
             };
 
         case LOGIN_FAILED:
@@ -80,6 +83,9 @@ export default function auth(state = initialState, action) {
                 ...action.data,
                 errorMessage: action.data.message
             };
+
+        case RESET_STATUS:
+            return { ...state, status: null };
 
         default:
             return state;
