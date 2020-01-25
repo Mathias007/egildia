@@ -225,6 +225,8 @@ class App extends Component {
                                         path={USERS.REMOVE}
                                         component={UserRemover}
                                     />
+
+                                    <Route path="*" component={NotFound} />
                                 </Switch>
                             </Layout>
                         </Layout>

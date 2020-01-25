@@ -1,13 +1,27 @@
 import React from "react";
-import { Result, Button } from "antd";
+import { Link } from "react-router-dom";
+
+import serverStatuses from "../../_config/serverStatuses";
+import styles from "../../styles/styles";
+
+import { Button, Layout, Result } from "antd";
+const { Content } = Layout;
+
+const { STATUS_NOT_FOUND } = serverStatuses;
 
 export default function NotFound(props) {
     return (
-        <Result
-            status="404"
-            title="404"
-            subTitle="Sorry, the page you visited does not exist."
-            extra={<Button type="primary">Back Home</Button>}
-        />
+        <Content style={styles.content}>
+            <Result
+                status={`${STATUS_NOT_FOUND}`}
+                title="404 - nie znaleziono strony"
+                subTitle="Przepraszamy, strona lub materiał o podanym adresie nie istnieje."
+                extra={
+                    <Button type="primary">
+                        <Link to="/">Uciekaj!</Link>
+                    </Button>
+                }
+            />
+        </Content>
     );
 }

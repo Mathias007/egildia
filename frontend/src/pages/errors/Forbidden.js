@@ -34,7 +34,7 @@ export default class Forbidden extends Component {
                         subTitle=" Po upływie 5 sekund zostaniesz przekierowany na stronę główną. Kliknij poniżej, jeśli nie chcesz czekać."
                         extra={
                             <Button type="primary">
-                                <Link to="/">Powrót</Link>
+                                <Link to="/">Uciekaj!</Link>
                             </Button>
                         }
                     />
