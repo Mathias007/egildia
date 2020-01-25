@@ -5,16 +5,19 @@ import { connect } from "react-redux";
 import { users } from "../../../_store/_actions";
 import { passwordPattern } from "../../../_config/globalContentVariables";
 import linksPaths from "../../../_config/linksPaths";
+import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
 import SingleFormElement from "../../components/SingleFormElement";
 import ButtonComponent from "../../components/ButtonComponent";
+import Success from "../../errors/Success";
 
 import { Checkbox, Form, Layout } from "antd";
 const { Item } = Form;
 const { Content } = Layout;
 
 const { GENERAL } = linksPaths;
+const { STATUS_OK } = serverStatuses;
 
 class RegistrationForm extends Component {
     state = {
@@ -59,6 +62,21 @@ class RegistrationForm extends Component {
     };
 
     render() {
+        if (
+            (this.props.status === STATUS_OK && this.props.isAuthenticated) ||
+            this.props.remember
+        )
+            return (
+                <Success
+                    oneButton
+                    redirection
+                    message={this.props.errorMessage}
+                    continueFunction={this.props.cleanServerStatus}
+                    cancelLink={GENERAL.INDEX}
+                    description="Utworzyłeś konto w serwisie i zostałeś zalogowany. Za chwilę przeniesiemy cię na stronę główną. Kliknij poniżej, jeżeli nie chcesz czekać."
+                />
+            );
+
         const { getFieldDecorator } = this.props.form;
 
         const formItemLayout = {
@@ -106,7 +124,7 @@ class RegistrationForm extends Component {
                         fieldName="email"
                         fieldType="email"
                         inputIcon="mail"
-                        label="Zawartość artykułu"
+                        label="Adres e-mail"
                         message="Podaj poprawny adres e-mail!"
                         placeholder="Podaj adres e-mail"
                         required
@@ -166,7 +184,8 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         remember: state.auth.remember,
-        errorMessage: state.auth.errorMessage
+        errorMessage: state.users.errorMessage,
+        status: state.users.status
     };
 };
 
@@ -174,6 +193,9 @@ const mapDispatchToProps = dispatch => {
     return {
         register: (name, email, password, remember) => {
             return dispatch(users.register(name, email, password, remember));
+        },
+        cleanServerStatus: () => {
+            return dispatch(users.cleanServerStatus());
         }
     };
 };

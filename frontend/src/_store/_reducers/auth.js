@@ -73,7 +73,8 @@ export default function auth(state = initialState, action) {
                 accessToken: null,
                 remember: false,
                 name: null,
-                isAuthenticated: false
+                isAuthenticated: false,
+                status: null
             };
 
         case AUTHENTICATION_ERROR:
