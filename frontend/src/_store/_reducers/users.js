@@ -72,7 +72,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case USER_ADDING_FAILED:
@@ -80,7 +81,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case USER_SUCCESFULLY_EDITED:
@@ -98,7 +100,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case USER_SUCCESFULLY_DELETED:
@@ -115,7 +118,8 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case RESET_STATUS:

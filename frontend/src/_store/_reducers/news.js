@@ -72,7 +72,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case NEWS_ADDING_FAILED:
@@ -80,7 +81,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case NEWS_SUCCESFULLY_EDITED:
@@ -97,7 +99,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case NEWS_SUCCESFULLY_DELETED:
@@ -114,7 +117,8 @@ export default function news(state = initialState, action) {
             return {
                 ...state,
                 ...action.data,
-                errorMessage: action.data.message
+                errorMessage: action.data.message,
+                status: action.status
             };
 
         case RESET_STATUS:

@@ -9,6 +9,7 @@ const {
     STATUS_OK,
     STATUS_CONFLICT,
     STATUS_CREATED,
+    STATUS_NOT_FOUND,
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
     INTERNAL_ERROR
@@ -31,7 +32,10 @@ export default function ErrorMessageComponent(props) {
                 </Item>
             );
 
-        case STATUS_UNAUTHORIZED || STATUS_FORBIDDEN || STATUS_CONFLICT:
+        case STATUS_UNAUTHORIZED ||
+            STATUS_FORBIDDEN ||
+            STATUS_CONFLICT ||
+            STATUS_NOT_FOUND:
             return (
                 <Item
                     style={{

@@ -113,6 +113,7 @@ class NewsEditForm extends Component {
                             type="primary"
                         />
                         <ErrorMessageComponent
+                            status={this.props.status}
                             errorMessage={this.props.errorMessage}
                         />
                     </Form>
