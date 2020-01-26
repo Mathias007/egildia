@@ -401,7 +401,6 @@
         - próby implementacji nowych rozwiązań dla autoryzacji JWT (rezygnacja),
         - uzupełnienie artykułów w bazie danych (z wykorzystaniem zbudowanego wcześniej panelu admina).
 
-
 ## Czwartek 16.01.2020 - PrivateRoute i przebudowa kodu komponentów globalnych
 
     **FRONTEND**:
@@ -451,7 +450,7 @@
         - przebudowa kolejnych kompunentów na funkcyjne.
 
 ## Sobota 18.01.2020 - refaktoryzacja na całego
-  
+
     **FRONTEND**:
         - utworzenie pliku FormElementsBuilder i przeniesienie do niego switcha z SingleFormElement;
         - utworzenie pliku InputCreators, a w nim funkcji kreujących poszczególne typy elementów formularza;
@@ -466,18 +465,18 @@
             > plik ColumnData dla przechowywania statycznych fragmentów tabel danej sekcji,
             > pliki Generators dla tworzenia komponentów wyświetlanych w poszczególnych wierszach danej tabeli,
             > plik serviceData dla przechowywania stałych niezbędnych do generowania komponentów (w szczególności fragmentów ścieżek obrazków);
-        - refaktoryzacja w powyższy sposób tabel: 
-            > KnightsBuildings, KnightsUnits, 
+        - refaktoryzacja w powyższy sposób tabel:
+            > KnightsBuildings, KnightsUnits,
             > TzarNations, TzarSpells, TzarTechnologies, TzarUnits,
             przy czym rozważyć należy dalszą przebudowę dla zaoszczędzenia kodu.
 
 ## Niedziela 19.01.2020 - ostateczne rozwiązanie kwestii tabel
-  
+
     **FRONTEND**:
         - sekcje Tzar i Knights: przeniesienie wszystkich danych struktury kolumn do odpowiednich zmiennych oraz i zamieszczenie w plikach generatorów poszczególnych komponentów;
         - dostosowanie nazw plików i komponentów w sekcjach merytorycznych do przyjętej konwencji(Sekcja|Podsekcja|Komponent|Rola|);
         - aktualnie tabele powstają wedle następującego schematu:
-            (1) komponent główny pobiera z API dane budulcowe, mapowane w odpowiedniej funkcji, a następnie umieszczane w zmiennej tableData, 
+            (1) komponent główny pobiera z API dane budulcowe, mapowane w odpowiedniej funkcji, a następnie umieszczane w zmiennej tableData,
             (2) w plikach DataGenerators znajdują się dwa typy obiektów:
                 > funkcje generate(), służące do renderowania struktur DOM,
                 > obiekty columnsStructure, zawierające "przepisy", na podstawie których składana jest tabela korzystają przy tym z funkcji generate(),
@@ -487,15 +486,16 @@
             > ponieważ funkcje generatorów są w tych sekcjach niemalże identyczne, warto pomyśleć nad ich uwspólnieniem,
             > czas także zrobić porządek ze ścieżkami Linków, które powinny być wydzielone do zmiennych i racjonalnie przetworzone.
 
-    **PODSUMOWANIE**: 
+    **PODSUMOWANIE**:
         Ostatnie dni przyniosły postęp, jeśli chodzi o realizację postawionych celów refaktoryzacyjnych.
         + Po pierwsze, zminimalizowałem liczebność komponentów klasowych na rzecz funkcyjnych. Obecnie klasy występują jedynie tam, gdzie komponenty używają lokalnego stanu lub metod cyklu życia.
         + Po drugie, udało się rozdzielić kod na mniejsze fragmenty, wydzielić drobniejsze komponenty. Staram się w jak największym stopniu doprowadzić do stanu, w którym jedna funkcja odpowiada za jedną funkcjonalność.
         + Po trzecie, struktura komponentów stała się bardziej (w mojej ocenie) czytelna. Powyższe podziały kodu na mniejsze jednostki zostały dokonane z zachowaniem standardów, które zostaną opisane w dokumentacji projektu (póki co krótko opisane w nin. dzienniku).
         + Po czwarte, zatrzymana została inflacja kodu, staram się w jak największym stopniu unifikować te fragmenty, które w różnych komponentach są tożsame. Ponadto upraszczam te, które zanadto się przekomplikowały w trakcie pisania.
-        + Po piąte, za standaryzacją struktur i funkcjonalności podąża standaryzacja nazw plików i obiektów. 
- 
- ## Poniedziałek 20.01.2020 - przyciski i linki
+        + Po piąte, za standaryzacją struktur i funkcjonalności podąża standaryzacja nazw plików i obiektów.
+
+## Poniedziałek 20.01.2020 - przyciski i linki
+
     **FRONTEND**:
         - przebudowa ButtonComponent - przeniesienie funkcji kreujących poszczególne kompozycje do odrębnego pliku, zastosowanie switcha oraz przeniesienie zmiennych określających kompozycję do odpowiedniego pliku konfiguracyjnego;
         - implementacja ButtonComponent w pozostałych plikach projektu - sekcjach administracyjnych (articles, news, users) i generalnych (login, register, index);
@@ -505,13 +505,29 @@
         - inne drobne poprawki i refactoring (np. format daty w zmiennej konfiguracyjnej).
 
 ## Wtorek 21.01.2020 - obsługa statusów i początek testów komponentów
-    **FRONTEND**: 
+
+    **FRONTEND**:
         - dodanie podstawowej struktury komponentów, które mają docelowo obsługiwać określone statusy/błędy, bazujące na <Result> (antd);
         - research oraz pierwsze kroki w kierunku przygotowania testów poszczególnych komponentów projektu.
 
 ## Środa 22.01.2020 - prace nad statusami i testami komponentów
+
     **FRONTEND**:
         - dodanie do dispatchów akcji reduxa przekazywania statusów, celem ich wykorzystania w reducerach, a następnie w komponentach;
         - rozbudowywanie komponentów błędów (katalog errors);
         - przygotowanie najbardziej podstawowej struktury testów JEST dla komponentów (bez contextu i specyfiki, zatem większość jeszcze nie przechodzi), z wykorzystaniem doinstalowanej metody **renderer**.
-        
+
+## Czwartek 23.01.2020 - Niedziela 26.01.2020 - spokojne prace nad drobiazgami
+
+    **FRONTEND**:
+        - rozbudowanie komponentów Success, NotFound, Forbidden, ErrorMessageComponent,
+        - dodanie obsługi komponentu Success w odpowiednich zakładkach oraz obsługi statusów w reduxie,
+        - rozszerzenie PrivateRoute'a o Forbidden,
+        - dodanie ogólnego routingu dla NotFound {*},
+        - rozważenie różnych koncepcji co do obsługi InternalServerError (jeszcze niewdrożonej),
+        - próby prac nad testami - ostatecznie zdecydowałem się usunąć testy komponentów JEST i zostawić tylko testy reducerów; dlaczego? Pokrótce problematyczność ich utworzenia w mojej ocenie całkowicie wypacza sensowność ich wdrożenia, a że jest to mój projekt autorski, to mogę sobie na taki krok pozwolić; jeśli zmienie zdanie (co możliwe), testy wrócą, ale w innej formie.
+
+    **BACKEND**:
+        - instalacja i implementacja biblioteki bcrypt oraz poprawki a obsłudze API autoryzacyjnego.
+
+    **INNE**: Na ten moment projekt nadaje się już do "wystawienia publicznego", dlatego niebawem pojawi się on na jakimś serwerze testowym. Wciąż można w nim jeszcze wiele zmienić, jednak ostatnio trochę za bardzo zatapiam się w rzeczach drobnych i mało w zasadzie istotnych. Tym nie mniej prace nad projektem będą trwały, tyle że być może rozpocznę równolegle prace nad czymś nowym, aby nie odczuć ewentualnego znużenia.
