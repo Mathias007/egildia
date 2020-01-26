@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-// import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 import config from "../config/config";
 import resStatuses from "../config/resStatuses";
 
@@ -10,6 +10,8 @@ const { UNAUTHORIZED, NOT_FOUND } = resStatuses;
 
 // Generate token
 const generateTokens = (req, user) => {
+    const CASE_SUCCESS_MESSAGE = "Logowanie zakończyło się sukcesem.";
+
     const ACCESS_TOKEN = jwt.sign(
         {
             sub: user._id,
@@ -33,6 +35,7 @@ const generateTokens = (req, user) => {
         }
     );
     return {
+        message: CASE_SUCCESS_MESSAGE,
         accessToken: ACCESS_TOKEN,
         refreshToken: REFRESH_TOKEN,
         _id: user._id
@@ -43,43 +46,29 @@ const generateTokens = (req, user) => {
 exports.loginUser = (req, res, next) => {
     const messages = {
         CASE_UNAUTHORIZED_MESSAGE: "Wystąpił problem z autoryzacją!",
-        CASE_NOT_FOUND_MESSAGE: "Nie znaleziono użytkownika!"
-        // CASE_INVALID_DATA: "Dane logowania są niepoprawne!",
-        // CASE_SUCCESS_MESSAGE: "Logowanie zakończyło się sukcesem."
+        CASE_INVALID_DATA: "Dane logowania są niepoprawne!"
     };
 
-    const {
-        CASE_UNAUTHORIZED_MESSAGE,
-        CASE_NOT_FOUND_MESSAGE
-        // CASE_INVALID_DATA,
-        // CASE_SUCCESS_MESSAGE
-    } = messages;
+    const { CASE_UNAUTHORIZED_MESSAGE, CASE_INVALID_DATA } = messages;
 
     UserSchema.findOne(
         {
-            name: req.body.name,
-            password: req.body.password
+            $or: [{ name: req.body.name }, { email: req.body.name }]
         },
         (err, user) => {
-            console.log(user);
             if (err || !user) {
-                res.status(UNAUTHORIZED).send({
+                res.status(NOT_FOUND).send({
                     message: CASE_UNAUTHORIZED_MESSAGE
                 });
                 next(err);
-            } else if (!user) {
-                res.status(NOT_FOUND).send({
-                    message: CASE_NOT_FOUND_MESSAGE
-                });
-                // if (bcrypt.compareSync(req.body.password, user.password)) {
-                // } else {
-                // res.status(CASE_UNAUTHORIZED_MESSAGE).send({
-                //     message: CASE_INVALID_DATA
-                // })
-                // }
             } else {
-                console.log(user);
-                res.json(generateTokens(req, user));
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    res.json(generateTokens(req, user));
+                } else {
+                    res.status(UNAUTHORIZED).send({
+                        message: CASE_INVALID_DATA
+                    });
+                }
             }
         }
     ).select("password");

@@ -56,6 +56,7 @@ export default function auth(state = initialState, action) {
                 userId: action.data._id,
                 name: action.name,
                 autoLogin: action.stayLogged,
+                errorMessage: action.data.message,
                 status: action.status
             };
 
