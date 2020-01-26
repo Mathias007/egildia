@@ -6,6 +6,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -15,6 +16,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -24,6 +26,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -33,6 +36,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -42,6 +46,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -51,6 +56,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -60,6 +66,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 
@@ -69,6 +76,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": undefined,
 }
 `;
 

@@ -6,6 +6,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -15,6 +16,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -24,6 +26,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -42,6 +45,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -51,6 +55,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -60,6 +65,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 
@@ -69,6 +75,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "news": Array [],
   "properNews": Object {},
+  "status": undefined,
 }
 `;
 

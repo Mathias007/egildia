@@ -55,11 +55,12 @@ exports[`test auth reducer should login user 1`] = `
 Object {
   "accessToken": "aaaa.bbbb.cccc",
   "autoLogin": true,
-  "errorMessage": "",
+  "errorMessage": undefined,
   "id": "1111-2222-3333-4444",
   "isAuthenticated": null,
   "name": "testUser",
   "refreshToken": "cccc.bbbb.aaaa",
+  "status": undefined,
   "userId": undefined,
 }
 `;
@@ -73,6 +74,7 @@ Object {
   "name": null,
   "refreshToken": null,
   "remember": false,
+  "status": null,
   "userId": "",
 }
 `;
