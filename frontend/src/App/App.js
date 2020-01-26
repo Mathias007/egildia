@@ -16,7 +16,6 @@ import SidebarComponent from "../pages/global/SidebarComponent";
 
 // error imports
 import NotFound from "../pages/errors/NotFound";
-import ErrorPage from "../pages/errors/ErrorPage";
 import Forbidden from "../pages/errors/Forbidden";
 
 // general imports
