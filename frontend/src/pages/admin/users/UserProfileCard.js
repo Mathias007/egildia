@@ -6,27 +6,42 @@ import serverStatuses from "../../../_config/serverStatuses";
 import { users } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import UsersCard from "../data/UsersCard";
+import {
+    generateAvatar,
+    generateCardTitle,
+    generateMetaDescription
+} from "../data/AdminDataGenerators";
 
-import { Layout } from "antd";
+import BreadcrumbComponent from "../../global/BreadcrumbComponent";
+import UsersCardForm from "../data/UsersCardForm";
+
+import { Card, Layout } from "antd";
+const { Meta } = Card;
 
 const { ADMIN_USERS } = navigationTitles;
 const { STATUS_OK } = serverStatuses;
 
+const captions = {
+    cardTitle: "Profil użytkownika:",
+    metaDescription: "Data rejestracji:"
+};
+
 class UserProfileCard extends Component {
     componentDidMount() {
-        console.log(this.props.match.params._id);
         this.props.showUserProfile(this.props.match.params._id);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.status === STATUS_OK) {
+        if (
+            prevProps.status !== this.props.status &&
+            this.props.status === STATUS_OK
+        ) {
             this.props.showUserProfile(this.props.match.params._id);
         }
     }
 
     render() {
+        const { name, date } = this.props.selectedUser;
         return (
             <Layout style={styles.layout}>
                 <BreadcrumbComponent
@@ -34,7 +49,20 @@ class UserProfileCard extends Component {
                     section={ADMIN_USERS}
                     page={this.props.selectedUser.name}
                 />
-                <UsersCard idParam={this.props.match.params._id} />
+                <Card
+                    type="inner"
+                    style={styles.card}
+                    title={generateCardTitle(name, captions.cardTitle)}
+                >
+                    <Meta
+                        avatar={generateAvatar(name)}
+                        description={generateMetaDescription(
+                            date,
+                            captions.metaDescription
+                        )}
+                    />
+                    <UsersCardForm idParam={this.props.match.params._id} />
+                </Card>
             </Layout>
         );
     }
@@ -51,6 +79,9 @@ const mapDispatchToProps = dispatch => {
     return {
         showUserProfile: id => {
             return dispatch(users.showUserProfile(id));
+        },
+        cleanServerStatus: () => {
+            return dispatch(users.cleanServerStatus());
         }
     };
 };
