@@ -1,20 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import "moment/locale/pl";
 
 import { news } from "../../../_store/_actions";
-import { dateFormat } from "../../../_config/globalContentVariables";
 import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
-import { generateOptions } from "./AdminDataGenerators";
+import {
+    generateOptions,
+    generateComments,
+    generateAvatar,
+    generateMetaDescription,
+    generateNewsCardTitle
+} from "./AdminDataGenerators";
 
-import { Avatar, Card, Divider, Icon } from "antd";
+import { Card } from "antd";
 const { Meta } = Card;
 
 const { GENERAL, NEWS } = linksPaths;
+
+const captions = {
+    added: "Dodano:",
+    author: "Autor:",
+    backText: "Powrót",
+    comments: "Komentarze:",
+    commentsCount: "brak",
+    options: "Opcje"
+};
 
 class NewsCard extends Component {
     render() {
@@ -31,46 +42,35 @@ class NewsCard extends Component {
             <Card
                 type="inner"
                 style={styles.card}
-                title={
-                    <>
-                        <Link to={GENERAL.INDEX}>
-                            <Icon type="arrow-left" /> Powrót
-                        </Link>
-                        <Divider type="vertical" />
-                        <span>{title}</span>
-                    </>
-                }
+                title={generateNewsCardTitle(
+                    GENERAL.INDEX,
+                    captions.backText,
+                    title
+                )}
                 extra={
                     this.props.isAuthenticated ? (
                         <div>
-                            <strong>Opcje</strong>
-                            {generateOptions(NEWS.EDIT, NEWS.REMOVE, _id)}
+                            {generateOptions(
+                                NEWS.EDIT,
+                                NEWS.REMOVE,
+                                _id,
+                                captions.options
+                            )}
                         </div>
                     ) : null
                 }
                 actions={[
-                    <span>
-                        <Icon type="idcard" /> Komentarze: <strong>brak</strong>
-                    </span>
+                    generateComments(captions.comments, captions.commentsCount)
                 ]}
             >
                 <Meta
-                    avatar={
-                        <Avatar style={styles.newsAvatar} size="large">
-                            {category}
-                        </Avatar>
-                    }
-                    description={
-                        <>
-                            <span>
-                                Dodano: {moment(date).format(dateFormat)}
-                            </span>
-                            <Divider type="vertical" />
-                            <span>
-                                Autor: <strong>{author}</strong>
-                            </span>
-                        </>
-                    }
+                    avatar={generateAvatar(category)}
+                    description={generateMetaDescription(
+                        date,
+                        captions.added,
+                        author,
+                        captions.author
+                    )}
                 />
                 <p>{content} </p>
             </Card>
