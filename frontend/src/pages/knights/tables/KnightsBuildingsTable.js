@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { knights } from "../../../_store/_actions";
-
-import { buildingsColumnsStructure } from "./KnightsBuildingsDataGenerators";
-
 import styles from "../../../styles/styles";
+
+import { buildingsColumnsStructure } from "../_helpers/knightsBuildingsDataGenerators";
+
 import { Layout, Table } from "antd";
 const { Content } = Layout;
 

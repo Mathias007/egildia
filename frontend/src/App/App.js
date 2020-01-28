@@ -1,22 +1,17 @@
 import React, { Component } from "react";
-import {
-    BrowserRouter as Router,
-    Redirect,
-    Route,
-    Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import routesPaths from "../_config/routesPaths";
 import { auth } from "../_store/_actions";
 
-import FooterComponent from "../pages/global/FooterComponent";
-import HeaderComponent from "../pages/global/HeaderComponent";
-import SidebarComponent from "../pages/global/SidebarComponent";
+import FooterComponent from "../pages/components/global/FooterComponent";
+import HeaderComponent from "../pages/components/global/HeaderComponent";
+import SidebarComponent from "../pages/components/global/SidebarComponent";
 
 // error imports
-import NotFound from "../pages/errors/NotFound";
-import Forbidden from "../pages/errors/Forbidden";
+import NotFound from "../pages/components/errors/NotFound";
+import Forbidden from "../pages/components/errors/Forbidden";
 
 // general imports
 import NewsPage from "../pages/general/NewsPage";
@@ -31,7 +26,7 @@ import ArticleRemover from "../pages/admin/articles/ArticleRemover";
 
 // admin news imports
 import NewsList from "../pages/admin/news/NewsList";
-import NewsSingleCard from "../pages/admin/news/NewsSingleCard";
+import NewsSingleView from "../pages/admin/news/NewsSingleView";
 import NewsCreator from "../pages/admin/news/NewsCreator";
 import NewsEditor from "../pages/admin/news/NewsEditor";
 import NewsRemover from "../pages/admin/news/NewsRemover";
@@ -53,7 +48,7 @@ import UserCreator from "../pages/admin/users/UserCreator";
 import UserEditor from "../pages/admin/users/UserEditor";
 import UserRemover from "../pages/admin/users/UserRemover";
 import UsersList from "../pages/admin/users/UsersList";
-import UserProfileCard from "../pages/admin/users/UserProfileCard";
+import UserSingleProfile from "../pages/admin/users/UserSingleProfile";
 
 import "./App.css";
 import "antd/dist/antd.css";
@@ -149,7 +144,7 @@ class App extends Component {
                                     />
                                     <Route
                                         path={NEWS.SINGLE}
-                                        component={NewsSingleCard}
+                                        component={NewsSingleView}
                                     />
                                     <PrivateRoute
                                         path={NEWS.ADD}
@@ -210,7 +205,7 @@ class App extends Component {
                                     />
                                     <PrivateRoute
                                         path={USERS.SINGLE}
-                                        component={UserProfileCard}
+                                        component={UserSingleProfile}
                                     />
                                     <PrivateRoute
                                         path={USERS.ADD}

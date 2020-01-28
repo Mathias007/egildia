@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { unitsColumnsStructure } from "./KnightsUnitsDataGenerators";
-
 import { knights } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
+
+import { unitsColumnsStructure } from "../_helpers/knightsUnitsDataGenerators";
 
 import { Layout, Table } from "antd";
-import styles from "../../../styles/styles";
 
 class KnightsUnitsTable extends Component {
     state = {

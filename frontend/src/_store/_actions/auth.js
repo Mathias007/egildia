@@ -25,7 +25,7 @@ export const login = (name, password, stayLogged) => {
                 type: USER_LOADED,
                 name: name
             });
-
+            // eslint-disable-next-line
             return response.data, name, stayLogged;
         };
 

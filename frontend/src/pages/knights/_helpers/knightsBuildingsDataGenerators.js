@@ -3,7 +3,7 @@ import Img from "react-image";
 
 import { textBetweenTags } from "../../../_config/globalContentVariables";
 
-import { imgPath, descriptionSubHeaders } from "./_KnightsGeneralData";
+import { imgPath, descriptionSubHeaders } from "./_knightsGeneralData";
 const { general, section, dir, format } = imgPath;
 
 const generateName = name => {

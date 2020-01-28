@@ -112,7 +112,7 @@ export const register = (name, email, password, role, date, remember) => {
                 name,
                 remember
             });
-
+            // eslint-disable-next-line
             return response.data, name, remember;
         };
 

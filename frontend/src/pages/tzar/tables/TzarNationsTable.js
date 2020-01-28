@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { tzar } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import { nationsColumnsStructure } from "./TzarNationsDataGenerators";
+import { nationsColumnsStructure } from "../_helpers/tzarNationsDataGenerators";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;

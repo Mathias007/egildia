@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import navigationTitles from "../../_config/navigationTitles";
 
-import BreadcrumbComponent from "../global/BreadcrumbComponent";
+import BreadcrumbComponent from "../components/global/BreadcrumbComponent";
 import NewsPageContent from "./components/NewsPageContent";
 
 import { Layout } from "antd";

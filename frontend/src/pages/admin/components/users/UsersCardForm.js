@@ -5,7 +5,7 @@ import { users } from "../../../../_store/_actions";
 import {
     passwordPattern,
     siteRoles
-} from "../../../_config/globalContentVariables";
+} from "../../../../_config/globalContentVariables";
 import linksPaths from "../../../../_config/linksPaths";
 import serverStatuses from "../../../../_config/serverStatuses";
 

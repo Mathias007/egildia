@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import routesPaths from "../../../_config/routesPaths";
-import navigationTitles from "../../../_config/navigationTitles";
+import routesPaths from "../../../../_config/routesPaths";
+import navigationTitles from "../../../../_config/navigationTitles";
 
 import { Menu, Icon } from "antd";
 const { SubMenu } = Menu;

@@ -1,7 +1,7 @@
 import React from "react";
 import Img from "react-image";
 
-import { imgPath } from "./_TzarGeneralData";
+import { imgPath } from "./_tzarGeneralData";
 const { general, section, dir, format } = imgPath;
 
 const generateName = name => {

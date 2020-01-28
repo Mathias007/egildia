@@ -5,10 +5,10 @@ import navigationTitles from "../../_config/navigationTitles";
 
 import styles from "../../styles/styles";
 
-import BreadcrumbComponent from "../global/BreadcrumbComponent";
-import PageHeaderComponent from "../components/PageHeaderComponent";
-import PageContentComponent from "../components/PageContentComponent";
-import KnightsBuildingsTable from "./data/KnightsBuildingsTable";
+import BreadcrumbComponent from "../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../components/universal/PageHeaderComponent";
+import PageContentComponent from "../components/universal/PageContentComponent";
+import KnightsBuildingsTable from "./tables/KnightsBuildingsTable";
 
 import { Layout } from "antd";
 
