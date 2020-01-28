@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactHtmlParser from "react-html-parser";
 
-import { articles } from "../../_store/_actions";
+import { articles } from "../../../_store/_actions";
+import styles from "../../../styles/styles";
 
 import { Card, Layout } from "antd";
-import styles from "../../styles/styles";
-
 const { Content } = Layout;
 
 class PageContentComponent extends Component {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import serverStatuses from "../../_config/serverStatuses";
-import styles from "../../styles/styles";
+import serverStatuses from "../../../_config/serverStatuses";
+import styles from "../../../styles/styles";
 
 import { Button, Layout, Result } from "antd";
 const { Content } = Layout;

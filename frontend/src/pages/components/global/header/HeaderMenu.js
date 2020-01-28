@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/styles";
+import styles from "../../../../styles/styles";
 
 import { Menu } from "antd";
 const { Item } = Menu;

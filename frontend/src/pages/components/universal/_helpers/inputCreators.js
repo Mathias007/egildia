@@ -1,7 +1,7 @@
 import React from "react";
 import locale from "antd/es/date-picker/locale/pl_PL";
 
-import styles from "../../../styles/styles";
+import styles from "../../../../styles/styles";
 
 import { DatePicker, Icon, Input, Select, Tooltip } from "antd";
 const { Password, TextArea } = Input;

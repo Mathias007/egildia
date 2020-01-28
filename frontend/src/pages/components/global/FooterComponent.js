@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Layout } from "antd";
-import styles from "../../styles/styles";
+import styles from "../../../styles/styles";
 
+import { Layout } from "antd";
 const { Footer } = Layout;
 
 export default function FooterComponent(props) {

@@ -1,11 +1,11 @@
 import React from "react";
 
-import navigationTitles from "../../_config/navigationTitles";
+import navigationTitles from "../../../_config/navigationTitles";
+import styles from "../../../styles/styles";
 
 import { Breadcrumb } from "antd";
-import styles from "../../styles/styles";
-
 const { Item } = Breadcrumb;
+
 const { WORTAL, ADMINISTRATION } = navigationTitles;
 
 export default function BreadcrumbComponent(props) {

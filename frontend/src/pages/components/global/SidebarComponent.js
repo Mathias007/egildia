@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import styles from "../../../styles/styles";
+
 import AdminSubmenu from "./sidebar/AdminSubmenu";
 import GeneralSubmenu from "./sidebar/GeneralSubmenu";
 import KnightsSubmenu from "./sidebar/KnightsSubmenu";
 import TzarSubmenu from "./sidebar/TzarSubmenu";
 
 import { Layout, Menu } from "antd";
-import styles from "../../styles/styles";
 const { Sider } = Layout;
 const { Divider } = Menu;
 

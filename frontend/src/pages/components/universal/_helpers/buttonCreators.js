@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styles from "../../styles/styles";
+import styles from "../../../../styles/styles";
 
 import { Button, Divider, Form } from "antd";
 const { Item } = Form;

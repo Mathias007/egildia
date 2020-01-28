@@ -1,15 +1,15 @@
-import { inputFieldTypes } from "../../../_config/globalContentVariables";
+import { inputFieldTypes } from "../../../../_config/globalContentVariables";
 import {
     createDatePicker,
     createDefaultInput,
     createPasswordInput,
     createSelect,
     createTextArea
-} from "./InputCreators";
+} from "./inputCreators";
 
 const { date, password, select, textarea } = inputFieldTypes;
 
-export default function FormElementBuilder(props) {
+export default function formElementBuilder(props) {
     const {
         fieldType,
         message,

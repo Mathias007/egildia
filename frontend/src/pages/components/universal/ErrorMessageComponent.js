@@ -1,6 +1,6 @@
 import React from "react";
 
-import serverStatuses from "../../_config/serverStatuses";
+import serverStatuses from "../../../_config/serverStatuses";
 
 import { Form, Icon } from "antd";
 const { Item } = Form;

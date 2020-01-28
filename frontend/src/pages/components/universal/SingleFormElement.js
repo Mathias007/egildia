@@ -1,5 +1,5 @@
 import React from "react";
-import FormElementsBuilder from "./form/FormElementsBuilder";
+import formElementsBuilder from "./_helpers/formElementsBuilder";
 
 import { Form } from "antd";
 const { Item } = Form;
@@ -13,7 +13,7 @@ export default function SingleFormElement(props) {
         initialValue
     } = props;
 
-    let itemStructure = FormElementsBuilder(props);
+    let itemStructure = formElementsBuilder(props);
 
     return (
         <Item label={label} hasFeedback={hasFeedback}>

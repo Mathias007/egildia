@@ -2,11 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { auth } from "../../../_store/_actions";
+import { auth } from "../../../../_store/_actions";
+import styles from "../../../../styles/styles";
 
 import { Avatar, Button, Dropdown, Icon, Menu } from "antd";
-import styles from "../../../styles/styles";
-
 const { Divider, Item } = Menu;
 
 const buttonData = {

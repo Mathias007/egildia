@@ -1,9 +1,9 @@
-import { buttonCompositionVariations } from "../../_config/globalContentVariables";
+import { buttonCompositionVariations } from "../../../_config/globalContentVariables";
 import {
     createSingleWrappedButton,
     createSingleNonWrappedButton,
     createDoubleButton
-} from "./ButtonCreators";
+} from "./_helpers/buttonCreators";
 
 export default function ButtonComponent(props) {
     const { composition, ...buttonProps } = props;

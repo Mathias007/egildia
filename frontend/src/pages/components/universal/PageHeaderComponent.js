@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { articles } from "../../_store/_actions";
-import navigationTitles from "../../_config/navigationTitles";
+import { articles } from "../../../_store/_actions";
+import navigationTitles from "../../../_config/navigationTitles";
 
 import { PageHeader, Descriptions } from "antd";
 
