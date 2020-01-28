@@ -9,8 +9,8 @@ import { dateFormat } from "../../../_config/globalContentVariables";
 import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
-import { generateOptions } from "../../admin/data/AdminDataGenerators";
-import ButtonComponent from "../../components/ButtonComponent";
+import { generateOptions } from "../../admin/components/_helpers/adminDataGenerators";
+import ButtonComponent from "../../components/universal/ButtonComponent";
 
 import { Avatar, Card, Divider, Icon, Layout } from "antd";
 const { Meta } = Card;

@@ -8,9 +8,9 @@ import linksPaths from "../../../_config/linksPaths";
 import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
-import SingleFormElement from "../../components/SingleFormElement";
-import ButtonComponent from "../../components/ButtonComponent";
-import Success from "../../errors/Success";
+import SingleFormElement from "../../components/universal/SingleFormElement";
+import ButtonComponent from "../../components/universal/ButtonComponent";
+import Success from "../../components/errors/Success";
 
 import { Checkbox, Form, Layout } from "antd";
 const { Item } = Form;

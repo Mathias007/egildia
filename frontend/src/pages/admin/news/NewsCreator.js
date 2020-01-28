@@ -12,8 +12,6 @@ import { Layout } from "antd";
 
 const { ADMIN_NEWS, CREATOR } = navigationTitles;
 
-import React from "react";
-
 export default function NewsCreator(props) {
     return (
         <Layout style={styles.layout}>
