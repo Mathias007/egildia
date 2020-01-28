@@ -51,7 +51,6 @@ describe("test news reducer", () => {
     };
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
-
     const serverStatus = 200;
 
     it("should return the initial state", () => {
@@ -148,6 +147,6 @@ describe("test news reducer", () => {
         const action = {
             type: RESET_STATUS
         };
-        expect(news(initialState, action)).toMatchSnapshot;
+        expect(news(initialState, action)).toMatchSnapshot();
     });
 });

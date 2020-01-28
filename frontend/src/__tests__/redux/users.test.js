@@ -51,7 +51,6 @@ describe("test users reducer", () => {
     };
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
-
     const serverStatus = 200;
 
     it("should return the initial state", () => {
@@ -148,6 +147,6 @@ describe("test users reducer", () => {
         const action = {
             type: RESET_STATUS
         };
-        expect(users(initialState, action)).toMatchSnapshot;
+        expect(users(initialState, action)).toMatchSnapshot();
     });
 });

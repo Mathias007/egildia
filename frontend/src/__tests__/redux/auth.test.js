@@ -32,9 +32,7 @@ describe("test auth reducer", () => {
 
     const name = "testUser";
     const stayLogged = true;
-
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
-
     const serverStatus = 200;
 
     it("should return the initial state", () => {
@@ -86,6 +84,6 @@ describe("test auth reducer", () => {
         const action = {
             type: RESET_STATUS
         };
-        expect(auth(initialState, action)).toMatchSnapshot;
+        expect(auth(initialState, action)).toMatchSnapshot();
     });
 });

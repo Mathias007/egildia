@@ -133,3 +133,12 @@ Object {
   "status": null,
 }
 `;
+
+exports[`test news reducer should remove server status from the state 1`] = `
+Object {
+  "errorMessage": "",
+  "news": Array [],
+  "properNews": Object {},
+  "status": null,
+}
+`;

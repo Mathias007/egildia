@@ -142,3 +142,12 @@ Object {
   ],
 }
 `;
+
+exports[`test users reducer should remove server status from the state 1`] = `
+Object {
+  "errorMessage": "",
+  "selectedUser": Object {},
+  "status": null,
+  "usersList": Array [],
+}
+`;
