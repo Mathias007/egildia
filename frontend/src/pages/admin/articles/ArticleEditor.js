@@ -18,12 +18,14 @@ const { STATUS_OK } = serverStatuses;
 
 class ArticleEditor extends Component {
     componentDidMount() {
-        console.log(this.props.match.params._id);
         this.props.showProperArticle(this.props.match.params._id);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.status === STATUS_OK) {
+        if (
+            prevProps.status !== this.props.status &&
+            this.props.status === STATUS_OK
+        ) {
             this.props.showProperArticle(this.props.match.params._id);
         }
     }

@@ -15,7 +15,6 @@ const { ADMIN_USERS, REMOVER } = navigationTitles;
 
 class UserRemover extends Component {
     componentDidMount() {
-        console.log(this.props.match.params._id);
         this.props.showUserProfile(this.props.match.params._id);
     }
 

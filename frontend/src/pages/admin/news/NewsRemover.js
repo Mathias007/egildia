@@ -15,7 +15,6 @@ const { ADMIN_NEWS, REMOVER } = navigationTitles;
 
 class NewsRemover extends Component {
     componentDidMount() {
-        console.log(this.props.match.params._id);
         this.props.showProperNews(this.props.match.params._id);
     }
 
