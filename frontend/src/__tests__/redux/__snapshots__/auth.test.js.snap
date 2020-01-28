@@ -9,6 +9,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "name": "testUser",
   "refreshToken": null,
+  "status": null,
   "userId": "",
 }
 `;
@@ -21,6 +22,7 @@ Object {
   "isAuthenticated": true,
   "name": "",
   "refreshToken": null,
+  "status": null,
   "userId": "",
 }
 `;
@@ -34,6 +36,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "name": "",
   "refreshToken": null,
+  "status": null,
   "userId": "",
 }
 `;
@@ -47,6 +50,7 @@ Object {
   "message": "Ważna wiadomość z serwera!",
   "name": "",
   "refreshToken": null,
+  "status": null,
   "userId": "",
 }
 `;
@@ -60,7 +64,7 @@ Object {
   "isAuthenticated": null,
   "name": "testUser",
   "refreshToken": "cccc.bbbb.aaaa",
-  "status": undefined,
+  "status": 200,
   "userId": undefined,
 }
 `;

@@ -12,13 +12,15 @@ const {
     ARTICLE_EDITING_FAILED,
     ARTICLE_SUCCESFULLY_DELETED,
     ARTICLE_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.articles;
 
 const initialState = {
     articles: [],
     properArticle: {},
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 describe("test articles reducer", () => {
@@ -50,6 +52,8 @@ describe("test articles reducer", () => {
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
+    const serverStatus = 200;
+
     it("should return the initial state", () => {
         expect(articles(undefined, {})).toEqual(initialState);
     });
@@ -78,43 +82,72 @@ describe("test articles reducer", () => {
     });
 
     it("should get message about adding article to database", () => {
-        const action = { type: ARTICLE_ADDED, data: serverMessage };
+        const action = {
+            type: ARTICLE_ADDED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about article's adding fail", () => {
-        const action = { type: ARTICLE_ADDING_FAILED, data: serverMessage };
+        const action = {
+            type: ARTICLE_ADDING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about modifying article in database", () => {
         const action = {
             type: ARTICLE_SUCCESFULLY_EDITED,
-            data: serverMessage
+            data: serverMessage,
+            status: serverStatus
         };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about article's modifying fail", () => {
-        const action = { type: ARTICLE_EDITING_FAILED, data: serverMessage };
+        const action = {
+            type: ARTICLE_EDITING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about removing article from database", () => {
         const action = {
             type: ARTICLE_SUCCESFULLY_DELETED,
-            data: serverMessage
+            data: serverMessage,
+            status: serverStatus
         };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about article's removing fail", () => {
-        const action = { type: ARTICLE_DELETING_FAILED, data: serverMessage };
+        const action = {
+            type: ARTICLE_DELETING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(articles(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
+        const action = {
+            type: AUTHENTICATION_ERROR,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(articles(initialState, action)).toMatchSnapshot();
+    });
+
+    it("should remove server status from the state", () => {
+        const action = {
+            type: RESET_STATUS
+        };
+        expect(articles(initialState, action)).toMatchSnapshot;
     });
 });

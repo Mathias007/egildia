@@ -5,7 +5,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -15,7 +15,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -32,7 +32,7 @@ Object {
     "password": "Terror2137",
     "role": "TESTER",
   },
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -42,7 +42,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -52,6 +52,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
+  "status": null,
   "usersList": Array [],
 }
 `;
@@ -61,7 +62,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -71,7 +72,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -81,7 +82,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
-  "status": undefined,
+  "status": 200,
   "usersList": Array [],
 }
 `;
@@ -91,6 +92,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "selectedUser": Object {},
+  "status": null,
   "usersList": Array [],
 }
 `;
@@ -107,6 +109,7 @@ Object {
     "password": "Terror2137",
     "role": "TESTER",
   },
+  "status": null,
   "usersList": Array [],
 }
 `;
@@ -116,6 +119,7 @@ Object {
   "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "selectedUser": Object {},
+  "status": null,
   "users": Array [
     Object {
       "_id": "1111-2222-3333-4444",

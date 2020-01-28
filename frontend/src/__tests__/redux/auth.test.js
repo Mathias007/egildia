@@ -6,7 +6,8 @@ const {
     LOGIN_SUCCESSFUL,
     LOGIN_FAILED,
     LOGOUT_SUCCESSFUL,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.auth;
 
 const { USER_ADDED } = eventStatuses.users;
@@ -18,7 +19,8 @@ const initialState = {
     isAuthenticated: null,
     userId: "",
     name: "",
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 describe("test auth reducer", () => {
@@ -33,6 +35,8 @@ describe("test auth reducer", () => {
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
+    const serverStatus = 200;
+
     it("should return the initial state", () => {
         expect(auth(undefined, {})).toEqual(initialState);
     });
@@ -43,7 +47,12 @@ describe("test auth reducer", () => {
     });
 
     it("should confirm user's adding", () => {
-        const action = { type: USER_ADDED, data: serverMessage, name, stayLogged };
+        const action = {
+            type: USER_ADDED,
+            data: serverMessage,
+            name,
+            stayLogged
+        };
         expect(auth(initialState, action)).toMatchSnapshot();
     });
 
@@ -52,7 +61,8 @@ describe("test auth reducer", () => {
             type: LOGIN_SUCCESSFUL,
             data: authTokens,
             name,
-            stayLogged
+            stayLogged,
+            status: serverStatus
         };
         expect(auth(initialState, action)).toMatchSnapshot();
     });
@@ -70,5 +80,12 @@ describe("test auth reducer", () => {
     it("should get message about a problem with authentication", () => {
         const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
         expect(auth(initialState, action)).toMatchSnapshot();
+    });
+
+    it("should remove server status from the state", () => {
+        const action = {
+            type: RESET_STATUS
+        };
+        expect(auth(initialState, action)).toMatchSnapshot;
     });
 });

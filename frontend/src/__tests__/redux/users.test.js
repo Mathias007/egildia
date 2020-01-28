@@ -12,13 +12,15 @@ const {
     USER_EDITING_FAILED,
     USER_SUCCESFULLY_DELETED,
     USER_DELETING_FAILED,
-    AUTHENTICATION_ERROR
+    AUTHENTICATION_ERROR,
+    RESET_STATUS
 } = eventStatuses.users;
 
 const initialState = {
     usersList: [],
     selectedUser: {},
-    errorMessage: ""
+    errorMessage: "",
+    status: null
 };
 
 describe("test users reducer", () => {
@@ -50,6 +52,8 @@ describe("test users reducer", () => {
 
     const serverMessage = { message: "Ważna wiadomość z serwera!" };
 
+    const serverStatus = 200;
+
     it("should return the initial state", () => {
         expect(users(undefined, {})).toEqual(initialState);
     });
@@ -78,40 +82,72 @@ describe("test users reducer", () => {
     });
 
     it("should get message about adding user to database", () => {
-        const action = { type: USER_ADDED, data: serverMessage };
+        const action = {
+            type: USER_ADDED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's adding fail", () => {
-        const action = { type: USER_ADDING_FAILED, data: serverMessage };
+        const action = {
+            type: USER_ADDING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about modifying user in database", () => {
         const action = {
             type: USER_SUCCESFULLY_EDITED,
-            data: singleUser 
+            data: singleUser,
+            status: serverStatus
         };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's modifying fail", () => {
-        const action = { type: USER_EDITING_FAILED, data: serverMessage };
+        const action = {
+            type: USER_EDITING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about removing user from database", () => {
-        const action = { type: USER_SUCCESFULLY_DELETED, data: serverMessage };
+        const action = {
+            type: USER_SUCCESFULLY_DELETED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about user's removing fail", () => {
-        const action = { type: USER_DELETING_FAILED, data: serverMessage };
+        const action = {
+            type: USER_DELETING_FAILED,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
     });
 
     it("should get message about a problem with authentication", () => {
-        const action = { type: AUTHENTICATION_ERROR, data: serverMessage };
+        const action = {
+            type: AUTHENTICATION_ERROR,
+            data: serverMessage,
+            status: serverStatus
+        };
         expect(users(initialState, action)).toMatchSnapshot();
+    });
+
+    it("should remove server status from the state", () => {
+        const action = {
+            type: RESET_STATUS
+        };
+        expect(users(initialState, action)).toMatchSnapshot;
     });
 });

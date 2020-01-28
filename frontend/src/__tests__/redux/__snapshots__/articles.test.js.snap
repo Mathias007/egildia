@@ -6,7 +6,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -16,7 +16,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -26,7 +26,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -36,7 +36,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -46,7 +46,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -66,7 +66,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -76,7 +76,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
-  "status": undefined,
+  "status": 200,
 }
 `;
 
@@ -86,6 +86,7 @@ Object {
   "errorMessage": "Ważna wiadomość z serwera!",
   "message": "Ważna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": null,
 }
 `;
 
@@ -110,6 +111,7 @@ Object {
     "date": "01-01-2020",
     "title": "Artykuł testowy",
   },
+  "status": null,
 }
 `;
 
@@ -128,5 +130,6 @@ Object {
   "errorMessage": "Pozytywna wiadomość z serwera!",
   "message": "Pozytywna wiadomość z serwera!",
   "properArticle": Object {},
+  "status": null,
 }
 `;
