@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { users } from "../../../_store/_actions";
+import { users } from "../../../../_store/_actions";
 import {
     passwordPattern,
     siteRoles
 } from "../../../_config/globalContentVariables";
-import linksPaths from "../../../_config/linksPaths";
-import serverStatuses from "../../../_config/serverStatuses";
+import linksPaths from "../../../../_config/linksPaths";
+import serverStatuses from "../../../../_config/serverStatuses";
 
-import SingleFormElement from "../../components/SingleFormElement";
-import ButtonComponent from "../../components/ButtonComponent";
-import ErrorMessageComponent from "../../components/ErrorMessageComponent";
-import Success from "../../errors/Success";
+import SingleFormElement from "../../../components/universal/SingleFormElement";
+import ButtonComponent from "../../../components/universal/ButtonComponent";
+import ErrorMessageComponent from "../../../components/universal/ErrorMessageComponent";
+import Success from "../../../components/errors/Success";
 
 import { Form } from "antd";
 

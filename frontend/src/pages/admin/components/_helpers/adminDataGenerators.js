@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/pl";
 
-import { dateFormat } from "../../../_config/globalContentVariables";
-import styles from "../../../styles/styles";
+import { dateFormat } from "../../../../_config/globalContentVariables";
+import styles from "../../../../styles/styles";
 
 import { Avatar, Divider, Icon } from "antd";
 

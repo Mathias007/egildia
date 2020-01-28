@@ -3,10 +3,10 @@ import React from "react";
 import navigationTitles from "../../../_config/navigationTitles";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import PageHeaderComponent from "../../components/PageHeaderComponent";
-import ButtonComponent from "../../components/ButtonComponent";
-import UsersAddForm from "../data/UsersAddForm";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/universal/PageHeaderComponent";
+import ButtonComponent from "../../components/universal/ButtonComponent";
+import UsersAddForm from "../components/users/UsersAddForm";
 
 import { Layout } from "antd";
 

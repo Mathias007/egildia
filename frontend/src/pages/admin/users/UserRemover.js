@@ -5,9 +5,9 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { users } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import PageHeaderComponent from "../../components/PageHeaderComponent";
-import UsersRemoveForm from "../data/UsersRemoveForm";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/universal/PageHeaderComponent";
+import UsersRemoveForm from "../components/users/UsersRemoveForm";
 
 import { Layout } from "antd";
 

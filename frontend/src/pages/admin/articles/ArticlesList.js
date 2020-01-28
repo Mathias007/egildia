@@ -5,10 +5,10 @@ import navigationTitles from "../../../_config/navigationTitles";
 import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import PageHeaderComponent from "../../components/PageHeaderComponent";
-import ButtonComponent from "../../components/ButtonComponent";
-import ArticlesTable from "../data/ArticlesTable";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/universal/PageHeaderComponent";
+import ButtonComponent from "../../components/universal/ButtonComponent";
+import ArticlesTable from "../components/articles/ArticlesTable";
 
 import { Layout } from "antd";
 

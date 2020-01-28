@@ -6,10 +6,10 @@ import { articles } from "../../../_store/_actions";
 import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import PageHeaderComponent from "../../components/PageHeaderComponent";
-import ButtonComponent from "../../components/ButtonComponent";
-import ArticlesEditForm from "../data/ArticlesEditForm";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/universal/PageHeaderComponent";
+import ButtonComponent from "../../components/universal/ButtonComponent";
+import ArticlesEditForm from "../components/articles/ArticlesEditForm";
 
 import { Layout } from "antd";
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { news } from "../../../_store/_actions";
-import linksPaths from "../../../_config/linksPaths";
-import styles from "../../../styles/styles";
+import { news } from "../../../../_store/_actions";
+import linksPaths from "../../../../_config/linksPaths";
+import styles from "../../../../styles/styles";
 
 import {
     generateOptions,
@@ -11,7 +11,7 @@ import {
     generateAvatar,
     generateMetaDescription,
     generateNewsCardTitle
-} from "./AdminDataGenerators";
+} from "../_helpers/adminDataGenerators";
 
 import { Card } from "antd";
 const { Meta } = Card;

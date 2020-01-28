@@ -1,6 +1,6 @@
-import { generateDate, generateOptions } from "./AdminDataGenerators";
+import { generateDate, generateOptions } from "./adminDataGenerators";
 
-import linksPaths from "../../../_config/linksPaths";
+import linksPaths from "../../../../_config/linksPaths";
 const { NEWS } = linksPaths;
 
 export const newsColumnsStructure = [

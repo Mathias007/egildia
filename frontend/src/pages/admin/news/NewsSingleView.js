@@ -5,14 +5,14 @@ import navigationTitles from "../../../_config/navigationTitles";
 import { news } from "../../../_store/_actions";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import NewsCard from "../data/NewsCard";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import NewsCard from "../components/news/NewsCard";
 
 import { Layout } from "antd";
 
 const { ADMIN_NEWS } = navigationTitles;
 
-class NewsSingleCard extends Component {
+class NewsSingleView extends Component {
     componentDidMount() {
         console.log(this.props.match.params._id);
         this.props.showProperNews(this.props.match.params._id);
@@ -43,4 +43,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsSingleCard);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsSingleView);

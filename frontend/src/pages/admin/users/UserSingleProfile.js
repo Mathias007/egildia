@@ -10,10 +10,10 @@ import {
     generateAvatar,
     generateCardTitle,
     generateMetaDescription
-} from "../data/AdminDataGenerators";
+} from "../components/_helpers/adminDataGenerators";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import UsersCardForm from "../data/UsersCardForm";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import UsersCardForm from "../components/users/UsersCardForm";
 
 import { Card, Layout } from "antd";
 const { Meta } = Card;
@@ -26,7 +26,7 @@ const captions = {
     metaDescription: "Data rejestracji:"
 };
 
-class UserProfileCard extends Component {
+class UserSingleProfile extends Component {
     componentDidMount() {
         this.props.showUserProfile(this.props.match.params._id);
     }
@@ -86,4 +86,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfileCard);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSingleProfile);

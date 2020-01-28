@@ -2,9 +2,9 @@ import {
     generateAvatar,
     generateDate,
     generateOptions
-} from "./AdminDataGenerators";
+} from "./adminDataGenerators";
 
-import linksPaths from "../../../_config/linksPaths";
+import linksPaths from "../../../../_config/linksPaths";
 const { USERS } = linksPaths;
 
 export const usersColumnsStructure = [

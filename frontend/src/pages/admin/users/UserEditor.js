@@ -6,10 +6,10 @@ import { users } from "../../../_store/_actions";
 import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
 
-import BreadcrumbComponent from "../../global/BreadcrumbComponent";
-import PageHeaderComponent from "../../components/PageHeaderComponent";
-import ButtonComponent from "../../components/ButtonComponent";
-import UsersEditForm from "../data/UsersEditForm";
+import BreadcrumbComponent from "../../components/global/BreadcrumbComponent";
+import PageHeaderComponent from "../../components/universal/PageHeaderComponent";
+import ButtonComponent from "../../components/universal/ButtonComponent";
+import UsersEditForm from "../components/users/UsersEditForm";
 
 import { Layout } from "antd";
 

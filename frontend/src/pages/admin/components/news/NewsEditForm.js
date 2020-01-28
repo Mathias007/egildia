@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { news } from "../../../_store/_actions";
-import linksPaths from "../../../_config/linksPaths";
-import serverStatuses from "../../../_config/serverStatuses";
-import styles from "../../../styles/styles";
+import { news } from "../../../../_store/_actions";
+import linksPaths from "../../../../_config/linksPaths";
+import serverStatuses from "../../../../_config/serverStatuses";
+import styles from "../../../../styles/styles";
 
-import SingleFormElement from "../../components/SingleFormElement";
-import ButtonComponent from "../../components/ButtonComponent";
-import ErrorMessageComponent from "../../components/ErrorMessageComponent";
-import Success from "../../errors/Success";
+import SingleFormElement from "../../../components/universal/SingleFormElement";
+import ButtonComponent from "../../../components/universal/ButtonComponent";
+import ErrorMessageComponent from "../../../components/universal/ErrorMessageComponent";
+import Success from "../../../components/errors/Success";
 
 import { Form, Layout } from "antd";
 const { Content } = Layout;

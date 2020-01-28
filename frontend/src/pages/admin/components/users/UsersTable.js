@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { users } from "../../../_store/_actions";
-import styles from "../../../styles/styles";
+import { users } from "../../../../_store/_actions";
+import styles from "../../../../styles/styles";
 
-import { usersColumnsStructure } from "./usersColumnsStructure";
+import { usersColumnsStructure } from "../_helpers/usersColumnsStructure";
 
 import { Layout, Table } from "antd";
 const { Content } = Layout;
