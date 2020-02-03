@@ -16,6 +16,14 @@ export const generateAvatar = name => {
     ) : null;
 };
 
+export const generateCardFooterLink = (caption, path, id) => {
+    return (
+        <Link to={id ? `${path}/${id}` : path}>
+            <Icon type="arrow-right" /> {caption}
+        </Link>
+    );
+};
+
 export const generateCardTitle = (title, caption) => {
     return (
         <span>
@@ -33,6 +41,25 @@ export const generateNewsCardTitle = (backLink, backText, title) => {
             <Divider type="vertical" />
             <span>{title}</span>
         </>
+    );
+};
+
+export const generateContentPreview = (
+    content,
+    limit,
+    moreCaption,
+    morePath,
+    id
+) => {
+    return (
+        <p>
+            {content.slice(0, limit)}{" "}
+            {content.length > limit ? (
+                <Link to={`${morePath}/${id}`}>
+                    <span>{moreCaption}</span>
+                </Link>
+            ) : null}
+        </p>
     );
 };
 

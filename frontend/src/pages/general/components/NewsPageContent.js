@@ -1,22 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import moment from "moment";
-import "moment/locale/pl";
 
 import { news } from "../../../_store/_actions";
-import { dateFormat } from "../../../_config/globalContentVariables";
 import linksPaths from "../../../_config/linksPaths";
 import styles from "../../../styles/styles";
 
-import { generateOptions } from "../../admin/components/_helpers/adminDataGenerators";
+import {
+    generateAvatar,
+    generateCardFooterLink,
+    generateComments,
+    generateContentPreview,
+    generateMetaDescription,
+    generateOptions
+} from "../../admin/components/_helpers/adminDataGenerators";
 import ButtonComponent from "../../components/universal/ButtonComponent";
 
-import { Avatar, Card, Divider, Icon, Layout } from "antd";
+import { Card, Layout } from "antd";
 const { Meta } = Card;
 const { Content } = Layout;
 
 const { NEWS } = linksPaths;
+
+const captions = {
+    added: "Dodano:",
+    author: "Autor:",
+    backText: "Powrót",
+    comments: "Komentarze:",
+    commentsCount: "brak",
+    goToNews: "Przejdź do wpisu",
+    options: "Opcje",
+    readMore: "... Czytaj dalej"
+};
 
 class NewsPageContent extends Component {
     componentDidMount() {
@@ -43,49 +58,45 @@ class NewsPageContent extends Component {
                         title={title}
                         extra={
                             this.props.isAuthenticated ? (
-                                <div key={_id}>
-                                    <strong>Opcje</strong>
+                                <div>
                                     {generateOptions(
                                         NEWS.EDIT,
                                         NEWS.REMOVE,
-                                        _id
+                                        _id,
+                                        captions.options
                                     )}
                                 </div>
                             ) : null
                         }
                         actions={[
-                            <span>
-                                <Icon type="idcard" /> Komentarze:{" "}
-                                <strong>brak</strong>
-                            </span>,
-                            <Link to={`${NEWS.SINGLE}/${_id}`}>
-                                <Icon type="arrow-right" /> Przejdź do wpisu
-                            </Link>
+                            generateComments(
+                                captions.comments,
+                                captions.commentsCount
+                            ),
+                            generateCardFooterLink(
+                                captions.goToNews,
+                                NEWS.SINGLE,
+                                _id
+                            )
                         ]}
                     >
                         <Meta
-                            avatar={
-                                <Avatar style={styles.newsAvatar} size="large">
-                                    {category.charAt(0).toUpperCase()}
-                                </Avatar>
-                            }
-                            description={
-                                <>
-                                    <span>
-                                        Dodano:{" "}
-                                        {moment(date).format(dateFormat)}
-                                    </span>
-                                    <Divider type="vertical" />
-                                    <span>
-                                        Autor: <strong>{author}</strong>
-                                    </span>
-                                </>
-                            }
+                            avatar={generateAvatar(category)}
+                            description={generateMetaDescription(
+                                date,
+                                captions.added,
+                                author,
+                                captions.author
+                            )}
                         />
-                        <p>
-                            {content}{" "}
-                            {content.length > 100 ? <span>...</span> : null}
-                        </p>
+
+                        {generateContentPreview(
+                            content,
+                            400,
+                            captions.readMore,
+                            NEWS.SINGLE,
+                            _id
+                        )}
                     </Card>
                 );
             });
