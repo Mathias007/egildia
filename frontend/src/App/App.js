@@ -17,6 +17,7 @@ import Forbidden from "../pages/components/errors/Forbidden";
 import NewsPage from "../pages/general/NewsPage";
 import LoginPage from "../pages/general/LoginPage";
 import RegistrationPage from "../pages/general/RegistrationPage";
+import Comments from "../pages/general/components/Comments";
 
 // admin articles imports
 import ArticlesList from "../pages/admin/articles/ArticlesList";
@@ -115,6 +116,12 @@ class App extends Component {
                                         exact
                                         path={GENERAL.REGISTER}
                                         component={RegistrationPage}
+                                    />
+
+                                    <Route
+                                        exact
+                                        path="/comments"
+                                        component={Comments}
                                     />
 
                                     {/* admin articles routes */}
