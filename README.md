@@ -531,3 +531,26 @@
         - instalacja i implementacja biblioteki bcrypt oraz poprawki a obsłudze API autoryzacyjnego.
 
     **INNE**: Na ten moment projekt nadaje się już do "wystawienia publicznego", dlatego niebawem pojawi się on na jakimś serwerze testowym. Wciąż można w nim jeszcze wiele zmienić, jednak ostatnio trochę za bardzo zatapiam się w rzeczach drobnych i mało w zasadzie istotnych. Tym nie mniej prace nad projektem będą trwały, tyle że być może rozpocznę równolegle prace nad czymś nowym, aby nie odczuć ewentualnego znużenia.
+
+## Poniedziałek 27.01.2020 - refaktoryzacje komponentów "karcianych"
+    **FRONTEND**: 
+        - przebudowa i refaktoryzacja komponentów UsersCard, UserProfileCard i NewsCard,
+        - dodanie nowych generatorów dla sekcji admin.
+
+## Wtorek 28.01.2020 - nowe porządki w projekcie
+    **FRONTEND**:
+        - aktualizacja testów i snapshotów dla reducerów (uwzględnienie ostatnich nowości),
+        - poprawki componentDidUpdate(),
+        - generalna przebudowa struktury katalogów i plików, zaprowadzenie nowych porządków,
+        - aktualizacja importów i routingu w związku z w/w przebudową.
+
+    Nowa struktura projektu raczej jest zbliżona do ostatecznej.
+
+## Środa 29.01.2020 - Niedziela 02.02.2020 - zapowiadana przerwa na regenerację sił
+
+## Poniedziałek 03.02.2020 - ostatki refaktoryzacyjne i początek prac nad sekcją komentarzy
+    **FRONTEND**:
+        - przebudowa NewsPageContent i dodanie nowych generatorów treści (wykorzystuję w tym miejscu te z sekcji administracyjnej w związku z łącznością tematyczną z sekcją news),
+        - rozrysowanie na papierze planowanego systemu komentarzy,
+        - stworzenie defaultowego komponentu Comments ze strukturą z andt przykładowymi danymi i funkcjonalnościami.
+        
