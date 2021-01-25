@@ -71,7 +71,7 @@ exports.loginUser = (req, res, next) => {
                 }
             }
         }
-    ).select("password");
+    ).select("password role");
 };
 
 // Verify accessToken

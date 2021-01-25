@@ -7,7 +7,7 @@ function HeaderLogo(props) {
     return (
         <div className="logo">
             <Link to="/">
-                <img src={eGildiaLogo} alt="e-Gildia Graczy" />
+                <img src={eGildiaLogo} alt="e-Gildia Graczy" width="100%" maxwidth="300px" />
             </Link>
         </div>
     );

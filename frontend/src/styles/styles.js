@@ -1,58 +1,61 @@
 const styles = {
     breadcrumb: {
-        margin: "16px 0"
+        margin: "16px 0",
     },
     card: {
-        marginBottom: 16
+        marginBottom: 16,
     },
     content: {
         background: "#fff",
         padding: 24,
         margin: 0,
-        minHeight: 280
+        minHeight: 280,
     },
     datePicker: {
-        width: "100%"
+        width: "100%",
     },
     footer: {
-        textAlign: "center"
+        textAlign: "center",
     },
-    headerMenu: { lineHeight: "64px" },
+    headerMenu: {
+        lineHeight: "64px",
+        margin: 0,
+    },
     hiddenDivider: {
-        type:"vertical",
-        border: 0
+        type: "vertical",
+        border: 0,
     },
     inputIcon: {
-        color: "rgba(0,0,0,.25)"
+        color: "rgba(0,0,0,.25)",
     },
     layout: { padding: "0 24px 24px" },
     loginButton: {
-        marginLeft: 16,
-        verticalAlign: "middle"
+        // marginLeft: 16,
+        verticalAlign: "middle",
     },
     newsAvatar: {
         backgroundColor: "#1890ff",
-        verticalAlign: "middle"
+        verticalAlign: "middle",
     },
     sider: { background: "#fff", collapsedWidth: 0, width: 230 },
     sidebarMenu: {
         borderRight: 0,
         height: "100%",
-        mode: "inline"
+        mode: "inline",
     },
     tooltipIcon: {
         type: "info-circle",
-        color: "rgba(0,0,0,.45)"
+        color: "rgba(0,0,0,.45)",
     },
     userAvatar: {
         backgroundColor: "#1890ff",
-        verticalAlign: "middle"
+        verticalAlign: "middle",
     },
     actualUserAvatar: {
         cursor: "pointer",
         backgroundColor: "#f56a00",
-        verticalAlign: "middle"
-    }
+        verticalAlign: "middle",
+    },
 };
 
 export default styles;

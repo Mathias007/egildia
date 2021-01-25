@@ -34,7 +34,7 @@ div.container {
 header.ant-layout-header {
     display: flex;
     justify-content: space-between;
-    padding: 0 25px;
+    /* padding: 0 25px; */
 }
 
 p.avatar-component-username {

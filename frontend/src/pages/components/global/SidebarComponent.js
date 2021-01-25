@@ -16,7 +16,7 @@ const submenuKeys = {
     ADMIN_KEY: "admin",
     GENERAL_KEY: "general",
     KNIGHTS_KEY: "knights",
-    TZAR_KEY: "tzar"
+    TZAR_KEY: "tzar",
 };
 
 const { ADMIN_KEY, GENERAL_KEY, KNIGHTS_KEY, TZAR_KEY } = submenuKeys;
@@ -25,18 +25,18 @@ class SidebarComponent extends Component {
     rootSubmenuKeys = [KNIGHTS_KEY, TZAR_KEY, ADMIN_KEY];
 
     state = {
-        openKeys: [KNIGHTS_KEY, TZAR_KEY, ADMIN_KEY]
+        openKeys: [KNIGHTS_KEY, TZAR_KEY, ADMIN_KEY],
     };
 
-    onOpenChange = openKeys => {
+    onOpenChange = (openKeys) => {
         const latestOpenKey = openKeys.find(
-            key => this.state.openKeys.indexOf(key) === -1
+            (key) => this.state.openKeys.indexOf(key) === -1
         );
         if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
             this.setState({ openKeys });
         } else {
             this.setState({
-                openKeys: latestOpenKey ? [latestOpenKey] : []
+                openKeys: latestOpenKey ? [latestOpenKey] : [],
             });
         }
     };
@@ -46,6 +46,7 @@ class SidebarComponent extends Component {
 
         return (
             <Sider
+                defaultCollapsed
                 collapsedWidth={styles.sider.collapsedWidth}
                 collapsible
                 style={styles.sider}
@@ -73,9 +74,9 @@ class SidebarComponent extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
     };
 };
 

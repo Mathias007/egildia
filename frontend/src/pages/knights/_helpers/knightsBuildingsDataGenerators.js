@@ -105,18 +105,18 @@ export const buildingsColumnsStructure = [
         title: "Działanie",
         dataIndex: "description",
         align: "left",
-        render: description => generateDescription(description)
+        render: description => generateDescription(description),
     },
     {
         title: "Pracownik",
         dataIndex: "worker",
         align: "center",
-        render: worker => generateWorker(worker)
+        render: worker => generateWorker(worker),
     },
     {
         title: "Grafika",
         dataIndex: "image",
         align: "center",
-        render: image => generateImage(image)
+        render: image => generateImage(image),
     }
 ];

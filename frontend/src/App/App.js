@@ -59,7 +59,7 @@ const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR, USERS } = routesPaths;
 
 class App extends Component {
     state = {
-        collapsed: false
+        collapsed: true
     };
 
     PrivateRoute = ({ component: ChildComponent, ...rest }) => {
