@@ -1,23 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 
 import styles from "../../../../styles/styles";
 
 import { Menu } from "antd";
+
 const { Item } = Menu;
 
-function HeaderMenu(props) {
-    return (
-        <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={["2"]}
-            style={styles.headerMenu}
-        >
-            <Item key="1">nav 1</Item>
-            <Item key="2">nav 2</Item>
-            <Item key="3">nav 3</Item>
-        </Menu>
-    );
+class HeaderMenu extends Component {
+    state = {
+        current: "",
+    };
+
+    handleClick = (e) => {
+        console.log("click ", e);
+        this.setState({
+            current: e.key,
+        });
+    };
+
+    render() {
+        return (
+            <Menu
+                theme="dark"
+                onClick={this.handleClick}
+                style={styles.headerMenu}
+                triggerSubMenuAction="click"
+                selectedKeys={[this.state.current]}
+                mode="horizontal"
+            >
+                <Item key="portal">Portal</Item>
+                <Item key="news">Nowości</Item>
+                <Item key="materials">Zasoby</Item>
+            </Menu>
+        );
+    }
 }
 
 export default HeaderMenu;
