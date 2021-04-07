@@ -13,23 +13,23 @@ ad. I
 schemat:
 **Component.js**
 
-	state: { 
-		article-name: article
-	}
-		
-	componentDidMount { 
-		this.props.getConent(article-name)
-	}
-		=> REDUX => action(artName) => service (artName) 
-			=> reducer (data) => article: []
-			<=(data)=> API <=> MongoDB
-				egildia.articles {
-					art-name: 'article',
-					title: 'ABC',
-					content: 'tekst',
-					author: 'MS',
-					date: '1.1.2020' <=> default: new Date()
-				}
+		state: { 
+			article-name: article
+		}
+			
+		componentDidMount { 
+			this.props.getConent(article-name)
+		}
+			=> REDUX => action(artName) => service (artName) 
+				=> reducer (data) => article: []
+				<=(data)=> API <=> MongoDB
+					egildia.articles {
+						art-name: 'article',
+						title: 'ABC',
+						content: 'tekst',
+						author: 'MS',
+						date: '1.1.2020' <=> default: new Date()
+					}
 
 ad. II
 
@@ -64,10 +64,10 @@ ad. II
 
 // szkic newsa
 
-- oznaczenie kategorii (aktualnie avatar),
-- akcje widoczne tylko gdy user.role='admin'
-		- edytuj,
-		- usuń,
-- przycisk **dalej** widoczny, gdy news.content.length > 100 (znaków); po kliknięciu otwiera stronę newsa z komentarzami,
-- treść artykułu widoczna bezpośrednio na stronie głównej - max 100 znaków,
-- licznik komentarzy.	
+	- oznaczenie kategorii (aktualnie avatar),
+	- akcje widoczne tylko gdy `user.role='admin'`
+			- edytuj,
+			- usuń,
+	- przycisk **dalej** widoczny, gdy news.content.length > 100 (znaków); po kliknięciu otwiera stronę newsa z komentarzami,
+	- treść artykułu widoczna bezpośrednio na stronie głównej - max 100 znaków,
+	- licznik komentarzy.	
