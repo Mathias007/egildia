@@ -37,7 +37,7 @@ Pozyskiwanie danych:
 		b) ze style.js -> style;
 		c) pozostałe elementy -> struktura komponentu.
 
-II. Development.
+### II. Development.
 
  1. Utworzenie komponentu zwykłego inputa.
  2. Dodanie wersji dla:
