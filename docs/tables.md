@@ -33,4 +33,4 @@ Schemat układu:
 		- struktura tabeli - (b)
 		- składanie tabeli - (a)
 
-// Szkic schematu
+<img src="./drafts/table-schema.jpg" width="50%" title="Schemat tabeli" />

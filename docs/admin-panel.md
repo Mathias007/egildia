@@ -31,7 +31,6 @@
         				potwierdź (button)
         			}  => store => fetch(POST) => controller => MongoDB
 
-
 -   [x] Edytuj
 
 -   [x] Usuń
@@ -46,4 +45,4 @@
 
 -   [x] Usuń.
 
-![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure.jpg "Struktura Panelu Administracyjnego")
+<img src="./drafts/admin-panel-structure.jpg" width="50%" title="Struktura Panelu Administracyjnego" />

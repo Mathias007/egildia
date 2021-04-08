@@ -6,6 +6,8 @@ I. **articlesList**.js <-> wyświetla listę artykułów (`GET`).
 	- deleteComponent.js (`id`),
 - addComponent.js - **button**
 
+	<img src="./drafts/articles-list-structure.jpg" width="50%" title="Lista artykułów" />
+
 II. **addNewArticle**.js <-> dodaje nowy artykuł (`POST`).
 
  - input-text: `allokationKey`,
@@ -31,6 +33,8 @@ IV. **deleteSelectedArticle**.js <-> usuwa wybrany artykuł (`DELETE`).
 - rozpoznawanie artykułu po `_id`,
 - wybór odpowiedzi `TAK` wysyła metodę wraz z `_id`,
 - wybór odpowiedzi `NIE` zamyka okno.
+
+	<img src="./drafts/delete-article-structure.jpg" width="50%" title="Struktura popupa usuwania artykułu" />
 
 V. **statusComponent**.js
 
@@ -64,3 +68,6 @@ VI. Implementacja treści w podstronie:
 					komponenty fragmentów generowanych
 				
 				// sekcja komentarzy //
+
+	<img src="./drafts/articles-structure.jpg" width="50%" title="Struktura artykułu" />
+	

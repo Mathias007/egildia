@@ -63,7 +63,7 @@ Pozyskiwanie danych:
 
 4. SYSTEM.
 
-	// schemat
+	<img src="./drafts/form-fields-system.jpg" width="50%" title="Graficzne zobrazowanie systemu formularzy" />
 
 5. Przebudowa SingleFormElement pod kątem racjonalizacji kodu:
 
@@ -85,4 +85,4 @@ Pozyskiwanie danych:
 		- SingleFormElement =(props)=> FormElementBuilder =(inputProps)=> InputCreators
 		- InputCreators =(Input)=> FormElementBuilder =(Input, rules)=> SingleFormElement => (Item, decorator, Input)
 		
-	// ww. schemat w wersji graficznej
+	<img src="./drafts/form-fields-schema.jpg" width="50%" title="Schemat elementu formularza" />
