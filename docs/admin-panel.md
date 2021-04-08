@@ -46,4 +46,4 @@
 
 -   [x] Usuń.
 
-![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure.jpg "Struktura Panelu Administracyjnego" =250x)
+![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure.jpg =250x "Struktura Panelu Administracyjnego")
