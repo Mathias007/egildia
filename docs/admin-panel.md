@@ -1,42 +1,49 @@
-## Panel Administracyjny 
+## Panel Administracyjny
+
     isAuthenticated: true + role: 'ADMIN'
+
 ### 1. Użytkownicy
 
- - [x] Lista
+-   [x] Lista
 
- - [x] Dodaj
+-   [x] Dodaj
 
- - [x] Edytuj
- 
- - [x] Usuń
+-   [x] Edytuj
+
+-   [x] Usuń
+
 ### 2. Newsy
 
- - [x] Lista -> **tabela** 
- 
- 			avatar, name, email, role
+-   [x] Lista -> **tabela**
 
- - [x] Nowy -> **formularz** 
+    ```
 
-			 {
-				kategoria (select/input+autoc.),
-				tytuł (input tekstowy),
-				treść (textarea),
-				autor (zalogowany user),
-				data (DatePicker),
-				potwierdź (button)
-			}  => store => fetch(POST) => controller => MongoDB
-		 
- - [x] Edytuj
+    ```
 
- - [x] Usuń
- ### Artykuły
+-   [x] Nowy -> **formularz**
 
-  -  [x] Lista,
+        			 {
+        				kategoria (select/input+autoc.),
+        				tytuł (input tekstowy),
+        				treść (textarea),
+        				autor (zalogowany user),
+        				data (DatePicker),
+        				potwierdź (button)
+        			}  => store => fetch(POST) => controller => MongoDB
 
-   - [x] Dodaj,
 
-   - [x] Edytuj,
+-   [x] Edytuj
 
-   - [x] Usuń.
+-   [x] Usuń
 
-// szkice Panelu Admina
+### Artykuły
+
+-   [x] Lista,
+
+-   [x] Dodaj,
+
+-   [x] Edytuj,
+
+-   [x] Usuń.
+
+![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure "Struktura Panelu Administracyjnego")
