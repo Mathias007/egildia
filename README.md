@@ -26,4 +26,4 @@ eGildia 2.0, czyli nowa odsłona serwisu e-Gildia Graczy (https://egildia.pl).
 
 10. Logowanie.
 
-![Ogólna struktura strony (szkielet)](.docs/drafts/page-main-structure.jpg "Ogólna struktura strony (szkielet)")
+<img src="./docs/drafts/page-main-structure.jpg" width="50%" tite="Ogólna struktura strony (szkielet)" />
