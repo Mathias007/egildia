@@ -26,4 +26,6 @@ eGildia 2.0, czyli nowa odsłona serwisu e-Gildia Graczy (https://egildia.pl).
 
 10. [Logowanie](/docs/login.md).
 
+11. [Obsługa błędów i statusów](/docs/statuses.md).
+
     <img src="./docs/drafts/page-main-structure.jpg" width="50%" title="Ogólna struktura strony (szkielet)" />
