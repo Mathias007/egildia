@@ -881,3 +881,11 @@ Nowa struktura projektu raczej jest zbliżona do ostatecznej.
 -   rozrysowanie na papierze planowanego systemu komentarzy,
 
 -   stworzenie defaultowego komponentu **Comments** ze strukturą z andt przykładowymi danymi i funkcjonalnościami.
+
+## Poniedziałek 05.04.2021 - Czwartek 8.04.2021 - dokumentacja projektu
+
+**INNE**: 
+
+- publikacja szczegółowej dokumentacji projektu (katalog **drafts**) utrzymanej w formacie `.md`, podzielonej na poszczególne rozdziały tematyczne (spis treści w **README**), zawierającej graficzne odwzorowania (schematy, rysunki struktur);
+
+- obecnie trwają prace nad deployem aplikacji.
