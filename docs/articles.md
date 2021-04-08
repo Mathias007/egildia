@@ -69,5 +69,5 @@ VI. Implementacja treści w podstronie:
 				
 				// sekcja komentarzy //
 
-	<img src="./drafts/articles-structure.jpg" width="50%" title="Struktura artykułu" />
+	<img src="./drafts/article-structure.jpg" width="50%" title="Struktura artykułu" />
 	

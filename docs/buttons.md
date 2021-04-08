@@ -29,4 +29,4 @@
 	- zaimplementować,
 	- rozważyć rozszerzanie alternatyw lub props na bieżąco.
 
-	<img src="./drafts/button-schema.jpg" width="50%" title="Schemat komponentu button" />
+		<img src="./drafts/button-schema.jpg" width="50%" title="Schemat komponentu button" />

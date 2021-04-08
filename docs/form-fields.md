@@ -85,4 +85,4 @@ Pozyskiwanie danych:
 		- SingleFormElement =(props)=> FormElementBuilder =(inputProps)=> InputCreators
 		- InputCreators =(Input)=> FormElementBuilder =(Input, rules)=> SingleFormElement => (Item, decorator, Input)
 		
-	<img src="./drafts/form-fields-schema.jpg" width="50%" title="Schemat elementu formularza" />
+	<img src="./drafts/form-item-schema.jpg" width="50%" title="Schemat elementu formularza" />
