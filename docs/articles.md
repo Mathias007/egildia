@@ -68,6 +68,4 @@ VI. Implementacja treści w podstronie:
 					komponenty fragmentów generowanych
 				
 				// sekcja komentarzy //
-
-	<img src="./drafts/article-structure.jpg" width="50%" title="Struktura artykułu" />
 	

@@ -24,6 +24,6 @@ eGildia 2.0, czyli nowa odsłona serwisu e-Gildia Graczy (https://egildia.pl).
 
 9. [Zarządzanie tekstami na stronie](/docs/text-management.md).
 
-10. Logowanie.
+10. [Logowanie](/docs/login.md).
 
     <img src="./docs/drafts/page-main-structure.jpg" width="50%" title="Ogólna struktura strony (szkielet)" />

@@ -62,7 +62,7 @@ ad. II
 			category: 'Inne'
 		}
 
-// szkic newsa
+	<img src="./drafts/articles-component-schema.jpg" width="50%" title="Schemat komponentu newsa/artykułu" />
 
 	- oznaczenie kategorii (aktualnie avatar),
 	- akcje widoczne tylko gdy `user.role='admin'`
