@@ -46,4 +46,4 @@
 
 -   [x] Usuń.
 
-![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure.jpg "Struktura Panelu Administracyjnego")
+![Struktura Panelu Administracyjnego](./drafts/admin-panel-structure.jpg "Struktura Panelu Administracyjnego" width=50%)
