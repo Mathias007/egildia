@@ -18,26 +18,19 @@ const { ARTICLES } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class ArticleEditForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
+    handleSubmit = (values) => {
         let modificationDate = new Date();
-        const { validateFields } = this.props.form;
 
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Sent ID:" + this.props.idParam);
-                console.log("Received values of form: ", values);
-                this.props.editSelectedArticle(
-                    this.props.idParam,
-                    values.allocationKey,
-                    values.title,
-                    values.content,
-                    values.author,
-                    modificationDate
-                );
-            }
-        });
+        console.log("Sent ID:" + this.props.idParam);
+        console.log("Received values of form: ", values);
+        this.props.editSelectedArticle(
+            this.props.idParam,
+            values.allocationKey,
+            values.title,
+            values.content,
+            values.author,
+            modificationDate
+        );
     };
 
     render() {
@@ -51,13 +44,11 @@ class ArticleEditForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             const { properArticle } = this.props;
             return (
                 <Content style={styles.content}>
-                    <Form onSubmit={this.handleSubmit} id="edit-article-form">
+                    <Form onFinish={this.handleSubmit} id="edit-article-form">
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="allocationKey"
                             initialValue={properArticle.allocationKey}
                             inputIcon="key"
@@ -69,7 +60,6 @@ class ArticleEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="title"
                             initialValue={properArticle.title}
                             inputIcon="flag"
@@ -81,7 +71,6 @@ class ArticleEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="content"
                             fieldType="text-area"
                             initialValue={properArticle.content}
@@ -93,7 +82,6 @@ class ArticleEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             label="Autor artykułu"
                             fieldName="author"
                             initialValue={properArticle.author}
@@ -125,15 +113,15 @@ class ArticleEditForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.articles.errorMessage,
         properArticle: state.articles.properArticle,
-        status: state.articles.status
+        status: state.articles.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         editSelectedArticle: (
             id,
@@ -156,10 +144,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(articles.cleanServerStatus());
-        }
+        },
     };
 };
 
-ArticleEditForm = connect(mapStateToProps, mapDispatchToProps)(ArticleEditForm);
-
-export default Form.create()(ArticleEditForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleEditForm);

@@ -10,14 +10,14 @@ import ButtonComponent from "../../../components/universal/ButtonComponent";
 import ErrorMessageComponent from "../../../components/universal/ErrorMessageComponent";
 import Success from "../../../components/errors/Success";
 
-import { Form, Layout } from "antd";
+import { Layout } from "antd";
 const { Content } = Layout;
 
 const { ARTICLES } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class ArticlesRemoveForm extends Component {
-    handleDeletingSubmit = e => {
+    handleDeletingSubmit = (e) => {
         e.preventDefault();
         this.props.deleteSelectedArticle(this.props.idParam);
     };
@@ -62,28 +62,23 @@ class ArticlesRemoveForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.articles.errorMessage,
         properArticle: state.articles.properArticle,
-        status: state.articles.status
+        status: state.articles.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        deleteSelectedArticle: id => {
+        deleteSelectedArticle: (id) => {
             return dispatch(articles.deleteSelectedArticle(id));
         },
         cleanServerStatus: () => {
             return dispatch(articles.cleanServerStatus());
-        }
+        },
     };
 };
 
-ArticlesRemoveForm = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ArticlesRemoveForm);
-
-export default Form.create()(ArticlesRemoveForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesRemoveForm);

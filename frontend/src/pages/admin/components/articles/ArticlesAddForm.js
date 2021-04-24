@@ -18,24 +18,15 @@ const { ARTICLES } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class ArticlesAddForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const { validateFields, resetFields } = this.props.form;
-
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.addNewArticle(
-                    values.allocationKey,
-                    values.title,
-                    values.content,
-                    values.author,
-                    values.date
-                );
-                resetFields();
-            }
-        });
+    handleSubmit = (values) => {
+        console.log("Received values of form: ", values);
+        this.props.addNewArticle(
+            values.allocationKey,
+            values.title,
+            values.content,
+            values.author,
+            values.date
+        );
     };
 
     render() {
@@ -49,12 +40,10 @@ class ArticlesAddForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             return (
                 <Content style={styles.content}>
-                    <Form onSubmit={this.handleSubmit} id="add-article-form">
+                    <Form onFinish={this.handleSubmit} id="add-article-form">
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="allocationKey"
                             inputIcon="key"
                             label="Klucz identyfikacyjny artykułu"
@@ -65,7 +54,6 @@ class ArticlesAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="title"
                             inputIcon="flag"
                             label="Tytuł artykułu"
@@ -76,7 +64,6 @@ class ArticlesAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="content"
                             fieldType="text-area"
                             label="Zawartość artykułu"
@@ -87,7 +74,6 @@ class ArticlesAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="date"
                             fieldType="date"
                             label="Data dodania lub utworzenia (pole nieobowiązkowe)"
@@ -97,7 +83,6 @@ class ArticlesAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="author"
                             initialValue={this.props.name}
                             inputIcon="crown"
@@ -125,15 +110,15 @@ class ArticlesAddForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.articles.errorMessage,
         name: state.auth.name,
-        status: state.articles.status
+        status: state.articles.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addNewArticle: (allocationKey, title, content, author, date) => {
             return dispatch(
@@ -148,10 +133,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(articles.cleanServerStatus());
-        }
+        },
     };
 };
 
-ArticlesAddForm = connect(mapStateToProps, mapDispatchToProps)(ArticlesAddForm);
-
-export default Form.create()(ArticlesAddForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesAddForm);
