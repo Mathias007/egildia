@@ -19,18 +19,9 @@ const { GENERAL } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class LoginForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.login(
-                    values.username,
-                    values.password,
-                    values.remember
-                );
-            }
-        });
+    handleSubmit = (values) => {
+        console.log("Received values of form: ", values);
+        this.props.login(values.username, values.password, values.remember);
     };
 
     render() {
@@ -48,12 +39,10 @@ class LoginForm extends Component {
                     description="Za chwilę zostaniesz przekierowany na stronę główną serwisu. Kliknij poniżej, jeżeli nie chcesz czekać."
                 />
             );
-        const { getFieldDecorator } = this.props.form;
         return (
             <Content style={styles.content}>
-                <Form onSubmit={this.handleSubmit} className="login-form">
+                <Form onFinish={this.handleSubmit} className="login-form">
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="username"
                         inputIcon="user"
                         message="Wpisz nazwę użytkownika lub adres e-mail!"
@@ -63,7 +52,6 @@ class LoginForm extends Component {
                     />
 
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="password"
                         fieldType="password"
                         inputIcon="lock"
@@ -71,11 +59,12 @@ class LoginForm extends Component {
                         placeholder="Hasło"
                         required
                     />
-                    <Item>
-                        {getFieldDecorator("remember", {
-                            valuePropName: "checked",
-                            initialValue: true
-                        })(<Checkbox>Zapamiętaj</Checkbox>)}
+                    <Item
+                        name="remember"
+                        valuePropName="checked"
+                        initialValue={true}
+                    >
+                        <Checkbox>Zapamiętaj</Checkbox>
 
                         <ButtonComponent
                             composition="nowrap"
@@ -95,26 +84,24 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         remember: state.auth.remember,
         errorMessage: state.auth.errorMessage,
-        status: state.auth.status
+        status: state.auth.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         login: (name, password, remember) => {
             return dispatch(auth.login(name, password, remember));
         },
         cleanServerStatus: () => {
             return dispatch(auth.cleanServerStatus());
-        }
+        },
     };
 };
 
-LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
-
-export default Form.create()(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

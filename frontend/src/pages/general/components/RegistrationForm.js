@@ -21,45 +21,30 @@ const { STATUS_OK } = serverStatuses;
 
 class RegistrationForm extends Component {
     state = {
-        confirmDirty: false
+        confirmDirty: false,
     };
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.register(
-                    values.nickname,
-                    values.email,
-                    values.password,
-                    values.remember
-                );
+    handleSubmit = (values) => {
+        console.log("Received values of form: ", values);
+        this.props.register(
+            values.nickname,
+            values.email,
+            values.password,
+            values.remember
+        );
+    };
+
+    validatePassword = ({ getFieldValue }) => ({
+        validator(_, value) {
+            if (!value || getFieldValue("password") === value) {
+                return Promise.resolve();
             }
-        });
-    };
 
-    handleConfirmBlur = e => {
-        const { value } = e.target;
-        this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-    };
-
-    compareToFirstPassword = (rule, value, callback) => {
-        const { form } = this.props;
-        if (value && value !== form.getFieldValue("password")) {
-            callback("Wpisane hasła nie pasują do siebie!");
-        } else {
-            callback();
-        }
-    };
-
-    validateToNextPassword = (rule, value, callback) => {
-        const { form } = this.props;
-        if (value && this.state.confirmDirty) {
-            form.validateFields(["confirm"], { force: true });
-        }
-        callback();
-    };
+            return Promise.reject(
+                new Error("Podane hasła do siebie nie pasują!")
+            );
+        },
+    });
 
     render() {
         if (
@@ -77,40 +62,37 @@ class RegistrationForm extends Component {
                 />
             );
 
-        const { getFieldDecorator } = this.props.form;
-
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
-                sm: { span: 8 }
+                sm: { span: 8 },
             },
             wrapperCol: {
                 xs: { span: 24 },
-                sm: { span: 16 }
-            }
+                sm: { span: 16 },
+            },
         };
         const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
                     span: 24,
-                    offset: 0
+                    offset: 0,
                 },
                 sm: {
                     span: 16,
-                    offset: 8
-                }
-            }
+                    offset: 8,
+                },
+            },
         };
 
         return (
             <Content style={styles.content}>
                 <Form
                     {...formItemLayout}
-                    onSubmit={this.handleSubmit}
+                    onFinish={this.handleSubmit}
                     className="registration-form"
                 >
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="nickname"
                         inputIcon="user"
                         label="Nazwa użytkownika"
@@ -120,7 +102,6 @@ class RegistrationForm extends Component {
                         tooltip="Unikalna nazwa, pod którą będziesz widoczny w serwisie."
                     />
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="email"
                         fieldType="email"
                         inputIcon="mail"
@@ -131,7 +112,6 @@ class RegistrationForm extends Component {
                         tooltip="Adres e-mail, który powiążesz z kontem, będzie służył do komunikacji z administracją serwisu."
                     />
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="password"
                         fieldType="password"
                         hasFeedback
@@ -145,23 +125,25 @@ class RegistrationForm extends Component {
                         tooltip="Twoje hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę."
                     />
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="confirm"
                         fieldType="password"
                         hasFeedback
                         inputIcon="key"
                         label="Potwierdź hasło"
+                        dependencies={["password"]}
                         message="Wpisz jeszcze raz swoje hasło!"
                         placeholder="Wpisz jeszcze raz swoje hasło."
                         required
                         tooltip="Dla pewności wpisz swoje hasło raz jeszcze."
-                        onBlur={this.handleConfirmBlur}
-                        validator={this.compareToFirstPassword}
+                        isConfirmField
+                        validator={this.validatePassword}
                     />
-                    <Item {...tailFormItemLayout}>
-                        {getFieldDecorator("remember", {
-                            valuePropName: "checked"
-                        })(<Checkbox>Zapamiętaj</Checkbox>)}
+                    <Item
+                        {...tailFormItemLayout}
+                        name="remember"
+                        valuePropName="checked"
+                    >
+                        <Checkbox>Zapamiętaj</Checkbox>
                         <ButtonComponent
                             composition="nowrap"
                             htmlType="submit"
@@ -180,29 +162,24 @@ class RegistrationForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.isAuthenticated,
         remember: state.auth.remember,
         errorMessage: state.users.errorMessage,
-        status: state.users.status
+        status: state.users.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         register: (name, email, password, remember) => {
             return dispatch(users.register(name, email, password, remember));
         },
         cleanServerStatus: () => {
             return dispatch(users.cleanServerStatus());
-        }
+        },
     };
 };
 
-RegistrationForm = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(RegistrationForm);
-
-export default Form.create()(RegistrationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
