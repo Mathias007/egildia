@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { users } from "../../../../_store/_actions";
 import {
     passwordPattern,
-    siteRoles
+    siteRoles,
 } from "../../../../_config/globalContentVariables";
 import linksPaths from "../../../../_config/linksPaths";
 import serverStatuses from "../../../../_config/serverStatuses";
@@ -20,25 +20,18 @@ const { GENERAL, USERS } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class UsersCardForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
+    handleSubmit = (values) => {
         let modificationDate = new Date();
-        const { validateFields } = this.props.form;
 
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.editSelectedUser(
-                    this.props.idParam,
-                    values.username,
-                    values.email,
-                    values.password,
-                    values.role,
-                    modificationDate
-                );
-            }
-        });
+        console.log("Received values of form: ", values);
+        this.props.editSelectedUser(
+            this.props.idParam,
+            values.username,
+            values.email,
+            values.password,
+            values.role,
+            modificationDate
+        );
     };
 
     render() {
@@ -52,12 +45,10 @@ class UsersCardForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             const { name, email, role } = this.props.selectedUser;
             return (
-                <Form onSubmit={this.handleSubmit} id="edit-user-form">
+                <Form onFinish={this.handleSubmit} id="edit-user-form">
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="username"
                         initialValue={name}
                         inputIcon="user"
@@ -69,7 +60,6 @@ class UsersCardForm extends Component {
                     />
 
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="email"
                         fieldType="email"
                         initialValue={email}
@@ -82,7 +72,6 @@ class UsersCardForm extends Component {
                     />
 
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="password"
                         fieldType="password"
                         inputIcon="key"
@@ -96,7 +85,6 @@ class UsersCardForm extends Component {
                     />
 
                     <SingleFormElement
-                        getFieldDecorator={getFieldDecorator}
                         fieldName="role"
                         fieldType="select"
                         initialValue={role}
@@ -125,15 +113,15 @@ class UsersCardForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.users.errorMessage,
         selectedUser: state.users.selectedUser,
-        status: state.users.status
+        status: state.users.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         editSelectedUser: (
             username,
@@ -154,10 +142,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(users.cleanServerStatus());
-        }
+        },
     };
 };
 
-UsersCardForm = connect(mapStateToProps, mapDispatchToProps)(UsersCardForm);
-
-export default Form.create()(UsersCardForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersCardForm);

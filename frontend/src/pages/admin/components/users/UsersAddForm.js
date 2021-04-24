@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import {
     passwordPattern,
-    siteRoles
+    siteRoles,
 } from "../../../../_config/globalContentVariables";
 import { users } from "../../../../_store/_actions";
 import linksPaths from "../../../../_config/linksPaths";
@@ -22,24 +22,15 @@ const { USERS } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class UsersAddForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const { validateFields, resetFields } = this.props.form;
-
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.register(
-                    values.username,
-                    values.email,
-                    values.password,
-                    values.role,
-                    values.date
-                );
-                resetFields();
-            }
-        });
+    handleSubmit = (values) => {
+        console.log("Received values of form: ", values);
+        this.props.register(
+            values.username,
+            values.email,
+            values.password,
+            values.role,
+            values.date
+        );
     };
 
     render() {
@@ -53,12 +44,10 @@ class UsersAddForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             return (
                 <Content style={styles.content}>
-                    <Form onSubmit={this.handleSubmit} id="add-user-form">
+                    <Form onFinish={this.handleSubmit} id="add-user-form">
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="username"
                             inputIcon="user"
                             label="Nazwa użytkownika"
@@ -68,7 +57,6 @@ class UsersAddForm extends Component {
                             Tooltip="Nazwą użytkownika jest ciąg znaków identyfikujący internautę w serwisie."
                         />
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="email"
                             fieldType="email"
                             inputIcon="mail"
@@ -79,7 +67,6 @@ class UsersAddForm extends Component {
                             Tooltip="Adres e-mail powiązany z kontem."
                         />
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="password"
                             fieldType="password"
                             inputIcon="key"
@@ -92,7 +79,6 @@ class UsersAddForm extends Component {
                             Tooltip="Hasło powinno składać się z conajmniej 8 znaków, zawierać literę oraz cyfrę."
                         />
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="role"
                             fieldType="select"
                             initialValue="USER"
@@ -102,7 +88,6 @@ class UsersAddForm extends Component {
                             required={false}
                         />
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="date"
                             fieldType="date"
                             label="Data dodania lub utworzenia (pole nieobowiązkowe)"
@@ -127,14 +112,14 @@ class UsersAddForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.users.errorMessage,
-        status: state.users.status
+        status: state.users.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         register: (username, email, password, role, date) => {
             return dispatch(
@@ -143,10 +128,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(users.cleanServerStatus());
-        }
+        },
     };
 };
 
-UsersAddForm = connect(mapStateToProps, mapDispatchToProps)(UsersAddForm);
-
-export default Form.create()(UsersAddForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersAddForm);

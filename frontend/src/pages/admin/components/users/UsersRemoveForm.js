@@ -10,14 +10,14 @@ import ButtonComponent from "../../../components/universal/ButtonComponent";
 import ErrorMessageComponent from "../../../components/universal/ErrorMessageComponent";
 import Success from "../../../components/errors/Success";
 
-import { Form, Layout } from "antd";
+import { Layout } from "antd";
 const { Content } = Layout;
 
 const { USERS } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class UsersRemoveForm extends Component {
-    handleDeletingSubmit = e => {
+    handleDeletingSubmit = (e) => {
         e.preventDefault();
         this.props.deleteSelectedUser(this.props.idParam);
     };
@@ -63,25 +63,23 @@ class UsersRemoveForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.users.errorMessage,
         selectedUser: state.users.selectedUser,
-        status: state.users.status
+        status: state.users.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        deleteSelectedUser: id => {
+        deleteSelectedUser: (id) => {
             return dispatch(users.deleteSelectedUser(id));
         },
         cleanServerStatus: () => {
             return dispatch(users.cleanServerStatus());
-        }
+        },
     };
 };
 
-UsersRemoveForm = connect(mapStateToProps, mapDispatchToProps)(UsersRemoveForm);
-
-export default Form.create()(UsersRemoveForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersRemoveForm);
