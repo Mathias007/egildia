@@ -884,8 +884,16 @@ Nowa struktura projektu raczej jest zbliżona do ostatecznej.
 
 ## Poniedziałek 05.04.2021 - Czwartek 8.04.2021 - dokumentacja projektu
 
-**INNE**: 
+**INNE**:
 
-- publikacja szczegółowej dokumentacji projektu (katalog **drafts**) utrzymanej w formacie `.md`, podzielonej na poszczególne rozdziały tematyczne (spis treści w **README**), zawierającej graficzne odwzorowania (schematy, rysunki struktur);
+-   publikacja szczegółowej dokumentacji projektu (katalog **drafts**) utrzymanej w formacie `.md`, podzielonej na poszczególne rozdziały tematyczne (spis treści w **README**), zawierającej graficzne odwzorowania (schematy, rysunki struktur);
 
-- obecnie trwają prace nad deployem aplikacji.
+-   obecnie trwają prace nad deployem aplikacji.
+
+## Piątek 23.04.2021 - Sobota 24.04.2021 - wdrożenie ANTD v. 4
+
+**Frontend**:
+
+-   w związku z aktualizacją zależności po stronie frontendu zainstalowana została wersja 4.6.2 biblioteki **Ant Design**, która niesie za sobą znaczące zmiany, zmierzające głównie do uproszczenia struktury aplikacji. W szczególności dotyczą one na ten moment **formularzy**, które uległy przebudowaniu (zniknęła m. in. konieczność użycia **getFieldDecoration** w celu implementacji właściwości pól formularzy, a także zmienione zostały mechanizmy odpowiedzialnę za walidację i wysyłanie formularza). Z tego też względu liczne komponenty aplikacji uległy przebudowie.
+
+-   Nadto zainstalowane zostały **Ikony Ant Design**, które w odróżnieniu od uprzednio używanych w ramach tej biblioteki strukturalnie są komponentami. Z tego też względu zaimplementowałem **komponent generyczny IconComponent** odpowiedzialny za obsługę wszystkich ikon na stronie.
