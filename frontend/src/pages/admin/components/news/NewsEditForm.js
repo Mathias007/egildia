@@ -18,25 +18,18 @@ const { NEWS } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class NewsEditForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
+    handleSubmit = (values) => {
         let modificationDate = new Date();
-        const { validateFields } = this.props.form;
 
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.editSelectedNews(
-                    this.props.idParam,
-                    values.title,
-                    values.content,
-                    values.author,
-                    values.category,
-                    modificationDate
-                );
-            }
-        });
+        console.log("Received values of form: ", values);
+        this.props.editSelectedNews(
+            this.props.idParam,
+            values.title,
+            values.content,
+            values.author,
+            values.category,
+            modificationDate
+        );
     };
 
     render() {
@@ -50,13 +43,11 @@ class NewsEditForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             const { properNews } = this.props;
             return (
                 <Content style={styles.content}>
-                    <Form onSubmit={this.handleSubmit} id="edit-news-form">
+                    <Form onFinish={this.handleSubmit} id="edit-news-form">
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="category"
                             initialValue={properNews.category}
                             inputIcon="key"
@@ -68,7 +59,6 @@ class NewsEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="title"
                             initialValue={properNews.title}
                             inputIcon="flag"
@@ -80,7 +70,6 @@ class NewsEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="content"
                             fieldType="text-area"
                             initialValue={properNews.content}
@@ -92,7 +81,6 @@ class NewsEditForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             label="Autor wpisu"
                             fieldName="author"
                             initialValue={properNews.author}
@@ -123,17 +111,17 @@ class NewsEditForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.news.errorMessage,
         properNews: state.news.properNews,
-        status: state.news.status
+        status: state.news.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        showProperNews: id => {
+        showProperNews: (id) => {
             return dispatch(news.showProperNews(id));
         },
         editSelectedNews: (
@@ -157,10 +145,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(news.cleanServerStatus());
-        }
+        },
     };
 };
 
-NewsEditForm = connect(mapStateToProps, mapDispatchToProps)(NewsEditForm);
-
-export default Form.create()(NewsEditForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsEditForm);

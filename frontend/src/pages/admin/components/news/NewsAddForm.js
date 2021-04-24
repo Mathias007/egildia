@@ -18,24 +18,15 @@ const { NEWS } = linksPaths;
 const { STATUS_OK } = serverStatuses;
 
 class NewsAddForm extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const { validateFields, resetFields } = this.props.form;
-
-        validateFields((err, values) => {
-            if (!err) {
-                console.log("Received values of form: ", values);
-                this.props.addSingleNews(
-                    values.title,
-                    values.content,
-                    values.author,
-                    values.date,
-                    values.category
-                );
-                resetFields();
-            }
-        });
+    handleSubmit = (values) => {
+        console.log("Received values of form: ", values);
+        this.props.addSingleNews(
+            values.title,
+            values.content,
+            values.author,
+            values.date,
+            values.category
+        );
     };
 
     render() {
@@ -49,12 +40,10 @@ class NewsAddForm extends Component {
                 />
             );
         else {
-            const { getFieldDecorator } = this.props.form;
             return (
                 <Content style={styles.content}>
-                    <Form onSubmit={this.handleSubmit} id="add-news-form">
+                    <Form onFinish={this.handleSubmit} id="add-news-form">
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="category"
                             inputIcon="folder-open"
                             label="Kategoria wpisu"
@@ -65,7 +54,6 @@ class NewsAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="title"
                             inputIcon="flag"
                             label="Tytuł wpisu"
@@ -76,7 +64,6 @@ class NewsAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="content"
                             fieldType="text-area"
                             label="Zawartość wpisu"
@@ -87,7 +74,6 @@ class NewsAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="date"
                             fieldType="date"
                             label="Data dodania lub utworzenia (pole nieobowiązkowe)"
@@ -97,7 +83,6 @@ class NewsAddForm extends Component {
                         />
 
                         <SingleFormElement
-                            getFieldDecorator={getFieldDecorator}
                             fieldName="author"
                             initialValue={this.props.name}
                             inputIcon="crown"
@@ -125,15 +110,15 @@ class NewsAddForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         errorMessage: state.news.errorMessage,
         name: state.auth.name,
-        status: state.news.status
+        status: state.news.status,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addSingleNews: (title, content, author, date, category) => {
             return dispatch(
@@ -142,10 +127,8 @@ const mapDispatchToProps = dispatch => {
         },
         cleanServerStatus: () => {
             return dispatch(news.cleanServerStatus());
-        }
+        },
     };
 };
 
-NewsAddForm = connect(mapStateToProps, mapDispatchToProps)(NewsAddForm);
-
-export default Form.create()(NewsAddForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsAddForm);
