@@ -5,14 +5,17 @@ import { Link } from "react-router-dom";
 import { auth } from "../../../../_store/_actions";
 import styles from "../../../../styles/styles";
 
-import { Avatar, Button, Dropdown, Icon, Menu } from "antd";
+import Icon from "../../universal/IconComponent";
+import ButtonComponent from "../../universal/ButtonComponent";
+
+import { Avatar, Dropdown, Menu } from "antd";
 const { Divider, Item } = Menu;
 
 const buttonData = {
     icon: "login",
     type: "primary",
     size: "small",
-    text: "Zaloguj się"
+    text: "Zaloguj się",
 };
 
 function HeaderAvatar(props) {
@@ -52,32 +55,31 @@ function HeaderAvatar(props) {
                 </div>
             ) : (
                 <Link to="/login">
-                    <Button
+                    <ButtonComponent
                         icon={icon}
                         type={type}
                         htmlType={htmlType}
                         style={styles.loginButton}
-                    >
-                        {text}
-                    </Button>
+                        text={text}
+                    />
                 </Link>
             )}
         </>
     );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         name: state.auth.name,
-        userId: state.auth.userId
+        userId: state.auth.userId,
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
             return dispatch(auth.logout());
-        }
+        },
     };
 };
 

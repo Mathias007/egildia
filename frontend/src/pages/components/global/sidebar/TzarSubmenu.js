@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import routesPaths from "../../../../_config/routesPaths";
 import navigationTitles from "../../../../_config/navigationTitles";
 
-import { Menu, Icon } from "antd";
+import Icon from "../../universal/IconComponent";
+
+import { Menu } from "antd";
 const { SubMenu } = Menu;
 const { Item } = Menu;
 
@@ -15,7 +17,7 @@ const {
     TZAR_NATIONS,
     TZAR_SPELLS,
     TZAR_TECHNOLOGIES,
-    TZAR_UNITS
+    TZAR_UNITS,
 } = navigationTitles;
 
 export default function TzarSubmenu(props) {

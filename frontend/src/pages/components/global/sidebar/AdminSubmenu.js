@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import routesPaths from "../../../../_config/routesPaths";
 import navigationTitles from "../../../../_config/navigationTitles";
 
-import { Menu, Icon } from "antd";
+import Icon from "../../universal/IconComponent";
+
+import { Menu } from "antd";
 const { SubMenu } = Menu;
 const { Item } = Menu;
 
@@ -13,7 +15,7 @@ const {
     ADMINISTRATION,
     ADMIN_ARTICLES,
     ADMIN_NEWS,
-    ADMIN_USERS
+    ADMIN_USERS,
 } = navigationTitles;
 
 export default function AdminSubmenu(props) {

@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import routesPaths from "../../../../_config/routesPaths";
 import navigationTitles from "../../../../_config/navigationTitles";
 
-import { Menu, Icon } from "antd";
+import Icon from "../../universal/IconComponent";
+
+import { Menu } from "antd";
 const { Item } = Menu;
 
 const { GENERAL } = routesPaths;

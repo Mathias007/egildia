@@ -2,7 +2,8 @@ import React from "react";
 
 import serverStatuses from "../../../_config/serverStatuses";
 
-import { Form, Icon } from "antd";
+import Icon from "@ant-design/icons";
+import { Form } from "antd";
 const { Item } = Form;
 
 const {
@@ -12,7 +13,7 @@ const {
     STATUS_NOT_FOUND,
     STATUS_UNAUTHORIZED,
     STATUS_FORBIDDEN,
-    INTERNAL_ERROR
+    INTERNAL_ERROR,
 } = serverStatuses;
 
 export default function ErrorMessageComponent(props) {
@@ -24,7 +25,7 @@ export default function ErrorMessageComponent(props) {
                     style={{
                         textAlign: "center",
                         fontSize: "16px",
-                        color: "#08c"
+                        color: "#08c",
                     }}
                 >
                     <Icon type="smile" theme="twoTone" /> {errorMessage}
@@ -40,7 +41,7 @@ export default function ErrorMessageComponent(props) {
                     style={{
                         textAlign: "center",
                         fontSize: "16px",
-                        color: "orange"
+                        color: "orange",
                     }}
                 >
                     <Icon
@@ -58,7 +59,7 @@ export default function ErrorMessageComponent(props) {
                     style={{
                         textAlign: "center",
                         fontSize: "16px",
-                        color: "red"
+                        color: "red",
                     }}
                 >
                     <Icon

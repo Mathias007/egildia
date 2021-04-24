@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import routesPaths from "../../../../_config/routesPaths";
 import navigationTitles from "../../../../_config/navigationTitles";
 
-import { Menu, Icon } from "antd";
+import Icon from "../../universal/IconComponent";
+
+import { Menu } from "antd";
 const { SubMenu } = Menu;
 const { Item } = Menu;
 
@@ -14,7 +16,7 @@ const {
     KNIGHTS_MAIN,
     KNIGHTS_BUILDINGS,
     KNIGHTS_UNITS,
-    KNIGHTS_REVIEW
+    KNIGHTS_REVIEW,
 } = navigationTitles;
 
 export default function KnightsSubmenu(props) {
