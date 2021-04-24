@@ -4,7 +4,7 @@ import {
     createDefaultInput,
     createPasswordInput,
     createSelect,
-    createTextArea
+    createTextArea,
 } from "./inputCreators";
 
 const { date, password, select, textarea } = inputFieldTypes;
@@ -17,14 +17,15 @@ export default function formElementBuilder(props) {
         pattern,
         required,
         validator,
+        isConfirmField,
         ...inputProps
     } = props;
 
     let decoratorRules = [
         {
             required,
-            message
-        }
+            message,
+        },
     ];
     let formElement;
 
@@ -32,7 +33,7 @@ export default function formElementBuilder(props) {
         case date:
             decoratorRules.unshift({
                 type: "object",
-                required
+                required,
             });
 
             formElement = createDatePicker({ ...inputProps });
@@ -43,9 +44,9 @@ export default function formElementBuilder(props) {
                 { min: minLength, message: "Hasło za krótkie!" },
                 {
                     pattern,
-                    message: "Hasło nie spełnia wymagań!"
+                    message: "Hasło nie spełnia wymagań!",
                 },
-                { validator }
+                isConfirmField ? validator : {}
             );
 
             formElement = createPasswordInput({ ...inputProps });
@@ -64,8 +65,8 @@ export default function formElementBuilder(props) {
                 {
                     type: fieldType,
                     required,
-                    message
-                }
+                    message,
+                },
             ];
 
             formElement = createDefaultInput({ ...inputProps });

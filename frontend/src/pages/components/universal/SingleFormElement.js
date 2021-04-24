@@ -5,22 +5,20 @@ import { Form } from "antd";
 const { Item } = Form;
 
 export default function SingleFormElement(props) {
-    const {
-        label,
-        fieldName,
-        getFieldDecorator,
-        hasFeedback,
-        initialValue
-    } = props;
+    const { label, fieldName, dependencies, hasFeedback, initialValue } = props;
 
     let itemStructure = formElementsBuilder(props);
 
     return (
-        <Item label={label} hasFeedback={hasFeedback}>
-            {getFieldDecorator(fieldName, {
-                initialValue,
-                rules: itemStructure.decoratorRules
-            })(itemStructure.formElement)}
+        <Item
+            label={label}
+            hasFeedback={hasFeedback}
+            name={fieldName}
+            initialValue={initialValue}
+            dependencies={dependencies}
+            rules={itemStructure.decoratorRules}
+        >
+            {itemStructure.formElement}
         </Item>
     );
 }
