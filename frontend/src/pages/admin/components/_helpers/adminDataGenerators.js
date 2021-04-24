@@ -6,9 +6,11 @@ import "moment/locale/pl";
 import { dateFormat } from "../../../../_config/globalContentVariables";
 import styles from "../../../../styles/styles";
 
-import { Avatar, Divider, Icon } from "antd";
+import { Avatar, Divider } from "antd";
 
-export const generateAvatar = name => {
+import Icon from "../../../components/universal/IconComponent";
+
+export const generateAvatar = (name) => {
     return name ? (
         <Avatar style={styles.userAvatar} size="large">
             {name.charAt(0).toUpperCase()}
@@ -110,4 +112,4 @@ export const generateOptions = (editPath, removePath, id, caption) => {
     );
 };
 
-export const generateDate = date => moment(date).format(dateFormat);
+export const generateDate = (date) => moment(date).format(dateFormat);

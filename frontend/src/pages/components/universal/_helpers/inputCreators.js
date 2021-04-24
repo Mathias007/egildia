@@ -3,11 +3,13 @@ import locale from "antd/es/date-picker/locale/pl_PL";
 
 import styles from "../../../../styles/styles";
 
-import { DatePicker, Icon, Input, Select, Tooltip } from "antd";
+import Icon from "../IconComponent";
+
+import { DatePicker, Input, Select, Tooltip } from "antd";
 const { Password, TextArea } = Input;
 const { Option } = Select;
 
-export const createDatePicker = props => {
+export const createDatePicker = (props) => {
     const { inputIcon, placeholder } = props;
     return (
         <DatePicker
@@ -22,7 +24,7 @@ export const createDatePicker = props => {
     );
 };
 
-export const createDefaultInput = props => {
+export const createDefaultInput = (props) => {
     const { inputIcon, placeholder, tooltip } = props;
     return (
         <Input
@@ -40,7 +42,7 @@ export const createDefaultInput = props => {
     );
 };
 
-export const createPasswordInput = props => {
+export const createPasswordInput = (props) => {
     const { inputIcon, onBlur, placeholder, tooltip } = props;
     return (
         <Password
@@ -59,7 +61,7 @@ export const createPasswordInput = props => {
     );
 };
 
-export const createSelect = props => {
+export const createSelect = (props) => {
     const { options } = props;
     return (
         <Select>
@@ -74,7 +76,7 @@ export const createSelect = props => {
     );
 };
 
-export const createTextArea = props => {
+export const createTextArea = (props) => {
     const { placeholder, rows } = props;
     return <TextArea rows={rows} placeholder={placeholder} />;
 };

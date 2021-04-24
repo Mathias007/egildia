@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 
 import styles from "../../../../styles/styles";
 
+import Icon from "../../universal/IconComponent";
+
 import { Button, Divider, Form } from "antd";
 const { Item } = Form;
 
-export const createSingleWrappedButton = props => {
+export const createSingleWrappedButton = (props) => {
     const { form, htmlType, icon, onClick, type, text } = props;
     return (
         <Item className="btn-wrap">
             <Button
                 form={form}
-                icon={icon}
+                icon={<Icon type={icon} />}
                 htmlType={htmlType}
                 onClick={onClick}
                 type={type}
@@ -23,14 +25,14 @@ export const createSingleWrappedButton = props => {
     );
 };
 
-export const createSingleNonWrappedButton = props => {
+export const createSingleNonWrappedButton = (props) => {
     const { form, htmlType, icon, onClick, type, text } = props;
 
     return (
         <Button
             form={form}
             htmlType={htmlType}
-            icon={icon}
+            icon={<Icon type={icon} />}
             onClick={onClick}
             type={type}
         >
@@ -39,7 +41,7 @@ export const createSingleNonWrappedButton = props => {
     );
 };
 
-export const createDoubleButton = props => {
+export const createDoubleButton = (props) => {
     const {
         cancelClick,
         cancelLink,
@@ -49,7 +51,7 @@ export const createDoubleButton = props => {
         icon,
         onClick,
         type,
-        text
+        text,
     } = props;
 
     return (
@@ -58,7 +60,7 @@ export const createDoubleButton = props => {
                 form={form}
                 htmlType={htmlType}
                 onClick={onClick}
-                icon={icon}
+                icon={<Icon type={icon} />}
                 type={type}
             >
                 {text}
