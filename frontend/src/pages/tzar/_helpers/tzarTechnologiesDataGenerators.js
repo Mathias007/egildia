@@ -1,10 +1,11 @@
 import React from "react";
-import Img from "react-image";
+
+import Image from "../../components/universal/ImageComponent";
 
 import { imgPath } from "./_tzarGeneralData";
 const { general, section, dir, format } = imgPath;
 
-const generateName = name => {
+const generateName = (name) => {
     return (
         <h3>
             <strong>{name}</strong>
@@ -12,14 +13,10 @@ const generateName = name => {
     );
 };
 
-const generateImage = image => {
-    return (
-        <>
-            <Img
-                src={require(`../../../${general}/${section.tzar}/${dir.technologies}/${image}.${format.png}`)}
-            />
-        </>
-    );
+const generateImage = (image) => {
+    const src = `${general}/${section.tzar}/${dir.technologies}/${image}.${format.png}`;
+
+    return <Image src={src} alt={image} />;
 };
 
 export const technologiesColumnsStructure = [
@@ -27,32 +24,32 @@ export const technologiesColumnsStructure = [
         title: "Grafika",
         dataIndex: "image",
         align: "center",
-        render: image => generateImage(image)
+        render: (image) => generateImage(image),
     },
     {
         title: "Technologia",
         dataIndex: "name",
         align: "center",
-        render: name => generateName(name)
+        render: (name) => generateName(name),
     },
     {
         title: "Cena w złocie",
         dataIndex: "cost",
-        align: "left"
+        align: "left",
     },
     {
         title: "Budynek",
         dataIndex: "building",
-        align: "center"
+        align: "center",
     },
     {
         title: "Działanie",
         dataIndex: "description",
-        align: "left"
+        align: "left",
     },
     {
         title: "Nacja",
         dataIndex: "nation",
-        align: "center"
-    }
+        align: "center",
+    },
 ];
