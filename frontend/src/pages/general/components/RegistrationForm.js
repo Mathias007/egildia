@@ -25,7 +25,6 @@ class RegistrationForm extends Component {
     };
 
     handleSubmit = (values) => {
-        console.log("Received values of form: ", values);
         this.props.register(
             values.nickname,
             values.email,

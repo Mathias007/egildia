@@ -20,7 +20,6 @@ const { STATUS_OK } = serverStatuses;
 
 class LoginForm extends Component {
     handleSubmit = (values) => {
-        console.log("Received values of form: ", values);
         this.props.login(values.username, values.password, values.remember);
     };
 

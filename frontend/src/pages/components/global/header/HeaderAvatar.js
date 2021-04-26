@@ -12,6 +12,7 @@ import { Avatar, Dropdown, Menu } from "antd";
 const { Divider, Item } = Menu;
 
 const buttonData = {
+    className: "header-login-button",
     icon: "login",
     type: "primary",
     size: "small",
@@ -54,15 +55,17 @@ function HeaderAvatar(props) {
                     </p>
                 </div>
             ) : (
-                <Link to="/login">
-                    <ButtonComponent
-                        icon={icon}
-                        type={type}
-                        htmlType={htmlType}
-                        style={styles.loginButton}
-                        text={text}
-                    />
-                </Link>
+                <div className="login-button">
+                    <Link to="/login">
+                        <ButtonComponent
+                            icon={icon}
+                            type={type}
+                            htmlType={htmlType}
+                            style={styles.loginButton}
+                            text={text}
+                        />
+                    </Link>
+                </div>
             )}
         </>
     );

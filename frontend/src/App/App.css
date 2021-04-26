@@ -57,3 +57,16 @@ div.btn-wrap {
     display: flex;
     justify-content: center;
 }
+
+.logo img {
+    margin-bottom: 16px;
+    transition: all 0.2s linear;
+}
+
+.logo img:hover {
+    filter: brightness(80%);
+}
+
+.login-button {
+    margin-top: 16px;
+}
