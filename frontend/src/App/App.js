@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
 
 import routesPaths from "../_config/routesPaths";
@@ -52,7 +52,7 @@ import UsersList from "../pages/admin/users/UsersList";
 import UserSingleProfile from "../pages/admin/users/UserSingleProfile";
 
 import "./App.css";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 import { Layout } from "antd";
 
 const { GENERAL, ARTICLES, NEWS, KNIGHTS, TZAR, USERS } = routesPaths;
@@ -99,7 +99,7 @@ class App extends Component {
                             <HeaderComponent />
                             <Layout>
                                 <SidebarComponent />
-                                <Switch>
+                                <Routes>
                                     {/* general routes */}
                                     <Route
                                         exact
@@ -228,7 +228,7 @@ class App extends Component {
                                     />
 
                                     <Route path="*" component={NotFound} />
-                                </Switch>
+                                </Routes>
                             </Layout>
                         </Layout>
                         <FooterComponent />
@@ -247,9 +247,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadUser: () => {
-            return dispatch(auth.loadUser());
-        }
+        // loadUser: () => {
+        //     return dispatch(auth.loadUser());
+        // }
     };
 };
 

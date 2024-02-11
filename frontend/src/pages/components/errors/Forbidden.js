@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
@@ -24,7 +24,7 @@ export default class Forbidden extends Component {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to="/" />;
+            return <Navigate to="/" />;
         } else
             return (
                 <Layout style={styles.layout}>

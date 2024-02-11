@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import serverStatuses from "../../../_config/serverStatuses";
 import styles from "../../../styles/styles";
@@ -33,7 +33,7 @@ export default class Success extends Component {
         } = this.props;
 
         if (redirection && this.state.redirect) {
-            return <Redirect to={cancelLink} />;
+            return <Navigate to={cancelLink} />;
         } else
             return (
                 <Content style={styles.content}>

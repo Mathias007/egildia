@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import { Comment, Avatar, Form, Button, List, Input, Layout } from "antd";
+import { Avatar, Form, Button, List, Input, Layout } from "antd";
+import { Comment } from "@ant-design/compatible";
+
 import moment from "moment";
 import styles from "../../../styles/styles";
 

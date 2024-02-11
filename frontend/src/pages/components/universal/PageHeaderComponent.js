@@ -5,7 +5,8 @@ import moment from "moment";
 import { articles } from "../../../_store/_actions";
 import navigationTitles from "../../../_config/navigationTitles";
 
-import { PageHeader, Descriptions } from "antd";
+import { Descriptions } from "antd";
+import { PageHeader } from "@ant-design/pro-layout"
 
 const { ADMIN_PANEL, ADMIN_BACK } = navigationTitles;
 
